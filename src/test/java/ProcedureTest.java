@@ -30,6 +30,67 @@ public class ProcedureTest {
     public void startUpTest() {
         cockpit.startup();
 
+        // air_conditioning
+        // airflow_sensor
+        // anti_collision_light
+        // apu
+        // apu_oil_tank
+        // battery
+        // bulk_cargo_door
+        // business_class_seat
+        // camera
+        // cargo_compartment_light
+        // cargo_system
+        // cost_optimizer
+        // crew_seat
+        // deicing_system
+        // droop_nose
+        // economy_class_seat
+        // elevator
+        // emergency_exit_door
+        // engine
+        // engine_oil_tank
+        // exhaust_gas_temperature_sensor
+        // fire_detector
+        // flap
+        // fuel_flow_sensor
+        // fuel_sensor
+        // fuel_tank
+        // gear
+        // gear_door
+        // gps
+        // hydraulic_pump
+        // ice_detector_probe
+        // kitchen
+        // landing_light
+        // left_aileron
+        // left_navigation_light
+        // logo_light
+        // nitrogen_bottle
+        // oxygen_bottle
+        // oxygen_sensor
+        // pitot_tube
+        // potable_watertank
+        // premium_economy_class_seat
+        // radar
+        // radar_altimeter
+        // right_aileron
+        // right_navigation_light
+        // route_management
+        // rudder
+        // satcom
+        // shock_sensor
+        // slat
+        // spoiler
+        // stalling_sensor
+        // tail_navigation_light
+        // taxi_light
+        // tcas
+        // temperature_sensor
+        // turbulent_airflow_sensor
+        // vhf
+        // wastewater_tank
+
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
     }
