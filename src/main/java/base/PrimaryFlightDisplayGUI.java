@@ -27,6 +27,11 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
     private RadioButton weatherRadarOnButton;
+    //droop_nose
+    private Button droopNoseNeutralButton;
+    private Button droopNoseFullDownButton;
+    private TextField droopNoseUpField;
+    private TextField droopNoseDownField;
 
     public static void main(String... args) {
         LogEngine.instance.init();
@@ -220,6 +225,21 @@ public class PrimaryFlightDisplayGUI extends Application {
         weatherRadarOnButton.setSelected(false);
         gridPane.add(weatherRadarOnButton, 8, 0);
 
+        // droop_nose
+        Label droopNoselabel = new Label("DroopNose : ");
+        gridPane.add(droopNoselabel, 6, 0);
+
+        ToggleGroup droopNoseToggleGroup = new ToggleGroup();
+
+        droopNoseFullDownButton = new Button("FullDown");
+        weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
+        weatherRadarOffButton.setSelected(true);
+        gridPane.add(weatherRadarOffButton, 7, 0);
+
+        weatherRadarOnButton = new RadioButton("On");
+        weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
+        weatherRadarOnButton.setSelected(false);
+        gridPane.add(weatherRadarOnButton, 8, 0);
         // --- insert section: end
 
         Label frequencyLabel = new Label("Frequency : ");
