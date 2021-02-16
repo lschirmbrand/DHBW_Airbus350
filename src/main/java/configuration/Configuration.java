@@ -16,4 +16,8 @@ public enum Configuration {
     // weather_radar
     public String pathToWeatherRadarJavaArchive = commonPathToJavaArchive + "weather_radar" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "weather_radar.jar";
     public int numberOfWeatherRadar = 2;
+
+    public String pathToSlatJavaArchive = commonPathToJavaArchive + "flight_controls_01" + fileSeparator + "slat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "weather_radar.jar";
+    public int numberOfSlat = 6;
+
 }
