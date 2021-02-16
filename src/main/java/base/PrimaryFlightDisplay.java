@@ -5,4 +5,5 @@ public enum PrimaryFlightDisplay {
     public boolean isWeatherRadarOn;
     public int degreeSlat;
     public int degreeLeftAileron;
+    public int degreeRightAileron;
 }
