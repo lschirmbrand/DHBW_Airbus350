@@ -6,6 +6,7 @@ import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.gear.*;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
 import section.Body;
@@ -37,11 +38,17 @@ public class Airplane implements IAirplane {
     }
 
     public void startup() {
+        //gear
+        eventBus.post(new GearDown());
+        eventBus.post(new GearSetBrake());
         // weather_radar
         eventBus.post(new WeatherRadarOn());
     }
 
     public void taxi() {
+        //gear
+        eventBus.post(new GearDown());
+        eventBus.post(new GearReleaseBrake());
         // weather_radar
         eventBus.post(new WeatherRadarOn());
     }
@@ -60,6 +67,10 @@ public class Airplane implements IAirplane {
         eventBus.post(new APUDecreaseRPM(5000));
         eventBus.post(new APUIncreaseRPM(2500));
 
+        // gear
+        eventBus.post(new GearUp());
+        eventBus.post(new GearSetBrakePercentage(50));
+
         // weather_radar
         eventBus.post(new WeatherRadarOn());
     }
@@ -69,6 +80,10 @@ public class Airplane implements IAirplane {
         eventBus.post(new APUDecreaseRPM(5000));
         eventBus.post(new APUIncreaseRPM(1000));
 
+        // gear
+        eventBus.post(new GearUp());
+        eventBus.post(new GearSetBrakePercentage(50));
+
         // weather_radar
         eventBus.post(new WeatherRadarOn());
     }
@@ -77,6 +92,11 @@ public class Airplane implements IAirplane {
         // apu
         eventBus.post(new APUDecreaseRPM(5000));
         eventBus.post(new APUIncreaseRPM(1000));
+
+        // gear
+        eventBus.post(new GearUp());
+        eventBus.post(new GearSetBrakePercentage(50));
+
         // weather_radar
         eventBus.post(new WeatherRadarOn());
     }
@@ -84,6 +104,11 @@ public class Airplane implements IAirplane {
     public void descent() {
         // apu
         eventBus.post(new APUDecreaseRPM(5000));
+
+        //gear
+        eventBus.post(new GearUp());
+        eventBus.post(new GearSetBrakePercentage(50));
+
         // weather_radar
         eventBus.post(new WeatherRadarOn());
     }
@@ -92,6 +117,10 @@ public class Airplane implements IAirplane {
         // apu
         eventBus.post(new APUDecreaseRPM(5000));
 
+        //gear
+        eventBus.post(new GearDown());
+        eventBus.post(new GearReleaseBrake());
+
         // weather_radar
         eventBus.post(new WeatherRadarOn());
     }
@@ -99,6 +128,11 @@ public class Airplane implements IAirplane {
     public void shutdown() {
         // apu
         eventBus.post(new APUShutdown());
+
+        //gear
+        eventBus.post(new GearDown());
+        eventBus.post(new GearSetBrake());
+
         // weather_radar
         eventBus.post(new WeatherRadarOff());
     }

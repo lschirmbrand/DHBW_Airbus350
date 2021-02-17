@@ -8,24 +8,27 @@ import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.gear.*;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
 import event.weather_radar.WeatherRadarScan;
 import factory.APUFactory;
+import factory.GearFactory;
 import factory.WeatherRadarFactory;
 import logging.LogEngine;
 import recorder.FlightRecorder;
 
-import java.io.ObjectInputFilter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Body extends Subscriber {
     private ArrayList<Object> apuPortList;
+    private ArrayList<Object> gearPortList;
     private ArrayList<Object> weatherRadarPortList;
 
     public Body() {
         apuPortList = new ArrayList<>();
+        gearPortList = new ArrayList<>();
         weatherRadarPortList = new ArrayList<>();
         build();
     }
@@ -34,6 +37,27 @@ public class Body extends Subscriber {
         for (int i = 0; i < Configuration.instance.numberOfApu; i++) {
             apuPortList.add(APUFactory.build());
         }
+
+        for (int i = 0; i < Configuration.instance.numberOfGearFront; i++) {
+            Object gearPort = GearFactory.build();
+            try {
+                gearPort.getClass().getDeclaredMethod("setGearType", String.class).invoke(gearPort, "front");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            gearPortList.add(gearPort);
+        }
+        for (int i = 0; i < Configuration.instance.numberOfGearRear; i++) {
+            Object gear = GearFactory.build();
+            try {
+                gear.getClass().getDeclaredMethod("setGearType", String.class).invoke(gear, "rear");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            gearPortList.add(gear);
+        }
+
+
         for (int i = 0; i < Configuration.instance.numberOfWeatherRadar; i++) {
             weatherRadarPortList.add(WeatherRadarFactory.build());
         }
@@ -155,6 +179,142 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "rpmAPU: " + PrimaryFlightDisplay.instance.rpmAPU);
     }
 
+    // --- Gear -------------------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(GearUp gearUp) {
+        LogEngine.instance.write("+ Body.receive(" + gearUp.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gearUp.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGearRear + Configuration.instance.numberOfGearFront; i++) {
+                Method upMethod = gearPortList.get(i).getClass().getDeclaredMethod("up");
+                LogEngine.instance.write("upMethod = " + upMethod);
+
+                boolean isGearDown = (boolean) upMethod.invoke(gearPortList.get(i));
+
+                LogEngine.instance.write("isGearDown = " + isGearDown);
+                PrimaryFlightDisplay.instance.isGearDown = isGearDown;
+                FlightRecorder.instance.insert("Body", "Gear (isGearDown): " + isGearDown);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGearDown: " + PrimaryFlightDisplay.instance.isGearDown);
+    }
+
+    @Subscribe
+    public void receive(GearDown gearDown) {
+        LogEngine.instance.write("+ Body.receive(" + gearDown.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gearDown.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGearRear + Configuration.instance.numberOfGearFront; i++) {
+                Method downMethod = gearPortList.get(i).getClass().getDeclaredMethod("down");
+                LogEngine.instance.write("downMethod = " + downMethod);
+
+                boolean isGearDown = (boolean) downMethod.invoke(gearPortList.get(i));
+
+                LogEngine.instance.write("isGearDown = " + isGearDown);
+                PrimaryFlightDisplay.instance.isGearDown = isGearDown;
+                FlightRecorder.instance.insert("Body", "Gear (isGearDown): " + isGearDown);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGearDown: " + PrimaryFlightDisplay.instance.isGearDown);
+    }
+
+    @Subscribe
+    public void receive(GearSetBrake gearSetBrake) {
+        LogEngine.instance.write("+ Body.receive(" + gearSetBrake.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gearSetBrake.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGearRear + Configuration.instance.numberOfGearFront; i++) {
+                Method setBrakeMethod = gearPortList.get(i).getClass().getDeclaredMethod("setBrake");
+                LogEngine.instance.write("setBrakeMethod = " + setBrakeMethod);
+
+                int gearBrakePercentage = (int) setBrakeMethod.invoke(gearPortList.get(i));
+
+                LogEngine.instance.write("gearBrakePercentage = " + gearBrakePercentage);
+                PrimaryFlightDisplay.instance.gearBrakePercentage = gearBrakePercentage;
+                FlightRecorder.instance.insert("Body", "Gear (gearBrakePercentage): " + gearBrakePercentage);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGearDown: " + PrimaryFlightDisplay.instance.isGearDown);
+    }
+
+    @Subscribe
+    public void receive(GearSetBrakePercentage gearSetBrakePercentage) {
+        LogEngine.instance.write("+ Body.receive(" + gearSetBrakePercentage.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gearSetBrakePercentage.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGearRear + Configuration.instance.numberOfGearFront; i++) {
+                Method setBrakePercentageMethod = gearPortList.get(i).getClass().getDeclaredMethod("setBrake", int.class);
+                LogEngine.instance.write("setBrakePercentageMethod = " + setBrakePercentageMethod);
+
+                int gearBrakePercentage = (int) setBrakePercentageMethod.invoke(gearPortList.get(i), gearSetBrakePercentage.getValue());
+
+                LogEngine.instance.write("gearBrakePercentage = " + gearBrakePercentage);
+                PrimaryFlightDisplay.instance.gearBrakePercentage = gearBrakePercentage;
+                FlightRecorder.instance.insert("Body", "Gear (gearBrakePercentage): " + gearBrakePercentage);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGearDown: " + PrimaryFlightDisplay.instance.isGearDown);
+    }
+
+    @Subscribe
+    public void receive(GearReleaseBrake gearReleaseBrake) {
+        LogEngine.instance.write("+ Body.receive(" + gearReleaseBrake.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gearReleaseBrake.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGearRear + Configuration.instance.numberOfGearFront; i++) {
+                Method releaseBrakeMethod = gearPortList.get(i).getClass().getDeclaredMethod("releaseBrake");
+                LogEngine.instance.write("releaseBrakeMethod = " + releaseBrakeMethod);
+
+                int gearBrakePercentage = (int) releaseBrakeMethod.invoke(gearPortList.get(i));
+
+                LogEngine.instance.write("gearBrakePercentage = " + gearBrakePercentage);
+                PrimaryFlightDisplay.instance.gearBrakePercentage = gearBrakePercentage;
+                FlightRecorder.instance.insert("Body", "Gear (gearBrakePercentage): " + gearBrakePercentage);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGearDown: " + PrimaryFlightDisplay.instance.isGearDown);
+    }
 
     // --- WeatherRadar -----------------------------------------------------------------------------------------------
 

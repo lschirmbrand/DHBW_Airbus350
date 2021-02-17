@@ -17,6 +17,11 @@ public enum Configuration {
     public String pathToApuJavaArchive = commonPathToJavaArchive + "apu_engine_gear_pump" + fileSeparator + "apu" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "apu.jar";
     public int numberOfApu = 1;
 
+    // gear
+    public String pathToGearJavaArchive = commonPathToJavaArchive + "apu_engine_gear_pump" + fileSeparator + "gear" + fileSeparator  + "build" + fileSeparator + "libs" + fileSeparator + "gear.jar";
+    public int numberOfGearFront = 1;
+    public int numberOfGearRear = 2;
+
     // weather_radar
     public String pathToWeatherRadarJavaArchive = commonPathToJavaArchive + "weather_radar" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "weather_radar.jar";
     public int numberOfWeatherRadar = 2;

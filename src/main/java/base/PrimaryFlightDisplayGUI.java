@@ -31,6 +31,12 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry apuRPMEntry;
     private Label apuRPMLabel;
 
+    // gear
+    private PrimaryFlightDisplayEntry gearIsDownEntry;
+    private ComboBox<String> gearComboBox;
+    private PrimaryFlightDisplayEntry gearBrakePercentageEntry;
+    private Label gearBrakeLabel;
+
     // weather_radar
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
@@ -183,24 +189,6 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.setHgap(10);
         gridPane.setAlignment(Pos.BASELINE_LEFT);
 
-        Label frontGearLabel = new Label("Front Gear : ");
-        gridPane.add(frontGearLabel, 0, 0);
-
-        ComboBox<String> frontGearComboBox = new ComboBox<>();
-        frontGearComboBox.getItems().addAll("down", "up");
-        frontGearComboBox.setValue("down");
-        frontGearComboBox.setEditable(false);
-        gridPane.add(frontGearComboBox, 1, 0);
-
-        Label rearGearLabel = new Label("Rear Gear : ");
-        gridPane.add(rearGearLabel, 2, 0);
-
-        ComboBox<String> rearGearComboBox = new ComboBox<>();
-        rearGearComboBox.getItems().addAll("down", "up");
-        rearGearComboBox.setValue("down");
-        rearGearComboBox.setEditable(false);
-        gridPane.add(rearGearComboBox, 3, 0);
-
         Label flapLabel = new Label("Flap : ");
         gridPane.add(flapLabel, 4, 0);
 
@@ -229,6 +217,21 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         apuRPMLabel = new Label("0 rpm");
         gridPane.add(apuRPMLabel, 3, 1);
+
+        // gear
+
+        Label gearLabel = new Label("Gear : ");
+        gridPane.add(gearLabel, 6, 1);
+
+        gearComboBox = new ComboBox<>();
+        gearComboBox.getItems().addAll("down", "up");
+        gearComboBox.setValue("down");
+        gearComboBox.setEditable(false);
+        gridPane.add(gearComboBox, 7, 1);
+
+        gearBrakeLabel = new Label("Brake: " + 0 + "%");
+        gridPane.add(gearBrakeLabel, 9, 1);
+
 
         // weather_radar
         Label weatherRadarLabel = new Label("WeatherRadar : ");
@@ -279,13 +282,17 @@ public class PrimaryFlightDisplayGUI extends Application {
 
     // apu
     public void setApuToggleGroup(boolean isAPUStarted) {
-        if (isAPUStarted) {
-            apuStartedButton.setSelected(true);
-            apuShutdownButton.setSelected(false);
-        } else {
-            apuStartedButton.setSelected(false);
-            apuShutdownButton.setSelected(true);
-        }
+            apuStartedButton.setSelected(isAPUStarted);
+            apuShutdownButton.setSelected(!isAPUStarted);
+    }
+
+    // gear
+    public void setGearComboBox(boolean isGearDown) {
+        gearComboBox.setValue(isGearDown ? "down" : "up");
+    }
+
+    public void setGearBrakeLabel(int percentage) {
+        gearBrakeLabel.setText("Brake: " + percentage + "%");
     }
 
     // weather_radar
@@ -306,15 +313,21 @@ public class PrimaryFlightDisplayGUI extends Application {
     private void initData() {
         dataList = new ArrayList<>();
 
-        // weather_radar
-        weatherRadarIsOnEntry = new PrimaryFlightDisplayEntry("WeatherRadar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
-        dataList.add(weatherRadarIsOnEntry);
-
         // apu
         apuIsStartedEntry = new PrimaryFlightDisplayEntry("APU (isStarted)", Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
         dataList.add(apuIsStartedEntry);
         apuRPMEntry = new PrimaryFlightDisplayEntry("APU (rpm)", Integer.toString(PrimaryFlightDisplay.instance.rpmAPU));
         dataList.add(apuRPMEntry);
+
+        // gear
+        gearIsDownEntry = new PrimaryFlightDisplayEntry("Gear (isDown)", Boolean.toString(PrimaryFlightDisplay.instance.isGearDown));
+        dataList.add(gearIsDownEntry);
+        gearBrakePercentageEntry = new PrimaryFlightDisplayEntry("Gear (brakePercentage)", Integer.toString(PrimaryFlightDisplay.instance.gearBrakePercentage));
+        dataList.add(gearBrakePercentageEntry);
+
+        // weather_radar
+        weatherRadarIsOnEntry = new PrimaryFlightDisplayEntry("WeatherRadar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
+        dataList.add(weatherRadarIsOnEntry);
     }
 
     private ObservableList getInitialTableData() {
@@ -324,15 +337,21 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void update() {
-        // weather_radar
-        weatherRadarIsOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
-        setWeatherRadarToggleGroup(PrimaryFlightDisplay.instance.isWeatherRadarOn);
-
         // apu
         apuIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
         setApuToggleGroup(PrimaryFlightDisplay.instance.isAPUStarted);
         apuRPMEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.rpmAPU));
         setAPURPMLabel(PrimaryFlightDisplay.instance.rpmAPU);
+
+        // gear
+        gearIsDownEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isGearDown));
+        setGearComboBox(PrimaryFlightDisplay.instance.isGearDown);
+        gearBrakePercentageEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.gearBrakePercentage));
+        setGearBrakeLabel(PrimaryFlightDisplay.instance.gearBrakePercentage);
+
+        // weather_radar
+        weatherRadarIsOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
+        setWeatherRadarToggleGroup(PrimaryFlightDisplay.instance.isWeatherRadarOn);
 
         tableView.refresh();
     }
