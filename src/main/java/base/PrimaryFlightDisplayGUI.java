@@ -23,10 +23,16 @@ public class PrimaryFlightDisplayGUI extends Application {
     private TableView tableView;
     private ArrayList<PrimaryFlightDisplayEntry> dataList;
     private ObservableList data;
+
     // weather_radar
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
     private RadioButton weatherRadarOnButton;
+
+    // apu
+    private PrimaryFlightDisplayEntry apuIsStartedEntry;
+    private RadioButton apuStartButton;
+    private RadioButton apuShutdownButton;
 
     public static void main(String... args) {
         LogEngine.instance.init();
@@ -220,6 +226,23 @@ public class PrimaryFlightDisplayGUI extends Application {
         weatherRadarOnButton.setSelected(false);
         gridPane.add(weatherRadarOnButton, 8, 0);
 
+        // apu
+        Label apuLabel = new Label("APU : ");
+        gridPane.add(apuLabel, 0, 1);
+
+        ToggleGroup apuToggleGroup = new ToggleGroup();
+
+        apuShutdownButton = new RadioButton("Shutdown");
+        apuShutdownButton.setToggleGroup(apuToggleGroup);
+        apuShutdownButton.setSelected(true);
+        gridPane.add(apuShutdownButton, 1, 1);
+
+        apuStartButton = new RadioButton("Start");
+        apuStartButton.setToggleGroup(apuToggleGroup);
+        gridPane.add(apuStartButton, 2, 1);
+
+
+
         // --- insert section: end
 
         Label frequencyLabel = new Label("Frequency : ");
@@ -262,12 +285,27 @@ public class PrimaryFlightDisplayGUI extends Application {
         }
     }
 
+    // apu
+    public void setApuToggleGroup(boolean isAPUStarted) {
+        if (isAPUStarted) {
+            apuStartButton.setSelected(true);
+            apuShutdownButton.setSelected(false);
+        } else {
+            apuStartButton.setSelected(false);
+            apuShutdownButton.setSelected(true);
+        }
+    }
+
     private void initData() {
         dataList = new ArrayList<>();
 
         // weather_radar
         weatherRadarIsOnEntry = new PrimaryFlightDisplayEntry("WeatherRadar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
         dataList.add(weatherRadarIsOnEntry);
+
+        // apu
+        apuIsStartedEntry = new PrimaryFlightDisplayEntry("APU (isStarted)", Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
+        dataList.add(apuIsStartedEntry);
     }
 
     private ObservableList getInitialTableData() {
@@ -280,6 +318,10 @@ public class PrimaryFlightDisplayGUI extends Application {
         // weather_radar
         weatherRadarIsOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
         setWeatherRadarToggleGroup(PrimaryFlightDisplay.instance.isWeatherRadarOn);
+
+        // apu
+        apuIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
+        setApuToggleGroup(PrimaryFlightDisplay.instance.isAPUStarted);
 
         tableView.refresh();
     }
