@@ -1,6 +1,8 @@
-public interface IWeatherRadar {
+import java.util.ArrayList;
+
+public interface ICostOptimizer {
     	String version();
-	boolean On();
+	boolean on();
 	int add (CheckPoint checkPoint);
 	int remove(int checkPoint);
 	int optimize(ArrayList<CheckPoint> checkPointList);

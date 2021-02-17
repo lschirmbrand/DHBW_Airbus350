@@ -4,15 +4,15 @@ public class CheckPoint{
 	String latitude;
 	String longitude;
 
-	public GetSequenceID(){return sequenceID;}
-	public GetName(){return name;}
-	public GetLatitude(){return latitude;}
-	public GetLongitude(){return longitude;}
+	public int GetSequenceID(){return sequenceID;}
+	public String GetName(){return name;}
+	public String GetLatitude(){return latitude;}
+	public String GetLongitude(){return longitude;}
 
-	public SetSequenceID(int s){this.sequenceID = s}
-	public SetName(String n){name = n;}
-	public SetLatitude(String l){latitude = l;}
-	public SetLongitude(String l){longitude = l;}
+	public void SetSequenceID(int s){this.sequenceID = s;}
+	public void SetName(String n){name = n;}
+	public void SetLatitude(String l){latitude = l;}
+	public void SetLongitude(String l){longitude = l;}
 
 	public CheckPoint(int s, String n, String la, String lo){
 		sequenceID = s;

@@ -1,4 +1,4 @@
-public interface IWeatherRadar {
+public interface ILandingLight {
     String version();
 
     boolean on();

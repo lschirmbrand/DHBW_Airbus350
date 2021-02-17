@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class RouteManagement{
     // static instance
-    private static RouteManagementinstance = new WeatherRadar();
+    private static RouteManagement instance = new RouteManagement();
     // port
     public Port port;
     private String manufacturer = "<student name 01> / <student name 02>";
@@ -40,14 +42,14 @@ public class RouteManagement{
 	return checkPointList.size();
     }
 
-    public int innerRemove(CheckPoint checkPoint){
-	int i = checkPointList.indexOf(checkPoint);
-	checkPointList.remove(i);
+    public int innerRemove(int checkPoint){
+	checkPointList.remove(checkPoint);
+	return checkPointList.size();
     }
 
     public void innerPrintCheckPoints(){
 	for(CheckPoint cp : checkPointList)
-		System.out.println("CheckPoint: "+cp.getName() + "| ID: " + cp.getSequenceID() + "|Position: " + latitude + " " + longitude + "//");
+		System.out.println("CheckPoint: "+cp.GetName() + "| ID: " + cp.GetSequenceID() + "|Position: " + cp.GetLatitude() + " " + cp.GetLongitude() + "//");
     }
 
     public double innerSetCostIndex(int value){
@@ -73,15 +75,15 @@ public class RouteManagement{
 	    return innerAdd(checkPoint);
         }
 
-	public int remove(CheckPoint checkPoint){
-	    return innerRemove(checkPoint)
+	    public int remove(int checkPoint){
+	    return innerRemove(checkPoint);
 	}
 
-	public void printCheckPoints(){
-	    return innerPrintCheckPoints();
-	}
+	    public void printCheckPoints(){
+	     innerPrintCheckPoints();
+	    }
 
-	public double setCostIndex(int value){
+	    public double setCostIndex(int value){
 	    return innerSetCostIndex(value);
 	}
     }

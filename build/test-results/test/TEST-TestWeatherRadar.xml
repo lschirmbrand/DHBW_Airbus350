@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestWeatherRadar" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-12-27T18:24:37" hostname="DRMUELLER" time="3.347">
+<testsuite name="TestWeatherRadar" tests="15" skipped="0" failures="0" errors="0" timestamp="2021-02-17T16:20:28" hostname="LAPTOP-IO150GC0" time="2.658">
   <properties/>
-  <testcase name="factory()" classname="TestWeatherRadar" time="0.507"/>
-  <testcase name="methods()" classname="TestWeatherRadar" time="0.211"/>
-  <testcase name="on()" classname="TestWeatherRadar" time="0.235"/>
-  <testcase name="scanCloud()" classname="TestWeatherRadar" time="0.202"/>
-  <testcase name="scanBird()" classname="TestWeatherRadar" time="0.176"/>
-  <testcase name="off()" classname="TestWeatherRadar" time="0.219"/>
-  <testcase name="startup()" classname="TestWeatherRadar" time="0.196"/>
-  <testcase name="taxi()" classname="TestWeatherRadar" time="0.194"/>
-  <testcase name="takeoff()" classname="TestWeatherRadar" time="0.201"/>
-  <testcase name="climbing()" classname="TestWeatherRadar" time="0.181"/>
-  <testcase name="rightTurn()" classname="TestWeatherRadar" time="0.211"/>
-  <testcase name="leftTurn()" classname="TestWeatherRadar" time="0.196"/>
-  <testcase name="descent()" classname="TestWeatherRadar" time="0.193"/>
-  <testcase name="landing()" classname="TestWeatherRadar" time="0.193"/>
-  <testcase name="shutdown()" classname="TestWeatherRadar" time="0.19"/>
+  <testcase name="factory()" classname="TestWeatherRadar" time="0.153"/>
+  <testcase name="methods()" classname="TestWeatherRadar" time="0.194"/>
+  <testcase name="on()" classname="TestWeatherRadar" time="0.175"/>
+  <testcase name="scanCloud()" classname="TestWeatherRadar" time="0.169"/>
+  <testcase name="scanBird()" classname="TestWeatherRadar" time="0.194"/>
+  <testcase name="off()" classname="TestWeatherRadar" time="0.18"/>
+  <testcase name="startup()" classname="TestWeatherRadar" time="0.181"/>
+  <testcase name="taxi()" classname="TestWeatherRadar" time="0.193"/>
+  <testcase name="takeoff()" classname="TestWeatherRadar" time="0.164"/>
+  <testcase name="climbing()" classname="TestWeatherRadar" time="0.214"/>
+  <testcase name="rightTurn()" classname="TestWeatherRadar" time="0.173"/>
+  <testcase name="leftTurn()" classname="TestWeatherRadar" time="0.163"/>
+  <testcase name="descent()" classname="TestWeatherRadar" time="0.159"/>
+  <testcase name="landing()" classname="TestWeatherRadar" time="0.167"/>
+  <testcase name="shutdown()" classname="TestWeatherRadar" time="0.161"/>
   <system-out><![CDATA[
 
 
@@ -32,35 +32,35 @@
 
 
 ]]></system-out>
-  <system-err><![CDATA[Dez. 27, 2020 7:24:38 PM org.hsqldb.persist.Logger logInfoEvent
+  <system-err><![CDATA[Feb. 17, 2021 5:20:28 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:38 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:28 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:38 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:28 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:38 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:28 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:38 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:29 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:39 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:29 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:39 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:29 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:39 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:29 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:39 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:29 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:39 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:30 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:40 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:30 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:40 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:30 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:40 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:30 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:40 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:30 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
-Dez. 27, 2020 7:24:40 PM org.hsqldb.persist.Logger logInfoEvent
+Feb. 17, 2021 5:20:30 PM org.hsqldb.persist.Logger logInfoEvent
 INFO: Database closed
 ]]></system-err>
 </testsuite>

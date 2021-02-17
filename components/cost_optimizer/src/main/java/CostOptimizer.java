@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class CostOptimizer{
     // static instance
-    private static WeatherRadar instance = new WeatherRadar();
+    private static CostOptimizer instance = new CostOptimizer();
     // port
     public Port port;
     private String manufacturer = "<student name 01> / <student name 02>";
@@ -8,12 +10,13 @@ public class CostOptimizer{
     private String id = "<student id 01> / <student id 02>";
     private boolean isOn = false;
 
-    ArrayList<CheckPoint> checkPointList = new ArrayList<CheckPoint>();
+    ArrayList<CheckPoint> checkPointList;
     int costIndex = 0;
 
     // private constructor
     private CostOptimizer() {
         port = new Port();
+        checkPointList = new ArrayList<CheckPoint>();
     }
 
     // static method getInstance
@@ -36,9 +39,9 @@ public class CostOptimizer{
         return isOn;
     }
 
-    public int innerAdd(CheckPoint checkPoint) {
-        checkPointList.add(checkPoint);
-	return checkPointList.size();
+    public int innerAdd(CheckPoint cp) {
+        checkPointList.add(cp);
+	    return checkPointList.size();
     }
 
     public int innerRemove(int checkPoint){
@@ -53,7 +56,7 @@ public class CostOptimizer{
 
     public boolean innerValidate(int costIndex)
     {
-	return this.costIndex == costIndex;
+	    return this.costIndex == costIndex;
     }
 
     // inner class port
@@ -74,15 +77,15 @@ public class CostOptimizer{
 	    return innerAdd(checkPoint);
 	}
 
-	public int remove(int checkPoint){
+	    public int remove(int checkPoint){
 	    return innerRemove(checkPoint);
 	}
 
-	public int optimize(ArrayList<CheckPoint> checkPointList){
+	    public int optimize(ArrayList<CheckPoint> checkPointList){
 	    return innerOptimize(checkPointList);
 	}
 
-	public boolean validate(int costIndex){
+	    public boolean validate(int costIndex){
 	    return innerValidate(costIndex);
 	}
     }

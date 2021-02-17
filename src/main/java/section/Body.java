@@ -248,7 +248,7 @@ public class Body extends Subscriber {
 
         try{
             for(int i = 0; i < Configuration.instance.numberOfCostOptimizer; i++){
-                Method addMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("add", CheckPoint.class);
+                Method addMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("add");//, CheckPoint.class);
                 LogEngine.instance.write("addMethod = " + addMethod);
 
                 int numberOfCheckPoints = (int) addMethod.invoke(costOptimizerPortList.get(i));
@@ -501,10 +501,10 @@ public class Body extends Subscriber {
 
         try{
             for(int i = 0; i < Configuration.instance.numberOfRouteManagement; i++){
-                Method addMethod = routeManagementPortList.get(i).getClass().getDeclaredMethod("add", CheckPoint.class);
+                Method addMethod = routeManagementPortList.get(i).getClass().getDeclaredMethod("add");//, CheckPoint.class);
                 LogEngine.instance.write("addMethod = " + addMethod);
 
-                int numberOfCheckPoints = addMethod.invoke(routeManagementPortList.get(i), new CheckPoint(PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement, "London", "51° 31′ N", "0° 7′ W"));
+                int numberOfCheckPoints = (int) addMethod.invoke(routeManagementPortList.get(i));//, new CheckPoint(PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement, "London", "51° 31′ N", "0° 7′ W"));
                 FlightRecorder.instance.insert("Body", "RouteManagement (addMethod): " + addMethod);
 
                 PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement = numberOfCheckPoints;

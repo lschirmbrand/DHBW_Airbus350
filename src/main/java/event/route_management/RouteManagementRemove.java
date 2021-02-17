@@ -1,20 +1,20 @@
 package event.route_management;
 
 public class RouteManagementRemove {
-    CheckPoint checkPoint;
+    //CheckPoint checkPoint;
 
-    public void setCheckPoint(CheckPoint checkPoint) {
+    /*public void setCheckPoint(CheckPoint checkPoint) {
         this.checkPoint = checkPoint;
-    }
+    }*/
 
-    public CheckPoint getCheckPoint() {
+    /*public CheckPoint getCheckPoint() {
         return checkPoint;
-    }
+    }*/
 
-    public RouteManagementRemove(CheckPoint checkPoint)
+    /*public RouteManagementRemove(CheckPoint checkPoint)
     {
         this.checkPoint = checkPoint;
-    }
+    }*/
 
     public String toString() {
         return "Event: RouteManagement - Remove";

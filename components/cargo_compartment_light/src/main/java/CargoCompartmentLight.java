@@ -56,7 +56,7 @@ public class CargoCompartmentLight{
         }
 
         public void dim() {
-            return dim();
+            innerDim();
         }
     }
 }

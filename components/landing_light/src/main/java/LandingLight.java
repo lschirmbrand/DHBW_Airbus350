@@ -1,6 +1,6 @@
 public class LandingLight{
     // static instance
-    private static LandingLightinstance = new LandingLight();
+    private static LandingLight instance = new LandingLight();
     // port
     public Port port;
     private String manufacturer = "<student name 01> / <student name 02>";
@@ -14,7 +14,7 @@ public class LandingLight{
     }
 
     // static method getInstance
-    public static WeatherRadar getInstance() {
+    public static LandingLight getInstance() {
         return instance;
     }
 

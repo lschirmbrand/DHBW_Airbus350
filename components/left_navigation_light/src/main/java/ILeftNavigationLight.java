@@ -1,4 +1,4 @@
-public interface IWeatherRadar {
+public interface ILeftNavigationLight {
     String version();
 
     boolean on();
@@ -7,5 +7,5 @@ public interface IWeatherRadar {
 
     LightType setLightType(String type);
 
-    Position setPosition(String posistion);
+    Position setPosition(String position);
 }

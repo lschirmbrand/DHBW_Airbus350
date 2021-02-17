@@ -1,6 +1,6 @@
 public class LeftNavigationLight{
     // static instance
-    private static LeftNavigationLightinstance = new LeftNavigationLight();
+    private static LeftNavigationLight instance = new LeftNavigationLight();
     // port
     public Port port;
     private String manufacturer = "<student name 01> / <student name 02>";
@@ -14,7 +14,7 @@ public class LeftNavigationLight{
     }
 
     // static method getInstance
-    public static LeftNavigationLightgetInstance() {
+    public static LeftNavigationLight getInstance() {
         return instance;
     }
 
@@ -58,10 +58,10 @@ public class LeftNavigationLight{
         }
 
         public LightType setLightType(String type) {
-	    return innerSetLightType(type);
+	    return innerSetType(type);
 	}
 
-	public Position setPosistion(String position) {
+	    public Position setPosition(String position) {
 	    return innerSetPosition(position);
 	}
     }

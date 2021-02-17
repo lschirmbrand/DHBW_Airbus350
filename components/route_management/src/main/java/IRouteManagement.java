@@ -1,4 +1,4 @@
-public interface IWeatherRadar {
+public interface IRouteManagement {
     String version();
 
     boolean on();

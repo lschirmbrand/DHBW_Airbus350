@@ -14,7 +14,7 @@ public class LogoLight{
     }
 
     // static method getInstance
-    public static LogoLightgetInstance() {
+    public static LogoLight getInstance() {
         return instance;
     }
 

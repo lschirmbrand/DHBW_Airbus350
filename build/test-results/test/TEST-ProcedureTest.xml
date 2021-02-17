@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ProcedureTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-02-17T16:20:26" hostname="LAPTOP-IO150GC0" time="2.176">
+  <properties/>
+  <testcase name="startUpTest()" classname="ProcedureTest" time="0.935"/>
+  <testcase name="taxiTest()" classname="ProcedureTest" time="0.28"/>
+  <testcase name="takeOffTest()" classname="ProcedureTest" time="0.209"/>
+  <testcase name="climbingTest()" classname="ProcedureTest" time="0.156"/>
+  <testcase name="rightTurnTest()" classname="ProcedureTest" time="0.132"/>
+  <testcase name="leftTurnTest()" classname="ProcedureTest" time="0.09"/>
+  <testcase name="descentTest()" classname="ProcedureTest" time="0.116"/>
+  <testcase name="landingTest()" classname="ProcedureTest" time="0.1"/>
+  <testcase name="shutdownTest()" classname="ProcedureTest" time="0.142"/>
+  <system-out><![CDATA[
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- startup
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- taxi
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- takeoff
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- climbing
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- rightTurn
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- leftTurn
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- descent
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- landing
+
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+data exception: string data, right truncation;  table: DATA column: CLASSNAME
+--- shutdown
+]]></system-out>
+  <system-err><![CDATA[Feb. 17, 2021 5:20:26 PM org.hsqldb.persist.Logger logInfoEvent
+INFO: checkpointClose start
+Feb. 17, 2021 5:20:26 PM org.hsqldb.persist.Logger logInfoEvent
+INFO: checkpointClose synched
+Feb. 17, 2021 5:20:26 PM org.hsqldb.persist.Logger logInfoEvent
+INFO: checkpointClose script done
+Feb. 17, 2021 5:20:26 PM org.hsqldb.persist.Logger logInfoEvent
+INFO: checkpointClose end
+]]></system-err>
+</testsuite>
