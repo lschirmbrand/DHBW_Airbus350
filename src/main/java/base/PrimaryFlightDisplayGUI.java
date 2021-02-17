@@ -211,35 +211,117 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         // weather_radar
         Label weatherRadarLabel = new Label("WeatherRadar : ");
-        gridPane.add(weatherRadarLabel, 6, 0);
+        gridPane.add(weatherRadarLabel, 0, 3);
 
         ToggleGroup weatherRadarToggleGroup = new ToggleGroup();
 
         weatherRadarOffButton = new RadioButton("Off");
         weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
         weatherRadarOffButton.setSelected(true);
-        gridPane.add(weatherRadarOffButton, 7, 0);
+        gridPane.add(weatherRadarOffButton, 2, 3);
 
         weatherRadarOnButton = new RadioButton("On");
         weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
         weatherRadarOnButton.setSelected(false);
-        gridPane.add(weatherRadarOnButton, 8, 0);
+        gridPane.add(weatherRadarOnButton, 1, 3);
 
         // droop_nose
- /*       Label droopNoselabel = new Label("DroopNose : ");
-        gridPane.add(droopNoselabel, 6, 0);
+        Label droopNoseLabel = new Label("DroopNose : ");
+        gridPane.add(droopNoseLabel, 0, 4);
 
-        ToggleGroup droopNoseToggleGroup = new ToggleGroup();
+        Button droopNoseDown = new Button("Down");
+        Button droopNoseFullDown = new Button("FullDown");
+        Button droopNoseUp = new Button("Up");
+        Button droopNoseNeutral = new Button("Neutral");
+        gridPane.add(droopNoseDown, 1, 4);
+        gridPane.add(droopNoseFullDown, 2, 4);
+        gridPane.add(droopNoseUp, 3, 4);
+        gridPane.add(droopNoseNeutral, 4, 4);
 
-        droopNoseFullDownButton = new Button("FullDown");
-        weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
-        weatherRadarOffButton.setSelected(true);
-        gridPane.add(weatherRadarOffButton, 7, 0);
+        //Camera
+        gridPane.add(new Label("Camera: "), 0, 5);
 
-        weatherRadarOnButton = new RadioButton("On");
-        weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
-        weatherRadarOnButton.setSelected(false);
-        gridPane.add(weatherRadarOnButton, 8, 0);*/
+        ToggleGroup cameraBodyToggleGroup = new ToggleGroup();
+
+        gridPane.add(new Label("Body: "), 1, 5);
+        RadioButton cameraOn = new RadioButton("On");
+        cameraOn.setToggleGroup(cameraBodyToggleGroup);
+        gridPane.add(cameraOn, 2, 5);
+
+        RadioButton cameraOff = new RadioButton("Off");
+        cameraOff.setToggleGroup(cameraBodyToggleGroup);
+        cameraOff.setSelected(true);
+        gridPane.add(cameraOff, 3, 5);
+
+        ToggleGroup cameraWingToggleGroup = new ToggleGroup();
+
+        gridPane.add(new Label("Wing: "), 4, 5);
+        RadioButton cameraWingOn = new RadioButton("On");
+        cameraWingOn.setToggleGroup(cameraWingToggleGroup);
+        gridPane.add(cameraWingOn, 5, 5);
+
+        RadioButton cameraWingOff = new RadioButton("Off");
+        cameraWingOff.setToggleGroup(cameraWingToggleGroup);
+        cameraWingOff.setSelected(true);
+        gridPane.add(cameraWingOff, 6, 5);
+
+        //GPS
+        gridPane.add(new Label("GPS: "), 0, 6);
+
+        ToggleGroup gpsToggleGroup = new ToggleGroup();
+
+        RadioButton gpsOn = new RadioButton("On");
+        gpsOn.setToggleGroup(gpsToggleGroup);
+        gridPane.add(gpsOn, 1, 6);
+
+        RadioButton gpsOff = new RadioButton("Off");
+        gpsOff.setToggleGroup(gpsToggleGroup);
+        gpsOff.setSelected(true);
+        gridPane.add(gpsOff, 2, 6);
+
+        gridPane.add(new Button("Send"), 3, 6);
+        gridPane.add(new Button("Receive"), 4, 6);
+        gridPane.add(new Button("Connect"), 5, 6);
+
+        //Radar
+        gridPane.add(new Label("Radar: "), 0, 7);
+
+        ToggleGroup radarToggleGroup = new ToggleGroup();
+
+        RadioButton radarOn = new RadioButton("On");
+        radarOn.setToggleGroup(radarToggleGroup);
+        gridPane.add(radarOn, 1, 7);
+
+        RadioButton radarOff = new RadioButton("Off");
+        radarOff.setToggleGroup(radarToggleGroup);
+        radarOff.setSelected(true);
+        gridPane.add(radarOff, 2, 7);
+
+        gridPane.add(new Button("Scan"), 3, 7);
+
+        //TCAS
+        gridPane.add(new Label("TCAS: "), 0, 8);
+
+        ToggleGroup tcasToggleGroup = new ToggleGroup();
+
+        RadioButton tcasOn = new RadioButton("On");
+        tcasOn.setToggleGroup(tcasToggleGroup);
+        gridPane.add(tcasOn, 1, 8);
+
+        RadioButton tcasOff = new RadioButton("Off");
+        tcasOff.setToggleGroup(tcasToggleGroup);
+        tcasOff.setSelected(true);
+        gridPane.add(tcasOff, 2, 8);
+
+        gridPane.add(new Button("Connect"), 3, 8);
+        gridPane.add(new Button("Determine Altitude"), 4, 8);
+        gridPane.add(new Button("Scan"), 5, 8);
+
+        //Turbulent Airflow Sensor
+        gridPane.add(new Label("Turbulent Airflow Sensor: "), 0, 9);
+        gridPane.add(new Button("Measure Body"), 1, 9);
+        gridPane.add(new Button("Measure Wing"), 2, 9);
+
         // --- insert section: end
 
         Label frequencyLabel = new Label("Frequency : ");
@@ -285,9 +367,18 @@ public class PrimaryFlightDisplayGUI extends Application {
     private void initData() {
         dataList = new ArrayList<>();
 
-        // weather_radar
         weatherRadarIsOnEntry = new PrimaryFlightDisplayEntry("WeatherRadar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
         dataList.add(weatherRadarIsOnEntry);
+        dataList.add(new PrimaryFlightDisplayEntry("DroopNose (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeDroopNose)));
+        dataList.add(new PrimaryFlightDisplayEntry("TCAS (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASOn)));
+        dataList.add(new PrimaryFlightDisplayEntry("TCAS (isConnected)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASConnected)));
+        dataList.add(new PrimaryFlightDisplayEntry("TCAS (isAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASAlarm)));
+        dataList.add(new PrimaryFlightDisplayEntry("TCAS (Altitude)", Integer.toString(PrimaryFlightDisplay.instance.altitudeTCAS)));
+        dataList.add(new PrimaryFlightDisplayEntry("TurbulentAirFlowSensor (isAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTurbulentAirFlowAlarm)));
+        dataList.add(new PrimaryFlightDisplayEntry("Camera (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isCameraOn)));
+        dataList.add(new PrimaryFlightDisplayEntry("GPS (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isGPSOn)));
+        dataList.add(new PrimaryFlightDisplayEntry("GPS (isConnected)", Boolean.toString(PrimaryFlightDisplay.instance.isGPSConnected)));
+        dataList.add(new PrimaryFlightDisplayEntry("Radar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isRadarOn)));
     }
 
     private ObservableList getInitialTableData() {
