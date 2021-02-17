@@ -5,7 +5,7 @@ public class EngineDecreaseRPM {
     int value;
 
     public EngineDecreaseRPM(int value){
-        this.value += value;
+        this.value -= value;
     }
 
     public int getValue() {
@@ -13,7 +13,7 @@ public class EngineDecreaseRPM {
     }
 
     public String toString() {
-        return "Event: EngineRPM - Decreased";
+        return "Event: EngineRPM - Decreased(to "+this.value+")";
     }
 }
 

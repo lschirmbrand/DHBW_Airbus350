@@ -4,8 +4,10 @@ import event.Subscriber;
 import base.PrimaryFlightDisplay;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
+import event.elevator.*;
 import event.engine.*;
 import event.hydraulicPump.*;
+import factory.ElevatorFactory;
 import factory.EngineFactory;
 import factory.HydraulicPumpFactory;
 import logging.LogEngine;
@@ -18,10 +20,12 @@ public class Wing extends Subscriber {
 
     private ArrayList<Object> enginePortList;
     private ArrayList<Object> hydraulicPumpPortList;
+    private ArrayList<Object> elevatorPortList;
 
     public Wing() {
         enginePortList = new ArrayList<>();
         hydraulicPumpPortList = new ArrayList<>();
+        elevatorPortList = new ArrayList<>();
         build();
     }
 
@@ -31,6 +35,9 @@ public class Wing extends Subscriber {
         }
         for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpWing; i++) {
             hydraulicPumpPortList.add(HydraulicPumpFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
+            elevatorPortList.add(ElevatorFactory.build());
         }
     }
 
@@ -98,12 +105,13 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfEngine; i++) {
-                Method increaseRpmMethod = enginePortList.get(i).getClass().getDeclaredMethod("innerIncreaseRPM", int.class);
+                Method increaseRpmMethod = enginePortList.get(i).getClass().getDeclaredMethod("increaseRPM", int.class);
                 LogEngine.instance.write("rpmMethod = " + increaseRpmMethod);
 
                 int currentRPMs = (int) increaseRpmMethod.invoke(enginePortList.get(i), engineIncreaseRPM.getValue());
 
                 LogEngine.instance.write("currentRPMs = " + currentRPMs);
+
                 PrimaryFlightDisplay.instance.rpmEngine = (currentRPMs);
                 FlightRecorder.instance.insert("Wing", "Engine (currentRPMs): " + currentRPMs);
 
@@ -124,10 +132,11 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfEngine; i++) {
-                Method decreaseRPMMethod = enginePortList.get(i).getClass().getDeclaredMethod("innerDecreaseRPM", int.class);
+                Method decreaseRPMMethod = enginePortList.get(i).getClass().getDeclaredMethod("decreaseRPM", int.class);
                 LogEngine.instance.write("decreaseRPMMethod = " + decreaseRPMMethod);
 
                 int currentRPMs = (int) decreaseRPMMethod.invoke(enginePortList.get(i), engineDecreaseRPM.getValue());
+                System.out.println(currentRPMs);
                 LogEngine.instance.write("currentRPMs = " + currentRPMs);
 
                 PrimaryFlightDisplay.instance.rpmEngine = (currentRPMs);
@@ -152,7 +161,7 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpWing; i++) {
-                Method hydraulicPumpWingCompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("innerCompress", int.class);
+                Method hydraulicPumpWingCompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("compress", int.class);
                 LogEngine.instance.write("hydraulicPumpBodyCompressMethod = " + hydraulicPumpWingCompressMethod);
 
                 int compressionAmount = (int) hydraulicPumpWingCompressMethod.invoke(hydraulicPumpPortList.get(i), hydraulicPumpWingCompress.getValue());
@@ -175,10 +184,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpWing; i++) {
-                Method hydraulicPumpWingDecompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("innerDecompress", int.class);
+                Method hydraulicPumpWingDecompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("decompress");
                 LogEngine.instance.write("hydraulicPumpWingDecompressMethod = " + hydraulicPumpWingDecompressMethod);
 
-                int compressionAmount = (int) hydraulicPumpWingDecompressMethod.invoke(hydraulicPumpPortList.get(i), hydraulicPumpWingDecompress.getValue());
+                int compressionAmount = (int) hydraulicPumpWingDecompressMethod.invoke(hydraulicPumpPortList.get(i));
                 LogEngine.instance.write("hydraulicPumpWingDecompressMethod = " + compressionAmount);
 
                 FlightRecorder.instance.insert("Wing", "hydraulicPumpWingDecompressMethod (compressionAmount): " + compressionAmount);
@@ -198,7 +207,7 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpWing; i++) {
-                Method hydraulicPumpWingRefillOilMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("innerRefillOil", int.class);
+                Method hydraulicPumpWingRefillOilMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("refillOil", int.class);
                 LogEngine.instance.write("hydraulicPumpWingRefillOilMethod = " + hydraulicPumpWingRefillOilMethod);
 
                 int oilAmount = (int) hydraulicPumpWingRefillOilMethod.invoke(hydraulicPumpPortList.get(i), hydraulicPumpWingRefillOil.getValue());
@@ -215,5 +224,135 @@ public class Wing extends Subscriber {
 
         LogEngine.instance.write("PrimaryFlightDisplay (hydraulicPumpBodyOilAmount): " + PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount);
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "hydraulicPumpBodyOilAmount: " + PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount);
+    }
+
+    @Subscribe
+    public void receive(ElevatorDown elevatorDown) {
+        LogEngine.instance.write("+ Wing.receive(" + elevatorDown.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + elevatorDown.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
+                Method elevatorDownMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("down", int.class);
+                LogEngine.instance.write("elevatorDownMethod = " + elevatorDownMethod);
+
+                int degrees = (int) elevatorDownMethod.invoke(elevatorPortList.get(i), elevatorDown.getValue());
+                LogEngine.instance.write("elevatorDownMethod = " + degrees);
+
+                PrimaryFlightDisplay.instance.degreeElevator = degrees;
+                FlightRecorder.instance.insert("Wing", "elevatorDown (degrees): " + degrees);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (degrees): " + PrimaryFlightDisplay.instance.degreeElevator);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degrees: " + PrimaryFlightDisplay.instance.degreeElevator);
+    }
+
+    @Subscribe
+    public void receive(ElevatorUp elevatorUp) {
+        LogEngine.instance.write("+ Wing.receive(" + elevatorUp.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + elevatorUp.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
+                Method elevatorUpMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("up", int.class);
+                LogEngine.instance.write("elevatorUpMethod = " + elevatorUpMethod);
+
+                int degrees = (int) elevatorUpMethod.invoke(elevatorPortList.get(i), elevatorUp.getValue());
+                LogEngine.instance.write("elevatorUpMethod = " + degrees);
+
+                PrimaryFlightDisplay.instance.degreeElevator = degrees;
+                FlightRecorder.instance.insert("Wing", "elevatorUp (degrees): " + degrees);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (degrees): " + PrimaryFlightDisplay.instance.degreeElevator);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degrees: " + PrimaryFlightDisplay.instance.degreeElevator);
+    }
+
+    @Subscribe
+    public void receive(ElevatorFullUp elevatorFullUp) {
+        LogEngine.instance.write("+ Wing.receive(" + elevatorFullUp.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + elevatorFullUp.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
+                Method elevatorFullUpMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("fullUp");
+                LogEngine.instance.write("elevatorFullUpMethod = " + elevatorFullUpMethod);
+
+                int degrees = (int) elevatorFullUpMethod.invoke(elevatorPortList.get(i));
+                LogEngine.instance.write("elevatorFullUpMethod = " + degrees);
+
+                PrimaryFlightDisplay.instance.degreeElevator = degrees;
+                FlightRecorder.instance.insert("Wing", "elevatorFullUp (degrees): " + degrees);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (degrees): " + PrimaryFlightDisplay.instance.degreeElevator);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degrees: " + PrimaryFlightDisplay.instance.degreeElevator);
+    }
+
+    @Subscribe
+    public void receive(ElevatorFullDown elevatorFullDown) {
+        LogEngine.instance.write("+ Wing.receive(" + elevatorFullDown.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + elevatorFullDown.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
+                Method elevatorFullDownMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("fullDown");
+                LogEngine.instance.write("elevatorFullDownMethod = " + elevatorFullDownMethod);
+
+                int degrees = (int) elevatorFullDownMethod.invoke(elevatorPortList.get(i));
+                LogEngine.instance.write("elevatorFullDownMethod = " + degrees);
+
+                PrimaryFlightDisplay.instance.degreeElevator = degrees;
+                FlightRecorder.instance.insert("Wing", "elevatorFullDownMethod (degrees): " + degrees);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (degrees): " + PrimaryFlightDisplay.instance.degreeElevator);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degrees: " + PrimaryFlightDisplay.instance.degreeElevator);
+    }
+
+    @Subscribe
+    public void receive(ElevatorNeutral elevatorNeutral) {
+        LogEngine.instance.write("+ Wing.receive(" + elevatorNeutral.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + elevatorNeutral.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
+                Method elevatorNeutralMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("neutral");
+                LogEngine.instance.write("elevatorNeutralMethod = " + elevatorNeutralMethod);
+
+                int degrees = (int) elevatorNeutralMethod.invoke(elevatorPortList.get(i));
+                LogEngine.instance.write("elevatorNeutralMethod = " + degrees);
+
+                PrimaryFlightDisplay.instance.degreeElevator = degrees;
+                FlightRecorder.instance.insert("Wing", "elevatorNeutralMethod (degrees): " + degrees);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (degrees): " + PrimaryFlightDisplay.instance.degreeElevator);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degrees: " + PrimaryFlightDisplay.instance.degreeElevator);
     }
 }

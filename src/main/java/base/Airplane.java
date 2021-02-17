@@ -2,9 +2,10 @@ package base;
 
 import com.google.common.eventbus.EventBus;
 import event.Subscriber;
+import event.elevator.*;
 import event.engine.*;
-import event.weather_radar.WeatherRadarOff;
-import event.weather_radar.WeatherRadarOn;
+import event.hydraulicPump.*;
+import event.weather_radar.*;
 import section.Body;
 import section.Wing;
 
@@ -39,6 +40,14 @@ public class Airplane implements IAirplane {
 
         //Engine
         eventBus.post(new EngineStart());
+
+        // hydraulic pumps
+        eventBus.post(new HydraulicPumpBodyRefillOil());
+        eventBus.post(new HydraulicPumpWingRefillOil());
+
+
+        // Elevator
+        eventBus.post(new ElevatorNeutral());
     }
 
     public void taxi() {
@@ -52,11 +61,22 @@ public class Airplane implements IAirplane {
 
         // engine
         eventBus.post(new EngineIncreaseRPM(5000));
+
+        // hydraulic pump
+        eventBus.post(new HydraulicPumpBodyDecompress());
+        eventBus.post(new HydraulicPumpWingDecompress());
+
+        // Elevator
+        eventBus.post(new ElevatorFullUp());
+
     }
 
     public void climbing() {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // elevator
+        eventBus.post(new ElevatorUp(20));
     }
 
     public void rightTurn() {
@@ -72,6 +92,9 @@ public class Airplane implements IAirplane {
     public void descent() {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // elevator
+        eventBus.post(new ElevatorDown(-20));
     }
 
     public void landing() {
@@ -80,6 +103,13 @@ public class Airplane implements IAirplane {
 
         // engine
         eventBus.post(new EngineDecreaseRPM(5000));
+
+        // hydraulic pumps
+        eventBus.post(new HydraulicPumpBodyCompress());
+        eventBus.post(new HydraulicPumpWingCompress());
+
+        // Elevator
+        eventBus.post(new ElevatorFullDown());
     }
 
     public void shutdown() {
@@ -88,6 +118,14 @@ public class Airplane implements IAirplane {
 
         //Engine
         eventBus.post(new EngineShutdown());
+
+        // hydraulic pumps
+        eventBus.post(new HydraulicPumpBodyRefillOil());
+        eventBus.post(new HydraulicPumpWingRefillOil());
+
+        //Elevator
+
+        eventBus.post(new ElevatorNeutral());
 
     }
 }

@@ -43,6 +43,15 @@ public class PrimaryFlightDisplayGUI extends Application {
 
 
     // HydraulicPump
+    private PrimaryFlightDisplayEntry hydraulicPumpBodyOilAmountEntry;
+    private PrimaryFlightDisplayEntry hydraulicPumpWingOilAmountEntry;
+    private Label hydraulicPumpBodyOilAmountLabel;
+    private Label hydraulicPumpWingOilAmountLabel;
+
+
+    // Elevator
+    private PrimaryFlightDisplayEntry degreeElevatorEntry;
+    private Label degreeElevator;
 
     //private PrimaryFlightDisplayEntry
 
@@ -251,8 +260,6 @@ public class PrimaryFlightDisplayGUI extends Application {
 
 
 
-
-
         // engine
         Label engineLabel = new Label("Engine : ");
         gridPane.add(engineLabel, 0,1);
@@ -262,16 +269,29 @@ public class PrimaryFlightDisplayGUI extends Application {
         engineOffButton = new RadioButton("Off");
         engineOffButton.setToggleGroup(engineToggleGroup);
         engineOffButton.setSelected(true);
-        gridPane.add(engineOffButton, 1, 1);
+        gridPane.add(engineOffButton, 4, 1);
 
         engineOnButton = new RadioButton("On");
         engineOnButton.setToggleGroup(engineToggleGroup);
         engineOffButton.setSelected(false);
-        gridPane.add(engineOnButton, 2, 1);
+        gridPane.add(engineOnButton, 5, 1);
 
         engineRPMLabel = new Label("0 rpm");
-        gridPane.add(engineRPMLabel, 3,1);
+        gridPane.add(engineRPMLabel, 6,1);
 
+
+
+        // Hydraulic Pump
+
+        hydraulicPumpBodyOilAmountLabel = new Label("0 psi");
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 10,1);
+        hydraulicPumpWingOilAmountLabel = new Label("0 psi");
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 11,1);
+
+        // Elevator
+
+        degreeElevator = new Label("Elevator: 90 degree");
+        gridPane.add(degreeElevator, 2,2);
 
 
 
@@ -331,6 +351,15 @@ public class PrimaryFlightDisplayGUI extends Application {
         engineRPMLabel.setText(rpm + " rpm");
     }
 
+    public void setOilAmount(int amountB, int amountW){
+        hydraulicPumpBodyOilAmountLabel.setText(amountB + " psi at Body");
+        hydraulicPumpWingOilAmountLabel.setText(amountW + " psi at Wing");
+    }
+
+    public void setDegreeElevator(int degree){
+        degreeElevator.setText("Elevator "+degree+" degree");
+    }
+
     private void initData() {
         dataList = new ArrayList<>();
 
@@ -344,6 +373,14 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         engineRPMEntry = new PrimaryFlightDisplayEntry("Engine (RPM)", Integer.toString(PrimaryFlightDisplay.instance.rpmEngine));
         dataList.add(engineRPMEntry);
+
+        // Hydraulic Pump
+        hydraulicPumpBodyOilAmountEntry = new PrimaryFlightDisplayEntry("HydraulicPump  (Hydraulic Pump Pressure Body)", Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount));
+        hydraulicPumpWingOilAmountEntry = new PrimaryFlightDisplayEntry("HydraulicPump (Hydraulic Pump Pressure Wing)", Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount));
+
+        // Elevator
+        degreeElevatorEntry = new PrimaryFlightDisplayEntry("Elevator (Elevator degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeElevator));
+
 
     }
 
@@ -373,6 +410,15 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         engineRPMEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.rpmEngine));
         setEngineRPMLabel(PrimaryFlightDisplay.instance.rpmEngine);
+
+        // hydraulic pump
+        hydraulicPumpBodyOilAmountEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount));
+        hydraulicPumpWingOilAmountEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount));
+        setOilAmount(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount, PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount);
+
+        // Elevator
+        degreeElevatorEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeElevator));
+        setDegreeElevator(PrimaryFlightDisplay.instance.degreeElevator);
 
         tableView.refresh();
     }

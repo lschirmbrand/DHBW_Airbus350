@@ -113,7 +113,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpBody; i++) {
-                Method hydraulicPumpBodyCompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("innerCompress", int.class);
+                Method hydraulicPumpBodyCompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("compress", int.class);
                 LogEngine.instance.write("hydraulicPumpBodyCompressMethod = " + hydraulicPumpBodyCompressMethod);
 
                 int compressionAmount = (int) hydraulicPumpBodyCompressMethod.invoke(hydraulicPumpPortList.get(i), hydraulicPumpBodyCompress.getValue());
@@ -136,7 +136,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpBody; i++) {
-                Method hydraulicPumpBodyDecompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("innerDecompress");
+                Method hydraulicPumpBodyDecompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("decompress");
                 LogEngine.instance.write("hydraulicPumpBodyDecompressMethod = " + hydraulicPumpBodyDecompressMethod);
 
                 int compressionAmount = (int) hydraulicPumpBodyDecompressMethod.invoke(hydraulicPumpPortList.get(i));
@@ -158,7 +158,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpBody; i++) {
-                Method hydraulicPumpBodyRefillOilMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("innerRefillOil", int.class);
+                Method hydraulicPumpBodyRefillOilMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("refillOil", int.class);
                 LogEngine.instance.write("hydraulicPumpBodyRefillOilMethod = " + hydraulicPumpBodyRefillOilMethod);
 
                 int oilAmount = (int) hydraulicPumpBodyRefillOilMethod.invoke(hydraulicPumpPortList.get(i), hydraulicPumpBodyRefillOil.getValue());
@@ -183,7 +183,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
-                Method elevatorNeutralMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("innerNeutral");
+                Method elevatorNeutralMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("neutral");
                 LogEngine.instance.write("elevatorNeutralMethod = " + elevatorNeutralMethod);
 
                 int angle = (int) elevatorNeutralMethod.invoke(elevatorPortList.get(i));
@@ -209,7 +209,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
-                Method elevatorFullUpMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("innerFullUp");
+                Method elevatorFullUpMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("fullUp");
                 LogEngine.instance.write("elevatorFullUpMethod = " + elevatorFullUpMethod);
 
                 int angle = (int) elevatorFullUpMethod.invoke(elevatorPortList.get(i));
@@ -235,7 +235,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
-                Method elevatorFullDownMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("innerFullDown");
+                Method elevatorFullDownMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("fullDown");
                 LogEngine.instance.write("elevatorFullDownMethod = " + elevatorFullDownMethod);
 
                 int angle = (int) elevatorFullDownMethod.invoke(elevatorPortList.get(i));
@@ -261,7 +261,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
-                Method elevatorUpMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("innerUp", int.class);
+                Method elevatorUpMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("up", int.class);
                 LogEngine.instance.write("elevatorUpMethod = " + elevatorUpMethod);
 
                 int angle = (int) elevatorUpMethod.invoke(elevatorPortList.get(i), elevatorUp.getValue());
@@ -287,7 +287,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
-                Method elevatorDownMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("innerDown", int.class);
+                Method elevatorDownMethod = elevatorPortList.get(i).getClass().getDeclaredMethod("down", int.class);
                 LogEngine.instance.write("elevatorDownMethod = " + elevatorDownMethod);
 
                 int angle = (int) elevatorDownMethod.invoke(elevatorPortList.get(i), elevatorDown.getValue());
