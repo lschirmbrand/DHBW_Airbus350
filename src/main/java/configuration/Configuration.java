@@ -44,4 +44,26 @@ public enum Configuration {
     //wastewater_tank
     public String pathToWasteWaterTankJavaArchive = commonPathToJavaArchive + "wastewater_tank" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "waste_water_tank.jar";
     public int numberOfWasteWaterTank = 4;
+
+    //tcas
+    public String pathToTCASJavaArchive = commonPathToJavaArchive + "tcas" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "tcas.jar";
+    public int numberOfTCAS = 2;
+
+    //turbulent_air_flow_sensor
+    public String pathToTurbulentAirFlowSensorJavaArchive = commonPathToJavaArchive + "turbulent_airflow_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "turbulent_air_flow_sensor.jar";
+    public int numberOfTurbulentAirFlowSensorBody = 2;
+    public int numberOfTurbulentAirFlowSensorWing = 4;
+
+    //Camera
+    public String pathToCameraJavaArchive = commonPathToJavaArchive + "camera" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "camera.jar";
+    public int numberOfCameraBody = 2;
+    public int numberOfCameraWing = 1;
+
+    //GPS
+    public String pathToGPSJavaArchive = commonPathToJavaArchive + "gps" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "gps.jar";
+    public int numberOfGPS = 2;
+
+    //Radar
+    public String pathToRadarJavaArchive = commonPathToJavaArchive + "radar" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "radar.jar";
+    public int numberOfRadar = 2;
 }

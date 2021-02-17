@@ -1,32 +1,24 @@
 public class DroopNose implements IDroopNose{
 
-    private String manufacturer;
-    private String type;
-    private String id;
+    private String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private String type = "Team 05";
+    private String id = "9008480 / 1253402";
     private int degree;
+
+    public DroopNose(int degree) {
+        this.degree = degree;
+    }
 
     public String getManufacturer() {
         return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public int getDegree() {

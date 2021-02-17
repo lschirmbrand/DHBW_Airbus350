@@ -11,4 +11,13 @@ public enum PrimaryFlightDisplay {
     public boolean isVHFOn;
     public boolean isSatComConnected;
     public int oxygenBottleAmount;
+    public boolean isTCASOn;
+    public boolean isTCASConnected;
+    public boolean isTCASAlarm;
+    public int altitudeTCAS;
+    public boolean isTurbulentAirFlowAlarm;
+    public boolean isCameraOn;
+    public boolean isGPSOn;
+    public boolean isGPSConnected;
+    public boolean isRadarOn;
 }

@@ -226,7 +226,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(weatherRadarOnButton, 8, 0);
 
         // droop_nose
-        Label droopNoselabel = new Label("DroopNose : ");
+ /*       Label droopNoselabel = new Label("DroopNose : ");
         gridPane.add(droopNoselabel, 6, 0);
 
         ToggleGroup droopNoseToggleGroup = new ToggleGroup();
@@ -239,7 +239,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         weatherRadarOnButton = new RadioButton("On");
         weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
         weatherRadarOnButton.setSelected(false);
-        gridPane.add(weatherRadarOnButton, 8, 0);
+        gridPane.add(weatherRadarOnButton, 8, 0);*/
         // --- insert section: end
 
         Label frequencyLabel = new Label("Frequency : ");
