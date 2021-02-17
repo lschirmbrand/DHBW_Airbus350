@@ -14,7 +14,7 @@ public enum Configuration {
     public String databaseFile = dataDirectory + "flight_recorder_a350.db";
 
     // apu
-    public String pathToApuJavaArchive = commonPathToJavaArchive + "apu" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "apu.jar";
+    public String pathToApuJavaArchive = commonPathToJavaArchive + "apu_engine_gear_pump" + fileSeparator + "apu" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "apu.jar";
     public int numberOfApu = 1;
 
     // weather_radar
