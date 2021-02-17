@@ -1,6 +1,5 @@
-.idea
-.gradle
-build
-!build/libs
-log
-data
+/.idea/
+/build/
+/.gradle/
+/log/
+/data/

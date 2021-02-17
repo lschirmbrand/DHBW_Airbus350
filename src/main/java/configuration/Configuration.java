@@ -13,6 +13,10 @@ public enum Configuration {
     public String dataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
     public String databaseFile = dataDirectory + "flight_recorder_a350.db";
 
+    // air_conditioning
+    public String pathToAirConditioningJavaArchive = commonPathToJavaArchive + "cabin" + fileSeparator + "air_conditioning" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "air_conditioning.jar";
+    public int numberOfAirConditioning = 4;
+
     // apu
     public String pathToApuJavaArchive = commonPathToJavaArchive + "apu_engine_gear_pump" + fileSeparator + "apu" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "apu.jar";
     public int numberOfApu = 1;
