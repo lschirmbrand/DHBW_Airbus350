@@ -2,6 +2,7 @@ package base;
 
 import com.google.common.eventbus.EventBus;
 import event.Subscriber;
+import event.engine.*;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
 import section.Body;
@@ -35,6 +36,9 @@ public class Airplane implements IAirplane {
     public void startup() {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        //Engine
+        eventBus.post(new EngineStart());
     }
 
     public void taxi() {
@@ -45,6 +49,9 @@ public class Airplane implements IAirplane {
     public void takeoff() {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // engine
+        eventBus.post(new EngineIncreaseRPM(5000));
     }
 
     public void climbing() {
@@ -70,10 +77,17 @@ public class Airplane implements IAirplane {
     public void landing() {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // engine
+        eventBus.post(new EngineDecreaseRPM(5000));
     }
 
     public void shutdown() {
         // weather_radar
         eventBus.post(new WeatherRadarOff());
+
+        //Engine
+        eventBus.post(new EngineShutdown());
+
     }
 }

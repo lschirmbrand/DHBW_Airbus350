@@ -1,5 +1,5 @@
 import base.PrimaryFlightDisplay;
-import factory.WeatherRadarFactory;
+import factory.EngineFactory;
 import logging.LogEngine;
 import org.junit.jupiter.api.*;
 import recorder.FlightRecorder;
@@ -22,14 +22,14 @@ public class TestWeatherRadar {
     @Test
     @Order(1)
     public void factory() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         assertNotNull(componentPort);
     }
 
     @Test
     @Order(2)
     public void methods() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             assertNotNull(onMethod);
@@ -47,7 +47,7 @@ public class TestWeatherRadar {
     @Test
     @Order(3)
     public void on() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -60,7 +60,7 @@ public class TestWeatherRadar {
     @Test
     @Order(4)
     public void scanCloud() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method scanMethod = componentPort.getClass().getDeclaredMethod("scan", String.class);
             boolean result = (boolean) scanMethod.invoke(componentPort, "cloud");
@@ -73,7 +73,7 @@ public class TestWeatherRadar {
     @Test
     @Order(5)
     public void scanBird() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method scanMethod = componentPort.getClass().getDeclaredMethod("scan", String.class);
             boolean result = (boolean) scanMethod.invoke(componentPort, "bird");
@@ -86,7 +86,7 @@ public class TestWeatherRadar {
     @Test
     @Order(6)
     public void off() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method offMethod = componentPort.getClass().getDeclaredMethod("off");
             boolean isOn = (boolean) offMethod.invoke(componentPort);
@@ -99,7 +99,7 @@ public class TestWeatherRadar {
     @Test
     @Order(7)
     public void startup() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -113,7 +113,7 @@ public class TestWeatherRadar {
     @Test
     @Order(8)
     public void taxi() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -127,7 +127,7 @@ public class TestWeatherRadar {
     @Test
     @Order(9)
     public void takeoff() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -148,7 +148,7 @@ public class TestWeatherRadar {
     @Test
     @Order(10)
     public void climbing() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -169,7 +169,7 @@ public class TestWeatherRadar {
     @Test
     @Order(11)
     public void rightTurn() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -190,7 +190,7 @@ public class TestWeatherRadar {
     @Test
     @Order(12)
     public void leftTurn() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -211,7 +211,7 @@ public class TestWeatherRadar {
     @Test
     @Order(13)
     public void descent() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -232,7 +232,7 @@ public class TestWeatherRadar {
     @Test
     @Order(14)
     public void landing() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -253,7 +253,7 @@ public class TestWeatherRadar {
     @Test
     @Order(15)
     public void shutdown() {
-        componentPort = WeatherRadarFactory.build();
+        componentPort = EngineFactory.build();
         try {
             Method offMethod = componentPort.getClass().getDeclaredMethod("off");
             boolean isOn = (boolean) offMethod.invoke(componentPort);
