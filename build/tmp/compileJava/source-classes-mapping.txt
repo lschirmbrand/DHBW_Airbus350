@@ -2,18 +2,96 @@ section/Body.java
  section.Body
 event/Subscriber.java
  event.Subscriber
-event/weather_radar/WeatherRadarOff.java
- event.weather_radar.WeatherRadarOff
 configuration/Configuration.java
  configuration.Configuration
-recorder/FlightRecorder.java
- recorder.FlightRecorder
+event/slat/SlatUp.java
+ event.slat.SlatUp
 base/PrimaryFlightDisplayEntry.java
  base.PrimaryFlightDisplayEntry
+event/spoiler/SpoilerFullUp.java
+ event.spoiler.SpoilerFullUp
+event/right_aileron/RightAileronFullUp.java
+ event.right_aileron.RightAileronFullUp
+event/spoiler/SpoilerUp.java
+ event.spoiler.SpoilerUp
+factory/SpoilerFactory.java
+ factory.SpoilerFactory
+event/left_aileron/LeftAileronFullDown.java
+ event.left_aileron.LeftAileronFullDown
+event/right_aileron/RightAileronFullDown.java
+ event.right_aileron.RightAileronFullDown
+event/left_aileron/LeftAileronNeutral.java
+ event.left_aileron.LeftAileronNeutral
+event/spoiler/SpoilerNeutral.java
+ event.spoiler.SpoilerNeutral
+event/right_aileron/RightAileronDown.java
+ event.right_aileron.RightAileronDown
+factory/SlatFactory.java
+ factory.SlatFactory
+logging/LogEngine.java
+ logging.LogEngine
+event/weather_radar/WeatherRadarScan.java
+ event.weather_radar.WeatherRadarScan
+event/anti_collision_light/AntiCollisionLightOn.java
+ event.anti_collision_light.AntiCollisionLightOn
+factory/LeftAileronFactory.java
+ factory.LeftAileronFactory
+section/Wing.java
+ section.Wing
+event/slat/SlatNeutral.java
+ event.slat.SlatNeutral
+event/spoiler/SpoilerDown.java
+ event.spoiler.SpoilerDown
+base/IAirplane.java
+ base.IAirplane
+event/right_aileron/RightAileronNeutral.java
+ event.right_aileron.RightAileronNeutral
+factory/WeatherRadarFactory.java
+ factory.WeatherRadarFactory
+event/left_aileron/LeftAileronUp.java
+ event.left_aileron.LeftAileronUp
+event/rudder/RudderFullLeft.java
+ event.rudder.RudderFullLeft
+event/weather_radar/WeatherRadarOff.java
+ event.weather_radar.WeatherRadarOff
+factory/RudderFactory.java
+ factory.RudderFactory
+event/rudder/RudderFullRight.java
+ event.rudder.RudderFullRight
+recorder/FlightRecorder.java
+ recorder.FlightRecorder
+event/left_aileron/LeftAileronDown.java
+ event.left_aileron.LeftAileronDown
+event/anti_collision_light/AntiCollisionLightOff.java
+ event.anti_collision_light.AntiCollisionLightOff
 base/PrimaryFlightDisplay.java
  base.PrimaryFlightDisplay
+event/right_aileron/RightAileronUp.java
+ event.right_aileron.RightAileronUp
+event/slat/SlatFullDown.java
+ event.slat.SlatFullDown
+event/rudder/RudderNeutral.java
+ event.rudder.RudderNeutral
+factory/AntiCollisionLightFactory.java
+ factory.AntiCollisionLightFactory
+factory/RightAileronFactory.java
+ factory.RightAileronFactory
 base/Airplane.java
  base.Airplane
+event/rudder/RudderLeft.java
+ event.rudder.RudderLeft
+base/Cockpit.java
+ base.Cockpit
+event/weather_radar/WeatherRadarOn.java
+ event.weather_radar.WeatherRadarOn
+event/left_aileron/LeftAileronFullUp.java
+ event.left_aileron.LeftAileronFullUp
+event/rudder/RudderRight.java
+ event.rudder.RudderRight
+event/slat/SlatDown.java
+ event.slat.SlatDown
+base/ICockpit.java
+ base.ICockpit
 base/PrimaryFlightDisplayGUI.java
  base.PrimaryFlightDisplayGUI
  base.PrimaryFlightDisplayGUI$1
@@ -25,19 +103,3 @@ base/PrimaryFlightDisplayGUI.java
  base.PrimaryFlightDisplayGUI$7
  base.PrimaryFlightDisplayGUI$8
  base.PrimaryFlightDisplayGUI$9
-base/Cockpit.java
- base.Cockpit
-event/weather_radar/WeatherRadarOn.java
- event.weather_radar.WeatherRadarOn
-logging/LogEngine.java
- logging.LogEngine
-event/weather_radar/WeatherRadarScan.java
- event.weather_radar.WeatherRadarScan
-section/Wing.java
- section.Wing
-base/IAirplane.java
- base.IAirplane
-base/ICockpit.java
- base.ICockpit
-factory/WeatherRadarFactory.java
- factory.WeatherRadarFactory
