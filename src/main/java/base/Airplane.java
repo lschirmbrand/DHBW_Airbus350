@@ -38,7 +38,7 @@ public class Airplane implements IAirplane {
     }
 
     public void startup() {
-        //gear
+        // gear
         eventBus.post(new GearDown());
         eventBus.post(new GearSetBrake());
         // weather_radar
