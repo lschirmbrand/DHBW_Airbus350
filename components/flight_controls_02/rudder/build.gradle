@@ -10,10 +10,10 @@ repositories {
 }
 
 task build_jar(type: Jar) {
-    project.archivesBaseName = "left_aileron"
+    project.archivesBaseName = "rudder"
 
     manifest {
-        attributes["Main-Class"] = "leftAileron"
+        attributes["Main-Class"] = "Rudder"
     }
 
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }

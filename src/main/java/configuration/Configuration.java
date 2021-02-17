@@ -18,15 +18,27 @@ public enum Configuration {
     public int numberOfWeatherRadar = 2;
 
     // slat
-    public String pathToSlatJavaArchive = commonPathToJavaArchive + "flight_controls_01" + fileSeparator + "slat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "weather_radar.jar";
+    public String pathToSlatJavaArchive = commonPathToJavaArchive + "flight_controls_01" + fileSeparator + "slat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "slat.jar";
     public int numberOfSlat = 6;
 
     // left_Aileron
-    public String pathToLeftAileronJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "left_aileron" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "weather_radar.jar";
+    public String pathToLeftAileronJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "left_aileron" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "left_aileron.jar";
     public int numberOfLeftAileron = 3;
 
     // right_Aileron
-    public String pathToRightAileronJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "left_aileron" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "weather_radar.jar";
+    public String pathToRightAileronJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "right_aileron" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "right_aileron.jar";
     public int numberOfRightAileron = 3;
+
+    // rudder
+    public String pathToRudderJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "rudder" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "rudder.jar";
+    public int numberOfRudder = 2;
+
+    // spoiler
+    public String pathToSpoilerJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "spoiler" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "spoiler.jar";
+    public int numberOfSpoiler = 8;
+
+    // anti_collision_light
+    public String pathToAntiCollisionLightJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "anti_collision_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "anti_collision_light.jar";
+    public int numberOfAntiCollisionLight = 2;
 
 }
