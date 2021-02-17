@@ -24,17 +24,17 @@ public class PrimaryFlightDisplayGUI extends Application {
     private ArrayList<PrimaryFlightDisplayEntry> dataList;
     private ObservableList data;
 
-    // weather_radar
-    private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
-    private RadioButton weatherRadarOffButton;
-    private RadioButton weatherRadarOnButton;
-
     // apu
     private PrimaryFlightDisplayEntry apuIsStartedEntry;
     private RadioButton apuStartedButton;
     private RadioButton apuShutdownButton;
     private PrimaryFlightDisplayEntry apuRPMEntry;
     private Label apuRPMLabel;
+
+    // weather_radar
+    private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
+    private RadioButton weatherRadarOffButton;
+    private RadioButton weatherRadarOnButton;
 
     public static void main(String... args) {
         LogEngine.instance.init();
@@ -212,22 +212,6 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         // --- insert section: begin
 
-        // weather_radar
-        Label weatherRadarLabel = new Label("WeatherRadar : ");
-        gridPane.add(weatherRadarLabel, 6, 0);
-
-        ToggleGroup weatherRadarToggleGroup = new ToggleGroup();
-
-        weatherRadarOffButton = new RadioButton("Off");
-        weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
-        weatherRadarOffButton.setSelected(true);
-        gridPane.add(weatherRadarOffButton, 7, 0);
-
-        weatherRadarOnButton = new RadioButton("On");
-        weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
-        weatherRadarOnButton.setSelected(false);
-        gridPane.add(weatherRadarOnButton, 8, 0);
-
         // apu
         Label apuLabel = new Label("APU : ");
         gridPane.add(apuLabel, 0, 1);
@@ -245,6 +229,22 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         apuRPMLabel = new Label("0 rpm");
         gridPane.add(apuRPMLabel, 3, 1);
+
+        // weather_radar
+        Label weatherRadarLabel = new Label("WeatherRadar : ");
+        gridPane.add(weatherRadarLabel, 6, 0);
+
+        ToggleGroup weatherRadarToggleGroup = new ToggleGroup();
+
+        weatherRadarOffButton = new RadioButton("Off");
+        weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
+        weatherRadarOffButton.setSelected(true);
+        gridPane.add(weatherRadarOffButton, 7, 0);
+
+        weatherRadarOnButton = new RadioButton("On");
+        weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
+        weatherRadarOnButton.setSelected(false);
+        gridPane.add(weatherRadarOnButton, 8, 0);
 
         // --- insert section: end
 
@@ -277,17 +277,6 @@ public class PrimaryFlightDisplayGUI extends Application {
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
-    // weather_radar
-    public void setWeatherRadarToggleGroup(boolean isWeatherRadarOn) {
-        if (isWeatherRadarOn) {
-            weatherRadarOffButton.setSelected(false);
-            weatherRadarOnButton.setSelected(true);
-        } else {
-            weatherRadarOffButton.setSelected(true);
-            weatherRadarOnButton.setSelected(false);
-        }
-    }
-
     // apu
     public void setApuToggleGroup(boolean isAPUStarted) {
         if (isAPUStarted) {
@@ -296,6 +285,17 @@ public class PrimaryFlightDisplayGUI extends Application {
         } else {
             apuStartedButton.setSelected(false);
             apuShutdownButton.setSelected(true);
+        }
+    }
+
+    // weather_radar
+    public void setWeatherRadarToggleGroup(boolean isWeatherRadarOn) {
+        if (isWeatherRadarOn) {
+            weatherRadarOffButton.setSelected(false);
+            weatherRadarOnButton.setSelected(true);
+        } else {
+            weatherRadarOffButton.setSelected(true);
+            weatherRadarOnButton.setSelected(false);
         }
     }
 

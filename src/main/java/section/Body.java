@@ -112,8 +112,6 @@ public class Body extends Subscriber {
                 Method increaseRPMMethod = apuPortList.get(i).getClass().getDeclaredMethod("increaseRPM", int.class);
                 LogEngine.instance.write("increaseRPMMethod = " + increaseRPMMethod);
 
-                System.out.println(apuIncreaseRPM.getValue());
-
                 int rpm = (int) increaseRPMMethod.invoke(apuPortList.get(i), apuIncreaseRPM.getValue());
 
                 LogEngine.instance.write("rpm = " + rpm);
