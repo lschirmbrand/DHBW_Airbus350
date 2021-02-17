@@ -23,10 +23,52 @@ public class PrimaryFlightDisplayGUI extends Application {
     private TableView tableView;
     private ArrayList<PrimaryFlightDisplayEntry> dataList;
     private ObservableList data;
+
     // weather_radar
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
     private RadioButton weatherRadarOnButton;
+
+    // cargo_compartment_light
+    private PrimaryFlightDisplayEntry isCargoCompartmentLightOn;
+    private RadioButton cargoCompartmentLightOffButton;
+    private RadioButton cargoCompartmentLightOnButton;
+
+    //cost_optimizer
+    private PrimaryFlightDisplayEntry isCostOptimizerOn;
+    private RadioButton costOptimizerOnButton;
+    private RadioButton costOptimizerOffButton;
+    private PrimaryFlightDisplayEntry indexCostOptimizer;
+    private Label indexCostOptimizerLabel;
+    private PrimaryFlightDisplayEntry numberOfCheckPointsCostOptimizer;
+    private Label numberOfCheckPointsCostOptimizerLabel;
+
+    //landing_light
+    private PrimaryFlightDisplayEntry isLandingLightBodyOn;
+    private RadioButton landingLightBodyOnButton;
+    private RadioButton landingLightBodyOffButton;
+    private PrimaryFlightDisplayEntry isLandingLightWingOn;
+    private RadioButton landingLightWingOnButton;
+    private RadioButton landingLightWingOffButton;
+
+    //left_navigation_light
+    private PrimaryFlightDisplayEntry isLeftNavigationLightOn;
+    private RadioButton leftNavigationLightOnButton;
+    private RadioButton leftNavigationLightOffButton;
+
+    //logo_light
+    private PrimaryFlightDisplayEntry isLogoLightOn;
+    private RadioButton logoLightOnButton;
+    private RadioButton logoLightOffButton;
+
+    //route_management
+    private PrimaryFlightDisplayEntry isRouteManagementOn;
+    private RadioButton routeManagementOnButton;
+    private RadioButton routeManagementOffButton;
+    private PrimaryFlightDisplayEntry indexRouteManagement;
+    private Label indexRouteManagementLabel;
+    private PrimaryFlightDisplayEntry numberOfCheckPointsRouteManagement;
+    private Label numberOfCheckPointsRouteManagementLabel;
 
     public static void main(String... args) {
         LogEngine.instance.init();
@@ -219,6 +261,132 @@ public class PrimaryFlightDisplayGUI extends Application {
         weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
         weatherRadarOnButton.setSelected(false);
         gridPane.add(weatherRadarOnButton, 8, 0);
+
+        // cargo_compartment_light
+        Label cargoCompartentLightLabel = new Label("CargoCompartmentLight : ");
+        gridPane.add(cargoCompartentLightLabel, 6, 1);
+
+        ToggleGroup cargoCompartentLightToggleGroup = new ToggleGroup();
+
+        cargoCompartmentLightOffButton = new RadioButton("Off");
+        cargoCompartmentLightOffButton.setToggleGroup(cargoCompartentLightToggleGroup);
+        cargoCompartmentLightOffButton.setSelected(true);
+        gridPane.add(cargoCompartmentLightOffButton, 7, 1);
+
+        cargoCompartmentLightOnButton = new RadioButton("On");
+        cargoCompartmentLightOnButton.setToggleGroup(cargoCompartentLightToggleGroup);
+        cargoCompartmentLightOnButton.setSelected(false);
+        gridPane.add(cargoCompartmentLightOnButton, 8, 1);
+
+        // cost_optimizer
+        Label costOptimizerLabel = new Label("CostOptimizer : ");
+        gridPane.add(costOptimizerLabel, 6, 2);
+
+        ToggleGroup costOptimizerToggleGroup = new ToggleGroup();
+
+        costOptimizerOffButton = new RadioButton("Off");
+        costOptimizerOffButton.setToggleGroup(costOptimizerToggleGroup);
+        costOptimizerOffButton.setSelected(true);
+        gridPane.add(weatherRadarOffButton, 7, 2);
+
+        costOptimizerOnButton = new RadioButton("On");
+        costOptimizerOnButton.setToggleGroup(costOptimizerToggleGroup);
+        costOptimizerOnButton.setSelected(false);
+        gridPane.add(costOptimizerOnButton, 8, 2);
+
+        indexCostOptimizerLabel = new Label("IndexCostOptimizer: " + Integer.toString(PrimaryFlightDisplay.instance.indexCostOptimizer));
+        gridPane.add(indexCostOptimizerLabel, 9, 2);
+
+        numberOfCheckPointsCostOptimizerLabel = new Label("NumberOfCheckPoints: " + Integer.toString(PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer));
+        gridPane.add(numberOfCheckPointsCostOptimizerLabel, 10, 2);
+
+        // landing_light_body
+        Label landingLightBodyLabel = new Label("LandingLightBody : ");
+        gridPane.add(landingLightBodyLabel, 6, 3);
+
+        ToggleGroup landingLightBodyToggleGroup = new ToggleGroup();
+
+        landingLightBodyOffButton = new RadioButton("Off");
+        landingLightBodyOffButton.setToggleGroup(landingLightBodyToggleGroup);
+        landingLightBodyOffButton.setSelected(true);
+        gridPane.add(landingLightBodyOffButton, 7, 3);
+
+        landingLightBodyOnButton = new RadioButton("On");
+        landingLightBodyOnButton.setToggleGroup(landingLightBodyToggleGroup);
+        landingLightBodyOnButton.setSelected(false);
+        gridPane.add(landingLightBodyOnButton, 8, 3);
+
+        // landing_light_wing
+        Label landingLightWingLabel = new Label("LandingLightWing : ");
+        gridPane.add(landingLightWingLabel, 6, 4);
+
+        ToggleGroup landingLightWingToggleGroup = new ToggleGroup();
+
+        landingLightWingOffButton = new RadioButton("Off");
+        landingLightWingOffButton.setToggleGroup(landingLightWingToggleGroup);
+        landingLightWingOffButton.setSelected(true);
+        gridPane.add(landingLightWingOffButton, 7, 4);
+
+        landingLightWingOnButton = new RadioButton("On");
+        landingLightWingOnButton.setToggleGroup(landingLightWingToggleGroup);
+        landingLightWingOnButton.setSelected(false);
+        gridPane.add(landingLightWingOnButton, 8, 4);
+
+
+        // left_navigation_light
+        Label leftNavigationLightLabel = new Label("LeftNavigationLight : ");
+        gridPane.add(leftNavigationLightLabel, 6, 5);
+
+        ToggleGroup leftNavigationLightToggleGroupe = new ToggleGroup();
+
+        leftNavigationLightOffButton= new RadioButton("Off");
+        leftNavigationLightOffButton.setToggleGroup(leftNavigationLightToggleGroupe);
+        leftNavigationLightOffButton.setSelected(true);
+        gridPane.add(leftNavigationLightOffButton, 7, 5);
+
+        leftNavigationLightOffButton = new RadioButton("On");
+        leftNavigationLightOffButton.setToggleGroup(leftNavigationLightToggleGroupe);
+        leftNavigationLightOffButton.setSelected(false);
+        gridPane.add(leftNavigationLightOffButton, 8, 5);
+
+        // logo_light
+        Label logoLightLabel = new Label("logoLight : ");
+        gridPane.add(logoLightLabel, 6, 6);
+
+        ToggleGroup logoLightToggleGoup = new ToggleGroup();
+
+        logoLightOnButton = new RadioButton("Off");
+        logoLightOnButton.setToggleGroup(logoLightToggleGoup);
+        logoLightOnButton.setSelected(true);
+        gridPane.add(logoLightOnButton, 7, 6);
+
+        logoLightOffButton = new RadioButton("On");
+        logoLightOffButton.setToggleGroup(logoLightToggleGoup);
+        logoLightOffButton.setSelected(false);
+        gridPane.add(logoLightOffButton, 8, 6);
+
+        // route_management
+        Label routeManageLabel = new Label("routeManage : ");
+        gridPane.add(routeManageLabel, 6, 7);
+
+        ToggleGroup routeManageToggleGroup = new ToggleGroup();
+
+        routeManagementOffButton = new RadioButton("Off");
+        routeManagementOffButton.setToggleGroup(routeManageToggleGroup);
+        routeManagementOffButton.setSelected(true);
+        gridPane.add(routeManagementOffButton, 7, 7);
+
+        routeManagementOnButton = new RadioButton("On");
+        routeManagementOnButton.setToggleGroup(routeManageToggleGroup);
+        routeManagementOnButton.setSelected(false);
+        gridPane.add(routeManagementOnButton, 8, 7);
+
+        indexRouteManagementLabel = new Label("IndexRouteManager: "+ Integer.toString(PrimaryFlightDisplay.instance.indexRouteManagement));
+        gridPane.add(indexCostOptimizerLabel, 9,7);
+
+        numberOfCheckPointsRouteManagementLabel = new Label("NumberOfCheckPoints: " + Integer.toString(PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement));
+        gridPane.add(numberOfCheckPointsCostOptimizerLabel, 10,7);
+
 
         // --- insert section: end
 
