@@ -6,7 +6,6 @@ import configuration.Configuration;
 import event.Subscriber;
 import event.anti_collision_light.AntiCollisionLightOff;
 import event.anti_collision_light.AntiCollisionLightOn;
-import event.right_aileron.*;
 import event.rudder.*;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
@@ -107,17 +106,59 @@ public class Body extends Subscriber {
     // --- Rudder -----------------------------------------------------------------------------------------------
 
     @Subscribe
-    public void receive(RudderNeutral rudderNeutral) { //TODO
+    public void receive(RudderNeutral rudderNeutral) {
+        LogEngine.instance.write("+ Body.receive(" + rudderNeutral.toString() + ")");
         FlightRecorder.instance.insert("Body", "receive(" + rudderNeutral.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfRudder; i++) {
+                Method neutralMethod = rudderPortList.get(i).getClass().getDeclaredMethod("neutral");
+                LogEngine.instance.write("neutralMethod = " + neutralMethod);
+
+                int degree = (int) neutralMethod.invoke(rudderPortList.get(i));
+                LogEngine.instance.write("degree = " + degree);
+
+                PrimaryFlightDisplay.instance.degreeRudder = degree;
+                FlightRecorder.instance.insert("Body", "Rudder (degree): " + degree);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (degreeRudder): " + PrimaryFlightDisplay.instance.degreeRudder);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degreeRudder: " + PrimaryFlightDisplay.instance.degreeRudder);
     }
 
     @Subscribe
-    public void receive(RudderFullLeft rudderFullLeft) {//TODO
+    public void receive(RudderFullLeft rudderFullLeft) {
+        LogEngine.instance.write("+ Body.receive(" + rudderFullLeft.toString() + ")");
         FlightRecorder.instance.insert("Body", "receive(" + rudderFullLeft.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfRudder; i++) {
+                Method fullLeftMethod = rudderPortList.get(i).getClass().getDeclaredMethod("fullLeft");
+                LogEngine.instance.write("fullLeftMethod = " + fullLeftMethod);
+
+                int degree = (int) fullLeftMethod.invoke(rudderPortList.get(i));
+                LogEngine.instance.write("degree = " + degree);
+
+                PrimaryFlightDisplay.instance.degreeRudder = degree;
+                FlightRecorder.instance.insert("Body", "Rudder (degree): " + degree);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (degreeRudder): " + PrimaryFlightDisplay.instance.degreeRudder);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degreeRudder: " + PrimaryFlightDisplay.instance.degreeRudder);
     }
 
     @Subscribe
-    public void receive(RudderFullRight rudderFullRight) {//TODO
+    public void receive(RudderFullRight rudderFullRight) {
         LogEngine.instance.write("+ Body.receive(" + rudderFullRight.toString() + ")");
         FlightRecorder.instance.insert("Body", "receive(" + rudderFullRight.toString() + ")");
 
@@ -143,7 +184,7 @@ public class Body extends Subscriber {
     }
 
     @Subscribe
-    public void receive(RudderRight rudderRight) {//TODO
+    public void receive(RudderRight rudderRight) {
         LogEngine.instance.write("+ Body.receive(" + rudderRight.toString() + ")");
         FlightRecorder.instance.insert("Body", "receive(" + rudderRight.toString() + ")");
 
@@ -169,7 +210,7 @@ public class Body extends Subscriber {
     }
 
     @Subscribe
-    public void receive(RudderLeft rudderLeft) {//TODO
+    public void receive(RudderLeft rudderLeft) {
         LogEngine.instance.write("+ Body.receive(" + rudderLeft.toString() + ")");
         FlightRecorder.instance.insert("Body", "receive(" + rudderLeft.toString() + ")");
 
