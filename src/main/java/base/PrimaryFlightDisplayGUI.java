@@ -31,8 +31,10 @@ public class PrimaryFlightDisplayGUI extends Application {
 
     // apu
     private PrimaryFlightDisplayEntry apuIsStartedEntry;
-    private RadioButton apuStartButton;
+    private RadioButton apuStartedButton;
     private RadioButton apuShutdownButton;
+    private PrimaryFlightDisplayEntry apuRPMEntry;
+    private Label apuRPMLabel;
 
     public static void main(String... args) {
         LogEngine.instance.init();
@@ -232,16 +234,17 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         ToggleGroup apuToggleGroup = new ToggleGroup();
 
-        apuShutdownButton = new RadioButton("Shutdown");
+        apuShutdownButton = new RadioButton("Off");
         apuShutdownButton.setToggleGroup(apuToggleGroup);
         apuShutdownButton.setSelected(true);
         gridPane.add(apuShutdownButton, 1, 1);
 
-        apuStartButton = new RadioButton("Start");
-        apuStartButton.setToggleGroup(apuToggleGroup);
-        gridPane.add(apuStartButton, 2, 1);
+        apuStartedButton = new RadioButton("On");
+        apuStartedButton.setToggleGroup(apuToggleGroup);
+        gridPane.add(apuStartedButton, 2, 1);
 
-
+        apuRPMLabel = new Label("0 rpm");
+        gridPane.add(apuRPMLabel, 3, 1);
 
         // --- insert section: end
 
@@ -288,12 +291,16 @@ public class PrimaryFlightDisplayGUI extends Application {
     // apu
     public void setApuToggleGroup(boolean isAPUStarted) {
         if (isAPUStarted) {
-            apuStartButton.setSelected(true);
+            apuStartedButton.setSelected(true);
             apuShutdownButton.setSelected(false);
         } else {
-            apuStartButton.setSelected(false);
+            apuStartedButton.setSelected(false);
             apuShutdownButton.setSelected(true);
         }
+    }
+
+    public void setAPURPMLabel(int rpm) {
+        apuRPMLabel.setText(rpm + " rpm");
     }
 
     private void initData() {
@@ -306,6 +313,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         // apu
         apuIsStartedEntry = new PrimaryFlightDisplayEntry("APU (isStarted)", Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
         dataList.add(apuIsStartedEntry);
+        apuRPMEntry = new PrimaryFlightDisplayEntry("APU (rpm)", Integer.toString(PrimaryFlightDisplay.instance.rpmAPU));
+        dataList.add(apuRPMEntry);
     }
 
     private ObservableList getInitialTableData() {
@@ -322,6 +331,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         // apu
         apuIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
         setApuToggleGroup(PrimaryFlightDisplay.instance.isAPUStarted);
+        apuRPMEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.rpmAPU));
+        setAPURPMLabel(PrimaryFlightDisplay.instance.rpmAPU);
 
         tableView.refresh();
     }

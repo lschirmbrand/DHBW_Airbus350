@@ -4,6 +4,8 @@ import base.PrimaryFlightDisplay;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.Subscriber;
+import event.apu.APUDecreaseRPM;
+import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
 import event.weather_radar.WeatherRadarOff;
@@ -61,6 +63,10 @@ public class Body extends Subscriber {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isAPUStarted): " + PrimaryFlightDisplay.instance.isAPUStarted);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isAPUStarted: " + PrimaryFlightDisplay.instance.isAPUStarted);
+
     }
 
     @Subscribe
@@ -73,16 +79,82 @@ public class Body extends Subscriber {
                 Method shutdownMethod = apuPortList.get(i).getClass().getDeclaredMethod("shutdown");
                 LogEngine.instance.write("shutdownMethod = " + shutdownMethod);
 
-                LogEngine.instance.write("isStarted = " + false);
+                shutdownMethod.invoke(apuPortList.get(i));
 
+                LogEngine.instance.write("isStarted = " + false);
                 PrimaryFlightDisplay.instance.isAPUStarted = false;
                 FlightRecorder.instance.insert("Body", "APU (isStarted): " + false);
+
+                LogEngine.instance.write("rpm = " + 0);
+                PrimaryFlightDisplay.instance.rpmAPU = 0;
+                FlightRecorder.instance.insert("Body", "APU (rpm): " + 0);
 
                 LogEngine.instance.write("+");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isAPUStarted): " + PrimaryFlightDisplay.instance.isAPUStarted);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isAPUStarted: " + PrimaryFlightDisplay.instance.isAPUStarted);
+
+        LogEngine.instance.write("PrimaryFlightDisplay (rpmAPU): " + PrimaryFlightDisplay.instance.rpmAPU);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "rpmAPU: " + PrimaryFlightDisplay.instance.rpmAPU);
+    }
+
+    @Subscribe
+    public void receive(APUIncreaseRPM apuIncreaseRPM) {
+        LogEngine.instance.write("+ Body.receive(" + apuIncreaseRPM.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + apuIncreaseRPM.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfApu; i++) {
+                Method increaseRPMMethod = apuPortList.get(i).getClass().getDeclaredMethod("increaseRPM", int.class);
+                LogEngine.instance.write("increaseRPMMethod = " + increaseRPMMethod);
+
+                System.out.println(apuIncreaseRPM.getValue());
+
+                int rpm = (int) increaseRPMMethod.invoke(apuPortList.get(i), apuIncreaseRPM.getValue());
+
+                LogEngine.instance.write("rpm = " + rpm);
+                PrimaryFlightDisplay.instance.rpmAPU = rpm;
+                FlightRecorder.instance.insert("Body", "APU (rpm): " + 0);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (rpmAPU): " + PrimaryFlightDisplay.instance.rpmAPU);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "rpmAPU: " + PrimaryFlightDisplay.instance.rpmAPU);
+    }
+
+    @Subscribe
+    public void receive(APUDecreaseRPM apuDecreaseRPM) {
+        LogEngine.instance.write("+ Body.receive(" + apuDecreaseRPM.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + apuDecreaseRPM.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfApu; i++) {
+                Method decreaseRPMMethod = apuPortList.get(i).getClass().getDeclaredMethod("decreaseRPM", int.class);
+                LogEngine.instance.write("decreaseRPMMethod = " + decreaseRPMMethod);
+
+                int rpm = (int) decreaseRPMMethod.invoke(apuPortList.get(i), apuDecreaseRPM.getValue());
+
+                LogEngine.instance.write("rpm = " + rpm);
+                PrimaryFlightDisplay.instance.rpmAPU = rpm;
+                FlightRecorder.instance.insert("Body", "APU (rpm): " + 0);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (rpmAPU): " + PrimaryFlightDisplay.instance.rpmAPU);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "rpmAPU: " + PrimaryFlightDisplay.instance.rpmAPU);
     }
 
 

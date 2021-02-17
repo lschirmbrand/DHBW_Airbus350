@@ -4,8 +4,8 @@ public class APU {
     // port
     public Port port;
     private String manufacturer = "<student name 01> / <student name 02>";
-    private String type = "team <id>";
-    private String id = "<student id 01> / <student id 02>";
+    private String type = "team 01";
+    private String id = "4775194 / 8864957";
     private boolean isStarted = false;
     private int rpm = 0;
 
@@ -21,7 +21,7 @@ public class APU {
 
     // inner methods
     public String innerVersion() {
-        return "WeatherRadar // " + manufacturer + " - " + type + " - " + id;
+        return "APU // " + manufacturer + " - " + type + " - " + id;
     }
 
     public boolean innerStart() {
@@ -30,15 +30,24 @@ public class APU {
     }
 
     public int innerIncreaseRPM(int value) {
-        return rpm += value;
+        rpm += value;
+        if(rpm > 5000) {
+            rpm = 5000;
+        }
+        return rpm;
     }
 
     public int innerDecreaseRPM(int value) {
-        return rpm -= value;
+        rpm -= value;
+        if(rpm < 0) {
+            rpm = 0;
+        }
+        return rpm;
     }
 
     public void innerShutdown() {
         isStarted = false;
+        rpm = 0;
     }
 
     // inner class port

@@ -1,9 +1,9 @@
 package event.apu;
 
-public class APUIncreaseRPM {
+public class APUDecreaseRPM {
     private int value;
 
-    public APUIncreaseRPM(int value) {
+    public APUDecreaseRPM(int value) {
         this.value = value;
     }
 
@@ -12,6 +12,6 @@ public class APUIncreaseRPM {
     }
 
     public String toString() {
-        return "Event: APU - IncreaseRPM(" + value + ")";
+        return "Event: APU - DecreaseRPM(" + value + ")";
     }
 }
