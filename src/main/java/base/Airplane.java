@@ -2,6 +2,10 @@ package base;
 
 import com.google.common.eventbus.EventBus;
 import event.Subscriber;
+import event.air_conditioning.AirConditioningClean;
+import event.air_conditioning.AirConditioningHeat;
+import event.air_conditioning.AirConditioningOff;
+import event.air_conditioning.AirConditioningOn;
 import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
@@ -38,11 +42,17 @@ public class Airplane implements IAirplane {
     }
 
     public void startup() {
+        // air_conditioning
+        eventBus.post(new AirConditioningOn());
+        eventBus.post(new AirConditioningClean("wusch"));
+
+
         // gear
         eventBus.post(new GearDown());
         eventBus.post(new GearSetBrake());
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
     }
 
     public void taxi() {
@@ -51,6 +61,8 @@ public class Airplane implements IAirplane {
         eventBus.post(new GearReleaseBrake());
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+        // air_conditioning
+        eventBus.post(new AirConditioningHeat("wusch", 25));
     }
 
     public void takeoff() {
@@ -60,6 +72,10 @@ public class Airplane implements IAirplane {
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // air_conditioning
+        eventBus.post(new AirConditioningHeat("wusch", 25));
+
     }
 
     public void climbing() {
@@ -73,6 +89,10 @@ public class Airplane implements IAirplane {
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // air_conditioning
+        eventBus.post(new AirConditioningHeat("wusch", 25));
+
     }
 
     public void rightTurn() {
@@ -86,6 +106,10 @@ public class Airplane implements IAirplane {
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // air_conditioning
+        eventBus.post(new AirConditioningHeat("wusch", 25));
+
     }
 
     public void leftTurn() {
@@ -99,6 +123,10 @@ public class Airplane implements IAirplane {
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // air_conditioning
+        eventBus.post(new AirConditioningHeat("wusch", 25));
+
     }
 
     public void descent() {
@@ -111,6 +139,10 @@ public class Airplane implements IAirplane {
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // air_conditioning
+        eventBus.post(new AirConditioningHeat("wusch", 25));
+
     }
 
     public void landing() {
@@ -123,6 +155,10 @@ public class Airplane implements IAirplane {
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
+
+        // air_conditioning
+        eventBus.post(new AirConditioningHeat("wusch", 25));
+
     }
 
     public void shutdown() {
@@ -135,5 +171,9 @@ public class Airplane implements IAirplane {
 
         // weather_radar
         eventBus.post(new WeatherRadarOff());
+
+        // air_conditioning
+        eventBus.post(new AirConditioningOff());
+
     }
 }

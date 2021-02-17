@@ -4,6 +4,7 @@ import base.PrimaryFlightDisplay;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.Subscriber;
+import event.air_conditioning.*;
 import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
@@ -13,6 +14,7 @@ import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
 import event.weather_radar.WeatherRadarScan;
 import factory.APUFactory;
+import factory.AirConditioningFactory;
 import factory.GearFactory;
 import factory.WeatherRadarFactory;
 import logging.LogEngine;
@@ -22,11 +24,13 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Body extends Subscriber {
+    private ArrayList<Object> airConditioningPortList;
     private ArrayList<Object> apuPortList;
     private ArrayList<Object> gearPortList;
     private ArrayList<Object> weatherRadarPortList;
 
     public Body() {
+        airConditioningPortList = new ArrayList<>();
         apuPortList = new ArrayList<>();
         gearPortList = new ArrayList<>();
         weatherRadarPortList = new ArrayList<>();
@@ -34,6 +38,11 @@ public class Body extends Subscriber {
     }
 
     public void build() {
+
+        for (int i = 0; i < Configuration.instance.numberOfAirConditioning; i++) {
+            airConditioningPortList.add(AirConditioningFactory.build());
+        }
+
         for (int i = 0; i < Configuration.instance.numberOfApu; i++) {
             apuPortList.add(APUFactory.build());
         }
@@ -64,6 +73,134 @@ public class Body extends Subscriber {
     }
 
 
+    // --- AirConditioning --------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(AirConditioningOn airConditioningOn) {
+        LogEngine.instance.write("+ Body.receive(" + airConditioningOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + airConditioningOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfAirConditioning; i++) {
+                Method onMethod = airConditioningPortList.get(i).getClass().getDeclaredMethod("on");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                boolean isOn = (boolean) onMethod.invoke(airConditioningPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isAirConditioningOn = isOn;
+                FlightRecorder.instance.insert("Body", "AirConditioning (isOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isAirConditioningOn): " + PrimaryFlightDisplay.instance.isAirConditioningOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isAirConditioningOn: " + PrimaryFlightDisplay.instance.isAirConditioningOn);
+    }
+
+    @Subscribe
+    public void receive(AirConditioningOff airConditioningOff) {
+        LogEngine.instance.write("+ Body.receive(" + airConditioningOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + airConditioningOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfAirConditioning; i++) {
+                Method offMethod = airConditioningPortList.get(i).getClass().getDeclaredMethod("off");
+                LogEngine.instance.write("offMethod = " + offMethod);
+
+                boolean isOn = (boolean) offMethod.invoke(airConditioningPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isAirConditioningOn = isOn;
+                FlightRecorder.instance.insert("Body", "AirConditioning (isOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isAirConditioningOn): " + PrimaryFlightDisplay.instance.isAirConditioningOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isAirConditioningOn: " + PrimaryFlightDisplay.instance.isAirConditioningOn);
+    }
+
+    @Subscribe
+    public void receive(AirConditioningClean airConditioningClean) {
+        LogEngine.instance.write("+ Body.receive(" + airConditioningClean.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + airConditioningClean.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfAirConditioning; i++) {
+                Method cleanMethod = airConditioningPortList.get(i).getClass().getDeclaredMethod("clean", String.class);
+                LogEngine.instance.write("cleanMethod = " + cleanMethod);
+
+                String cleanResult = (String) cleanMethod.invoke(airConditioningPortList.get(i), airConditioningClean.getAirFlow());
+                LogEngine.instance.write("cleanResult = " + cleanResult);
+
+                FlightRecorder.instance.insert("Body", "AirConditioning (cleanResult): " + cleanResult);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Subscribe
+    public void receive(AirConditioningHeat airConditioningHeat) {
+        LogEngine.instance.write("+ Body.receive(" + airConditioningHeat.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + airConditioningHeat.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfAirConditioning; i++) {
+                Method heatMethod = airConditioningPortList.get(i).getClass().getDeclaredMethod("heat", String.class, int.class);
+                LogEngine.instance.write("heatMethod = " + heatMethod);
+
+                int temperature = (int) heatMethod.invoke(airConditioningPortList.get(i), airConditioningHeat.getAirFlow(), airConditioningHeat.getTemperature());
+                LogEngine.instance.write("temperature = " + temperature);
+
+                PrimaryFlightDisplay.instance.temperatureAirConditioning = temperature;
+                FlightRecorder.instance.insert("Body", "AirConditioning (temperature): " + temperature);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (temperatureAirConditioning): " + PrimaryFlightDisplay.instance.temperatureAirConditioning);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "temperatureAirConditioning: " + PrimaryFlightDisplay.instance.temperatureAirConditioning);
+    }
+
+    @Subscribe
+    public void receive(AirConditioningCool airConditioningCool) {
+        LogEngine.instance.write("+ Body.receive(" + airConditioningCool.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + airConditioningCool.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfAirConditioning; i++) {
+                Method coolMethod = airConditioningPortList.get(i).getClass().getDeclaredMethod("cool", String.class, int.class);
+                LogEngine.instance.write("coolMethod = " + coolMethod);
+
+                int temperature = (int) coolMethod.invoke(airConditioningPortList.get(i), airConditioningCool.getAirFlow(), airConditioningCool.getTemperature());
+                LogEngine.instance.write("temperature = " + temperature);
+
+                PrimaryFlightDisplay.instance.temperatureAirConditioning = temperature;
+                FlightRecorder.instance.insert("Body", "AirConditioning (temperature): " + temperature);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (temperatureAirConditioning): " + PrimaryFlightDisplay.instance.temperatureAirConditioning);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "temperatureAirConditioning: " + PrimaryFlightDisplay.instance.temperatureAirConditioning);
+    }
+
     // --- APU --------------------------------------------------------------------------------------------------------
 
     @Subscribe
@@ -90,7 +227,6 @@ public class Body extends Subscriber {
 
         LogEngine.instance.write("PrimaryFlightDisplay (isAPUStarted): " + PrimaryFlightDisplay.instance.isAPUStarted);
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "isAPUStarted: " + PrimaryFlightDisplay.instance.isAPUStarted);
-
     }
 
     @Subscribe
