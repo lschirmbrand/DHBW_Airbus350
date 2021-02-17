@@ -29,25 +29,27 @@ public class Rudder {
     }
 
     public int innerFullLeft() {
-        degree = 0;//TODO maximalen Drehgrad rausfinden
+        degree = -30;
         return degree;
     }
 
     public int innerFullRight() {
-        degree = 0;//TODO maximalen Drehgrad rausfinden
+        degree = 30;
         return degree;
     }
 
     public int innerLeft(int degree) {
-        this.degree -= degree;//TODO maximalen Drehgrad rausfinden
+        this.degree -= degree;
+        if(this.degree < -30) this.degree = -30;
         return this.degree;
     }
 
     public int innerRight(int degree) {
-        this.degree += degree;//TODO maximalen Drehgrad rausfinden
+        this.degree += degree;
+        if(this.degree > 30) this.degree = 30;
         return this.degree;
     }
-
+    
     // inner class port
     public class Port implements IRudder {
         public String version() {return innerVersion();}

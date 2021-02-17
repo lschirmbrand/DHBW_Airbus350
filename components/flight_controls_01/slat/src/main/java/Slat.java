@@ -29,17 +29,19 @@ public class Slat {
     }
 
     public int innerFullDown() {
-        degree = 0;//TODO maximalen Drehgrad rausfinden
+        degree = -20;
         return degree;
     }
 
     public int innerDown(int degree) {
-        this.degree -= degree;//TODO maximalen Drehgrad rausfinden
+        this.degree -= degree;
+        if(this.degree < -20) this.degree = -20;
         return this.degree;
     }
 
     public int innerUp(int degree) {
-        this.degree += degree;//TODO maximalen Drehgrad rausfinden
+        this.degree += degree;
+        if(this.degree > 0) this.degree = 0;
         return this.degree;
     }
 

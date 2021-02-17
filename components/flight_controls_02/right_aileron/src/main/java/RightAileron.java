@@ -29,22 +29,24 @@ public class RightAileron {
     }
 
     public int innerFullDown() {
-        degree = 0;//TODO maximalen Drehgrad rausfinden
+        degree = -30;
         return degree;
     }
 
     public int innerFullUp() {
-        degree = 0;//TODO maximalen Drehgrad rausfinden
+        degree = 30;
         return degree;
     }
 
     public int innerDown(int degree) {
-        this.degree -= degree;//TODO maximalen Drehgrad rausfinden
+        this.degree -= degree;
+        if(this.degree < -30) this.degree = -30;
         return this.degree;
     }
 
     public int innerUp(int degree) {
-        this.degree += degree;//TODO maximalen Drehgrad rausfinden
+        this.degree += degree;
+        if(this.degree > 30) this.degree = 30;
         return this.degree;
     }
 
