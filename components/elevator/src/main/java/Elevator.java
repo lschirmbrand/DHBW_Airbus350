@@ -3,9 +3,7 @@ public class Elevator {
     private static Elevator instance = new Elevator();
 
     public Elevator.Port port;
-    private String manufacturer = "<student name 01> / <student name 02>";
-    private String type = "team <id>";
-    private String id = "<student id 01> / <student id 02>";
+    private String manufacturer = "4775194";
     private int degree = 90;
 
     private Elevator() {port = new Elevator.Port();}
@@ -15,7 +13,7 @@ public class Elevator {
 
     // inner methods
     public String innerVersion() {
-        return "Elevator // " + manufacturer + " - " + type + " - " + id;
+        return "Elevator // " + manufacturer;
     }
 
     public int innerNeutral(){
@@ -29,7 +27,7 @@ public class Elevator {
     }
 
     private int innerFullDown() {
-        this.degree = 0;
+        this.degree = 45;
         return this.degree;
     }
 

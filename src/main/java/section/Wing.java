@@ -136,7 +136,6 @@ public class Wing extends Subscriber {
                 LogEngine.instance.write("decreaseRPMMethod = " + decreaseRPMMethod);
 
                 int currentRPMs = (int) decreaseRPMMethod.invoke(enginePortList.get(i), engineDecreaseRPM.getValue());
-                System.out.println(currentRPMs);
                 LogEngine.instance.write("currentRPMs = " + currentRPMs);
 
                 PrimaryFlightDisplay.instance.rpmEngine = (currentRPMs);

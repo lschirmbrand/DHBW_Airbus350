@@ -40,10 +40,13 @@ public class Airplane implements IAirplane {
 
         //Engine
         eventBus.post(new EngineStart());
+        eventBus.post(new EngineIncreaseRPM(0));
 
         // hydraulic pumps
-        eventBus.post(new HydraulicPumpBodyRefillOil());
-        eventBus.post(new HydraulicPumpWingRefillOil());
+        eventBus.post(new HydraulicPumpBodyCompress());
+        eventBus.post(new HydraulicPumpWingCompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
 
 
         // Elevator
@@ -60,11 +63,14 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOn());
 
         // engine
-        eventBus.post(new EngineIncreaseRPM(5000));
+        eventBus.post(new EngineIncreaseRPM(15000));
 
         // hydraulic pump
         eventBus.post(new HydraulicPumpBodyDecompress());
         eventBus.post(new HydraulicPumpWingDecompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
+
 
         // Elevator
         eventBus.post(new ElevatorFullUp());
@@ -76,7 +82,10 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOn());
 
         // elevator
-        eventBus.post(new ElevatorUp(20));
+        eventBus.post(new ElevatorUp(10));
+
+        // engine
+        eventBus.post(new EngineIncreaseRPM(500));
     }
 
     public void rightTurn() {
@@ -94,7 +103,10 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOn());
 
         // elevator
-        eventBus.post(new ElevatorDown(-20));
+        eventBus.post(new ElevatorDown(-10));
+
+        // engine
+        eventBus.post(new EngineDecreaseRPM(-500));
     }
 
     public void landing() {
@@ -102,11 +114,13 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOn());
 
         // engine
-        eventBus.post(new EngineDecreaseRPM(5000));
+        eventBus.post(new EngineDecreaseRPM(-10000));
 
         // hydraulic pumps
         eventBus.post(new HydraulicPumpBodyCompress());
         eventBus.post(new HydraulicPumpWingCompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
 
         // Elevator
         eventBus.post(new ElevatorFullDown());
@@ -118,10 +132,11 @@ public class Airplane implements IAirplane {
 
         //Engine
         eventBus.post(new EngineShutdown());
+        eventBus.post(new EngineDecreaseRPM(-15000));
 
         // hydraulic pumps
-        eventBus.post(new HydraulicPumpBodyRefillOil());
-        eventBus.post(new HydraulicPumpWingRefillOil());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
 
         //Elevator
 

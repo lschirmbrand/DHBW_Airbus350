@@ -3,10 +3,7 @@ public class Engine {
     private static Engine instance = new Engine();
 
     public Engine.Port port;
-    private String manufacturer = "<student name 01> / <student name 02>";
-    private String type = "team <id>";
-    private String id = "<student id 01> / <student id 02>";
-    private String start;
+    private String manufacturer = "4775194";
     private boolean isStarted;
     private int rpm;
     private boolean isFire;
@@ -20,7 +17,7 @@ public class Engine {
 
     // inner methods
     public String innerVersion() {
-        return "Engine // " + manufacturer + " - " + type + " - " + id;
+        return "Engine // " + manufacturer;
     }
 
 
@@ -32,11 +29,14 @@ public class Engine {
 
     public int innerIncreaseRPM(int value) {
         this.rpm += value;
+        if(this.rpm > 15000){this.rpm = 15000;}
         return this.rpm;
     }
 
     public int innerDecreaseRPM(int value) {
-        return 0;
+        this.rpm -= value;
+        if(this.rpm < 0){this.rpm = 0;}
+        return this.rpm;
     }
 
     public boolean innerShutdown() {
@@ -45,9 +45,7 @@ public class Engine {
         return false;
     }
 
-    public void innerExtinguishFire() {
-
-    }
+    public void innerExtinguishFire() {}
 
 
     // inner class port

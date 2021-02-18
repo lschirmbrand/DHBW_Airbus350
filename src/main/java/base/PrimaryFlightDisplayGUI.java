@@ -1,5 +1,6 @@
 package base;
 
+import event.hydraulicPump.HydraulicPumpWingRefillOil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -262,49 +263,53 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         // engine
         Label engineLabel = new Label("Engine : ");
-        gridPane.add(engineLabel, 0,1);
+        gridPane.add(engineLabel, 4,1);
 
         ToggleGroup engineToggleGroup = new ToggleGroup();
 
         engineOffButton = new RadioButton("Off");
         engineOffButton.setToggleGroup(engineToggleGroup);
         engineOffButton.setSelected(true);
-        gridPane.add(engineOffButton, 4, 1);
+        gridPane.add(engineOffButton, 5, 1);
 
         engineOnButton = new RadioButton("On");
         engineOnButton.setToggleGroup(engineToggleGroup);
         engineOffButton.setSelected(false);
-        gridPane.add(engineOnButton, 5, 1);
+        gridPane.add(engineOnButton, 6, 1);
 
-        engineRPMLabel = new Label("0 rpm");
-        gridPane.add(engineRPMLabel, 6,1);
+        engineRPMLabel = new Label("RPM's: 0");
+        gridPane.add(engineRPMLabel, 7,1);
 
 
 
         // Hydraulic Pump
 
-        hydraulicPumpBodyOilAmountLabel = new Label("0 psi");
-        gridPane.add(hydraulicPumpBodyOilAmountLabel, 10,1);
-        hydraulicPumpWingOilAmountLabel = new Label("0 psi");
-        gridPane.add(hydraulicPumpWingOilAmountLabel, 11,1);
+        Label HydraulicPumpLabel = new Label("Hydraulic Pump:");
+        gridPane.add(HydraulicPumpLabel, 10, 1);
+        hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 11,1);
+        hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 12,1);
 
         // Elevator
 
-        degreeElevator = new Label("Elevator: 90 degree");
-        gridPane.add(degreeElevator, 2,2);
+        Label elevatorLabel = new Label("Elevators at: ");
+        gridPane.add(elevatorLabel,0,2);
+        degreeElevator = new Label("90 degree");
+        gridPane.add(degreeElevator, 1,2);
 
 
 
         // --- insert section: end
 
         Label frequencyLabel = new Label("Frequency : ");
-        gridPane.add(frequencyLabel, 0, 2);
+        gridPane.add(frequencyLabel, 0, 5);
 
         Spinner<Integer> vcfSpinner = new Spinner<>();
         vcfSpinner.setMaxWidth(60);
         SpinnerValueFactory<Integer> vcfSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(200, 300, 250);
         vcfSpinner.setValueFactory(vcfSpinnerValueFactory);
-        gridPane.add(vcfSpinner, 1, 2);
+        gridPane.add(vcfSpinner, 1, 5);
 
         return gridPane;
     }
@@ -348,7 +353,7 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void setEngineRPMLabel(int rpm) {
-        engineRPMLabel.setText(rpm + " rpm");
+        engineRPMLabel.setText("RPM's: "+rpm);
     }
 
     public void setOilAmount(int amountB, int amountW){
@@ -357,7 +362,7 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void setDegreeElevator(int degree){
-        degreeElevator.setText("Elevator "+degree+" degree");
+        degreeElevator.setText(degree+" degree");
     }
 
     private void initData() {
@@ -377,13 +382,15 @@ public class PrimaryFlightDisplayGUI extends Application {
         // Hydraulic Pump
         hydraulicPumpBodyOilAmountEntry = new PrimaryFlightDisplayEntry("HydraulicPump  (Hydraulic Pump Pressure Body)", Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount));
         hydraulicPumpWingOilAmountEntry = new PrimaryFlightDisplayEntry("HydraulicPump (Hydraulic Pump Pressure Wing)", Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount));
+        dataList.add(hydraulicPumpBodyOilAmountEntry);
+        dataList.add(hydraulicPumpWingOilAmountEntry);
 
         // Elevator
         degreeElevatorEntry = new PrimaryFlightDisplayEntry("Elevator (Elevator degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeElevator));
+        dataList.add(degreeElevatorEntry);
 
 
     }
-
 
 
     private ObservableList getInitialTableData() {
@@ -391,12 +398,6 @@ public class PrimaryFlightDisplayGUI extends Application {
         data = FXCollections.observableList(dataList);
         return data;
     }
-
-
-
-
-
-
 
 
     public void update() {

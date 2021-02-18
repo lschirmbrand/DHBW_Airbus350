@@ -13,6 +13,7 @@ public class ElevatorFactory {
 
         try {
             URL[] urls = {new File(Configuration.instance.pathToElevatorJavaArchive).toURI().toURL()};
+            //System.out.println(Configuration.instance.pathToElevatorJavaArchive);
             URLClassLoader urlClassLoader = new URLClassLoader(urls, ElevatorFactory.class.getClassLoader());
             Class elevatorClass = Class.forName("Elevator", true, urlClassLoader);
             FlightRecorder.instance.insert("ElevatorFactory", "elevatorClass: " + elevatorClass.hashCode());

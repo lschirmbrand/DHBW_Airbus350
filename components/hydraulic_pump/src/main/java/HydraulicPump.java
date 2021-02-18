@@ -4,17 +4,17 @@ public class HydraulicPump{
 
     public Port port;
 
-    private String manufacturer = "<student name 01> / <student name 02>";
-    private String type = "team <id>";
-    private String id = "<student id 01> / <student id 02>";
-    private int oil_amount = 1000;
-    private int compress_amount = 1000;
+    private String manufacturer = "4775194";
 
-    private final int compressed = 1000;
+    private final int compressed = 5000;
     private final int decompressed = 0;
-
-    private final int oil_filled = 1000;
+    private final int oil_filled = 5000;
     private final int oil_empty = 0;
+    private int compress_amount = compressed;
+
+    private int oil_amount = 1000;
+
+
 
     // private constructor
     private HydraulicPump() {
@@ -26,27 +26,28 @@ public class HydraulicPump{
         return instance;
     }
 
-    public String innerVersion() {
-        return "WeatherRadar // " + manufacturer + " - " + type + " - " + id;
-    }
+    public String innerVersion() {return "WeatherRadar // " + manufacturer;}
 
     public int innerCompress() {
         this.compress_amount = compressed;
+        this.oil_amount = oil_filled;
         return this.compress_amount;
     }
 
     public int innerCompress(int amount) {
         this.compress_amount = amount;
+        this.oil_amount = oil_filled;
         return this.compress_amount;
     }
 
     public int innerDecompress() {
         this.compress_amount = decompressed;
+        this.oil_amount = oil_empty;
         return this.compress_amount;
     }
 
     public int innerRefillOil() {
-        this.oil_amount = 1000;
+        this.oil_amount = 5000;
         return oil_amount;
     }
 
