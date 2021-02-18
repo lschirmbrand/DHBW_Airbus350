@@ -1,8 +1,6 @@
 import factory.APUFactory;
-import factory.WeatherRadarFactory;
 import logging.LogEngine;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.function.Executable;
 import recorder.FlightRecorder;
 
 import java.lang.reflect.Method;
