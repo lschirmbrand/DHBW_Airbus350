@@ -1,7 +1,7 @@
 package event.slat;
 
 public class SlatDown {
-    int degree;
+    private int degree;
 
     public SlatDown(int degree) {
         this.degree = degree;
@@ -9,5 +9,9 @@ public class SlatDown {
 
     public String toString() {
         return "Event: Slat - Down";
+    }
+
+    public int getValue() {
+        return degree;
     }
 }

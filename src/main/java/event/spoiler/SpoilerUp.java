@@ -1,7 +1,7 @@
 package event.spoiler;
 
 public class SpoilerUp {
-    int degree;
+    private int degree;
 
     public SpoilerUp(int degree) {
         this.degree = degree;
@@ -9,5 +9,9 @@ public class SpoilerUp {
 
     public String toString() {
         return "Event: Spoiler - Up";
+    }
+
+    public int getValue() {
+        return degree;
     }
 }

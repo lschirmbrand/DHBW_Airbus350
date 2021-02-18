@@ -29,14 +29,19 @@ public class PrimaryFlightDisplayGUI extends Application {
     private RadioButton weatherRadarOnButton;
     // slat
     private PrimaryFlightDisplayEntry slatDegreeEntry;
+    private Spinner<Integer> slatDegreeSpinner;
     // left_aileron
     private PrimaryFlightDisplayEntry leftAileronDegreeEntry;
+    private Spinner<Integer> leftAileronDegreeSpinner;
     // right_aileron
     private PrimaryFlightDisplayEntry rightAileronDegreeEntry;
+    private Spinner<Integer> rightAileronDegreeSpinner;
     // rudder
     private PrimaryFlightDisplayEntry rudderDegreeEntry;
+    private Spinner<Integer> rudderDegreeSpinner;
     // spoiler
     private PrimaryFlightDisplayEntry spoilerDegreeEntry;
+    private Spinner<Integer> spoilerDegreeSpinner;
     // anti_collision_light
     private PrimaryFlightDisplayEntry antiCollisionLightIsOnEntry;
     private RadioButton antiCollisionLightOffButton;
@@ -234,32 +239,82 @@ public class PrimaryFlightDisplayGUI extends Application {
         weatherRadarOnButton.setSelected(false);
         gridPane.add(weatherRadarOnButton, 8, 0);
 
+        // slat
+        Label slatDegreeLabel = new Label("Slat : ");
+        gridPane.add(slatDegreeLabel, 0, 14);
+
+        slatDegreeSpinner = new Spinner<>();
+        slatDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> slatDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-20, 0, 0);
+        slatDegreeSpinner.setValueFactory(slatDegreeSpinnerValueFactory);
+        gridPane.add(slatDegreeSpinner, 1, 14);
+        
+        // left_aileron
+        Label left_aileronDegreeLabel = new Label("Left_aileron : ");
+        gridPane.add(left_aileronDegreeLabel, 0, 15);
+
+        leftAileronDegreeSpinner = new Spinner<>();
+        leftAileronDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> left_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        leftAileronDegreeSpinner.setValueFactory(left_aileronDegreeSpinnerValueFactory);
+        gridPane.add(leftAileronDegreeSpinner, 1, 15);
+        
+        // right_aileron
+        Label right_aileronDegreeLabel = new Label("Right_aileron : ");
+        gridPane.add(right_aileronDegreeLabel, 0, 16);
+
+        rightAileronDegreeSpinner = new Spinner<>();
+        rightAileronDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> right_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        rightAileronDegreeSpinner.setValueFactory(right_aileronDegreeSpinnerValueFactory);
+        gridPane.add(rightAileronDegreeSpinner, 1, 16);
+        
+        // rudder
+        Label rudderDegreeLabel = new Label("Rudder : ");
+        gridPane.add(rudderDegreeLabel, 0, 17);
+
+        rudderDegreeSpinner = new Spinner<>();
+        rudderDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> rudderDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        rudderDegreeSpinner.setValueFactory(rudderDegreeSpinnerValueFactory);
+        gridPane.add(rudderDegreeSpinner, 1, 17);
+        
+        // spoiler
+        Label spoilerDegreeLabel = new Label("Spoiler : ");
+        gridPane.add(spoilerDegreeLabel, 0, 18);
+
+        spoilerDegreeSpinner = new Spinner<>();
+        spoilerDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> spoilerDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, 0);
+        spoilerDegreeSpinner.setValueFactory(spoilerDegreeSpinnerValueFactory);
+        gridPane.add(spoilerDegreeSpinner, 1, 18);
+        
         // anti_collision_light
         Label antiCollisionLightLabel = new Label("AntiCollisionLight : ");
-        gridPane.add(antiCollisionLightLabel, 0, 7);
+        gridPane.add(antiCollisionLightLabel, 0, 19);
 
         ToggleGroup antiCollisionLightToggleGroup = new ToggleGroup();
 
         antiCollisionLightOffButton = new RadioButton("Off");
         antiCollisionLightOffButton.setToggleGroup(antiCollisionLightToggleGroup);
         antiCollisionLightOffButton.setSelected(true);
-        gridPane.add(antiCollisionLightOffButton, 1, 7);
+        gridPane.add(antiCollisionLightOffButton, 1, 19);
 
         antiCollisionLightOnButton = new RadioButton("On");
         antiCollisionLightOnButton.setToggleGroup(antiCollisionLightToggleGroup);
         antiCollisionLightOnButton.setSelected(false);
-        gridPane.add(antiCollisionLightOnButton, 2, 7);
+        gridPane.add(antiCollisionLightOnButton, 2, 19);
 
         // --- insert section: end
 
         Label frequencyLabel = new Label("Frequency : ");
-        gridPane.add(frequencyLabel, 0, 15);
+        gridPane.add(frequencyLabel, 0, 2);
 
         Spinner<Integer> vcfSpinner = new Spinner<>();
         vcfSpinner.setMaxWidth(60);
         SpinnerValueFactory<Integer> vcfSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(200, 300, 250);
         vcfSpinner.setValueFactory(vcfSpinnerValueFactory);
-        gridPane.add(vcfSpinner, 1, 15);
+        gridPane.add(vcfSpinner, 1, 2);
 
         return gridPane;
     }
@@ -290,6 +345,31 @@ public class PrimaryFlightDisplayGUI extends Application {
             weatherRadarOffButton.setSelected(true);
             weatherRadarOnButton.setSelected(false);
         }
+    }
+
+    // slat
+    public void setSlatDegreeValue(int slatDegreeValue) {
+        slatDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-20, 0, slatDegreeValue));
+    }
+
+    // left_aileron
+    public void setLeftAileronDegreeValue(int leftAileronDegreeValue) {
+        leftAileronDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, leftAileronDegreeValue));
+    }
+
+    // right_aileron
+    public void setRightAileronDegreeValue(int rightAileronDegreeValue) {
+        rightAileronDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, rightAileronDegreeValue));
+    }
+
+    // rudder
+    public void setRudderDegreeValue(int rudderDegreeValue) {
+        rudderDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, rudderDegreeValue));
+    }
+
+    // spoiler
+    public void setSpoilerDegreeValue(int spoilerDegreeValue) {
+        spoilerDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, spoilerDegreeValue));
     }
 
     // anti_collision_light
@@ -341,14 +421,19 @@ public class PrimaryFlightDisplayGUI extends Application {
         setWeatherRadarToggleGroup(PrimaryFlightDisplay.instance.isWeatherRadarOn);
         // slat 
         slatDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeSlat));
+        setSlatDegreeValue(PrimaryFlightDisplay.instance.degreeSlat);
         // left_aileron
         leftAileronDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeLeftAileron));
+        setLeftAileronDegreeValue(PrimaryFlightDisplay.instance.degreeLeftAileron);
         // right_aileron
         rightAileronDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeRightAileron));
+        setRightAileronDegreeValue(PrimaryFlightDisplay.instance.degreeRightAileron);
         // rudder
         rudderDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeRudder));
+        setRudderDegreeValue(PrimaryFlightDisplay.instance.degreeRudder);
         // spoiler
         spoilerDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeSpoiler));
+        setSpoilerDegreeValue(PrimaryFlightDisplay.instance.degreeSpoiler);
         // anti_collision_light
         antiCollisionLightIsOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
         setAntiCollisionLightToggleGroup(PrimaryFlightDisplay.instance.isAntiCollisionLightOn);

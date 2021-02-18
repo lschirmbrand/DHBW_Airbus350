@@ -1,7 +1,7 @@
 package event.rudder;
 
 public class RudderRight {
-    int degree;
+    private int degree;
 
     public RudderRight(int degree) {
         this.degree = degree;
@@ -9,5 +9,9 @@ public class RudderRight {
 
     public String toString() {
         return "Event: Rubber - Right";
+    }
+
+    public int getValue() {
+        return degree;
     }
 }

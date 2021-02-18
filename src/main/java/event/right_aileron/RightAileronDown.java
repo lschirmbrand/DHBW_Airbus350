@@ -1,7 +1,7 @@
 package event.right_aileron;
 
 public class RightAileronDown {
-    int degree;
+    private int degree;
 
     public RightAileronDown(int degree) {
         this.degree = degree;
@@ -9,5 +9,9 @@ public class RightAileronDown {
 
     public String toString() {
         return "Event: RightAileron - Down";
+    }
+
+    public int getValue() {
+        return degree;
     }
 }

@@ -1,4 +1,16 @@
-ProcedureTest.java
- ProcedureTest
+TestSlat.java
+ TestSlat
+TestAntiCollisionLight.java
+ TestAntiCollisionLight
 TestWeatherRadar.java
  TestWeatherRadar
+TestRudder.java
+ TestRudder
+TestSpoiler.java
+ TestSpoiler
+ProcedureTest.java
+ ProcedureTest
+TestRightAileron.java
+ TestRightAileron
+TestLeftAileron.java
+ TestLeftAileron

@@ -38,7 +38,7 @@ public enum Configuration {
     public int numberOfSpoiler = 8;
 
     // anti_collision_light
-    public String pathToAntiCollisionLightJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "anti_collision_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "anti_collision_light.jar";
+    public String pathToAntiCollisionLightJavaArchive = commonPathToJavaArchive + "light" + fileSeparator + "anti_collision_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "anti_collision_light.jar";
     public int numberOfAntiCollisionLight = 2;
 
 }

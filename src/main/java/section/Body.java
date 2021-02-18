@@ -190,10 +190,10 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfRudder; i++) {
-                Method rightMethod = rudderPortList.get(i).getClass().getDeclaredMethod("right");
+                Method rightMethod = rudderPortList.get(i).getClass().getDeclaredMethod("right", Integer.TYPE);
                 LogEngine.instance.write("rightMethod = " + rightMethod);
 
-                int degree = (int) rightMethod.invoke(rudderPortList.get(i));
+                int degree = (int) rightMethod.invoke(rudderPortList.get(i), rudderRight.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeRudder = degree;
@@ -216,10 +216,10 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfRudder; i++) {
-                Method leftMethod = rudderPortList.get(i).getClass().getDeclaredMethod("left");
+                Method leftMethod = rudderPortList.get(i).getClass().getDeclaredMethod("left", Integer.TYPE);
                 LogEngine.instance.write("leftMethod = " + leftMethod);
 
-                int degree = (int) leftMethod.invoke(rudderPortList.get(i));
+                int degree = (int) leftMethod.invoke(rudderPortList.get(i), rudderLeft.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeRudder = degree;

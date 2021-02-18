@@ -114,13 +114,17 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfSlat; i++) {
-                Method downMethod = slatPortList.get(i).getClass().getDeclaredMethod("down");
+                Method downMethod = slatPortList.get(i).getClass().getDeclaredMethod("down", Integer.TYPE);
+                System.out.println(0.5);
                 LogEngine.instance.write("downMethod = " + downMethod);
 
-                int degree = (int) downMethod.invoke(slatPortList.get(i));
+                System.out.println(1);
+                int degree = (int) downMethod.invoke(slatPortList.get(i), slatDown.getValue());
+                System.out.println(1.5);
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeSlat = degree;
+                System.out.println(2.5);
                 FlightRecorder.instance.insert("Wing", "Slat (degree): " + degree);
 
                 LogEngine.instance.write("+");
@@ -140,10 +144,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfSlat; i++) {
-                Method upMethod = slatPortList.get(i).getClass().getDeclaredMethod("up");
+                Method upMethod = slatPortList.get(i).getClass().getDeclaredMethod("up", Integer.TYPE);
                 LogEngine.instance.write("upMethod = " + upMethod);
 
-                int degree = (int) upMethod.invoke(slatPortList.get(i));
+                int degree = (int) upMethod.invoke(slatPortList.get(i), slatUp.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeSlat = degree;
@@ -246,10 +250,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfLeftAileron; i++) {
-                Method downMethod = leftAileronPortList.get(i).getClass().getDeclaredMethod("down");
+                Method downMethod = leftAileronPortList.get(i).getClass().getDeclaredMethod("down", Integer.TYPE);
                 LogEngine.instance.write("downMethod = " + downMethod);
 
-                int degree = (int) downMethod.invoke(leftAileronPortList.get(i));
+                int degree = (int) downMethod.invoke(leftAileronPortList.get(i), leftAileronDown.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeLeftAileron = degree;
@@ -272,10 +276,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfLeftAileron; i++) {
-                Method upMethod = leftAileronPortList.get(i).getClass().getDeclaredMethod("up");
+                Method upMethod = leftAileronPortList.get(i).getClass().getDeclaredMethod("up", Integer.TYPE);
                 LogEngine.instance.write("upMethod = " + upMethod);
 
-                int degree = (int) upMethod.invoke(leftAileronPortList.get(i));
+                int degree = (int) upMethod.invoke(leftAileronPortList.get(i), leftAileronUp.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeLeftAileron = degree;
@@ -378,10 +382,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfRightAileron; i++) {
-                Method downMethod = rightAileronPortList.get(i).getClass().getDeclaredMethod("down");
+                Method downMethod = rightAileronPortList.get(i).getClass().getDeclaredMethod("down", Integer.TYPE);
                 LogEngine.instance.write("downMethod = " + downMethod);
 
-                int degree = (int) downMethod.invoke(rightAileronPortList.get(i));
+                int degree = (int) downMethod.invoke(rightAileronPortList.get(i), rightAileronDown.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeRightAileron = degree;
@@ -404,10 +408,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfRightAileron; i++) {
-                Method upMethod = rightAileronPortList.get(i).getClass().getDeclaredMethod("up");
+                Method upMethod = rightAileronPortList.get(i).getClass().getDeclaredMethod("up", Integer.TYPE);
                 LogEngine.instance.write("upMethod = " + upMethod);
 
-                int degree = (int) upMethod.invoke(rightAileronPortList.get(i));
+                int degree = (int) upMethod.invoke(rightAileronPortList.get(i), rightAileronUp.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeRightAileron = degree;
@@ -484,10 +488,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfSpoiler; i++) {
-                Method downMethod = spoilerPortList.get(i).getClass().getDeclaredMethod("down");
+                Method downMethod = spoilerPortList.get(i).getClass().getDeclaredMethod("down", Integer.TYPE);
                 LogEngine.instance.write("downMethod = " + downMethod);
 
-                int degree = (int) downMethod.invoke(spoilerPortList.get(i));
+                int degree = (int) downMethod.invoke(spoilerPortList.get(i), spoilerDown.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeSpoiler = degree;
@@ -510,10 +514,10 @@ public class Wing extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfSpoiler; i++) {
-                Method upMethod = spoilerPortList.get(i).getClass().getDeclaredMethod("up");
+                Method upMethod = spoilerPortList.get(i).getClass().getDeclaredMethod("up", Integer.TYPE);
                 LogEngine.instance.write("upMethod = " + upMethod);
 
-                int degree = (int) upMethod.invoke(spoilerPortList.get(i));
+                int degree = (int) upMethod.invoke(spoilerPortList.get(i), spoilerUp.getValue());
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeSpoiler = degree;
