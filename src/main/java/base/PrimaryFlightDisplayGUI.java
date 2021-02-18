@@ -368,11 +368,11 @@ public class PrimaryFlightDisplayGUI extends Application {
         apuShutdownButton = new RadioButton("Off");
         apuShutdownButton.setToggleGroup(apuToggleGroup);
         apuShutdownButton.setSelected(true);
-        gridPane.add(apuShutdownButton, 1, 1);
+        gridPane.add(apuShutdownButton, 2, 1);
 
         apuStartedButton = new RadioButton("On");
         apuStartedButton.setToggleGroup(apuToggleGroup);
-        gridPane.add(apuStartedButton, 2, 1);
+        gridPane.add(apuStartedButton, 1, 1);
 
         apuRPMLabel = new Label("0 rpm");
         gridPane.add(apuRPMLabel, 3, 1);
@@ -398,7 +398,6 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(engineRPMLabel, 3,10);
 
         // gear
-
         Label gearLabel = new Label("Gear : ");
         gearLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(gearLabel, 0, 11);
@@ -416,7 +415,6 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(gearBrakePercentageLabel, 3, 11);
 
         // Hydraulic Pump
-
         Label hydraulicPumpLabel = new Label("Hydraulic Pump:");
         hydraulicPumpLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(hydraulicPumpLabel, 0, 12);
@@ -445,14 +443,11 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(temperatureAirConditioningLabel, 3, 13);
 
         // Elevator
-
         Label elevatorLabel = new Label("Elevators");
         elevatorLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(elevatorLabel,0,14);
         degreeElevator = new Label("90 \u00B0");
         gridPane.add(degreeElevator, 1,14);
-
-
 
         // --- insert section: end
 
