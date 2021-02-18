@@ -1,60 +1,59 @@
-public class OxygenBottle implements IOxygenBottle {
+public class OxygenBottle {
+    // static instance
+    private static OxygenBottle instance = new OxygenBottle();
+    // port
+    public Port port;
+    private String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private String type = "Team 05";
+    private String id = "9008480 / 1253402";
+    private int amount = 100;
 
-        private String manufacturer;
-        private String type;
-        private String id;
-        private int amount = 100;
+    // private constructor
+    private OxygenBottle() {
+        port = new Port();
+    }
+
+    public static OxygenBottle getInstance() {
+        return instance;
+    }
+
+    //inner methods
+    public String innerVersion() {
+        return "OxygenBottle // " + manufacturer + " - " + type + " - " + id;
+    }
 
 
-        public String getManufacturer() {
-            return manufacturer;
-        }
+    public int innerTakeOut(int amount) {
+        return this.amount -= amount;
+    }
 
-        public void setManufacturer(String manufacturer) {
-            this.manufacturer = manufacturer;
-        }
 
-        public String getType() {
-            return type;
-        }
+    public int innerRefill() {
+        return this.amount = 100;
+    }
 
-        public void setType(String type) {
-            this.type = type;
-        }
 
-        public String getId() {
-            return id;
-        }
+    public int innerRefill(int amount) {
+        return this.amount += amount;
+    }
 
-        public void setId(String id) {
-            this.id = id;
-        }
+    //inner class port
+    public class Port implements IOxygenBottle {
 
-        public int getAmount() {
-            return amount;
-        }
-
-        public void setAmount(int amount) {
-            this.amount = amount;
-        }
-
-        @Override
         public String version() {
-            return null;
+            return innerVersion();
         }
 
-        @Override
         public int takeOut(int amount) {
-            return 0;
+            return innerTakeOut(amount);
         }
 
-        @Override
         public int refill() {
-            return 0;
+            return innerRefill();
         }
 
-        @Override
         public int refill(int amount) {
-            return 0;
+            return innerRefill(amount);
         }
     }
+}

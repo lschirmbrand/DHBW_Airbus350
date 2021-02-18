@@ -5,6 +5,7 @@ import recorder.FlightRecorder;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Arrays;
 
 public class Factory {
     public static Object build(String name, String path) {
@@ -18,9 +19,9 @@ public class Factory {
 
             Object instance = clazz.getMethod("getInstance").invoke(null);
             FlightRecorder.instance.insert(name + "Factory", name + "Instance: " + instance.hashCode());
-            port = instance;
-/*            port = clazz.getDeclaredField("port").get(instance);
-            FlightRecorder.instance.insert(name + "Factory", name + "Port: " + port.hashCode());*/
+
+            port = clazz.getDeclaredField("port").get(instance);
+            FlightRecorder.instance.insert(name + "Factory", name + "Port: " + port.hashCode());
         } catch (Exception e) {
             e.printStackTrace();
         }

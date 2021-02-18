@@ -1,69 +1,73 @@
-public class SatCom implements ISatCom {
-
-    private String manufacturer;
-    private String type;
-    private String id;
+public class SatCom {
+    // static instance
+    private static SatCom instance = new SatCom();
+    // port
+    public Port port;
+    private String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private String type = "Team 05";
+    private String id = "9008480 / 1253402";
     private boolean isConnected;
 
-    public String getManufacturer() {
-        return manufacturer;
+    // private constructor
+    private SatCom() {
+        port = new Port();
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    // instance return
+    public static SatCom getInstance() {
+        return instance;
     }
 
-    public String getType() {
-        return type;
+    // inner Methods
+    public String innerVersion() {
+        return "SatCom // " + manufacturer + " - " + type + " - " + id;
+    }
+    public boolean innerOn() {
+        return isConnected = true;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public boolean isConnected() {
+    public boolean innerConnect(String satalite, String frequency) {
         return isConnected;
     }
 
-    public void setConnected(boolean connected) {
-        isConnected = connected;
+    public void innerSend(String request) {
+
     }
 
-    @Override
-    public String version() {
+    public String innerReceive() {
         return null;
     }
 
-    @Override
-    public boolean on() {
-        return false;
+    public boolean innerOff() {
+        return isConnected = false;
     }
 
-    @Override
-    public boolean connect(String satalite, String frequency) {
-        return false;
-    }
+    // inner Port
+    public class Port implements ISatCom {
 
-    @Override
-    public void send(String request) {
+        public String version() {
+            return innerVersion();
+        }
 
-    }
+        public boolean on() {
+            return innerOn();
+        }
 
-    @Override
-    public String receive() {
-        return null;
-    }
+        public boolean connect(String satalite, String frequency) {
+            return innerConnect(satalite,frequency);
+        }
 
-    @Override
-    public boolean off() {
-        return false;
+        public void send(String request) {
+            innerSend(request);
+        }
+
+        public String receive() {
+            return innerReceive();
+        }
+
+        public boolean off() {
+            return innerOff();
+        }
     }
 }
+
