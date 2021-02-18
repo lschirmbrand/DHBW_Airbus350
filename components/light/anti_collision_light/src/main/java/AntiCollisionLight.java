@@ -3,9 +3,7 @@ public class AntiCollisionLight {
     private static AntiCollisionLight instance = new AntiCollisionLight();
     // port
     public Port port;
-    private String manufacturer = "<student name 01> / <student name 02>";
-    private String type = "team <id>";
-    private String id = "<student id 01> / <student id 02>";
+    private String manufacturer = "<3106335> / <4669114>";
     private boolean isOn = false;
 
     // private constructor
@@ -20,7 +18,7 @@ public class AntiCollisionLight {
 
     // inner methods
     public String innerVersion() {
-        return "AntiCollisionLight // " + manufacturer + " - " + type + " - " + id;
+        return "AntiCollisionLight // " + manufacturer;
     }
 
     public boolean innerOn() {

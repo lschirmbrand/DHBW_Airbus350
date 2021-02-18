@@ -3,9 +3,7 @@ public class LeftAileron {
     private static LeftAileron instance = new LeftAileron();
     // port
     public Port port;
-    private String manufacturer = "<student name 01> / <student name 02>";
-    private String type = "02";
-    private String id = "<3106335> / <4669114>";
+    private String manufacturer = "<3106335> / <4669114>";
     private int degree = 0;
 
     // private constructor
@@ -20,7 +18,7 @@ public class LeftAileron {
 
     // inner methods
     public String innerVersion() {
-        return "LeftAileron // " + manufacturer + " - " + type + " - " + id;
+        return "LeftAileron // " + manufacturer;
     }
 
     public int innerNeutral() {
