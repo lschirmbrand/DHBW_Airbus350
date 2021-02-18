@@ -3,9 +3,7 @@ public class APU {
     private static APU instance = new APU();
     // port
     public Port port;
-    private String manufacturer = "<student name 01> / <student name 02>";
-    private String type = "team 01";
-    private String id = "4775194 / 8864957";
+    private String manufacturer = "4775194 / 8864957";
     private boolean isStarted = false;
     private int rpm = 0;
 
@@ -21,7 +19,7 @@ public class APU {
 
     // inner methods
     public String innerVersion() {
-        return "APU // " + manufacturer + " - " + type + " - " + id;
+        return "APU // " + manufacturer;
     }
 
     public boolean innerStart() {
