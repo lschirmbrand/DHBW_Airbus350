@@ -4,7 +4,6 @@ import org.junit.jupiter.api.*;
 import recorder.FlightRecorder;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
