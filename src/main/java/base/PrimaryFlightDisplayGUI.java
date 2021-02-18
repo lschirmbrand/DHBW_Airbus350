@@ -1,6 +1,5 @@
 package base;
 
-import event.hydraulicPump.HydraulicPumpWingRefillOil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,20 +29,20 @@ public class PrimaryFlightDisplayGUI extends Application {
     private RadioButton airConditioningOffButton;
     private RadioButton airConditioningOnButton;
     private PrimaryFlightDisplayEntry temperatureAirConditioningEntry;
-    private TextField temperatureAirConditioningField;
+    private Label temperatureAirConditioningLabel;
 
     // apu
     private PrimaryFlightDisplayEntry apuIsStartedEntry;
     private RadioButton apuStartedButton;
     private RadioButton apuShutdownButton;
     private PrimaryFlightDisplayEntry apuRPMEntry;
-    private TextField apuRPMField;
+    private Label apuRPMLabel;
 
     // gear
     private PrimaryFlightDisplayEntry gearIsDownEntry;
     private ComboBox<String> gearComboBox;
     private PrimaryFlightDisplayEntry gearBrakePercentageEntry;
-    private TextField gearBrakeField;
+    private Label gearBrakePercentageLabel;
 
     // weather_radar
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
@@ -261,49 +260,12 @@ public class PrimaryFlightDisplayGUI extends Application {
         apuStartedButton.setToggleGroup(apuToggleGroup);
         gridPane.add(apuStartedButton, 2, 1);
 
-        apuRPMField = new TextField("0 rpm");
-        gridPane.add(apuRPMField, 3, 1);
-
-        // gear
-
-        Label gearLabel = new Label("Gear : ");
-        gearLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(gearLabel, 7, 1);
-
-        gearComboBox = new ComboBox<>();
-        gearComboBox.getItems().addAll("down", "up");
-        gearComboBox.setValue("down");
-        gearComboBox.setEditable(false);
-        gridPane.add(gearComboBox, 8, 1);
-
-        Label gearBrakeLabel = new Label("Brake: ");
-        gridPane.add(gearBrakeLabel, 9, 1);
-
-        gearBrakeField = new TextField(0 + "%");
-        gridPane.add(gearBrakeField, 10, 1);
-
-        // air_conditioning
-        Label airConditioningLabel = new Label("AirConditioning : ");
-        airConditioningLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(airConditioningLabel, 0, 2);
-
-        ToggleGroup ACToggleGroup = new ToggleGroup();
-
-        airConditioningOffButton = new RadioButton("Off");
-        airConditioningOffButton.setToggleGroup(ACToggleGroup);
-        airConditioningOffButton.setSelected(true);
-        gridPane.add(airConditioningOffButton, 1, 2);
-
-        airConditioningOnButton = new RadioButton("On");
-        airConditioningOnButton.setToggleGroup(ACToggleGroup);
-        gridPane.add(airConditioningOnButton, 2, 2);
-
-        temperatureAirConditioningField = new TextField("0 \u2103");
-        gridPane.add(temperatureAirConditioningField, 3, 2);
-
+        apuRPMLabel = new Label("0 rpm");
+        gridPane.add(apuRPMLabel, 3, 1);
 
         // engine
         Label engineLabel = new Label("Engine : ");
+        engineLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(engineLabel, 4,1);
 
         ToggleGroup engineToggleGroup = new ToggleGroup();
@@ -321,23 +283,60 @@ public class PrimaryFlightDisplayGUI extends Application {
         engineRPMLabel = new Label("RPM's: 0");
         gridPane.add(engineRPMLabel, 7,1);
 
+        // gear
 
+        Label gearLabel = new Label("Gear : ");
+        gearLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(gearLabel, 8, 1);
+
+        gearComboBox = new ComboBox<>();
+        gearComboBox.getItems().addAll("down", "up");
+        gearComboBox.setValue("down");
+        gearComboBox.setEditable(false);
+        gridPane.add(gearComboBox, 9, 1);
+
+        Label gearBrakeLabel = new Label("Brake: ");
+        gridPane.add(gearBrakeLabel, 10, 1);
+
+        gearBrakePercentageLabel = new Label(0 + "%");
+        gridPane.add(gearBrakePercentageLabel, 11, 1);
 
         // Hydraulic Pump
 
-        Label HydraulicPumpLabel = new Label("Hydraulic Pump:");
-        gridPane.add(HydraulicPumpLabel, 10, 1);
+        Label hydraulicPumpLabel = new Label("Hydraulic Pump:");
+        hydraulicPumpLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(hydraulicPumpLabel, 12, 1);
         hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
-        gridPane.add(hydraulicPumpBodyOilAmountLabel, 11,1);
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 13,1);
         hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
-        gridPane.add(hydraulicPumpWingOilAmountLabel, 12,1);
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 14,1);
+
+        // air_conditioning
+        Label airConditioningLabel = new Label("AirConditioning : ");
+        airConditioningLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(airConditioningLabel, 0, 2);
+
+        ToggleGroup ACToggleGroup = new ToggleGroup();
+
+        airConditioningOffButton = new RadioButton("Off");
+        airConditioningOffButton.setToggleGroup(ACToggleGroup);
+        airConditioningOffButton.setSelected(true);
+        gridPane.add(airConditioningOffButton, 1, 2);
+
+        airConditioningOnButton = new RadioButton("On");
+        airConditioningOnButton.setToggleGroup(ACToggleGroup);
+        gridPane.add(airConditioningOnButton, 2, 2);
+
+        temperatureAirConditioningLabel = new Label("0 \u2103");
+        gridPane.add(temperatureAirConditioningLabel, 3, 2);
 
         // Elevator
 
-        Label elevatorLabel = new Label("Elevators at: ");
-        gridPane.add(elevatorLabel,0,2);
-        degreeElevator = new Label("90 degree");
-        gridPane.add(degreeElevator, 1,2);
+        Label elevatorLabel = new Label("Elevators");
+        elevatorLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(elevatorLabel,0,3);
+        degreeElevator = new Label("90 \u00B0");
+        gridPane.add(degreeElevator, 1,3);
 
 
 
@@ -389,8 +388,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         apuShutdownButton.setSelected(!isAPUStarted);
     }
 
-    public void setAPURPMField(int rpm) {
-        apuRPMField.setText(rpm + " rpm");
+    public void setAPURPMLabel(int rpm) {
+        apuRPMLabel.setText(rpm + " rpm");
     }
 
     // gear
@@ -398,8 +397,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         gearComboBox.setValue(isGearDown ? "down" : "up");
     }
 
-    public void setGearBrakeField(int percentage) {
-        gearBrakeField.setText("Brake: " + percentage + "%");
+    public void setGearBrakePercentageLabel(int percentage) {
+        gearBrakePercentageLabel.setText(percentage + "%");
     }
 
     // air_conditioning
@@ -408,8 +407,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         airConditioningOffButton.setSelected(!isAirConditioningOn);
     }
 
-    public void setTemperatureAirConditioningField(int temperature) {
-        temperatureAirConditioningField.setText(temperature + " \u2103");
+    public void setTemperatureAirConditioningLabel(int temperature) {
+        temperatureAirConditioningLabel.setText(temperature + " \u2103");
     }
 
     public void setEngineToggleGroup(boolean isEngineStarted) {
@@ -432,7 +431,7 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void setDegreeElevator(int degree){
-        degreeElevator.setText(degree+" degree");
+        degreeElevator.setText(degree+" \u00B0");
     }
 
     private void initData() {
@@ -495,20 +494,20 @@ public class PrimaryFlightDisplayGUI extends Application {
         apuIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
         setApuToggleGroup(PrimaryFlightDisplay.instance.isAPUStarted);
         apuRPMEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.rpmAPU));
-        setAPURPMField(PrimaryFlightDisplay.instance.rpmAPU);
+        setAPURPMLabel(PrimaryFlightDisplay.instance.rpmAPU);
 
         // gear
         gearIsDownEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isGearDown));
         setGearComboBox(PrimaryFlightDisplay.instance.isGearDown);
         gearBrakePercentageEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.gearBrakePercentage));
-        setGearBrakeField(PrimaryFlightDisplay.instance.gearBrakePercentage);
+        setGearBrakePercentageLabel(PrimaryFlightDisplay.instance.gearBrakePercentage);
 
         // air_conditioning
 
         airConditioningOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAirConditioningOn));
         setAirConditioningToggleGroup(PrimaryFlightDisplay.instance.isAirConditioningOn);
         temperatureAirConditioningEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.temperatureAirConditioning));
-        setTemperatureAirConditioningField(PrimaryFlightDisplay.instance.temperatureAirConditioning);
+        setTemperatureAirConditioningLabel(PrimaryFlightDisplay.instance.temperatureAirConditioning);
 
         //engine
         engineIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isEngineStarted));
