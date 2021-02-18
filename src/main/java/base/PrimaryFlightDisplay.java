@@ -18,4 +18,16 @@ public enum PrimaryFlightDisplay {
     // weather-radar
     public boolean isWeatherRadarOn;
 
+
+    //Engine
+    public boolean isEngineStarted;
+    public int rpmEngine;
+    public boolean isEngineFire;
+
+    //HydraulicPump
+    public int hydraulicPumpBodyOilAmount;
+    public int hydraulicPumpWingOilAmount;
+
+    //Elevator
+    public int degreeElevator;
 }

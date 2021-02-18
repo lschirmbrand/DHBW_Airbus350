@@ -1,5 +1,6 @@
 package base;
 
+import event.hydraulicPump.HydraulicPumpWingRefillOil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,6 +49,26 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
     private RadioButton weatherRadarOnButton;
+
+
+    // engine
+    private PrimaryFlightDisplayEntry engineIsStartedEntry;
+    private RadioButton engineOffButton;
+    private RadioButton engineOnButton;
+    private PrimaryFlightDisplayEntry engineRPMEntry;
+    private Label engineRPMLabel;
+
+
+    // HydraulicPump
+    private PrimaryFlightDisplayEntry hydraulicPumpBodyOilAmountEntry;
+    private PrimaryFlightDisplayEntry hydraulicPumpWingOilAmountEntry;
+    private Label hydraulicPumpBodyOilAmountLabel;
+    private Label hydraulicPumpWingOilAmountLabel;
+
+
+    // Elevator
+    private PrimaryFlightDisplayEntry degreeElevatorEntry;
+    private Label degreeElevator;
 
     public static void main(String... args) {
         LogEngine.instance.init();
@@ -280,16 +301,56 @@ public class PrimaryFlightDisplayGUI extends Application {
         temperatureAirConditioningField = new TextField("0 \u2103");
         gridPane.add(temperatureAirConditioningField, 3, 2);
 
+
+        // engine
+        Label engineLabel = new Label("Engine : ");
+        gridPane.add(engineLabel, 4,1);
+
+        ToggleGroup engineToggleGroup = new ToggleGroup();
+
+        engineOffButton = new RadioButton("Off");
+        engineOffButton.setToggleGroup(engineToggleGroup);
+        engineOffButton.setSelected(true);
+        gridPane.add(engineOffButton, 5, 1);
+
+        engineOnButton = new RadioButton("On");
+        engineOnButton.setToggleGroup(engineToggleGroup);
+        engineOffButton.setSelected(false);
+        gridPane.add(engineOnButton, 6, 1);
+
+        engineRPMLabel = new Label("RPM's: 0");
+        gridPane.add(engineRPMLabel, 7,1);
+
+
+
+        // Hydraulic Pump
+
+        Label HydraulicPumpLabel = new Label("Hydraulic Pump:");
+        gridPane.add(HydraulicPumpLabel, 10, 1);
+        hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 11,1);
+        hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 12,1);
+
+        // Elevator
+
+        Label elevatorLabel = new Label("Elevators at: ");
+        gridPane.add(elevatorLabel,0,2);
+        degreeElevator = new Label("90 degree");
+        gridPane.add(degreeElevator, 1,2);
+
+
+
         // --- insert section: end
 
 //        Label frequencyLabel = new Label("Frequency : ");
-//        gridPane.add(frequencyLabel, 0, 15);
+//        gridPane.add(frequencyLabel, 0, 5);
 //
 //        Spinner<Integer> vcfSpinner = new Spinner<>();
 //        vcfSpinner.setMaxWidth(60);
 //        SpinnerValueFactory<Integer> vcfSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(200, 300, 250);
 //        vcfSpinner.setValueFactory(vcfSpinnerValueFactory);
-//        gridPane.add(vcfSpinner, 1, 15);
+//        gridPane.add(vcfSpinner, 1, 5);
 
         return gridPane;
     }
@@ -351,6 +412,29 @@ public class PrimaryFlightDisplayGUI extends Application {
         temperatureAirConditioningField.setText(temperature + " \u2103");
     }
 
+    public void setEngineToggleGroup(boolean isEngineStarted) {
+        if (isEngineStarted) {
+            engineOffButton.setSelected(false);
+            engineOnButton.setSelected(true);
+        } else {
+            engineOffButton.setSelected(true);
+            engineOnButton.setSelected(false);
+        }
+    }
+
+    public void setEngineRPMLabel(int rpm) {
+        engineRPMLabel.setText("RPM's: "+rpm);
+    }
+
+    public void setOilAmount(int amountB, int amountW){
+        hydraulicPumpBodyOilAmountLabel.setText(amountB + " psi at Body");
+        hydraulicPumpWingOilAmountLabel.setText(amountW + " psi at Wing");
+    }
+
+    public void setDegreeElevator(int degree){
+        degreeElevator.setText(degree+" degree");
+    }
+
     private void initData() {
         dataList = new ArrayList<>();
 
@@ -375,6 +459,25 @@ public class PrimaryFlightDisplayGUI extends Application {
         dataList.add(airConditioningOnEntry);
         temperatureAirConditioningEntry = new PrimaryFlightDisplayEntry("AirConditioning (temperature)", Integer.toString(PrimaryFlightDisplay.instance.temperatureAirConditioning));
         dataList.add(temperatureAirConditioningEntry);
+
+        // engine
+        engineIsStartedEntry = new PrimaryFlightDisplayEntry("Engine (isStarted)", Boolean.toString(PrimaryFlightDisplay.instance.isEngineStarted));
+        dataList.add(engineIsStartedEntry);
+
+        engineRPMEntry = new PrimaryFlightDisplayEntry("Engine (RPM)", Integer.toString(PrimaryFlightDisplay.instance.rpmEngine));
+        dataList.add(engineRPMEntry);
+
+        // Hydraulic Pump
+        hydraulicPumpBodyOilAmountEntry = new PrimaryFlightDisplayEntry("HydraulicPump  (Hydraulic Pump Pressure Body)", Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount));
+        hydraulicPumpWingOilAmountEntry = new PrimaryFlightDisplayEntry("HydraulicPump (Hydraulic Pump Pressure Wing)", Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount));
+        dataList.add(hydraulicPumpBodyOilAmountEntry);
+        dataList.add(hydraulicPumpWingOilAmountEntry);
+
+        // Elevator
+        degreeElevatorEntry = new PrimaryFlightDisplayEntry("Elevator (Elevator degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeElevator));
+        dataList.add(degreeElevatorEntry);
+
+
     }
 
     private ObservableList getInitialTableData() {
@@ -406,6 +509,22 @@ public class PrimaryFlightDisplayGUI extends Application {
         setAirConditioningToggleGroup(PrimaryFlightDisplay.instance.isAirConditioningOn);
         temperatureAirConditioningEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.temperatureAirConditioning));
         setTemperatureAirConditioningField(PrimaryFlightDisplay.instance.temperatureAirConditioning);
+
+        //engine
+        engineIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isEngineStarted));
+        setEngineToggleGroup(PrimaryFlightDisplay.instance.isEngineStarted);
+
+        engineRPMEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.rpmEngine));
+        setEngineRPMLabel(PrimaryFlightDisplay.instance.rpmEngine);
+
+        // hydraulic pump
+        hydraulicPumpBodyOilAmountEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount));
+        hydraulicPumpWingOilAmountEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount));
+        setOilAmount(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount, PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount);
+
+        // Elevator
+        degreeElevatorEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeElevator));
+        setDegreeElevator(PrimaryFlightDisplay.instance.degreeElevator);
 
         tableView.refresh();
     }

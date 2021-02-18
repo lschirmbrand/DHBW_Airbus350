@@ -10,12 +10,18 @@ import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
 import event.gear.*;
+import event.elevator.*;
+import event.hydraulicPump.HydraulicPumpBodyCompress;
+import event.hydraulicPump.HydraulicPumpBodyRefillOil;
+import event.hydraulicPump.HydraulicPumpWingDecompress;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
 import event.weather_radar.WeatherRadarScan;
 import factory.APUFactory;
 import factory.AirConditioningFactory;
 import factory.GearFactory;
+import factory.EngineFactory;
+import factory.HydraulicPumpFactory;
 import factory.WeatherRadarFactory;
 import logging.LogEngine;
 import recorder.FlightRecorder;
@@ -28,12 +34,17 @@ public class Body extends Subscriber {
     private ArrayList<Object> apuPortList;
     private ArrayList<Object> gearPortList;
     private ArrayList<Object> weatherRadarPortList;
+    private ArrayList<Object> hydraulicPumpPortList;
+    private ArrayList<Object> elevatorPortList;
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
         apuPortList = new ArrayList<>();
         gearPortList = new ArrayList<>();
         weatherRadarPortList = new ArrayList<>();
+        hydraulicPumpPortList = new ArrayList<>();
+        elevatorPortList = new ArrayList<>();
+
         build();
     }
 
@@ -69,6 +80,12 @@ public class Body extends Subscriber {
 
         for (int i = 0; i < Configuration.instance.numberOfWeatherRadar; i++) {
             weatherRadarPortList.add(WeatherRadarFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpBody; i++) {
+            hydraulicPumpPortList.add(HydraulicPumpFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
+            elevatorPortList.add(EngineFactory.build());
         }
     }
 
@@ -511,5 +528,73 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("Body", "receive(" + weatherRadarScan.toString() + ")");
     }
 
-    // ----------------------------------------------------------------------------------------------------------------
+    // --- HydraulicPump -------------------------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(HydraulicPumpBodyCompress hydraulicPumpBodyCompress) {
+        LogEngine.instance.write("+ Body.receive(" + hydraulicPumpBodyCompress.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + hydraulicPumpBodyCompress.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpBody; i++) {
+                Method hydraulicPumpBodyCompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("compress", int.class);
+                LogEngine.instance.write("hydraulicPumpBodyCompressMethod = " + hydraulicPumpBodyCompressMethod);
+
+                int compressionAmount = (int) hydraulicPumpBodyCompressMethod.invoke(hydraulicPumpPortList.get(i), hydraulicPumpBodyCompress.getValue());
+                LogEngine.instance.write("hydraulicPumpBodyCompressMethod = " + compressionAmount);
+
+                FlightRecorder.instance.insert("Body", "hydraulicPumpBodyCompress (compressionAmount): " + compressionAmount);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    @Subscribe
+    public void receive(HydraulicPumpWingDecompress hydraulicPumpWingDecompress) {
+        LogEngine.instance.write("+ Body.receive(" + hydraulicPumpWingDecompress.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + hydraulicPumpWingDecompress.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpBody; i++) {
+                Method hydraulicPumpBodyDecompressMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("decompress");
+                LogEngine.instance.write("hydraulicPumpBodyDecompressMethod = " + hydraulicPumpBodyDecompressMethod);
+
+                int compressionAmount = (int) hydraulicPumpBodyDecompressMethod.invoke(hydraulicPumpPortList.get(i));
+                LogEngine.instance.write("hydraulicPumpBodyDecompressMethod = " + compressionAmount);
+
+                FlightRecorder.instance.insert("Body", "hydraulicPumpBodyDecompress (compressionAmount): " + compressionAmount);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Subscribe
+    public void receive(HydraulicPumpBodyRefillOil hydraulicPumpBodyRefillOil) {
+        LogEngine.instance.write("+ Body.receive(" + hydraulicPumpBodyRefillOil.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + hydraulicPumpBodyRefillOil.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpBody; i++) {
+                Method hydraulicPumpBodyRefillOilMethod = hydraulicPumpPortList.get(i).getClass().getDeclaredMethod("refillOil", int.class);
+                LogEngine.instance.write("hydraulicPumpBodyRefillOilMethod = " + hydraulicPumpBodyRefillOilMethod);
+
+                int oilAmount = (int) hydraulicPumpBodyRefillOilMethod.invoke(hydraulicPumpPortList.get(i), hydraulicPumpBodyRefillOil.getValue());
+                LogEngine.instance.write("hydraulicPumpBodyDecompressMethod = " + oilAmount);
+
+                PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount = oilAmount;
+                FlightRecorder.instance.insert("Body", "hydraulicPumpBodyDecompress (compressionAmount): " + oilAmount);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

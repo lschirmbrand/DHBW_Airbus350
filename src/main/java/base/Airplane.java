@@ -13,6 +13,10 @@ import event.apu.APUStart;
 import event.gear.*;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
+import event.elevator.*;
+import event.engine.*;
+import event.hydraulicPump.*;
+import event.weather_radar.*;
 import section.Body;
 import section.Wing;
 
@@ -53,6 +57,20 @@ public class Airplane implements IAirplane {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
 
+
+        //Engine
+        eventBus.post(new EngineStart());
+        eventBus.post(new EngineIncreaseRPM(0));
+
+        // hydraulic pumps
+        eventBus.post(new HydraulicPumpBodyCompress());
+        eventBus.post(new HydraulicPumpWingCompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
+
+
+        // Elevator
+        eventBus.post(new ElevatorNeutral());
     }
 
     public void taxi() {
@@ -76,6 +94,20 @@ public class Airplane implements IAirplane {
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+
+        // engine
+        eventBus.post(new EngineIncreaseRPM(15000));
+
+        // hydraulic pump
+        eventBus.post(new HydraulicPumpBodyDecompress());
+        eventBus.post(new HydraulicPumpWingDecompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
+
+
+        // Elevator
+        eventBus.post(new ElevatorFullUp());
+
     }
 
     public void climbing() {
@@ -93,6 +125,12 @@ public class Airplane implements IAirplane {
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+
+        // elevator
+        eventBus.post(new ElevatorUp(10));
+
+        // engine
+        eventBus.post(new EngineIncreaseRPM(500));
     }
 
     public void rightTurn() {
@@ -143,6 +181,12 @@ public class Airplane implements IAirplane {
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+
+        // elevator
+        eventBus.post(new ElevatorDown(-10));
+
+        // engine
+        eventBus.post(new EngineDecreaseRPM(-500));
     }
 
     public void landing() {
@@ -159,6 +203,18 @@ public class Airplane implements IAirplane {
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+
+        // engine
+        eventBus.post(new EngineDecreaseRPM(-10000));
+
+        // hydraulic pumps
+        eventBus.post(new HydraulicPumpBodyCompress());
+        eventBus.post(new HydraulicPumpWingCompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
+
+        // Elevator
+        eventBus.post(new ElevatorFullDown());
     }
 
     public void shutdown() {
@@ -174,6 +230,19 @@ public class Airplane implements IAirplane {
 
         // air_conditioning
         eventBus.post(new AirConditioningOff());
+
+
+        //Engine
+        eventBus.post(new EngineShutdown());
+        eventBus.post(new EngineDecreaseRPM(-15000));
+
+        // hydraulic pumps
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
+
+        //Elevator
+
+        eventBus.post(new ElevatorNeutral());
 
     }
 }
