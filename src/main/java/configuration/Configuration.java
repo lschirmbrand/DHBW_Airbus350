@@ -15,15 +15,15 @@ public enum Configuration {
 
 
     // air_conditioning
-    public String pathToAirConditioningJavaArchive = commonPathToJavaArchive + "cabin" + fileSeparator + "air_conditioning" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "air_conditioning.jar";
+    public String pathToAirConditioningJavaArchive = commonPathToJavaArchive + "air_conditioning" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "air_conditioning.jar";
     public int numberOfAirConditioning = 4;
 
     // apu
-    public String pathToApuJavaArchive = commonPathToJavaArchive + "apu_engine_gear_pump" + fileSeparator + "apu" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "apu.jar";
+    public String pathToApuJavaArchive = commonPathToJavaArchive + "apu" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "apu.jar";
     public int numberOfApu = 1;
 
     // gear
-    public String pathToGearJavaArchive = commonPathToJavaArchive + "apu_engine_gear_pump" + fileSeparator + "gear" + fileSeparator  + "build" + fileSeparator + "libs" + fileSeparator + "gear.jar";
+    public String pathToGearJavaArchive = commonPathToJavaArchive + fileSeparator + "gear" + fileSeparator  + "build" + fileSeparator + "libs" + fileSeparator + "gear.jar";
     public int numberOfGearFront = 1;
     public int numberOfGearRear = 2;
 
