@@ -10,10 +10,10 @@ repositories {
 }
 
 task build_jar(type: Jar) {
-    project.archivesBaseName = "droop_nose"
+    project.archivesBaseName = "nitrogen_bottle"
 
     manifest {
-        attributes["Main-Class"] = "DroopNose"
+        attributes["Main-Class"] = "NitrogenBottle"
     }
 
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
