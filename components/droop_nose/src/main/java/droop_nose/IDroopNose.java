@@ -1,0 +1,9 @@
+package droop_nose;
+
+public interface IDroopNose {
+    public String version();
+    public int neutral();
+    public int fullDown();
+    public int down(int degree);
+    public int up(int degree);
+}

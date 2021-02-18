@@ -4,6 +4,14 @@ import base.PrimaryFlightDisplay;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.Subscriber;
+import event.camera.CameraBodyOff;
+import event.camera.CameraBodyOn;
+import event.gps.*;
+import event.radar.RadarOff;
+import event.radar.RadarOn;
+import event.radar.RadarScan;
+import event.tcas.*;
+import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorBodyMeasure;
 import event.air_conditioning.*;
 import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
@@ -528,6 +536,94 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("Body", "receive(" + weatherRadarScan.toString() + ")");
     }
 
+    // ----------------------------------------------------------------------------------------------------------------
+
+    //TCAS---------------------------------------------------------
+    @Subscribe
+    public void receive(TCASOn tcason) {
+        System.out.println(tcason);
+    }
+    @Subscribe
+    public void receive(TCASOff tcasOff) {
+        System.out.println(tcasOff);
+    }
+    @Subscribe
+    public void receive(TCASConnect tcasConnect) {
+        System.out.println(tcasConnect);
+    }
+    @Subscribe
+    public void receive(TCASScan tcasScan) {
+        System.out.println(tcasScan);
+    }
+    @Subscribe
+    public void receive(TCASDetermineAltitude tcasDetermineAltitude) {
+        System.out.println(tcasDetermineAltitude);
+    }
+    //-----------------------------------------------------
+
+    //TurbulentAirFlowSensor-------------------------
+    @Subscribe
+    public void receive(TurbulentAirFlowSensorBodyMeasure turbulentAirFlowSensorBodyMeasure) {
+        System.out.println(turbulentAirFlowSensorBodyMeasure);
+    }
+    //------------------------------------------
+
+    //Camera-------------------------------------------
+    @Subscribe
+    public void receive(CameraBodyOff cameraBodyOff) {
+        System.out.println(cameraBodyOff);
+    }
+
+    @Subscribe
+    public void receive(CameraBodyOn cameraBodyOn) {
+        System.out.println(cameraBodyOn);
+    }
+    //--------------------------------------------------------
+
+    //GPS-------------------------------------------------------
+    @Subscribe
+    public void receive(GPSOn gpsOn) {
+        System.out.println(gpsOn);
+    }
+
+    @Subscribe
+    public void receive(GPSOff gpsOff) {
+        System.out.println(gpsOff);
+    }
+
+    @Subscribe
+    public void receive(GPSReceive gpsReceive) {
+        System.out.println(gpsReceive);
+    }
+
+    @Subscribe
+    public void receive(GPSConnect gpsConnect) {
+        System.out.println(gpsConnect);
+    }
+
+    @Subscribe
+    public void receive(GPSSend gpsSend) {
+        System.out.println(gpsSend);
+    }
+    //----------------------------------------------------------
+
+    //Radar------------------------------------------------------
+
+    @Subscribe
+    public void receive(RadarOn radarOn) {
+        System.out.println(radarOn);
+    }
+
+    @Subscribe
+    public void receive(RadarOff radarOff) {
+        System.out.println(radarOff);
+    }
+
+    @Subscribe
+    public void receive(RadarScan radarScan) {
+        System.out.println(radarScan);
+    }
+    //------------------------------------------------------------
     // --- HydraulicPump -------------------------------------------------------------------------------------------------------------
 
     @Subscribe
