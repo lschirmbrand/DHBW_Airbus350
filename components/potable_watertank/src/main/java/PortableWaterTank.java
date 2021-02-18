@@ -1,78 +1,77 @@
-public class PortableWaterTank implements IPortableWaterTank {
-
-    private String manufacturer;
-    private String type;
-    private String id;
+public class PortableWaterTank {
+    // static instance
+    private static PortableWaterTank instance = new PortableWaterTank();
+    // port
+    public Port port;
+    private String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private String type = "Team 05";
+    private String id = "9008480 / 1253402";
     private int amount = 1000;
-    private boolean isLocked;
+    private boolean isLocked = false;
 
-    public boolean isLocked() {
-        return isLocked;
+    //private constructor
+    private PortableWaterTank() {
+        port = new Port();
     }
 
-    public void setLocked(boolean locked) {
-        isLocked = locked;
+    // static method getInstance
+    public static PortableWaterTank getInstance() {
+        return instance;
+    }
+    //inner methods
+
+    public String innerVersion() {
+        return "PortableWaterTank // " + manufacturer + " - " + type + " - " + id;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+
+    public int innerTakeOut(int amount) {
+        return this.amount -= amount;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+
+    public int innerRefill() {
+        return this.amount = 1000;
     }
 
-    public String getType() {
-        return type;
+
+    public int innerRefill(int amount) {
+        return this.amount += amount;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public boolean innerLock() {
+        return isLocked = true;
     }
 
-    public String getId() {
-        return id;
+    public boolean innerUnlock() {
+        return isLocked = false;
     }
+    //inner class port
+    public class Port implements IPortableWaterTank {
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public int getAmount() {
-        return amount;
-    }
+        public String version() {
+            return innerVersion();
+        }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+        public boolean lock() {
+            return innerLock();
+        }
 
-    @Override
-    public String version() {
-        return null;
-    }
+        public boolean unlock() {
+            return innerUnlock();
+        }
 
-    @Override
-    public boolean lock() {
-        return false;
-    }
+        public int takeOut(int amount) {
+            return innerTakeOut(amount);
+        }
 
-    @Override
-    public boolean unlock() {
-        return false;
-    }
+        public int refill() {
+            return innerRefill();
+        }
 
-    @Override
-    public int takeOut(int amount) {
-        return 0;
-    }
-
-    @Override
-    public int refill() {
-        return 0;
-    }
-
-    @Override
-    public int refill(int amount) {
-        return 0;
+        public int refill(int amount) {
+            return innerRefill(amount);
+        }
     }
 }

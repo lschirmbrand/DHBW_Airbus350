@@ -1,92 +1,86 @@
-public class VHF implements IVHF{
 
-    private String manufacturer;
-    private String type;
-    private String id;
-    private boolean isOn;
+import java.util.Arrays;
+
+public class VHF {
+    // static instance
+    private static VHF instance = new VHF();
+    // port
+    public Port port;
+    private String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private String type = "Team 05";
+    private String id = "9008480 / 1253402";
+    private boolean isOn = true;
     private String[] channelList;
     private String selectedChannel;
 
-    public String getManufacturer() {
-        return manufacturer;
+    // private constructor
+    private VHF() {
+        port = new Port();
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public static VHF getInstance() {
+        return instance;
     }
 
-    public String getType() {
-        return type;
+    //inner methods
+    public String innerVersion() {
+        return "VHF // " + manufacturer + " - " + type + " - " + id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public boolean innerOn() {
+        return isOn = true;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public boolean isOn() {
-        return isOn;
-    }
-
-    public void setOn(boolean on) {
-        isOn = on;
-    }
-
-    public String[] getChannelList() {
+    public String[] innerSerach() {
         return channelList;
     }
 
-    public void setChannelList(String[] channelList) {
-        this.channelList = channelList;
+    public String innerForwardChannel() {
+        return channelList[Arrays.asList(channelList).indexOf(selectedChannel) + 1];
     }
 
-    public String getSelectedChannel() {
-        return selectedChannel;
+    public String innerBackwardChannel() {
+        return channelList[Arrays.asList(channelList).indexOf(selectedChannel) - 1];
     }
 
-    public void setSelectedChannel(String selectedChannel) {
-        this.selectedChannel = selectedChannel;
+    public String innerSelectChannel(String channel) {
+        return selectedChannel = channel;
     }
 
-    @Override
-    public String version() {
-        return null;
+    public boolean InnerOff() {
+        return isOn = false;
     }
 
-    @Override
-    public boolean on() {
-        return false;
-    }
+    //inner class port
+    public class Port implements IVHF {
 
-    @Override
-    public String[] serach() {
-        return new String[0];
-    }
 
-    @Override
-    public String forwardChannel() {
-        return null;
-    }
+        public String version() {
+            return innerVersion();
+        }
 
-    @Override
-    public String backwardChannel() {
-        return null;
-    }
+        public boolean on() {
+            return innerOn();
+        }
 
-    @Override
-    public String selectChannel(String channel) {
-        return null;
-    }
+        public String[] serach() {
+            return innerSerach();
+        }
 
-    @Override
-    public boolean off() {
-        return false;
+        public String forwardChannel() {
+            return innerVersion();
+        }
+
+        public String backwardChannel() {
+            return innerBackwardChannel();
+        }
+
+        public String selectChannel(String channel) {
+            return innerSelectChannel(channel);
+        }
+
+        public boolean off() {
+            return InnerOff();
+        }
     }
 }
