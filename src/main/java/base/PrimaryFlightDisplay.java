@@ -10,8 +10,8 @@ public enum PrimaryFlightDisplay {
 
     //CostOptimizer
     public boolean isCostOptimizerOn;
-    public int indexCostOptimizer;
-    public int numberOfCheckPointsCostOptimizer;
+    public int indexCostOptimizer = 0;
+    public int numberOfCheckPointsCostOptimizer = 0;
 
     //LandingLight
     public boolean isLandingLightBodyOn;
@@ -25,6 +25,6 @@ public enum PrimaryFlightDisplay {
 
     //RouteManagement
     public boolean isRouteManagementOn;
-    public int indexRouteManagement;
-    public int numberOfCheckPointsRouteManagement;
+    public int indexRouteManagement = 0;
+    public int numberOfCheckPointsRouteManagement = 0;
 }

@@ -1,0 +1,365 @@
+2021-02-18 10:34:23 : Database Connection (isClosed): false
+2021-02-18 10:34:23 : sqlStringBuilder = DROP TABLE data
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843792522900,'WeatherRadarFactory','weatherRadarClass: 640523704')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843796590400,'WeatherRadarFactory','weatherRadarInstance: 322109908')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843799751400,'WeatherRadarFactory','weatherRadarPort: 1962052224')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843803649000,'WeatherRadarFactory','weatherRadarClass: 1631721434')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843804558000,'WeatherRadarFactory','weatherRadarInstance: 1572350536')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843805439200,'WeatherRadarFactory','weatherRadarPort: 1949174338')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843811778700,'CargoCompartmentLightFactory','cargoCompartmentLightClass: 785074419')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843817667600,'CargoCompartmentLightFactory','cargoCompartmentLightInstance: 1709258915')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843818767400,'CargoCompartmentLightFactory','cargoCompartmentLightPort: 1406619887')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843822113000,'CargoCompartmentLightFactory','cargoCompartmentLightClass: 716613680')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843822984500,'CargoCompartmentLightFactory','cargoCompartmentLightInstance: 1500875918')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843823858700,'CargoCompartmentLightFactory','cargoCompartmentLightPort: 414406145')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843827377800,'CargoCompartmentLightFactory','cargoCompartmentLightClass: 1528778553')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843828190500,'CargoCompartmentLightFactory','cargoCompartmentLightInstance: 1674725504')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843828872200,'CargoCompartmentLightFactory','cargoCompartmentLightPort: 239580938')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843835961800,'CargoCompartmentLightFactory','cargoCompartmentLightClass: 2135812087')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843836944900,'CargoCompartmentLightFactory','cargoCompartmentLightInstance: 1199797971')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843837710100,'CargoCompartmentLightFactory','cargoCompartmentLightPort: 2003292925')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843841844700,'CostOptimizerFactory','costOptimizerFactory: 181276876')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843843266300,'CostOptimizerFactory','costOptimizerInstance: 913237531')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843844320600,'CostOptimizerFactory','costOptimizerPort: 637799705')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843847717800,'CostOptimizerFactory','costOptimizerFactory: 1865203981')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843849309900,'CostOptimizerFactory','costOptimizerInstance: 1416039994')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843850005900,'CostOptimizerFactory','costOptimizerPort: 756868412')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843855862100,'LandingLightFactory','landingLightFactory: 2078836588')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843857331300,'LandingLightFactory','landingLightInstance: 21820449')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843859160900,'LandingLightFactory','landingLightPort: 321308815')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843865894900,'LandingLightFactory','landingLightFactory: 867325454')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843867038300,'LandingLightFactory','landingLightInstance: 980965657')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843868952300,'LandingLightFactory','landingLightPort: 1664139923')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843875840100,'LogoLightFactory','logoLightClass: 652095718')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843876852000,'LogoLightFactory','logoLightInstance: 779788313')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843877983500,'LogoLightFactory','logoLightPort: 683560311')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843881258600,'LogoLightFactory','logoLightClass: 355045045')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843882139600,'LogoLightFactory','logoLightInstance: 1095619060')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843882657100,'LogoLightFactory','logoLightPort: 468407387')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843887215100,'RouteManagementFactory','routeManagementClass: 1681526845')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843888892900,'RouteManagementFactory','routeManagementInstance: 714194464')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843892475500,'RouteManagementFactory','routeManagementPort: 413259142')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843897344100,'RouteManagementFactory','routeManagementClass: 140578156')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843898996100,'RouteManagementFactory','routeManagementInstance: 330224123')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167843899813200,'RouteManagementFactory','routeManagementPort: 107164993')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844006429300,'LeftNavigationLightFactory','leftNavigationLightClass: 815323784')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844011324200,'LeftNavigationFactory','leftNavigationLightInstance: 1369272756')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844013499300,'LeftNavigationLightFactory','leftNavigationLightPort: 1324012533')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844019172800,'LandingLightFactory','landingLightFactory: 970850879')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844020144600,'LandingLightFactory','landingLightInstance: 322479423')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844026682400,'LandingLightFactory','landingLightPort: 2138671913')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844032177000,'LandingLightFactory','landingLightFactory: 1326550237')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844034841200,'LandingLightFactory','landingLightInstance: 515444645')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844036260900,'LandingLightFactory','landingLightPort: 1041101092')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844051346500,'LeftNavigationLightFactory','leftNavigationLightClass: 406955793')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844053556500,'LeftNavigationFactory','leftNavigationLightInstance: 1053206237')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844056410900,'LeftNavigationLightFactory','leftNavigationLightPort: 703528805')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844063025600,'LandingLightFactory','landingLightFactory: 1102995454')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844064484100,'LandingLightFactory','landingLightInstance: 1145633626')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844065382400,'LandingLightFactory','landingLightPort: 1924914595')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844071346100,'LandingLightFactory','landingLightFactory: 876082753')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844072688500,'LandingLightFactory','landingLightInstance: 1492971446')
+2021-02-18 10:34:24 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167844075873300,'LandingLightFactory','landingLightPort: 185615478')
+2021-02-18 10:34:36 : *** Cockpit.startup ***
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855803733800,'Cockpit','startup')
+2021-02-18 10:34:36 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855809653300,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:36 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855813349500,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855814538000,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855815803600,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:36 : + Body.receive(Event: CostOptimizer - On)
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855817159600,'Body','receive(Event: CostOptimizer - On)')
+2021-02-18 10:34:36 : onMethod = public boolean CostOptimizer$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855818722300,'Body','CostOptimizerOn (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : onMethod = public boolean CostOptimizer$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855820749200,'Body','CostOptimizerOn (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : PrimaryFlightDisplay (isCostOptimizerOn): true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855822299400,'PrimaryFlightDisplay','isCostOptimizerOn: true')
+2021-02-18 10:34:36 : + Body.receive(Event: RouteManagement - On)
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855826063300,'Body','receive(Event: RouteManagement - On)')
+2021-02-18 10:34:36 : onMethod = public boolean RouteManagement$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855830414200,'Body','RouteManagement (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : onMethod = public boolean RouteManagement$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855831651100,'Body','RouteManagement (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : PrimaryFlightDisplay (isRouteManagementOn): true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855832898200,'PrimaryFlightDisplay','isRouteManagementOn: true')
+2021-02-18 10:34:36 : + Body.receive(Event: LogoLight - On)
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855834502200,'Body','receive(Event: LogoLight - On)')
+2021-02-18 10:34:36 : onMethod = public boolean LogoLight$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855836589400,'Body','LogoLight (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : onMethod = public boolean LogoLight$Port.on()
+2021-02-18 10:34:36 : isOn = true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855837670300,'Body','LogoLight (isOn): true')
+2021-02-18 10:34:36 : +
+2021-02-18 10:34:36 : PrimaryFlightDisplay (isLogoLightOn): true
+2021-02-18 10:34:36 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167855840174600,'PrimaryFlightDisplay','isLogoLightOn: true')
+2021-02-18 10:34:36 : 
+2021-02-18 10:34:43 : *** Cockpit.taxi ***
+2021-02-18 10:34:43 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167863118730200,'Cockpit','taxi')
+2021-02-18 10:34:43 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:43 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167863120178500,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:43 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:43 : isOn = true
+2021-02-18 10:34:43 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167863121548400,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:43 : +
+2021-02-18 10:34:43 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:43 : isOn = true
+2021-02-18 10:34:43 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167863122651200,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:43 : +
+2021-02-18 10:34:43 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:43 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167863123532400,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:43 : 
+2021-02-18 10:34:45 : *** Cockpit.takeoff ***
+2021-02-18 10:34:45 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167864786328900,'Cockpit','takeoff')
+2021-02-18 10:34:45 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:45 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167864787490000,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:45 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:45 : isOn = true
+2021-02-18 10:34:45 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167864788510600,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:45 : +
+2021-02-18 10:34:45 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:45 : isOn = true
+2021-02-18 10:34:45 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167864789890000,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:45 : +
+2021-02-18 10:34:45 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:45 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167864792145100,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:45 : 
+2021-02-18 10:34:46 : *** Cockpit.climbing ***
+2021-02-18 10:34:46 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167865970268100,'Cockpit','climbing')
+2021-02-18 10:34:46 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:46 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167865971361600,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:46 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:46 : isOn = true
+2021-02-18 10:34:46 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167865972025400,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:46 : +
+2021-02-18 10:34:46 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:46 : isOn = true
+2021-02-18 10:34:46 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167865972849600,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:46 : +
+2021-02-18 10:34:46 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:46 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167865973605200,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:46 : 
+2021-02-18 10:34:47 : *** Cockpit.rightTurn ***
+2021-02-18 10:34:47 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167867115591700,'Cockpit','rightTurn')
+2021-02-18 10:34:47 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:47 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167867116691300,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:47 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:47 : isOn = true
+2021-02-18 10:34:47 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167867117874400,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:47 : +
+2021-02-18 10:34:47 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:47 : isOn = true
+2021-02-18 10:34:47 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167867118986100,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:47 : +
+2021-02-18 10:34:47 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:47 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167867119791200,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:47 : 
+2021-02-18 10:34:48 : *** Cockpit.leftTurn ***
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868381726200,'Cockpit','leftTurn')
+2021-02-18 10:34:48 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868382558100,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:48 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:48 : isOn = true
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868383448000,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:48 : +
+2021-02-18 10:34:48 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:48 : isOn = true
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868384322000,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:48 : +
+2021-02-18 10:34:48 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868385064300,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:48 : + Wing.receive(Event: LeftNavigationLight - On)
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868386780400,'Wing','receive(Event: LeftNavigationLight - On)')
+2021-02-18 10:34:48 : onMethod = public boolean LeftNavigationLight$Port.on()
+2021-02-18 10:34:48 : isOn = true
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868388307600,'Wing','LeftNavigationLight (isOn): true')
+2021-02-18 10:34:48 : +
+2021-02-18 10:34:48 : PrimaryFlightDisplay (isLeftNavigationLightOn): true
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868389604400,'PrimaryFlightDisplay','isLeftNavigationLightOn: true')
+2021-02-18 10:34:48 : + Wing.receive(Event: LeftNavigationLight - On)
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868390475700,'Wing','receive(Event: LeftNavigationLight - On)')
+2021-02-18 10:34:48 : onMethod = public boolean LeftNavigationLight$Port.on()
+2021-02-18 10:34:48 : isOn = true
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868392622600,'Wing','LeftNavigationLight (isOn): true')
+2021-02-18 10:34:48 : +
+2021-02-18 10:34:48 : PrimaryFlightDisplay (isLeftNavigationLightOn): true
+2021-02-18 10:34:48 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167868393327700,'PrimaryFlightDisplay','isLeftNavigationLightOn: true')
+2021-02-18 10:34:48 : 
+2021-02-18 10:34:51 : *** Cockpit.descent ***
+2021-02-18 10:34:51 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167871619877900,'Cockpit','descent')
+2021-02-18 10:34:51 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:51 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167871620771700,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:51 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:51 : isOn = true
+2021-02-18 10:34:51 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167871621926200,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:51 : +
+2021-02-18 10:34:51 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:51 : isOn = true
+2021-02-18 10:34:51 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167871623010000,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:51 : +
+2021-02-18 10:34:51 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:51 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167871623861400,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:51 : 
+2021-02-18 10:34:53 : *** Cockpit.landing ***
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873061702900,'Cockpit','landing')
+2021-02-18 10:34:53 : + Body.receive(Event: WeatherRadar - On)
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873062485600,'Body','receive(Event: WeatherRadar - On)')
+2021-02-18 10:34:53 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873063176600,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : onMethod = public boolean WeatherRadar$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873063755000,'Body','WeatherRadar (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873064229700,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-02-18 10:34:53 : + Body.receive(Event: LandingLight - BodyOn)
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873065601200,'Body','receive(Event: LandingLight - BodyOn)')
+2021-02-18 10:34:53 : onMethod = public boolean LandingLight$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873067123000,'Body','LandingLightBody (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : onMethod = public boolean LandingLight$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873068649300,'Body','LandingLightBody (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : PrimaryFlightDisplay (isLandingLightOn): true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873069479800,'PrimaryFlightDisplay','isLandingLightOn: true')
+2021-02-18 10:34:53 : + Wing.receive(Event: LandingLight - WingOn)
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873070526600,'Wing','receive(Event: LandingLight - WingOn)')
+2021-02-18 10:34:53 : onMethod = public boolean LandingLight$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873072819900,'Wing','LandingLightWing (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : onMethod = public boolean LandingLight$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873073807900,'Wing','LandingLightWing (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : PrimaryFlightDisplay (isLandingLightWingOn): true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873074533400,'PrimaryFlightDisplay','isLandingLightWingOn: true')
+2021-02-18 10:34:53 : + Wing.receive(Event: LandingLight - WingOn)
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873075053700,'Wing','receive(Event: LandingLight - WingOn)')
+2021-02-18 10:34:53 : onMethod = public boolean LandingLight$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873075796900,'Wing','LandingLightWing (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : onMethod = public boolean LandingLight$Port.on()
+2021-02-18 10:34:53 : isOn = true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873076634600,'Wing','LandingLightWing (isOn): true')
+2021-02-18 10:34:53 : +
+2021-02-18 10:34:53 : PrimaryFlightDisplay (isLandingLightWingOn): true
+2021-02-18 10:34:53 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167873077095600,'PrimaryFlightDisplay','isLandingLightWingOn: true')
+2021-02-18 10:34:53 : 
+2021-02-18 10:34:54 : *** Cockpit.shutdown ***
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874631686700,'Cockpit','shutdown')
+2021-02-18 10:34:54 : + Body.receive(Event: WeatherRadar - Off)
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874632743900,'Body','receive(Event: WeatherRadar - Off)')
+2021-02-18 10:34:54 : offMethod = public boolean WeatherRadar$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874633782800,'Body','WeatherRadar (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean WeatherRadar$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874634723100,'Body','WeatherRadar (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : PrimaryFlightDisplay (isWeatherRadarOn): false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874635629000,'PrimaryFlightDisplay','isWeatherRadarOn: false')
+2021-02-18 10:34:54 : + Body.receive(Event: CargoCompartmentLight - Off)
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874636852500,'Body','receive(Event: CargoCompartmentLight - Off)')
+2021-02-18 10:34:54 : offMethod = public boolean CargoCompartmentLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874637922000,'Body','CargoCompartmentLight (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean CargoCompartmentLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874638711700,'Body','CargoCompartmentLight (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean CargoCompartmentLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874639773300,'Body','CargoCompartmentLight (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean CargoCompartmentLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874641075900,'Body','CargoCompartmentLight (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : PrimaryFlightDisplay (isCargoCompartmentLightOn): false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874642296900,'PrimaryFlightDisplay','isCargoCompartmentLightOn: false')
+2021-02-18 10:34:54 : + Body.receive(Event: CostOptimizer - Off)
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874643870400,'Body','receive(Event: CostOptimizer - Off)')
+2021-02-18 10:34:54 : offMethod = public boolean CostOptimizer$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874644925000,'Body','CostOptimizerOff (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean CostOptimizer$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874645650800,'Body','CostOptimizerOff (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : PrimaryFlightDisplay (isCostOptimizerOn): false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874646407500,'PrimaryFlightDisplay','isCostOptimizerOn: false')
+2021-02-18 10:34:54 : + Body.receive(Event: LandingLight - BodyOff)
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874647697000,'Body','receive(Event: LandingLight - BodyOff)')
+2021-02-18 10:34:54 : offMethod = public boolean LandingLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874649080400,'Body','LandingLightBody (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean LandingLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874650118800,'Body','LandingLightBody (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : PrimaryFlightDisplay (isLandingLightBodyOn): false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874650859300,'isLandingLightBodyOn','isLandingLightOn: false')
+2021-02-18 10:34:54 : + Wing.receive(Event: LandingLight - WingOff)
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874652546600,'Wing','receive(Event: LandingLight - WingOff)')
+2021-02-18 10:34:54 : offMethod = public boolean LandingLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874653489300,'Wing','LandingLightWing (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean LandingLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874654187100,'Wing','LandingLightWing (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : PrimaryFlightDisplay (isLandingLightWingOn): false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874656374100,'PrimaryFlightDisplay','isLandingLightWingOn: false')
+2021-02-18 10:34:54 : + Wing.receive(Event: LandingLight - WingOff)
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874657033600,'Wing','receive(Event: LandingLight - WingOff)')
+2021-02-18 10:34:54 : offMethod = public boolean LandingLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874657755800,'Wing','LandingLightWing (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean LandingLight$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874658492100,'Wing','LandingLightWing (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : PrimaryFlightDisplay (isLandingLightWingOn): false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874659064100,'PrimaryFlightDisplay','isLandingLightWingOn: false')
+2021-02-18 10:34:54 : + Body.receive(Event: RouteManagement - Off)
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874660367500,'Body','receive(Event: RouteManagement - Off)')
+2021-02-18 10:34:54 : offMethod = public boolean RouteManagement$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874661424800,'Body','RouteManagement (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : offMethod = public boolean RouteManagement$Port.off()
+2021-02-18 10:34:54 : isOn = false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874662205200,'Body','RouteManagement (isOn): false')
+2021-02-18 10:34:54 : +
+2021-02-18 10:34:54 : PrimaryFlightDisplay (isRouteManagementOn): false
+2021-02-18 10:34:54 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (167874663017000,'PrimaryFlightDisplay','isRouteManagementOn: false')
+2021-02-18 10:34:54 : 
