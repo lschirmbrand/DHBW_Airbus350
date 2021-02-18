@@ -1,73 +1,66 @@
-public class WasteWaterTank implements IWasteWaterTank{
-
-    private String manufacturer;
-    private String type;
-    private String id;
-    private int capacity = 1000;
+public class WasteWaterTank {
+    // static instance
+    private static WasteWaterTank instance = new WasteWaterTank();
+    // port
+    public Port port;
+    private String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private String type = "Team 05";
+    private String id = "9008480 / 1253402";
+    private int capacity = 1000;//1000
     private boolean isLocked;
 
-    public String getManufacturer() {
-        return manufacturer;
+    // private constructor
+    private WasteWaterTank() {
+        port = new Port();
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    //instance getter
+    public static WasteWaterTank getInstance() {
+        return instance;
     }
 
-    public String getType() {
-        return type;
+    //inner methodes
+    public String innerVersion() {
+        return "WasteWaterTank // " + manufacturer + " - " + type + " - " + id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public boolean innerLock() {
+        return isLocked = true;
     }
 
-    public String getId() {
-        return id;
+    public boolean innerUnlock() {
+        return isLocked = false;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public int innerAdd(int amount) {
+        return capacity + amount;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int innerPumpOut() {
+        return capacity = 0;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
+    //inner class port
+    public class Port implements IWasteWaterTank {
 
-    public boolean isLocked() {
-        return isLocked;
-    }
+        public String version() {
+            return innerVersion();
+        }
 
-    public void setLocked(boolean locked) {
-        isLocked = locked;
-    }
+        public boolean lock() {
+            return innerLock();
+        }
 
-    @Override
-    public String version() {
-        return null;
-    }
+        public boolean unlock() {
+            return innerUnlock();
+        }
 
-    @Override
-    public boolean lock() {
-        return false;
-    }
+        public int add(int amount) {
+            return innerAdd(amount);
+        }
 
-    @Override
-    public boolean unlock() {
-        return false;
-    }
-
-    @Override
-    public int add(int amount) {
-        return 0;
-    }
-
-    @Override
-    public int pumpOut() {
-        return 0;
+        public int pumpOut() {
+            return innerPumpOut();
+        }
     }
 }
