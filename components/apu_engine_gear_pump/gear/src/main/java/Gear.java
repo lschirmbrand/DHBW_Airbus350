@@ -7,8 +7,7 @@ public class Gear {
     private static Gear instance = new Gear();
     // port
     public Port port;
-    private String manufacturer = "team 01";
-    private String id = "4775194 / 8864957";
+    private String manufacturer = "4775194 / 8864957";
 
     private GearType type;
     private ArrayList<Wheel> wheels = new ArrayList<>();

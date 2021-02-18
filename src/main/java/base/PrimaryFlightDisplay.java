@@ -4,15 +4,14 @@ public enum PrimaryFlightDisplay {
     instance;
 
     // air_conditioning
-
     public boolean isAirConditioningOn;
     public int temperatureAirConditioning;
 
-    // APU
+    // apu
     public boolean isAPUStarted;
     public int rpmAPU;
 
-    // Gear
+    // gear
     public boolean isGearDown;
     public int gearBrakePercentage;
 
