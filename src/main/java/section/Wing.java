@@ -139,16 +139,12 @@ public class Wing extends Subscriber {
         try {
             for (int i = 0; i < Configuration.instance.numberOfSlat; i++) {
                 Method downMethod = slatPortList.get(i).getClass().getDeclaredMethod("down", Integer.TYPE);
-                System.out.println(0.5);
                 LogEngine.instance.write("downMethod = " + downMethod);
 
-                System.out.println(1);
                 int degree = (int) downMethod.invoke(slatPortList.get(i), slatDown.getValue());
-                System.out.println(1.5);
                 LogEngine.instance.write("degree = " + degree);
 
                 PrimaryFlightDisplay.instance.degreeSlat = degree;
-                System.out.println(2.5);
                 FlightRecorder.instance.insert("Wing", "Slat (degree): " + degree);
 
                 LogEngine.instance.write("+");
