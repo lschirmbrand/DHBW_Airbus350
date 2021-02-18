@@ -354,7 +354,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         //Turbulent Airflow Sensor
         Label turbulentLabel = new Label("Turbulent Airflow Sensor: ");
         turbulentLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(new Label("Turbulent Airflow Sensor: "), 0, 9);
+        gridPane.add(turbulentLabel, 0, 9);
         gridPane.add(new Button("Measure Body"), 1, 9);
         gridPane.add(new Button("Measure Wing"), 2, 9);
 
@@ -391,7 +391,7 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         engineOnButton = new RadioButton("On");
         engineOnButton.setToggleGroup(engineToggleGroup);
-        engineOffButton.setSelected(false);
+        engineOnButton.setSelected(false);
         gridPane.add(engineOnButton, 1, 10);
 
         engineRPMLabel = new Label("RPM's: 0");
