@@ -48,12 +48,12 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
     private RadioButton weatherRadarOnButton;
+    
     //droop_nose
     private Button droopNoseNeutralButton;
     private Button droopNoseFullDownButton;
     private TextField droopNoseUpField;
     private TextField droopNoseDownField;
-
 
     // engine
     private PrimaryFlightDisplayEntry engineIsStartedEntry;

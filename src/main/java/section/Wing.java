@@ -88,29 +88,6 @@ public class Wing extends Subscriber {
         System.out.println(cameraWingOn);
     }
     //--------------------------------------------------------
-    private ArrayList<Object> enginePortList;
-    private ArrayList<Object> hydraulicPumpPortList;
-    private ArrayList<Object> elevatorPortList;
-
-    public Wing() {
-        enginePortList = new ArrayList<>();
-        hydraulicPumpPortList = new ArrayList<>();
-        elevatorPortList = new ArrayList<>();
-        build();
-    }
-
-    public void build() {
-        for (int i = 0; i < Configuration.instance.numberOfEngine; i++) {
-            enginePortList.add(EngineFactory.build());
-        }
-        for (int i = 0; i < Configuration.instance.numberOfHydraulicPumpWing; i++) {
-            hydraulicPumpPortList.add(HydraulicPumpFactory.build());
-        }
-        for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
-            elevatorPortList.add(ElevatorFactory.build());
-        }
-    }
-
 
     // --- Engine -----------------------------------------------------------------------------------------------
 
