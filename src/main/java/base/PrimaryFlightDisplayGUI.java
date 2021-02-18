@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import logging.LogEngine;
 import recorder.FlightRecorder;
 
-import javax.print.attribute.standard.PrinterMakeAndModel;
 import java.util.ArrayList;
 
 public class PrimaryFlightDisplayGUI extends Application {
@@ -27,22 +26,23 @@ public class PrimaryFlightDisplayGUI extends Application {
 
     // air_conditioning
     private PrimaryFlightDisplayEntry airConditioningOnEntry;
-    private ComboBox<String> airConditioningCombobox;
+    private RadioButton airConditioningOffButton;
+    private RadioButton airConditioningOnButton;
     private PrimaryFlightDisplayEntry temperatureAirConditioningEntry;
-    private Label temperatureAirConditioningLabel;
+    private TextField temperatureAirConditioningField;
 
     // apu
     private PrimaryFlightDisplayEntry apuIsStartedEntry;
     private RadioButton apuStartedButton;
     private RadioButton apuShutdownButton;
     private PrimaryFlightDisplayEntry apuRPMEntry;
-    private Label apuRPMLabel;
+    private TextField apuRPMField;
 
     // gear
     private PrimaryFlightDisplayEntry gearIsDownEntry;
     private ComboBox<String> gearComboBox;
     private PrimaryFlightDisplayEntry gearBrakePercentageEntry;
-    private Label gearBrakeLabel;
+    private TextField gearBrakeField;
 
     // weather_radar
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
@@ -196,35 +196,37 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.setHgap(10);
         gridPane.setAlignment(Pos.BASELINE_LEFT);
 
-        Label flapLabel = new Label("Flap : ");
-        gridPane.add(flapLabel, 4, 0);
+//        Label flapLabel = new Label("Flap : ");
+//        gridPane.add(flapLabel, 4, 0);
 
-        ComboBox<String> flapComboBox = new ComboBox<>();
-        flapComboBox.getItems().addAll("neutral", "one", "two", "three");
-        flapComboBox.setValue("neutral");
-        flapComboBox.setEditable(false);
-        gridPane.add(flapComboBox, 5, 0);
+//        ComboBox<String> flapComboBox = new ComboBox<>();
+//        flapComboBox.getItems().addAll("neutral", "one", "two", "three");
+//        flapComboBox.setValue("neutral");
+//        flapComboBox.setEditable(false);
+//        gridPane.add(flapComboBox, 5, 0);
 
         // --- insert section: begin
 
         // weather_radar
         Label weatherRadarLabel = new Label("WeatherRadar : ");
-        gridPane.add(weatherRadarLabel, 6, 0);
+        weatherRadarLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(weatherRadarLabel, 0, 0);
 
         ToggleGroup weatherRadarToggleGroup = new ToggleGroup();
 
         weatherRadarOffButton = new RadioButton("Off");
         weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
         weatherRadarOffButton.setSelected(true);
-        gridPane.add(weatherRadarOffButton, 7, 0);
+        gridPane.add(weatherRadarOffButton, 1, 0);
 
         weatherRadarOnButton = new RadioButton("On");
         weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
         weatherRadarOnButton.setSelected(false);
-        gridPane.add(weatherRadarOnButton, 8, 0);
+        gridPane.add(weatherRadarOnButton, 2, 0);
 
         // apu
         Label apuLabel = new Label("APU : ");
+        apuLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(apuLabel, 0, 1);
 
         ToggleGroup apuToggleGroup = new ToggleGroup();
@@ -238,12 +240,13 @@ public class PrimaryFlightDisplayGUI extends Application {
         apuStartedButton.setToggleGroup(apuToggleGroup);
         gridPane.add(apuStartedButton, 2, 1);
 
-        apuRPMLabel = new Label("0 rpm");
-        gridPane.add(apuRPMLabel, 3, 1);
+        apuRPMField = new TextField("0 rpm");
+        gridPane.add(apuRPMField, 3, 1);
 
         // gear
 
         Label gearLabel = new Label("Gear : ");
+        gearLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(gearLabel, 7, 1);
 
         gearComboBox = new ComboBox<>();
@@ -252,32 +255,41 @@ public class PrimaryFlightDisplayGUI extends Application {
         gearComboBox.setEditable(false);
         gridPane.add(gearComboBox, 8, 1);
 
-        gearBrakeLabel = new Label("Brake: " + 0 + "%");
+        Label gearBrakeLabel = new Label("Brake: ");
         gridPane.add(gearBrakeLabel, 9, 1);
+
+        gearBrakeField = new TextField(0 + "%");
+        gridPane.add(gearBrakeField, 10, 1);
 
         // air_conditioning
         Label airConditioningLabel = new Label("AirConditioning : ");
+        airConditioningLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(airConditioningLabel, 0, 2);
 
-        airConditioningCombobox = new ComboBox<>();
-        airConditioningCombobox.getItems().addAll("on", "off");
-        airConditioningCombobox.setValue("off");
-        airConditioningCombobox.setEditable(false);
-        gridPane.add(airConditioningCombobox, 1, 2);
+        ToggleGroup ACToggleGroup = new ToggleGroup();
 
-        temperatureAirConditioningLabel = new Label("0°C");
-        gridPane.add(temperatureAirConditioningLabel, 2, 2);
+        airConditioningOffButton = new RadioButton("Off");
+        airConditioningOffButton.setToggleGroup(ACToggleGroup);
+        airConditioningOffButton.setSelected(true);
+        gridPane.add(airConditioningOffButton, 1, 2);
+
+        airConditioningOnButton = new RadioButton("On");
+        airConditioningOnButton.setToggleGroup(ACToggleGroup);
+        gridPane.add(airConditioningOnButton, 2, 2);
+
+        temperatureAirConditioningField = new TextField("0 \u2103");
+        gridPane.add(temperatureAirConditioningField, 3, 2);
 
         // --- insert section: end
 
-        Label frequencyLabel = new Label("Frequency : ");
-        gridPane.add(frequencyLabel, 0, 15);
-
-        Spinner<Integer> vcfSpinner = new Spinner<>();
-        vcfSpinner.setMaxWidth(60);
-        SpinnerValueFactory<Integer> vcfSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(200, 300, 250);
-        vcfSpinner.setValueFactory(vcfSpinnerValueFactory);
-        gridPane.add(vcfSpinner, 1, 15);
+//        Label frequencyLabel = new Label("Frequency : ");
+//        gridPane.add(frequencyLabel, 0, 15);
+//
+//        Spinner<Integer> vcfSpinner = new Spinner<>();
+//        vcfSpinner.setMaxWidth(60);
+//        SpinnerValueFactory<Integer> vcfSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(200, 300, 250);
+//        vcfSpinner.setValueFactory(vcfSpinnerValueFactory);
+//        gridPane.add(vcfSpinner, 1, 15);
 
         return gridPane;
     }
@@ -316,8 +328,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         apuShutdownButton.setSelected(!isAPUStarted);
     }
 
-    public void setAPURPMLabel(int rpm) {
-        apuRPMLabel.setText(rpm + " rpm");
+    public void setAPURPMField(int rpm) {
+        apuRPMField.setText(rpm + " rpm");
     }
 
     // gear
@@ -325,18 +337,18 @@ public class PrimaryFlightDisplayGUI extends Application {
         gearComboBox.setValue(isGearDown ? "down" : "up");
     }
 
-    public void setGearBrakeLabel(int percentage) {
-        gearBrakeLabel.setText("Brake: " + percentage + "%");
+    public void setGearBrakeField(int percentage) {
+        gearBrakeField.setText("Brake: " + percentage + "%");
     }
 
     // air_conditioning
-    public void setAirConditioningCombobox(boolean isAirConditioningOn) {
-        System.out.println(isAirConditioningOn);
-        airConditioningCombobox.setValue(isAirConditioningOn? "on" : "off");
+    public void setAirConditioningToggleGroup(boolean isAirConditioningOn) {
+        airConditioningOnButton.setSelected(isAirConditioningOn);
+        airConditioningOffButton.setSelected(!isAirConditioningOn);
     }
 
-    public void setTemperatureAirConditioningLabel(int temperature) {
-        temperatureAirConditioningLabel.setText(temperature + "°C");
+    public void setTemperatureAirConditioningField(int temperature) {
+        temperatureAirConditioningField.setText(temperature + " \u2103");
     }
 
     private void initData() {
@@ -380,20 +392,20 @@ public class PrimaryFlightDisplayGUI extends Application {
         apuIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
         setApuToggleGroup(PrimaryFlightDisplay.instance.isAPUStarted);
         apuRPMEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.rpmAPU));
-        setAPURPMLabel(PrimaryFlightDisplay.instance.rpmAPU);
+        setAPURPMField(PrimaryFlightDisplay.instance.rpmAPU);
 
         // gear
         gearIsDownEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isGearDown));
         setGearComboBox(PrimaryFlightDisplay.instance.isGearDown);
         gearBrakePercentageEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.gearBrakePercentage));
-        setGearBrakeLabel(PrimaryFlightDisplay.instance.gearBrakePercentage);
+        setGearBrakeField(PrimaryFlightDisplay.instance.gearBrakePercentage);
 
         // air_conditioning
 
         airConditioningOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAirConditioningOn));
-        setAirConditioningCombobox(PrimaryFlightDisplay.instance.isAirConditioningOn);
+        setAirConditioningToggleGroup(PrimaryFlightDisplay.instance.isAirConditioningOn);
         temperatureAirConditioningEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.temperatureAirConditioning));
-        setTemperatureAirConditioningLabel(PrimaryFlightDisplay.instance.temperatureAirConditioning);
+        setTemperatureAirConditioningField(PrimaryFlightDisplay.instance.temperatureAirConditioning);
 
         tableView.refresh();
     }
