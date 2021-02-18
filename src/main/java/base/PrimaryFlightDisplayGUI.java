@@ -252,6 +252,7 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         // droop_nose
         Label droopNoseLabel = new Label("DroopNose : ");
+        droopNoseLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(droopNoseLabel, 0, 4);
 
         Button droopNoseDown = new Button("Down");
@@ -264,7 +265,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(droopNoseNeutral, 4, 4);
 
         //Camera
-        gridPane.add(new Label("Camera: "), 0, 5);
+        Label cameraLabel = new Label("Camera: ");
+        cameraLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(cameraLabel, 0, 5);
 
         ToggleGroup cameraBodyToggleGroup = new ToggleGroup();
 
@@ -291,7 +294,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(cameraWingOff, 6, 5);
 
         //GPS
-        gridPane.add(new Label("GPS: "), 0, 6);
+        Label gpsLabel = new Label("GPS: ");
+        gpsLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(gpsLabel, 0, 6);
 
         ToggleGroup gpsToggleGroup = new ToggleGroup();
 
@@ -309,7 +314,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(new Button("Connect"), 5, 6);
 
         //Radar
-        gridPane.add(new Label("Radar: "), 0, 7);
+        Label radarLabel = new Label("Radar: ");
+        radarLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(radarLabel, 0, 7);
 
         ToggleGroup radarToggleGroup = new ToggleGroup();
 
@@ -325,7 +332,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(new Button("Scan"), 3, 7);
 
         //TCAS
-        gridPane.add(new Label("TCAS: "), 0, 8);
+        Label tcasLabel = new Label("TCAS");
+        tcasLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(tcasLabel, 0, 8);
 
         ToggleGroup tcasToggleGroup = new ToggleGroup();
 
@@ -343,6 +352,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(new Button("Scan"), 5, 8);
 
         //Turbulent Airflow Sensor
+        Label turbulentLabel = new Label("Turbulent Airflow Sensor: ");
+        turbulentLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(new Label("Turbulent Airflow Sensor: "), 0, 9);
         gridPane.add(new Button("Measure Body"), 1, 9);
         gridPane.add(new Button("Measure Wing"), 2, 9);
@@ -369,77 +380,77 @@ public class PrimaryFlightDisplayGUI extends Application {
         // engine
         Label engineLabel = new Label("Engine : ");
         engineLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(engineLabel, 4,1);
+        gridPane.add(engineLabel, 0,10);
 
         ToggleGroup engineToggleGroup = new ToggleGroup();
 
         engineOffButton = new RadioButton("Off");
         engineOffButton.setToggleGroup(engineToggleGroup);
         engineOffButton.setSelected(true);
-        gridPane.add(engineOffButton, 5, 1);
+        gridPane.add(engineOffButton, 2, 10);
 
         engineOnButton = new RadioButton("On");
         engineOnButton.setToggleGroup(engineToggleGroup);
         engineOffButton.setSelected(false);
-        gridPane.add(engineOnButton, 6, 1);
+        gridPane.add(engineOnButton, 1, 10);
 
         engineRPMLabel = new Label("RPM's: 0");
-        gridPane.add(engineRPMLabel, 7,1);
+        gridPane.add(engineRPMLabel, 3,10);
 
         // gear
 
         Label gearLabel = new Label("Gear : ");
         gearLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(gearLabel, 8, 1);
+        gridPane.add(gearLabel, 0, 11);
 
         gearComboBox = new ComboBox<>();
         gearComboBox.getItems().addAll("down", "up");
         gearComboBox.setValue("down");
         gearComboBox.setEditable(false);
-        gridPane.add(gearComboBox, 9, 1);
+        gridPane.add(gearComboBox, 1, 11);
 
         Label gearBrakeLabel = new Label("Brake: ");
-        gridPane.add(gearBrakeLabel, 10, 1);
+        gridPane.add(gearBrakeLabel, 2, 11);
 
         gearBrakePercentageLabel = new Label(0 + "%");
-        gridPane.add(gearBrakePercentageLabel, 11, 1);
+        gridPane.add(gearBrakePercentageLabel, 3, 11);
 
         // Hydraulic Pump
 
         Label hydraulicPumpLabel = new Label("Hydraulic Pump:");
         hydraulicPumpLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(hydraulicPumpLabel, 12, 1);
+        gridPane.add(hydraulicPumpLabel, 0, 12);
         hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
-        gridPane.add(hydraulicPumpBodyOilAmountLabel, 13,1);
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 1,12);
         hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
-        gridPane.add(hydraulicPumpWingOilAmountLabel, 14,1);
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 2,12);
 
         // air_conditioning
         Label airConditioningLabel = new Label("AirConditioning : ");
         airConditioningLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(airConditioningLabel, 0, 2);
+        gridPane.add(airConditioningLabel, 0, 13);
 
         ToggleGroup ACToggleGroup = new ToggleGroup();
 
         airConditioningOffButton = new RadioButton("Off");
         airConditioningOffButton.setToggleGroup(ACToggleGroup);
         airConditioningOffButton.setSelected(true);
-        gridPane.add(airConditioningOffButton, 1, 2);
+        gridPane.add(airConditioningOffButton, 2, 13);
 
         airConditioningOnButton = new RadioButton("On");
         airConditioningOnButton.setToggleGroup(ACToggleGroup);
-        gridPane.add(airConditioningOnButton, 2, 2);
+        gridPane.add(airConditioningOnButton, 1, 13);
 
         temperatureAirConditioningLabel = new Label("0 \u2103");
-        gridPane.add(temperatureAirConditioningLabel, 3, 2);
+        gridPane.add(temperatureAirConditioningLabel, 3, 13);
 
         // Elevator
 
         Label elevatorLabel = new Label("Elevators");
         elevatorLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(elevatorLabel,0,3);
+        gridPane.add(elevatorLabel,0,14);
         degreeElevator = new Label("90 \u00B0");
-        gridPane.add(degreeElevator, 1,3);
+        gridPane.add(degreeElevator, 1,14);
 
 
 
