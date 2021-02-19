@@ -5,9 +5,7 @@ import logging.LogEngine;
 import org.junit.jupiter.api.*;
 import recorder.FlightRecorder;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProcedureTest {
@@ -573,7 +571,7 @@ public class ProcedureTest {
 
         // wastewater_tank
         assertTrue(config.isWasteWaterTankLocked);
-        assertEquals(0, config.capacityWasteWater);
+        assertEquals(80, config.capacityWasteWater);
 
         // weather_radar
         assertFalse(config.isWeatherRadarOn);
