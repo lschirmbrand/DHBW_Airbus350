@@ -9,7 +9,6 @@ import recorder.FlightRecorder;
 import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestTCAS {
     private Object componentPort;
@@ -44,19 +43,19 @@ public class TestTCAS {
 
             Method sendMethod = componentPort.getClass().getDeclaredMethod("scan", String.class);
             assertNotNull(sendMethod);
-            
+
             Method alarmMethod = componentPort.getClass().getDeclaredMethod("alarm");
             assertNotNull(alarmMethod);
-            
+
             Method determineAltitudeMethod = componentPort.getClass().getDeclaredMethod("determineAltitude", String.class);
             assertNotNull(determineAltitudeMethod);
-            
+
             Method setAltitudeMethod = componentPort.getClass().getDeclaredMethod("setAltitude", int.class);
             assertNotNull(setAltitudeMethod);
-            
+
             Method connectMethod = componentPort.getClass().getDeclaredMethod("connect", String.class);
             assertNotNull(connectMethod);
-            
+
             assertEquals(componentPort.getClass().getDeclaredMethods().length, 8);
         } catch (Exception e) {
             e.printStackTrace();

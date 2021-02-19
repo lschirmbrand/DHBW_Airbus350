@@ -1,36 +1,38 @@
 package section;
 
+import base.PrimaryFlightDisplay;
 import com.google.common.eventbus.Subscribe;
+import configuration.Configuration;
 import event.Subscriber;
-import event.camera.CameraBodyOff;
-import event.camera.CameraBodyOn;
 import event.camera.CameraWingOff;
 import event.camera.CameraWingOn;
 import event.droop_nose.DroopNoseDown;
 import event.droop_nose.DroopNoseFullDown;
 import event.droop_nose.DroopNoseNeutral;
 import event.droop_nose.DroopNoseUp;
-import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorBodyMeasure;
-import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorWingMeasure;
-import base.PrimaryFlightDisplay;
-import com.google.common.eventbus.Subscribe;
-import configuration.Configuration;
 import event.elevator.*;
-import event.engine.*;
-import event.hydraulicPump.*;
+import event.engine.EngineDecreaseRPM;
+import event.engine.EngineIncreaseRPM;
+import event.engine.EngineShutdown;
+import event.engine.EngineStart;
+import event.hydraulicPump.HydraulicPumpWingCompress;
+import event.hydraulicPump.HydraulicPumpWingDecompress;
+import event.hydraulicPump.HydraulicPumpWingRefillOil;
+import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorWingMeasure;
 import factory.ElevatorFactory;
 import factory.EngineFactory;
 import factory.HydraulicPumpFactory;
 import logging.LogEngine;
 import recorder.FlightRecorder;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Wing extends Subscriber {
-  
-    private ArrayList<Object> enginePortList;
-    private ArrayList<Object> hydraulicPumpPortList;
-    private ArrayList<Object> elevatorPortList;
+
+    private final ArrayList<Object> enginePortList;
+    private final ArrayList<Object> hydraulicPumpPortList;
+    private final ArrayList<Object> elevatorPortList;
 
     public Wing() {
         enginePortList = new ArrayList<>();
@@ -56,14 +58,17 @@ public class Wing extends Subscriber {
     public void receive(DroopNoseDown droopNoseDown) {
         System.out.println(droopNoseDown);
     }
+
     @Subscribe
     public void receive(DroopNoseFullDown droopNoseFullDown) {
         System.out.println(droopNoseFullDown);
     }
+
     @Subscribe
     public void receive(DroopNoseNeutral droopNoseNeutral) {
         System.out.println(droopNoseNeutral);
     }
+
     @Subscribe
     public void receive(DroopNoseUp droopNoseUp) {
         System.out.println(droopNoseUp);
@@ -93,7 +98,7 @@ public class Wing extends Subscriber {
 
 
     @Subscribe
-    public void receive(EngineStart engineStart){
+    public void receive(EngineStart engineStart) {
         LogEngine.instance.write("+ Wing.receive(" + engineStart.toString() + ")");
         FlightRecorder.instance.insert("Wing", "receive(" + engineStart.toString() + ")");
 
@@ -119,7 +124,7 @@ public class Wing extends Subscriber {
     }
 
     @Subscribe
-    public void receive(EngineShutdown engineShutdown){
+    public void receive(EngineShutdown engineShutdown) {
         LogEngine.instance.write("+ Wing.receive(" + engineShutdown.toString() + ")");
         FlightRecorder.instance.insert("Wing", "receive(" + engineShutdown.toString() + ")");
 
@@ -146,7 +151,7 @@ public class Wing extends Subscriber {
     }
 
     @Subscribe
-    public void receive(EngineIncreaseRPM engineIncreaseRPM){
+    public void receive(EngineIncreaseRPM engineIncreaseRPM) {
         LogEngine.instance.write("+ Wing.receive(" + engineIncreaseRPM.toString() + ")");
         FlightRecorder.instance.insert("Wing", "receive(" + engineIncreaseRPM.toString() + ")");
 
@@ -173,7 +178,7 @@ public class Wing extends Subscriber {
     }
 
     @Subscribe
-    public void receive(EngineDecreaseRPM engineDecreaseRPM){
+    public void receive(EngineDecreaseRPM engineDecreaseRPM) {
         LogEngine.instance.write("+ Wing.receive(" + engineDecreaseRPM.toString() + ")");
         FlightRecorder.instance.insert("Wing", "receive(" + engineDecreaseRPM.toString() + ")");
 

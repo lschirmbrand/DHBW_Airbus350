@@ -1,8 +1,8 @@
 package event.air_conditioning;
 
 public class AirConditioningHeat {
-    private String airFlow;
-    private int temperature;
+    private final String airFlow;
+    private final int temperature;
 
     public AirConditioningHeat(String airFlow, int temperature) {
         this.airFlow = airFlow;

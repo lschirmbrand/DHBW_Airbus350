@@ -1,5 +1,7 @@
 public interface ITurbulentAirFlowSensor {
-    public String version();
-    public boolean alarm();
-    public int measure(String airFlow);
+    String version();
+
+    boolean alarm();
+
+    int measure(String airFlow);
 }

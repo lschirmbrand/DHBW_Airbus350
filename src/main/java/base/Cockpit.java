@@ -4,7 +4,7 @@ import logging.LogEngine;
 import recorder.FlightRecorder;
 
 public class Cockpit implements ICockpit {
-    private Airplane airplane;
+    private final Airplane airplane;
 
     public Cockpit(Airplane airplane) {
         this.airplane = airplane;

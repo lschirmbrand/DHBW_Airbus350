@@ -1,10 +1,10 @@
 public enum Camera {
     INSTANCE;
 
-    public Port port = new Port();
     private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private CameraType type;
     private final String id = "9008480 / 1253402";
+    public Port port = new Port();
+    private CameraType type;
     private boolean isOn;
 
     public String innerVersion() {

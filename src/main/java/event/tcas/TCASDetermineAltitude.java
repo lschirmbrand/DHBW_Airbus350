@@ -1,7 +1,7 @@
 package event.tcas;
 
 public class TCASDetermineAltitude {
-    private String environment;
+    private final String environment;
 
     public TCASDetermineAltitude(String environment) {
         this.environment = environment;

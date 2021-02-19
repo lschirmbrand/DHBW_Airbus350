@@ -6,17 +6,21 @@ public class Elevator {
     private String manufacturer = "4775194";
     private int degree = 90;
 
-    private Elevator() {port = new Elevator.Port();}
+    private Elevator() {
+        port = new Elevator.Port();
+    }
 
     // static method getInstance
-    public static Elevator getInstance() {return instance;}
+    public static Elevator getInstance() {
+        return instance;
+    }
 
     // inner methods
     public String innerVersion() {
         return "Elevator // " + manufacturer;
     }
 
-    public int innerNeutral(){
+    public int innerNeutral() {
         this.degree = 90;
         return this.degree;
     }
@@ -42,7 +46,7 @@ public class Elevator {
     }
 
 
-    public class Port implements IElevator{
+    public class Port implements IElevator {
 
         @Override
         public String version() {
@@ -50,7 +54,8 @@ public class Elevator {
         }
 
         @Override
-        public int neutral() { ;
+        public int neutral() {
+            ;
             return innerNeutral();
         }
 

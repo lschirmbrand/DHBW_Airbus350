@@ -1,11 +1,11 @@
 public class OxygenBottle {
     // static instance
-    private static OxygenBottle instance = new OxygenBottle();
+    private static final OxygenBottle instance = new OxygenBottle();
     // port
     public Port port;
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private String type = "Team 05";
-    private String id = "9008480 / 1253402";
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
     private int amount = 100;
 
     // private constructor

@@ -1,7 +1,7 @@
 package event.gps;
 
 public class GPSConnect {
-    private String satelite;
+    private final String satelite;
 
     public GPSConnect(String satelite) {
         this.satelite = satelite;

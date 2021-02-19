@@ -1,24 +1,25 @@
 public class NitrogenBottle {
 
     //static instance
-    private static NitrogenBottle instance = new NitrogenBottle();
+    private static final NitrogenBottle instance = new NitrogenBottle();
 
     //port
     public Port port;
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private String type = "Team 05";
-    private String id = "9008480 / 1253402";
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
     private int amount = 250;
+
+    // private constructor
+    private NitrogenBottle() {
+        port = new Port();
+    }
 
     // static method getInstance
     public static NitrogenBottle getInstance() {
         return instance;
     }
 
-    // private constructor
-    private NitrogenBottle() {
-        port = new Port();
-    }
     // inner methods
     public String innerVersion() {
         return "NitrogenBottle // " + manufacturer + " - " + type + " - " + id;

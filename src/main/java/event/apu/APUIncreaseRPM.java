@@ -1,7 +1,7 @@
 package event.apu;
 
 public class APUIncreaseRPM {
-    private int value;
+    private final int value;
 
     public APUIncreaseRPM(int value) {
         this.value = value;

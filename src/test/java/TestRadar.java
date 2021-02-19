@@ -9,7 +9,6 @@ import recorder.FlightRecorder;
 import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestRadar {
     private Object componentPort;

@@ -1,7 +1,8 @@
 package event.tcas;
 
 public class TCASConnect {
-    private String frequency;
+    private final String frequency;
+
     public TCASConnect(String frequency) {
         this.frequency = frequency;
     }

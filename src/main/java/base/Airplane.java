@@ -10,18 +10,20 @@ import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.elevator.*;
+import event.engine.EngineDecreaseRPM;
+import event.engine.EngineIncreaseRPM;
+import event.engine.EngineShutdown;
+import event.engine.EngineStart;
 import event.gear.*;
+import event.hydraulicPump.*;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
-import event.elevator.*;
-import event.engine.*;
-import event.hydraulicPump.*;
-import event.weather_radar.*;
 import section.Body;
 import section.Wing;
 
 public class Airplane implements IAirplane {
-    private EventBus eventBus;
+    private final EventBus eventBus;
     private Body body;
     private Wing leftWing;
     private Wing rightWing;

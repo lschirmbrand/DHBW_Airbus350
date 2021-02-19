@@ -1,19 +1,15 @@
-public class HydraulicPump{
+public class HydraulicPump {
 
     private static HydraulicPump instance = new HydraulicPump();
-
-    public Port port;
-
-    private String manufacturer = "4775194";
-
     private final int compressed = 5000;
     private final int decompressed = 0;
     private final int oil_filled = 5000;
     private final int oil_empty = 0;
+    public Port port;
+    private String manufacturer = "4775194";
     private int compress_amount = compressed;
 
     private int oil_amount = 1000;
-
 
 
     // private constructor
@@ -26,7 +22,9 @@ public class HydraulicPump{
         return instance;
     }
 
-    public String innerVersion() {return "WeatherRadar // " + manufacturer;}
+    public String innerVersion() {
+        return "WeatherRadar // " + manufacturer;
+    }
 
     public int innerCompress() {
         this.compress_amount = compressed;
@@ -56,7 +54,7 @@ public class HydraulicPump{
         return this.oil_amount;
     }
 
-    public class Port implements IHydraulicPump{
+    public class Port implements IHydraulicPump {
 
         @Override
         public String version() {

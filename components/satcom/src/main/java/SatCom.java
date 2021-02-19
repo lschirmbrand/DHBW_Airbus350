@@ -22,6 +22,7 @@ public class SatCom {
     public String innerVersion() {
         return "SatCom // " + manufacturer + " - " + type + " - " + id;
     }
+
     public boolean innerOn() {
         return isConnected = true;
     }
@@ -54,7 +55,7 @@ public class SatCom {
         }
 
         public boolean connect(String satalite, String frequency) {
-            return innerConnect(satalite,frequency);
+            return innerConnect(satalite, frequency);
         }
 
         public void send(String request) {

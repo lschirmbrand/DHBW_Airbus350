@@ -1,4 +1,3 @@
-import factory.GearFactory;
 import factory.HydraulicPumpFactory;
 import logging.LogEngine;
 import org.junit.jupiter.api.*;
@@ -105,7 +104,7 @@ public class TestHydraulicPump {
 
         assertDoesNotThrow(() -> {
             Method refillOilMethodAmount = componentPort.getClass().getDeclaredMethod("refillOil", int.class);
-            int oilAmount = (int) refillOilMethodAmount.invoke(componentPort,  1000);
+            int oilAmount = (int) refillOilMethodAmount.invoke(componentPort, 1000);
             assertEquals(2000, oilAmount);
         });
     }

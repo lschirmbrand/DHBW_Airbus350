@@ -2,14 +2,14 @@ package event.hydraulicPump;
 
 public class HydraulicPumpBodyRefillOil {
 
-    private int oil_amount = 1000;
     private final int oil_filled = 1000;
+    private int oil_amount = 1000;
 
-    public HydraulicPumpBodyRefillOil(){
+    public HydraulicPumpBodyRefillOil() {
         this.oil_amount = 1000;
     }
 
-    public HydraulicPumpBodyRefillOil(int amount){
+    public HydraulicPumpBodyRefillOil(int amount) {
         this.oil_amount += amount;
     }
 

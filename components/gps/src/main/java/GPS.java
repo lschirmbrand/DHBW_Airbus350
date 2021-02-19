@@ -1,10 +1,10 @@
 public enum GPS {
     INSTANCE;
 
-    public Port port = new Port();
     private final String manufacturer = "Manuel Truckses / Andreas Köhler";
     private final String type = "Team 05";
     private final String id = "9008480 / 1253402";
+    public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;
 
