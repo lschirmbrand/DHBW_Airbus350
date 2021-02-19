@@ -1,8 +1,5 @@
 IDroopNose.java
  IDroopNose
-droop_nose/DroopNose.java
- droop_nose.DroopNose
 DroopNose.java
  DroopNose
-droop_nose/IDroopNose.java
- droop_nose.IDroopNose
+ DroopNose$Port
