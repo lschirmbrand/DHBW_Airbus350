@@ -1,7 +1,7 @@
 package event.gps;
 
 public class GPSSend {
-    private String request;
+    private final String request;
 
     public GPSSend(String request) {
         this.request = request;

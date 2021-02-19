@@ -1,44 +1,49 @@
-public class Radar implements IRadar {
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private String type = "Team 05";
-    private String id = "9008480 / 1253402";
+public enum Radar {
+    INSTANCE;
+
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
+    public Port port = new Port();
     private boolean isOn;
 
-    @Override
-    public String version() {
-        return null;
+    public String innerVersion() {
+        return manufacturer + "; " + type + "; " + id;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public boolean isOn() {
-        return isOn;
-    }
-
-    @Override
-    public boolean on() {
+    public boolean innerOn() {
         isOn = true;
         return true;
     }
 
-    @Override
-    public boolean off() {
+    public boolean innerOff() {
         isOn = false;
         return false;
     }
 
-    @Override
-    public boolean scan(String environment) {
-        return false;
+    public boolean innerScan(String environment) {
+        return true;
+    }
+
+    public class Port implements IRadar {
+        @Override
+        public String version() {
+            return innerVersion();
+        }
+
+        @Override
+        public boolean on() {
+            return innerOn();
+        }
+
+        @Override
+        public boolean off() {
+            return innerOff();
+        }
+
+        @Override
+        public boolean scan(String environment) {
+            return innerScan(environment);
+        }
     }
 }

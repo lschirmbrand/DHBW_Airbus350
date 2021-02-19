@@ -1,9 +1,15 @@
 public interface ICamera {
-    public String version();
-    public CameraType setType(String type);
-    public boolean on();
-    public String record();
-    public String zoomIn(double factor);
-    public String zoomOut(double factor);
-    public boolean off();
+    String version();
+
+    CameraType setType(String type);
+
+    boolean on();
+
+    String record();
+
+    String zoomIn(double factor);
+
+    String zoomOut(double factor);
+
+    boolean off();
 }

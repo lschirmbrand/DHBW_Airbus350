@@ -48,7 +48,7 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
     private RadioButton weatherRadarOnButton;
-    
+
     //droop_nose
     private Button droopNoseNeutralButton;
     private Button droopNoseFullDownButton;
@@ -380,7 +380,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         // engine
         Label engineLabel = new Label("Engine : ");
         engineLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(engineLabel, 0,10);
+        gridPane.add(engineLabel, 0, 10);
 
         ToggleGroup engineToggleGroup = new ToggleGroup();
 
@@ -395,7 +395,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(engineOnButton, 1, 10);
 
         engineRPMLabel = new Label("RPM's: 0");
-        gridPane.add(engineRPMLabel, 3,10);
+        gridPane.add(engineRPMLabel, 3, 10);
 
         // gear
         Label gearLabel = new Label("Gear : ");
@@ -419,9 +419,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         hydraulicPumpLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(hydraulicPumpLabel, 0, 12);
         hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
-        gridPane.add(hydraulicPumpBodyOilAmountLabel, 1,12);
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 1, 12);
         hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
-        gridPane.add(hydraulicPumpWingOilAmountLabel, 2,12);
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 2, 12);
 
         // air_conditioning
         Label airConditioningLabel = new Label("AirConditioning : ");
@@ -445,9 +445,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         // Elevator
         Label elevatorLabel = new Label("Elevators");
         elevatorLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(elevatorLabel,0,14);
+        gridPane.add(elevatorLabel, 0, 14);
         degreeElevator = new Label("90 \u00B0");
-        gridPane.add(degreeElevator, 1,14);
+        gridPane.add(degreeElevator, 1, 14);
 
         // --- insert section: end
 
@@ -531,16 +531,16 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void setEngineRPMLabel(int rpm) {
-        engineRPMLabel.setText("RPM's: "+rpm);
+        engineRPMLabel.setText("RPM's: " + rpm);
     }
 
-    public void setOilAmount(int amountB, int amountW){
+    public void setOilAmount(int amountB, int amountW) {
         hydraulicPumpBodyOilAmountLabel.setText(amountB + " psi at Body");
         hydraulicPumpWingOilAmountLabel.setText(amountW + " psi at Wing");
     }
 
-    public void setDegreeElevator(int degree){
-        degreeElevator.setText(degree+" \u00B0");
+    public void setDegreeElevator(int degree) {
+        degreeElevator.setText(degree + " \u00B0");
     }
 
     private void initData() {

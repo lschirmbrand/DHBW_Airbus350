@@ -4,7 +4,6 @@ import configuration.Configuration;
 import recorder.FlightRecorder;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 

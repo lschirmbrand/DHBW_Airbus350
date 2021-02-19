@@ -1,45 +1,77 @@
-public class Camera implements ICamera {
+public enum Camera {
+    INSTANCE;
 
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String id = "9008480 / 1253402";
+    public Port port = new Port();
     private CameraType type;
-    private String id = "9008480 / 1253402";
     private boolean isOn;
 
-    @Override
-    public String version() {
-        return null;
+    public String innerVersion() {
+        return manufacturer + "; " + type + "; " + id;
     }
 
-    @Override
-    public CameraType setType(String type) {
-        this.type = CameraType.valueOf(type);
+    public CameraType innerSetType(String type) {
+        this.type = CameraType.valueOf(type.toUpperCase());
         return this.type;
     }
 
-    @Override
-    public boolean on() {
+    public boolean innerOn() {
         isOn = true;
         return true;
     }
 
-    @Override
-    public String record() {
-        return null;
+    public String innerRecord() {
+        return "Camera record";
     }
 
-    @Override
-    public String zoomIn(double factor) {
-        return null;
+    public String innerZoomIn(double factor) {
+        return "" + factor;
     }
 
-    @Override
-    public String zoomOut(double factor) {
-        return null;
+    public String innerZoomOut(double factor) {
+        return "" + factor;
     }
 
-    @Override
-    public boolean off() {
+    public boolean innerOff() {
         isOn = false;
-        return true;
+        return false;
+    }
+
+    public class Port implements ICamera {
+        @Override
+        public String version() {
+            return innerVersion();
+        }
+
+        @Override
+        public CameraType setType(String type) {
+            return innerSetType(type);
+        }
+
+        @Override
+        public boolean on() {
+            return innerOn();
+        }
+
+        @Override
+        public String record() {
+            return innerRecord();
+        }
+
+        @Override
+        public String zoomIn(double factor) {
+            return innerZoomIn(factor);
+        }
+
+        @Override
+        public String zoomOut(double factor) {
+            return innerZoomOut(factor);
+        }
+
+        @Override
+        public boolean off() {
+            return innerOff();
+        }
     }
 }

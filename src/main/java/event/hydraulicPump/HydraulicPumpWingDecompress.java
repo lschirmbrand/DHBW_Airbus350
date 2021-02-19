@@ -2,22 +2,22 @@ package event.hydraulicPump;
 
 public class HydraulicPumpWingDecompress {
 
-    private int compress_amount = 1000;
     private final int decompressed = 0;
+    private int compress_amount = 1000;
 
-    public HydraulicPumpWingDecompress(){
+    public HydraulicPumpWingDecompress() {
         this.compress_amount = decompressed;
     }
 
-    public HydraulicPumpWingDecompress(int amount){
+    public HydraulicPumpWingDecompress(int amount) {
         this.compress_amount = amount;
     }
 
-    public String toString(){
+    public String toString() {
         return "Event: HydraulicPump Wing - Decompressed";
     }
 
-    public int getValue(){
+    public int getValue() {
         return this.compress_amount;
     }
 }

@@ -8,7 +8,9 @@ public class Engine {
     private int rpm;
     private boolean isFire;
 
-    private Engine() {port = new Engine.Port();}
+    private Engine() {
+        port = new Engine.Port();
+    }
 
     // static method getInstance
     public static Engine getInstance() {
@@ -29,23 +31,28 @@ public class Engine {
 
     public int innerIncreaseRPM(int value) {
         this.rpm += value;
-        if(this.rpm > 15000){this.rpm = 15000;}
+        if (this.rpm > 15000) {
+            this.rpm = 15000;
+        }
         return this.rpm;
     }
 
     public int innerDecreaseRPM(int value) {
         this.rpm -= value;
-        if(this.rpm < 0){this.rpm = 0;}
+        if (this.rpm < 0) {
+            this.rpm = 0;
+        }
         return this.rpm;
     }
 
     public boolean innerShutdown() {
-        isStarted =  false;
+        isStarted = false;
         this.rpm = 0;
         return false;
     }
 
-    public void innerExtinguishFire() {}
+    public void innerExtinguishFire() {
+    }
 
 
     // inner class port

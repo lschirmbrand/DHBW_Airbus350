@@ -1,55 +1,39 @@
-public class TurbulentAirFlowSensor implements ITurbulentAirFlowSensor {
+public enum TurbulentAirFlowSensor {
+    INSTANCE;
 
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private String type = "Team 05";
-    private String id = "9008480 / 1253402";
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
+    public Port port = new Port();
     private boolean isAlarm = false;
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String innerVersion() {
+        return manufacturer + "; " + type + "; " + id;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public boolean isAlarm() {
-        return isAlarm;
-    }
-
-    public void setAlarm(boolean alarm) {
-        isAlarm = alarm;
-    }
-
-    @Override
-    public String version() {
-        return null;
-    }
-
-    @Override
-    public boolean alarm() {
-        setAlarm(true);
+    public boolean innerAlarm() {
+        isAlarm = true;
         return true;
     }
 
-    @Override
-    public int measure(String airFlow){
+    public int innerMeasure(String airFlow) {
         return 0;
+    }
+
+    public class Port implements ITurbulentAirFlowSensor {
+        @Override
+        public String version() {
+            return innerVersion();
+        }
+
+        @Override
+        public boolean alarm() {
+            return innerAlarm();
+        }
+
+        @Override
+        public int measure(String airFlow) {
+            return innerMeasure(airFlow);
+        }
     }
 }

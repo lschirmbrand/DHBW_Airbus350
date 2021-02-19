@@ -1,64 +1,58 @@
-public class DroopNose implements IDroopNose{
+public enum DroopNose {
+    INSTANCE;
 
-    private String manufacturer;
-    private String type;
-    private String id;
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
+    public Port port = new Port();
     private int degree;
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String innerVersion() {
+        return manufacturer + "; " + type + "; " + id;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public int innerNeutral() {
+        return 0;
     }
 
-    public String getType() {
-        return type;
+    public int innerFullDown() {
+        return 0;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int getDegree() {
+    public int innerDown(int degree) {
+        this.degree -= degree;
         return degree;
     }
 
-    public void setDegree(int degree) {
-        this.degree = degree;
+    public int innerUp(int degree) {
+        this.degree += degree;
+        return this.degree;
     }
 
-    @Override
-    public String version() {
-        return null;
-    }
+    public class Port implements IDroopNose {
+        @Override
+        public String version() {
+            return innerVersion();
+        }
 
-    @Override
-    public int neutral() {
-        return 0;
-    }
+        @Override
+        public int neutral() {
+            return innerNeutral();
+        }
 
-    @Override
-    public int fullDown() {
-        return 0;
-    }
+        @Override
+        public int fullDown() {
+            return innerFullDown();
+        }
 
-    @Override
-    public int down(int degree) {
-        return 0;
-    }
+        @Override
+        public int down(int degree) {
+            return innerDown(degree);
+        }
 
-    @Override
-    public int up(int degree) {
-        return 0;
+        @Override
+        public int up(int degree) {
+            return innerUp(degree);
+        }
     }
 }

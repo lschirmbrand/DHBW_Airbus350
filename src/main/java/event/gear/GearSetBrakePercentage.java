@@ -1,7 +1,7 @@
 package event.gear;
 
 public class GearSetBrakePercentage {
-    private int value;
+    private final int value;
 
     public GearSetBrakePercentage(int value) {
         this.value = value;

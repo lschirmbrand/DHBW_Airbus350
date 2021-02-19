@@ -1,7 +1,7 @@
 package event.radar;
 
 public class RadarScan {
-    private String environment;
+    private final String environment;
 
     public RadarScan(String environment) {
         this.environment = environment;

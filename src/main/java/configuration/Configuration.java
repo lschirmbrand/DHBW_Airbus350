@@ -23,7 +23,7 @@ public enum Configuration {
     public int numberOfApu = 1;
 
     // gear
-    public String pathToGearJavaArchive = commonPathToJavaArchive + fileSeparator + "gear" + fileSeparator  + "build" + fileSeparator + "libs" + fileSeparator + "gear.jar";
+    public String pathToGearJavaArchive = commonPathToJavaArchive + fileSeparator + "gear" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "gear.jar";
     public int numberOfGearFront = 1;
     public int numberOfGearRear = 2;
 

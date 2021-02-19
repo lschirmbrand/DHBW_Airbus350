@@ -29,7 +29,7 @@ public class APU {
 
     public int innerIncreaseRPM(int value) {
         rpm += value;
-        if(rpm > 5000) {
+        if (rpm > 5000) {
             rpm = 5000;
         }
         return rpm;
@@ -37,7 +37,7 @@ public class APU {
 
     public int innerDecreaseRPM(int value) {
         rpm -= value;
-        if(rpm < 0) {
+        if (rpm < 0) {
             rpm = 0;
         }
         return rpm;

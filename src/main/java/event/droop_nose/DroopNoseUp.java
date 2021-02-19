@@ -1,7 +1,8 @@
 package event.droop_nose;
 
-public class DroopNoseUp{
-    private int degree;
+public class DroopNoseUp {
+    private final int degree;
+
     public DroopNoseUp(int degree) {
         this.degree = degree;
     }

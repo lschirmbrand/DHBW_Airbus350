@@ -1,8 +1,13 @@
 public interface IGPS {
-    public String version();
-    public boolean on();
-    public boolean connect(String satelite);
-    public void send(String request);
-    public String receive();
-    public boolean off();
+    String version();
+
+    boolean on();
+
+    boolean connect(String satelite);
+
+    void send(String request);
+
+    String receive();
+
+    boolean off();
 }

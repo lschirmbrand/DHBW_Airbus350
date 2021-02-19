@@ -4,33 +4,27 @@ import base.PrimaryFlightDisplay;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.Subscriber;
-import event.camera.CameraBodyOff;
-import event.camera.CameraBodyOn;
-import event.gps.*;
-import event.radar.RadarOff;
-import event.radar.RadarOn;
-import event.radar.RadarScan;
-import event.tcas.*;
-import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorBodyMeasure;
 import event.air_conditioning.*;
 import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.camera.CameraBodyOff;
+import event.camera.CameraBodyOn;
 import event.gear.*;
-import event.elevator.*;
+import event.gps.*;
 import event.hydraulicPump.HydraulicPumpBodyCompress;
 import event.hydraulicPump.HydraulicPumpBodyRefillOil;
 import event.hydraulicPump.HydraulicPumpWingDecompress;
+import event.radar.RadarOff;
+import event.radar.RadarOn;
+import event.radar.RadarScan;
+import event.tcas.*;
+import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorBodyMeasure;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
 import event.weather_radar.WeatherRadarScan;
-import factory.APUFactory;
-import factory.AirConditioningFactory;
-import factory.GearFactory;
-import factory.EngineFactory;
-import factory.HydraulicPumpFactory;
-import factory.WeatherRadarFactory;
+import factory.*;
 import logging.LogEngine;
 import recorder.FlightRecorder;
 
@@ -38,12 +32,12 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Body extends Subscriber {
-    private ArrayList<Object> airConditioningPortList;
-    private ArrayList<Object> apuPortList;
-    private ArrayList<Object> gearPortList;
-    private ArrayList<Object> weatherRadarPortList;
-    private ArrayList<Object> hydraulicPumpPortList;
-    private ArrayList<Object> elevatorPortList;
+    private final ArrayList<Object> airConditioningPortList;
+    private final ArrayList<Object> apuPortList;
+    private final ArrayList<Object> gearPortList;
+    private final ArrayList<Object> weatherRadarPortList;
+    private final ArrayList<Object> hydraulicPumpPortList;
+    private final ArrayList<Object> elevatorPortList;
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
@@ -543,18 +537,22 @@ public class Body extends Subscriber {
     public void receive(TCASOn tcason) {
         System.out.println(tcason);
     }
+
     @Subscribe
     public void receive(TCASOff tcasOff) {
         System.out.println(tcasOff);
     }
+
     @Subscribe
     public void receive(TCASConnect tcasConnect) {
         System.out.println(tcasConnect);
     }
+
     @Subscribe
     public void receive(TCASScan tcasScan) {
         System.out.println(tcasScan);
     }
+
     @Subscribe
     public void receive(TCASDetermineAltitude tcasDetermineAltitude) {
         System.out.println(tcasDetermineAltitude);

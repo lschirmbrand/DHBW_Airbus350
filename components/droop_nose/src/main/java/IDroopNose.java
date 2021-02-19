@@ -1,7 +1,11 @@
 public interface IDroopNose {
-    public String version();
-    public int neutral();
-    public int fullDown();
-    public int down(int degree);
-    public int up(int degree);
+    String version();
+
+    int neutral();
+
+    int fullDown();
+
+    int down(int degree);
+
+    int up(int degree);
 }
