@@ -154,12 +154,12 @@ public class ProcedureTest {
         assertEquals(2500 ,config.hydraulicPumpWingOilAmount);
 
         // ice_detector_probe
-        assertFalse(config.isIceDetectorProbeBodyActivated);
-        assertFalse(config.isIceDetectorProbeWingActivated);
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
         assertFalse(config.isIceDetected);
 
         // kitchen
-        assertFalse(config.isKitchenLocked);
+        assertTrue(config.isKitchenLocked);
         assertFalse(config.isKitchenFilled);
         assertEquals(100, config.numberOfTrolley);
 
@@ -202,17 +202,17 @@ public class ProcedureTest {
         assertTrue(config.isRadarOn);
 
         // radar_altimeter
-        assertFalse(config.isRadarAltimeterOn);
+        assertTrue(config.isRadarAltimeterOn);
         assertEquals(0, config.altitudeRadarAltimeter);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // right_navigation_light
-        assertFalse(config.isRightNavigationLightOn);
+        assertTrue(config.isRightNavigationLightOn);
 
         // route_management
-        assertFalse(config.isRouteManagementOn);
+        assertTrue(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
@@ -275,6 +275,84 @@ public class ProcedureTest {
     public void taxiTest() {
         cockpit.taxi();
 
+        // hydraulic_pump
+        assertEquals(9900 ,config.hydraulicPumpBodyOilAmount);
+        assertEquals(2400 ,config.hydraulicPumpWingOilAmount);
+
+        // ice_detector_probe
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
+        assertFalse(config.isIceDetected);
+
+        // kitchen
+        assertTrue(config.isKitchenLocked);
+        assertTrue(config.isKitchenFilled);
+        assertEquals(100, config.numberOfTrolley);
+
+        // landing_light
+        assertFalse(config.isLandingLightBodyOn);
+        assertFalse(config.isLandingLightWingOn);
+
+        // left_aileron
+        assertEquals(0, config.degreeLeftAileron);
+
+        // nitrogen_bottle
+        assertEquals(2800, config.amountOfNitrogen);
+
+        // oxygen_bottle
+        assertEquals(9700, config.oxygenBottleAmount);
+
+        // pitot_tube
+        assertTrue(config.isPitotTubeCleaned);
+        assertEquals(0, config.velocity);
+
+        // potable_watertank
+        assertFalse(config.isPotableWaterTankLocked);
+        assertEquals(10000, config.amountPotableWater);
+
+        // premium_economy_class_seat
+        assertTrue(config.isPremiumEconomyNonSmokingSignOn);
+        assertTrue(config.isPremiumEconomySeatBeltSignOn);
+        assertEquals(1, config.premiumEconomyLevelSeat);
+
+        // radar_altimeter
+        assertTrue(config.isRadarAltimeterOn);
+        assertEquals(0, config.altitudeRadarAltimeter);
+
+        // right_aileron
+        assertEquals(0, config.degreeRightAileron);
+
+        // route_management
+        assertTrue(config.isRouteManagementOn);
+        assertEquals(1, config.indexRouteManagement);
+        assertEquals(0, config.numberOfCheckPointsRouteManagement);
+
+        // rudder
+        assertEquals(10, config.degreeRudder);
+
+        // slat
+        assertEquals(10, config.degreeSlat);
+
+        // spoiler
+        assertEquals(10, config.degreeSpoiler);
+
+        // tcas
+        assertEquals(0, config.altitudeTCAS);
+
+        // temperature_sensor
+        assertEquals(10, config.temperatureBody);
+        assertFalse(config.isTemperatureSensorBodyAlarm);
+        assertEquals(10, config.TemperatureWing);
+        assertFalse(config.isTemperatureSensorWingAlarm);
+
+        // vhf
+        assertTrue(config.isVHFOn);
+        assertEquals("126,7", config.selectedChannelVHF);
+
+        // wastewater_tank
+        assertFalse(config.isWasteWaterTankLocked);
+        assertEquals(0, config.capacityWasteWater);
+
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
     }
@@ -283,6 +361,78 @@ public class ProcedureTest {
     @Order(3)
     public void takeOffTest() {
         cockpit.takeoff();
+
+        // hydraulic_pump
+        assertEquals(9800 ,config.hydraulicPumpBodyOilAmount);
+
+        // ice_detector_probe
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
+        assertFalse(config.isIceDetected);
+
+        // kitchen
+        assertTrue(config.isKitchenLocked);
+        assertTrue(config.isKitchenFilled);
+        assertEquals(100, config.numberOfTrolley);
+
+        // landing_light
+        assertFalse(config.isLandingLightBodyOn);
+        assertFalse(config.isLandingLightWingOn);
+
+        // left_aileron
+        assertEquals(0, config.degreeLeftAileron);
+
+        // nitrogen_bottle
+        assertEquals(2700, config.amountOfNitrogen);
+
+        // oxygen_bottle
+        assertEquals(9500, config.oxygenBottleAmount);
+
+        // pitot_tube
+        assertTrue(config.isPitotTubeCleaned);
+        assertEquals(300, config.velocity);
+
+        // potable_watertank
+        assertFalse(config.isPotableWaterTankLocked);
+        assertEquals(9000, config.amountPotableWater);
+
+        // radar_altimeter
+        assertTrue(config.isRadarAltimeterOn);
+        assertEquals(0, config.altitudeRadarAltimeter);
+
+        // right_aileron
+        assertEquals(0, config.degreeRightAileron);
+
+        // route_management
+        assertTrue(config.isRouteManagementOn);
+        assertEquals(1, config.indexRouteManagement);
+        assertEquals(1, config.numberOfCheckPointsRouteManagement);
+
+        // rudder
+        assertEquals(20, config.degreeRudder);
+
+        // slat
+        assertEquals(20, config.degreeSlat);
+
+        // spoiler
+        assertEquals(20, config.degreeSpoiler);
+
+        // tcas
+        assertEquals(0, config.altitudeTCAS);
+
+        // temperature_sensor
+        assertEquals(10, config.temperatureBody);
+        assertFalse(config.isTemperatureSensorBodyAlarm);
+        assertEquals(10, config.TemperatureWing);
+        assertFalse(config.isTemperatureSensorWingAlarm);
+
+        // vhf
+        assertTrue(config.isVHFOn);
+        assertEquals("124,3", config.selectedChannelVHF);
+
+        // wastewater_tank
+        assertFalse(config.isWasteWaterTankLocked);
+        assertEquals(10, config.capacityWasteWater);
 
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
@@ -293,6 +443,79 @@ public class ProcedureTest {
     public void climbingTest() {
         cockpit.climbing();
 
+        // hydraulic_pump
+        assertEquals(9700 ,config.hydraulicPumpBodyOilAmount);
+        assertEquals(2200 ,config.hydraulicPumpWingOilAmount);
+
+        // ice_detector_probe
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
+        assertFalse(config.isIceDetected);
+
+        // kitchen
+        assertFalse(config.isKitchenLocked);
+        assertTrue(config.isKitchenFilled);
+        assertEquals(80, config.numberOfTrolley);
+
+        // landing_light
+        assertFalse(config.isLandingLightBodyOn);
+        assertFalse(config.isLandingLightWingOn);
+
+        // left_aileron
+        assertEquals(0, config.degreeLeftAileron);
+
+        // nitrogen_bottle
+        assertEquals(2500, config.amountOfNitrogen);
+
+        // oxygen_bottle
+        assertEquals(9000, config.oxygenBottleAmount);
+
+        // pitot_tube
+        assertTrue(config.isPitotTubeCleaned);
+        assertEquals(500, config.velocity);
+
+        // potable_watertank
+        assertFalse(config.isPotableWaterTankLocked);
+        assertEquals(7000, config.amountPotableWater);
+
+        // radar_altimeter
+        assertTrue(config.isRadarAltimeterOn);
+        assertEquals(5000, config.altitudeRadarAltimeter);
+
+        // right_aileron
+        assertEquals(0, config.degreeRightAileron);
+
+        // route_management
+        assertTrue(config.isRouteManagementOn);
+        assertEquals(1, config.indexRouteManagement);
+        assertEquals(3, config.numberOfCheckPointsRouteManagement);
+
+        // rudder
+        assertEquals(20, config.degreeRudder);
+
+        // slat
+        assertEquals(20, config.degreeSlat);
+
+        // spoiler
+        assertEquals(20, config.degreeSpoiler);
+
+        // tcas
+        assertEquals(5000, config.altitudeTCAS);
+
+        // temperature_sensor
+        assertEquals(5, config.temperatureBody);
+        assertFalse(config.isTemperatureSensorBodyAlarm);
+        assertEquals(5, config.TemperatureWing);
+        assertFalse(config.isTemperatureSensorWingAlarm);
+
+        // vhf
+        assertTrue(config.isVHFOn);
+        assertEquals("122,43", config.selectedChannelVHF);
+
+        // wastewater_tank
+        assertFalse(config.isWasteWaterTankLocked);
+        assertEquals(20, config.capacityWasteWater);
+
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
     }
@@ -301,6 +524,79 @@ public class ProcedureTest {
     @Order(5)
     public void rightTurnTest() {
         cockpit.rightTurn();
+
+        // hydraulic_pump
+        assertEquals(9600 ,config.hydraulicPumpBodyOilAmount);
+        assertEquals(2100 ,config.hydraulicPumpWingOilAmount);
+
+        // ice_detector_probe
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
+        assertTrue(config.isIceDetected);
+
+        // kitchen
+        assertFalse(config.isKitchenLocked);
+        assertTrue(config.isKitchenFilled);
+        assertEquals(60, config.numberOfTrolley);
+
+        // landing_light
+        assertFalse(config.isLandingLightBodyOn);
+        assertFalse(config.isLandingLightWingOn);
+
+        // left_aileron
+        assertEquals(-10, config.degreeLeftAileron);
+
+        // nitrogen_bottle
+        assertEquals(2400, config.amountOfNitrogen);
+
+        // oxygen_bottle
+        assertEquals(8000, config.oxygenBottleAmount);
+
+        // pitot_tube
+        assertTrue(config.isPitotTubeCleaned);
+        assertEquals(800, config.velocity);
+
+        // potable_watertank
+        assertFalse(config.isPotableWaterTankLocked);
+        assertEquals(5000, config.amountPotableWater);
+
+        // radar_altimeter
+        assertTrue(config.isRadarAltimeterOn);
+        assertEquals(10000, config.altitudeRadarAltimeter);
+
+        // right_aileron
+        assertEquals(10, config.degreeRightAileron);
+
+        // route_management
+        assertTrue(config.isRouteManagementOn);
+        assertEquals(1, config.indexRouteManagement);
+        assertEquals(5, config.numberOfCheckPointsRouteManagement);
+
+        // rudder
+        assertEquals(10, config.degreeRudder);
+
+        // slat
+        assertEquals(10, config.degreeSlat);
+
+        // spoiler
+        assertEquals(10, config.degreeSpoiler);
+
+        // tcas
+        assertEquals(10000, config.altitudeTCAS);
+
+        // temperature_sensor
+        assertEquals(-10, config.temperatureBody);
+        assertFalse(config.isTemperatureSensorBodyAlarm);
+        assertEquals(-10, config.TemperatureWing);
+        assertFalse(config.isTemperatureSensorWingAlarm);
+
+        // vhf
+        assertTrue(config.isVHFOn);
+        assertEquals("124,43", config.selectedChannelVHF);
+
+        // wastewater_tank
+        assertFalse(config.isWasteWaterTankLocked);
+        assertEquals(30, config.capacityWasteWater);
 
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
@@ -311,6 +607,79 @@ public class ProcedureTest {
     public void leftTurnTest() {
         cockpit.leftTurn();
 
+        // hydraulic_pump
+        assertEquals(9500 ,config.hydraulicPumpBodyOilAmount);
+        assertEquals(2000 ,config.hydraulicPumpWingOilAmount);
+
+        // ice_detector_probe
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
+        assertTrue(config.isIceDetected);
+
+        // kitchen
+        assertFalse(config.isKitchenLocked);
+        assertTrue(config.isKitchenFilled);
+        assertEquals(30, config.numberOfTrolley);
+
+        // landing_light
+        assertFalse(config.isLandingLightBodyOn);
+        assertFalse(config.isLandingLightWingOn);
+
+        // left_aileron
+        assertEquals(10, config.degreeLeftAileron);
+
+        // nitrogen_bottle
+        assertEquals(2200, config.amountOfNitrogen);
+
+        // oxygen_bottle
+        assertEquals(6000, config.oxygenBottleAmount);
+
+        // pitot_tube
+        assertTrue(config.isPitotTubeCleaned);
+        assertEquals(800, config.velocity);
+
+        // potable_watertank
+        assertFalse(config.isPotableWaterTankLocked);
+        assertEquals(4000, config.amountPotableWater);
+
+        // radar_altimeter
+        assertTrue(config.isRadarAltimeterOn);
+        assertEquals(10000, config.altitudeRadarAltimeter);
+
+        // right_aileron
+        assertEquals(-10, config.degreeRightAileron);
+
+        // route_management
+        assertTrue(config.isRouteManagementOn);
+        assertEquals(1, config.indexRouteManagement);
+        assertEquals(8, config.numberOfCheckPointsRouteManagement);
+
+        // rudder
+        assertEquals(10, config.degreeRudder);
+
+        // slat
+        assertEquals(10, config.degreeSlat);
+
+        // spoiler
+        assertEquals(10, config.degreeSpoiler);
+
+        // tcas
+        assertEquals(10000, config.altitudeTCAS);
+
+        // temperature_sensor
+        assertEquals(-10, config.temperatureBody);
+        assertFalse(config.isTemperatureSensorBodyAlarm);
+        assertEquals(-10, config.TemperatureWing);
+        assertFalse(config.isTemperatureSensorWingAlarm);
+
+        // vhf
+        assertTrue(config.isVHFOn);
+        assertEquals("127,6", config.selectedChannelVHF);
+
+        // wastewater_tank
+        assertFalse(config.isWasteWaterTankLocked);
+        assertEquals(40, config.capacityWasteWater);
+
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
     }
@@ -320,6 +689,79 @@ public class ProcedureTest {
     public void descentTest() {
         cockpit.descent();
 
+        // hydraulic_pump
+        assertEquals(9400 ,config.hydraulicPumpBodyOilAmount);
+        assertEquals(1900 ,config.hydraulicPumpWingOilAmount);
+
+        // ice_detector_probe
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
+        assertTrue(config.isIceDetected);
+
+        // kitchen
+        assertFalse(config.isKitchenLocked);
+        assertFalse(config.isKitchenFilled);
+        assertEquals(0, config.numberOfTrolley);
+
+        // landing_light
+        assertFalse(config.isLandingLightBodyOn);
+        assertFalse(config.isLandingLightWingOn);
+
+        // left_aileron
+        assertEquals(0, config.degreeLeftAileron);
+
+        // nitrogen_bottle
+        assertEquals(2100, config.amountOfNitrogen);
+
+        // oxygen_bottle
+        assertEquals(4000, config.oxygenBottleAmount);
+
+        // pitot_tube
+        assertTrue(config.isPitotTubeCleaned);
+        assertEquals(600, config.velocity);
+
+        // potable_watertank
+        assertFalse(config.isPotableWaterTankLocked);
+        assertEquals(2000, config.amountPotableWater);
+
+        // radar_altimeter
+        assertTrue(config.isRadarAltimeterOn);
+        assertEquals(5000, config.altitudeRadarAltimeter);
+
+        // right_aileron
+        assertEquals(0, config.degreeRightAileron);
+
+        // route_management
+        assertTrue(config.isRouteManagementOn);
+        assertEquals(1, config.indexRouteManagement);
+        assertEquals(13, config.numberOfCheckPointsRouteManagement);
+
+        // rudder
+        assertEquals(5, config.degreeRudder);
+
+        // slat
+        assertEquals(5, config.degreeSlat);
+
+        // spoiler
+        assertEquals(5, config.degreeSpoiler);
+
+        // tcas
+        assertEquals(5000, config.altitudeTCAS);
+
+        // temperature_sensor
+        assertEquals(-5, config.temperatureBody);
+        assertFalse(config.isTemperatureSensorBodyAlarm);
+        assertEquals(-5, config.TemperatureWing);
+        assertFalse(config.isTemperatureSensorWingAlarm);
+
+        // vhf
+        assertTrue(config.isVHFOn);
+        assertEquals("121,63", config.selectedChannelVHF);
+
+        // wastewater_tank
+        assertFalse(config.isWasteWaterTankLocked);
+        assertEquals(50, config.capacityWasteWater);
+
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
     }
@@ -328,6 +770,79 @@ public class ProcedureTest {
     @Order(8)
     public void landingTest() {
         cockpit.landing();
+
+        // hydraulic_pump
+        assertEquals(9300 ,config.hydraulicPumpBodyOilAmount);
+        assertEquals(1800 ,config.hydraulicPumpWingOilAmount);
+
+        // ice_detector_probe
+        assertTrue(config.isIceDetectorProbeBodyActivated);
+        assertTrue(config.isIceDetectorProbeWingActivated);
+        assertFalse(config.isIceDetected);
+
+        // kitchen
+        assertTrue(config.isKitchenLocked);
+        assertFalse(config.isKitchenFilled);
+        assertEquals(0, config.numberOfTrolley);
+
+        // landing_light
+        assertTrue(config.isLandingLightBodyOn);
+        assertTrue(config.isLandingLightWingOn);
+
+        // left_aileron
+        assertEquals(0, config.degreeLeftAileron);
+
+        // nitrogen_bottle
+        assertEquals(2000, config.amountOfNitrogen);
+
+        // oxygen_bottle
+        assertEquals(3000, config.oxygenBottleAmount);
+
+        // pitot_tube
+        assertFalse(config.isPitotTubeCleaned);
+        assertEquals(200, config.velocity);
+
+        // potable_watertank
+        assertFalse(config.isPotableWaterTankLocked);
+        assertEquals(1000, config.amountPotableWater);
+
+        // radar_altimeter
+        assertTrue(config.isRadarAltimeterOn);
+        assertEquals(50, config.altitudeRadarAltimeter);
+
+        // right_aileron
+        assertEquals(0, config.degreeRightAileron);
+
+        // route_management
+        assertTrue(config.isRouteManagementOn);
+        assertEquals(1, config.indexRouteManagement);
+        assertEquals(17, config.numberOfCheckPointsRouteManagement);
+
+        // rudder
+        assertEquals(5, config.degreeRudder);
+
+        // slat
+        assertEquals(5, config.degreeSlat);
+
+        // spoiler
+        assertEquals(5, config.degreeSpoiler);
+
+        // tcas
+        assertEquals(50, config.altitudeTCAS);
+
+        // temperature_sensor
+        assertEquals(10, config.temperatureBody);
+        assertFalse(config.isTemperatureSensorBodyAlarm);
+        assertEquals(10, config.TemperatureWing);
+        assertFalse(config.isTemperatureSensorWingAlarm);
+
+        // vhf
+        assertTrue(config.isVHFOn);
+        assertEquals("128,625", config.selectedChannelVHF);
+
+        // wastewater_tank
+        assertFalse(config.isWasteWaterTankLocked);
+        assertEquals(60, config.capacityWasteWater);
 
         // weather_radar
         assertTrue(PrimaryFlightDisplay.instance.isWeatherRadarOn);
@@ -457,8 +972,8 @@ public class ProcedureTest {
         assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(0 ,config.hydraulicPumpBodyOilAmount);
-        assertEquals(0 ,config.hydraulicPumpWingOilAmount);
+        assertEquals(9200 ,config.hydraulicPumpBodyOilAmount);
+        assertEquals(1700 ,config.hydraulicPumpWingOilAmount);
 
         // ice_detector_probe
         assertFalse(config.isIceDetectorProbeBodyActivated);
@@ -493,7 +1008,7 @@ public class ProcedureTest {
         assertFalse(config.isOxgenSensorAlarm);
 
         // pitot_tube
-        assertTrue(config.isPitotTubeCleaned);
+        assertFalse(config.isPitotTubeCleaned);
         assertEquals(0, config.velocity);
 
         // potable_watertank
@@ -521,7 +1036,7 @@ public class ProcedureTest {
         // route_management
         assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
-        assertEquals(0, config.numberOfCheckPointsRouteManagement);
+        assertEquals(20, config.numberOfCheckPointsRouteManagement);
 
         // rudder
         assertEquals(0, config.degreeRudder);
