@@ -10,10 +10,10 @@ import java.sql.Statement;
 
 public enum FlightRecorder {
     instance;
+    private final String driverName = "jdbc:hsqldb:";
+    private final String username = "sa";
+    private final String password = "";
     private Connection connection;
-    private String driverName = "jdbc:hsqldb:";
-    private String username = "sa";
-    private String password = "";
 
     public void startup() {
         try {
