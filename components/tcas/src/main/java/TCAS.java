@@ -1,27 +1,17 @@
-public class TCAS {
+public enum TCAS {
+    INSTANCE;
 
-    private static TCAS instance = new TCAS();
-    private String manufacturer;
-    private String type;
-    private String id;
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
+    public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;
     private boolean isAlarm;
     private int altitude;
-    public Port port = new Port();
-
-    private TCAS() {
-        this.manufacturer = "Manuel Truckses / Andreas Köhler";
-        this.type = "Team 05";
-        this.id = "9008480 / 1253402";
-    }
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;
-    }
-
-    public static TCAS getInstance() {
-        return instance;
     }
 
     public boolean innerOn() {

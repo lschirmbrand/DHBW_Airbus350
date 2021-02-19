@@ -1,14 +1,17 @@
-import factory.CameraFactory;
+import factory.GPSFactory;
 import logging.LogEngine;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import recorder.FlightRecorder;
 
 import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TestCamera {
+public class TestGPS {
     private Object componentPort;
 
     @BeforeEach
@@ -21,14 +24,14 @@ public class TestCamera {
     @Test
     @Order(1)
     public void factory() {
-        componentPort = CameraFactory.build();
+        componentPort = GPSFactory.build();
         assertNotNull(componentPort);
     }
 
     @Test
     @Order(2)
     public void methods() {
-        componentPort = CameraFactory.build();
+        componentPort = GPSFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             assertNotNull(onMethod);
@@ -36,22 +39,19 @@ public class TestCamera {
             Method offMethod = componentPort.getClass().getDeclaredMethod("off");
             assertNotNull(offMethod);
 
-            Method scanMethod = componentPort.getClass().getDeclaredMethod("setType", String.class);
-            assertNotNull(scanMethod);
+            Method connectMethod = componentPort.getClass().getDeclaredMethod("connect", String.class);
+            assertNotNull(connectMethod);
 
             Method versionMethod = componentPort.getClass().getDeclaredMethod("version");
             assertNotNull(versionMethod);
 
-            Method zoomInMethod = componentPort.getClass().getDeclaredMethod("zoomIn", double.class);
-            assertNotNull(zoomInMethod);
+            Method receiveMethod = componentPort.getClass().getDeclaredMethod("receive");
+            assertNotNull(receiveMethod);
 
-            Method zoomOutMethod = componentPort.getClass().getDeclaredMethod("zoomOut", double.class);
-            assertNotNull(zoomOutMethod);
+            Method sendMethod = componentPort.getClass().getDeclaredMethod("send", String.class);
+            assertNotNull(sendMethod);
 
-            Method recordMethod = componentPort.getClass().getDeclaredMethod("record");
-            assertNotNull(recordMethod);
-
-            assertEquals(componentPort.getClass().getDeclaredMethods().length, 7);
+            assertEquals(componentPort.getClass().getDeclaredMethods().length, 6);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -61,7 +61,7 @@ public class TestCamera {
     @Test
     @Order(3)
     public void on() {
-        componentPort = CameraFactory.build();
+        componentPort = GPSFactory.build();
         try {
             Method onMethod = componentPort.getClass().getDeclaredMethod("on");
             boolean isOn = (boolean) onMethod.invoke(componentPort);
@@ -74,12 +74,12 @@ public class TestCamera {
 
     @Test
     @Order(4)
-    public void record() {
-        componentPort = CameraFactory.build();
+    public void connect() {
+        componentPort = GPSFactory.build();
         try {
-            Method recordMethod = componentPort.getClass().getDeclaredMethod("record");
-            String result = (String) recordMethod.invoke(componentPort);
-            assertTrue(result != null && !result.isEmpty());
+            Method connectMethod = componentPort.getClass().getDeclaredMethod("connect", String.class);
+            boolean result = (boolean) connectMethod.invoke(componentPort, "Astra-8");
+            assertTrue(result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -88,12 +88,11 @@ public class TestCamera {
 
     @Test
     @Order(5)
-    public void zoomIn() {
-        componentPort = CameraFactory.build();
+    public void send() {
+        componentPort = GPSFactory.build();
         try {
-            Method zoomInMethod = componentPort.getClass().getDeclaredMethod("zoomIn", double.class);
-            String result = (String) zoomInMethod.invoke(componentPort, 5.8d);
-            assertEquals(result, "5.8");
+            Method sendMethod = componentPort.getClass().getDeclaredMethod("send", String.class);
+            sendMethod.invoke(componentPort, "5874");
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -103,7 +102,7 @@ public class TestCamera {
     @Test
     @Order(6)
     public void off() {
-        componentPort = CameraFactory.build();
+        componentPort = GPSFactory.build();
         try {
             Method offMethod = componentPort.getClass().getDeclaredMethod("off");
             boolean isOn = (boolean) offMethod.invoke(componentPort);
@@ -116,12 +115,12 @@ public class TestCamera {
 
     @Test
     @Order(7)
-    public void zoomOut() {
-        componentPort = CameraFactory.build();
+    public void receive() {
+        componentPort = GPSFactory.build();
         try {
-            Method zoomOutMethod = componentPort.getClass().getDeclaredMethod("zoomOut", double.class);
-            String result = (String) zoomOutMethod.invoke(componentPort, 5.8d);
-            assertEquals(result, "5.8");
+            Method receiveMethod = componentPort.getClass().getDeclaredMethod("receive");
+            String result = (String) receiveMethod.invoke(componentPort);
+            assertFalse(result.isEmpty());
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -131,26 +130,11 @@ public class TestCamera {
     @Test
     @Order(8)
     public void version() {
-        componentPort = CameraFactory.build();
+        componentPort = GPSFactory.build();
         try {
             Method versionMethod = componentPort.getClass().getDeclaredMethod("version");
             String result = (String) versionMethod.invoke(componentPort);
             assertFalse(result.isEmpty());
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
-        }
-    }
-
-    @Test
-    @Order(9)
-    public void setType() {
-        componentPort = CameraFactory.build();
-        try {
-            Method setTypeMethod = componentPort.getClass().getDeclaredMethod("setType", String.class);
-            Object result = setTypeMethod.invoke(componentPort, "Tail");
-            assertNotNull(result);
-            System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

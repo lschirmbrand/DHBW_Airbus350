@@ -1,22 +1,14 @@
-public class Radar {
+public enum Radar {
+    INSTANCE;
 
-    private static Radar instance = new Radar();
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private String type = "Team 05";
-    private String id = "9008480 / 1253402";
-    private boolean isOn;
     public Port port = new Port();
-
-    private Radar() {
-
-    }
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
+    private boolean isOn;
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;
-    }
-
-    public static Radar getInstance() {
-        return instance;
     }
 
     public boolean innerOn() {

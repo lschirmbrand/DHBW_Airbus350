@@ -1,26 +1,18 @@
-public class Camera {
+public enum Camera {
+    INSTANCE;
 
-    private static Camera instance = new Camera();
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private CameraType type;
-    private String id = "9008480 / 1253402";
-    private boolean isOn;
     public Port port = new Port();
-
-    private Camera() {
-
-    }
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private CameraType type;
+    private final String id = "9008480 / 1253402";
+    private boolean isOn;
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;
     }
 
-    public static Camera getInstance() {
-        return instance;
-    }
-
     public CameraType innerSetType(String type) {
-        this.type = CameraType.valueOf(type);
+        this.type = CameraType.valueOf(type.toUpperCase());
         return this.type;
     }
 
@@ -43,7 +35,7 @@ public class Camera {
 
     public boolean innerOff() {
         isOn = false;
-        return true;
+        return false;
     }
 
     public class Port implements ICamera {
@@ -79,7 +71,7 @@ public class Camera {
 
         @Override
         public boolean off() {
-           return innerOff();
+            return innerOff();
         }
     }
 }
