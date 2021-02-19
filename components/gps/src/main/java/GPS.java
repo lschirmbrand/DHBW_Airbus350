@@ -1,12 +1,19 @@
-public enum GPS {
-    INSTANCE;
+public class GPS {
 
+    private static final GPS instance = new GPS();
     private final String manufacturer = "Manuel Truckses / Andreas Köhler";
     private final String type = "Team 05";
     private final String id = "9008480 / 1253402";
     public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;
+
+    private GPS() {
+    }
+
+    public static GPS getInstance() {
+        return instance;
+    }
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;

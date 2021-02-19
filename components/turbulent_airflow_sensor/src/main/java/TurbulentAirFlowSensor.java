@@ -1,11 +1,19 @@
-public enum TurbulentAirFlowSensor {
-    INSTANCE;
+public class TurbulentAirFlowSensor {
 
+    private static final TurbulentAirFlowSensor instance = new TurbulentAirFlowSensor();
     private final String manufacturer = "Manuel Truckses / Andreas Köhler";
     private final String type = "Team 05";
     private final String id = "9008480 / 1253402";
     public Port port = new Port();
     private boolean isAlarm = false;
+
+    private TurbulentAirFlowSensor() {
+
+    }
+
+    public static TurbulentAirFlowSensor getInstance() {
+        return instance;
+    }
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;

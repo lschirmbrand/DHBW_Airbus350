@@ -1,11 +1,11 @@
 public class WeatherRadar {
     // static instance
     private static final WeatherRadar instance = new WeatherRadar();
-    // port
-    public Port port;
     private final String manufacturer = "<student name 01> / <student name 02>";
     private final String type = "team <id>";
     private final String id = "<student id 01> / <student id 02>";
+    // port
+    public Port port;
     private boolean isOn = false;
 
     // private constructor

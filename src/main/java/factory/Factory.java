@@ -16,17 +16,7 @@ public class Factory {
             Class<?> clazz = Class.forName(name, true, urlClassLoader);
             FlightRecorder.instance.insert(name + "Factory", name + "Class: " + clazz.hashCode());
 
-            Object instance;
-            try {
-                instance = clazz.getMethod("getInstance").invoke(null);
-            } catch (NoSuchMethodException ex) {
-                if (clazz.isEnum()) {
-                    //Weil ENUM, wie wir es eigentlich machen sollen. Das getInstance ist nur beim WeatherRadar wegen des Singleton-Prinzips
-                    instance = clazz.getEnumConstants()[0];
-                } else {
-                    throw ex;
-                }
-            }
+            Object instance = clazz.getMethod("getInstance").invoke(null);
 
             FlightRecorder.instance.insert(name + "Factory", name + "Instance: " + instance.hashCode());
 

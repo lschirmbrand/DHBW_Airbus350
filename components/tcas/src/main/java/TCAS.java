@@ -1,6 +1,6 @@
-public enum TCAS {
-    INSTANCE;
+public class TCAS {
 
+    private static final TCAS instance = new TCAS();
     private final String manufacturer = "Manuel Truckses / Andreas Köhler";
     private final String type = "Team 05";
     private final String id = "9008480 / 1253402";
@@ -9,6 +9,14 @@ public enum TCAS {
     private boolean isConnected;
     private boolean isAlarm;
     private int altitude;
+
+    private TCAS() {
+
+    }
+
+    public static TCAS getInstance() {
+        return instance;
+    }
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;
