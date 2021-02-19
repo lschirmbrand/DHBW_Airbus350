@@ -1,11 +1,19 @@
-public enum Camera {
-    INSTANCE;
+public class Camera {
 
+    private static final Camera instance = new Camera();
     private final String manufacturer = "Manuel Truckses / Andreas Köhler";
     private final String id = "9008480 / 1253402";
     public Port port = new Port();
     private CameraType type;
     private boolean isOn;
+
+    private Camera() {
+
+    }
+
+    public static Camera getInstance() {
+        return instance;
+    }
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;

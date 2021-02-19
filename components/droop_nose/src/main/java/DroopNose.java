@@ -1,11 +1,19 @@
-public enum DroopNose {
-    INSTANCE;
+public class DroopNose {
 
+    private static final DroopNose instance = new DroopNose();
     private final String manufacturer = "Manuel Truckses / Andreas Köhler";
     private final String type = "Team 05";
     private final String id = "9008480 / 1253402";
     public Port port = new Port();
     private int degree;
+
+    private DroopNose() {
+
+    }
+
+    public static DroopNose getInstance() {
+        return instance;
+    }
 
     public String innerVersion() {
         return manufacturer + "; " + type + "; " + id;
