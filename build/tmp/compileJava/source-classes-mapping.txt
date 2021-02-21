@@ -30,8 +30,8 @@ factory/LandingLightFactory.java
  factory.LandingLightFactory
 factory/LeftAileronFactory.java
  factory.LeftAileronFactory
-section/Wing.java
- section.Wing
+event/cargo_compartment_light/CargoCompartmentLightOff.java
+ event.cargo_compartment_light.CargoCompartmentLightOff
 factory/WeatherRadarFactory.java
  factory.WeatherRadarFactory
 event/left_aileron/LeftAileronUp.java
@@ -50,19 +50,10 @@ event/route_management/RouteManagementAdd.java
  event.route_management.RouteManagementAdd
 factory/RightAileronFactory.java
  factory.RightAileronFactory
-base/Airplane.java
- base.Airplane
-base/PrimaryFlightDisplayGUI.java
- base.PrimaryFlightDisplayGUI
- base.PrimaryFlightDisplayGUI$1
- base.PrimaryFlightDisplayGUI$2
- base.PrimaryFlightDisplayGUI$3
- base.PrimaryFlightDisplayGUI$4
- base.PrimaryFlightDisplayGUI$5
- base.PrimaryFlightDisplayGUI$6
- base.PrimaryFlightDisplayGUI$7
- base.PrimaryFlightDisplayGUI$8
- base.PrimaryFlightDisplayGUI$9
+event/rudder/RudderLeft.java
+ event.rudder.RudderLeft
+section/Wing.java
+ section.Wing
 event/route_management/RouteManagementSetCostIndex.java
  event.route_management.RouteManagementSetCostIndex
 base/Cockpit.java
@@ -155,7 +146,16 @@ event/cargo_compartment_light/CargoCompartmentLightDim.java
  event.cargo_compartment_light.CargoCompartmentLightDim
 event/cost_optimizer/CostOptimizerOptimize.java
  event.cost_optimizer.CostOptimizerOptimize
-event/cargo_compartment_light/CargoCompartmentLightOff.java
- event.cargo_compartment_light.CargoCompartmentLightOff
-event/rudder/RudderLeft.java
- event.rudder.RudderLeft
+base/Airplane.java
+ base.Airplane
+base/PrimaryFlightDisplayGUI.java
+ base.PrimaryFlightDisplayGUI
+ base.PrimaryFlightDisplayGUI$1
+ base.PrimaryFlightDisplayGUI$2
+ base.PrimaryFlightDisplayGUI$3
+ base.PrimaryFlightDisplayGUI$4
+ base.PrimaryFlightDisplayGUI$5
+ base.PrimaryFlightDisplayGUI$6
+ base.PrimaryFlightDisplayGUI$7
+ base.PrimaryFlightDisplayGUI$8
+ base.PrimaryFlightDisplayGUI$9
