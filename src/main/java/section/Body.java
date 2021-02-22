@@ -31,6 +31,7 @@ import recorder.FlightRecorder;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+@SuppressWarnings("UnstableApiUsage")
 public class Body extends Subscriber {
     private final ArrayList<Object> airConditioningPortList;
     private final ArrayList<Object> apuPortList;
@@ -38,6 +39,7 @@ public class Body extends Subscriber {
     private final ArrayList<Object> weatherRadarPortList;
     private final ArrayList<Object> hydraulicPumpPortList;
     private final ArrayList<Object> elevatorPortList;
+    private final ArrayList<Object> radarPortList = new ArrayList<>();
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
@@ -88,6 +90,9 @@ public class Body extends Subscriber {
         }
         for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
             elevatorPortList.add(EngineFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfRadar; i++) {
+            radarPortList.add(RadarFactory.build());
         }
     }
 
@@ -614,12 +619,46 @@ public class Body extends Subscriber {
 
     @Subscribe
     public void receive(RadarOff radarOff) {
-        System.out.println(radarOff);
+        LogEngine.instance.write("+ Body.receive(" + radarOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + radarOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfRadar; i++) {
+                Method offMethod = radarPortList.get(i).getClass().getDeclaredMethod("off");
+                LogEngine.instance.write("offMethod = " + offMethod);
+
+                boolean isOn = (boolean) offMethod.invoke(radarPortList.get(i));
+                LogEngine.instance.write("offMethod = " + isOn);
+
+                FlightRecorder.instance.insert("Body", "radarOff (isOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Subscribe
     public void receive(RadarScan radarScan) {
-        System.out.println(radarScan);
+        LogEngine.instance.write("+ Body.receive(" + radarScan.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + radarScan.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfRadar; i++) {
+                Method radarScanMethod = radarPortList.get(i).getClass().getDeclaredMethod("scan", String.class);
+                LogEngine.instance.write("radarScanMethod = " + radarScanMethod);
+
+                boolean environment = (boolean) radarScanMethod.invoke(radarPortList.get(i), radarScan.getValue());
+                LogEngine.instance.write("radarScanMethod = " + environment);
+
+                FlightRecorder.instance.insert("Body", "radarScan (environment): " + environment);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     //------------------------------------------------------------
     // --- HydraulicPump -------------------------------------------------------------------------------------------------------------

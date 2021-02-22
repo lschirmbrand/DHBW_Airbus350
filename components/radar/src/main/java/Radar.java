@@ -16,7 +16,7 @@ public class Radar {
     }
 
     public String innerVersion() {
-        return manufacturer + "; " + type + "; " + id;
+        return "Radar \\ " + manufacturer + "; " + type + "; " + id;
     }
 
     public boolean innerOn() {

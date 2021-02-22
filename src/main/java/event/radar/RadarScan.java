@@ -7,6 +7,10 @@ public class RadarScan {
         this.environment = environment;
     }
 
+    public String getValue() {
+        return environment;
+    }
+
     @Override
     public String toString() {
         return "RadarScan{" +

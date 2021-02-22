@@ -10,18 +10,34 @@ import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.camera.CameraBodyOff;
+import event.camera.CameraBodyOn;
+import event.camera.CameraWingOff;
+import event.camera.CameraWingOn;
+import event.droop_nose.DroopNoseDown;
+import event.droop_nose.DroopNoseFullDown;
+import event.droop_nose.DroopNoseNeutral;
+import event.droop_nose.DroopNoseUp;
 import event.elevator.*;
 import event.engine.EngineDecreaseRPM;
 import event.engine.EngineIncreaseRPM;
 import event.engine.EngineShutdown;
 import event.engine.EngineStart;
 import event.gear.*;
+import event.gps.*;
 import event.hydraulicPump.*;
+import event.radar.RadarOff;
+import event.radar.RadarOn;
+import event.radar.RadarScan;
+import event.tcas.*;
+import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorBodyMeasure;
+import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorWingMeasure;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
 import section.Body;
 import section.Wing;
 
+@SuppressWarnings("UnstableApiUsage")
 public class Airplane implements IAirplane {
     private final EventBus eventBus;
     private Body body;
@@ -52,13 +68,14 @@ public class Airplane implements IAirplane {
         eventBus.post(new AirConditioningOn());
         eventBus.post(new AirConditioningClean("wusch"));
 
+        //Radar
+        eventBus.post(new RadarOn());
 
         // gear
         eventBus.post(new GearDown());
         eventBus.post(new GearSetBrake());
         // weather_radar
         eventBus.post(new WeatherRadarOn());
-
 
         //Engine
         eventBus.post(new EngineStart());
@@ -70,9 +87,30 @@ public class Airplane implements IAirplane {
         eventBus.post(new HydraulicPumpBodyRefillOil(0));
         eventBus.post(new HydraulicPumpWingRefillOil(0));
 
+        //Droop Nose
+        eventBus.post(new DroopNoseNeutral());
 
         // Elevator
         eventBus.post(new ElevatorNeutral());
+
+        //Camera
+        eventBus.post(new CameraBodyOn());
+        eventBus.post(new CameraWingOn());
+
+        //GPS
+        eventBus.post(new GPSOn());
+        eventBus.post(new GPSConnect("Astra-8"));
+
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+
+        //TCAS
+        eventBus.post(new TCASOn());
+        eventBus.post(new TCASConnect("15000"));
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void taxi() {
@@ -83,6 +121,18 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOn());
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
+        //Droop Nose
+        eventBus.post(new DroopNoseNeutral());
+        //GPS
+        eventBus.post(new GPSSend("Taxi"));
+        eventBus.post(new GPSReceive());
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+        //TCAS
+        eventBus.post(new TCASScan("Erde"));
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void takeoff() {
@@ -106,10 +156,26 @@ public class Airplane implements IAirplane {
         eventBus.post(new HydraulicPumpBodyRefillOil(0));
         eventBus.post(new HydraulicPumpWingRefillOil(0));
 
+        //Droop Nose
+        eventBus.post(new DroopNoseDown(10));
 
         // Elevator
         eventBus.post(new ElevatorFullUp());
 
+        //GPS
+        eventBus.post(new GPSSend("TakeoOff"));
+        eventBus.post(new GPSReceive());
+
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+
+        //TCAS
+        eventBus.post(new TCASScan("Erde"));
+        eventBus.post(new TCASDetermineAltitude("Erde"));
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void climbing() {
@@ -127,12 +193,29 @@ public class Airplane implements IAirplane {
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+        //Droop Nose
+        eventBus.post(new DroopNoseNeutral());
 
         // elevator
         eventBus.post(new ElevatorUp(10));
 
         // engine
         eventBus.post(new EngineIncreaseRPM(500));
+
+        //GPS
+        eventBus.post(new GPSSend("Climbing"));
+        eventBus.post(new GPSReceive());
+
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+
+        //TCAS
+        eventBus.post(new TCASScan("Erde"));
+        eventBus.post(new TCASDetermineAltitude("Erde"));
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void rightTurn() {
@@ -147,9 +230,26 @@ public class Airplane implements IAirplane {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
 
+        //Droop Nose
+        eventBus.post(new DroopNoseNeutral());
+
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+        //GPS
+        eventBus.post(new GPSSend("rightTurn"));
+        eventBus.post(new GPSReceive());
+
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+
+        //TCAS
+        eventBus.post(new TCASScan("Erde"));
+        eventBus.post(new TCASDetermineAltitude("Erde"));
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void leftTurn() {
@@ -164,9 +264,26 @@ public class Airplane implements IAirplane {
         // weather_radar
         eventBus.post(new WeatherRadarOn());
 
+        //Droop Nose
+        eventBus.post(new DroopNoseNeutral());
+
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+        //GPS
+        eventBus.post(new GPSSend("leftTurn"));
+        eventBus.post(new GPSReceive());
+
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+
+        //TCAS
+        eventBus.post(new TCASScan("Erde"));
+        eventBus.post(new TCASDetermineAltitude("Erde"));
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void descent() {
@@ -189,6 +306,24 @@ public class Airplane implements IAirplane {
 
         // engine
         eventBus.post(new EngineDecreaseRPM(-500));
+
+        //Droop Nose
+        eventBus.post(new DroopNoseUp(20));
+
+        //GPS
+        eventBus.post(new GPSSend("descent"));
+        eventBus.post(new GPSReceive());
+
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+
+        //TCAS
+        eventBus.post(new TCASScan("Erde"));
+        eventBus.post(new TCASDetermineAltitude("Erde"));
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void landing() {
@@ -215,8 +350,26 @@ public class Airplane implements IAirplane {
         eventBus.post(new HydraulicPumpBodyRefillOil(0));
         eventBus.post(new HydraulicPumpWingRefillOil(0));
 
+        //Droop Nose
+        eventBus.post(new DroopNoseFullDown());
+
         // Elevator
         eventBus.post(new ElevatorFullDown());
+
+        //GPS
+        eventBus.post(new GPSSend("landing"));
+        eventBus.post(new GPSReceive());
+
+        //Radar
+        eventBus.post(new RadarScan("Erde"));
+
+        //TCAS
+        eventBus.post(new TCASScan("Erde"));
+        eventBus.post(new TCASDetermineAltitude("Erde"));
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 
     public void shutdown() {
@@ -246,5 +399,24 @@ public class Airplane implements IAirplane {
 
         eventBus.post(new ElevatorNeutral());
 
+        //Droop Nose
+        eventBus.post(new DroopNoseNeutral());
+
+        //Camera
+        eventBus.post(new CameraBodyOff());
+        eventBus.post(new CameraWingOff());
+
+        //GPS
+        eventBus.post(new GPSOff());
+
+        //Radar
+        eventBus.post(new RadarOff());
+
+        //TCAS
+        eventBus.post(new TCASOff());
+
+        //Turbulent Airflow Sensor
+        eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
+        eventBus.post(new TurbulentAirFlowSensorWingMeasure());
     }
 }
