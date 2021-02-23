@@ -19,6 +19,7 @@ import event.hydraulicPump.HydraulicPumpWingCompress;
 import event.hydraulicPump.HydraulicPumpWingDecompress;
 import event.hydraulicPump.HydraulicPumpWingRefillOil;
 import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorWingMeasure;
+import factory.CameraFactory;
 import factory.ElevatorFactory;
 import factory.EngineFactory;
 import factory.HydraulicPumpFactory;
@@ -28,16 +29,19 @@ import recorder.FlightRecorder;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+@SuppressWarnings({"UnstableApiUsage", "unused"})
 public class Wing extends Subscriber {
 
     private final ArrayList<Object> enginePortList;
     private final ArrayList<Object> hydraulicPumpPortList;
     private final ArrayList<Object> elevatorPortList;
+    private final ArrayList<Object> cameraWingPortList;
 
     public Wing() {
         enginePortList = new ArrayList<>();
         hydraulicPumpPortList = new ArrayList<>();
         elevatorPortList = new ArrayList<>();
+        cameraWingPortList = new ArrayList<>();
         build();
     }
 
@@ -51,26 +55,37 @@ public class Wing extends Subscriber {
         for (int i = 0; i < Configuration.instance.numberOfElevator; i++) {
             elevatorPortList.add(ElevatorFactory.build());
         }
+        for (int i = 0; i < Configuration.instance.numberOfCameraWing; i++) {
+            cameraWingPortList.add(CameraFactory.build());
+        }
     }
 
     //DroopNose---------------------------------
     @Subscribe
     public void receive(DroopNoseDown droopNoseDown) {
+        FlightRecorder.instance.insert("Wing", "receive(" + droopNoseDown.toString() + ")");
+        LogEngine.instance.write("Wing.receive(" + droopNoseDown.toString() + ")");
         System.out.println(droopNoseDown);
     }
 
     @Subscribe
     public void receive(DroopNoseFullDown droopNoseFullDown) {
+        FlightRecorder.instance.insert("Wing", "receive(" + droopNoseFullDown.toString() + ")");
+        LogEngine.instance.write("Wing.receive(" + droopNoseFullDown.toString() + ")");
         System.out.println(droopNoseFullDown);
     }
 
     @Subscribe
     public void receive(DroopNoseNeutral droopNoseNeutral) {
+        FlightRecorder.instance.insert("Wing", "receive(" + droopNoseNeutral.toString() + ")");
+        LogEngine.instance.write("Wing.receive(" + droopNoseNeutral.toString() + ")");
         System.out.println(droopNoseNeutral);
     }
 
     @Subscribe
     public void receive(DroopNoseUp droopNoseUp) {
+        FlightRecorder.instance.insert("Wing", "receive(" + droopNoseUp.toString() + ")");
+        LogEngine.instance.write("Wing.receive(" + droopNoseUp.toString() + ")");
         System.out.println(droopNoseUp);
     }
     //------------------------------------
@@ -78,6 +93,8 @@ public class Wing extends Subscriber {
     //TurbulentAirFlowSensor-------------------------
     @Subscribe
     public void receive(TurbulentAirFlowSensorWingMeasure turbulentAirFlowSensorWingMeasure) {
+        FlightRecorder.instance.insert("Wing", "receive(" + turbulentAirFlowSensorWingMeasure.toString() + ")");
+        LogEngine.instance.write("Wing.receive(" + turbulentAirFlowSensorWingMeasure.toString() + ")");
         System.out.println(turbulentAirFlowSensorWingMeasure);
     }
     //------------------------------------------
@@ -86,11 +103,53 @@ public class Wing extends Subscriber {
     @Subscribe
     public void receive(CameraWingOff cameraWingOff) {
         System.out.println(cameraWingOff);
+        LogEngine.instance.write("+ Wing.receive(" + cameraWingOff.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + cameraWingOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCameraWing; i++) {
+                Method offMethod = cameraWingPortList.get(i).getClass().getDeclaredMethod("off");
+                LogEngine.instance.write("offMethod = " + offMethod);
+
+                boolean isOn = (boolean) offMethod.invoke(cameraWingPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isCameraOn = isOn;
+                FlightRecorder.instance.insert("Wing", "cameraOff (isCameraOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isCameraOn): " + PrimaryFlightDisplay.instance.isCameraOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isCameraOn: " + PrimaryFlightDisplay.instance.isCameraOn);
     }
 
     @Subscribe
     public void receive(CameraWingOn cameraWingOn) {
         System.out.println(cameraWingOn);
+        LogEngine.instance.write("+ Wing.receive(" + cameraWingOn.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + cameraWingOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCameraWing; i++) {
+                Method onMethod = cameraWingPortList.get(i).getClass().getDeclaredMethod("on");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                boolean isOn = (boolean) onMethod.invoke(cameraWingPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isCameraOn = isOn;
+                FlightRecorder.instance.insert("Wing", "cameraOn (isCameraOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isCameraOn): " + PrimaryFlightDisplay.instance.isCameraOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isCameraOn: " + PrimaryFlightDisplay.instance.isCameraOn);
     }
     //--------------------------------------------------------
 

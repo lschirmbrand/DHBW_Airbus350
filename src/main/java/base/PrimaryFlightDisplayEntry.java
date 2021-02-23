@@ -2,12 +2,10 @@ package base;
 
 import javafx.beans.property.SimpleStringProperty;
 
+@SuppressWarnings("unused")
 public class PrimaryFlightDisplayEntry {
-    private SimpleStringProperty attribute;
-    private SimpleStringProperty value;
-
-    public PrimaryFlightDisplayEntry() {
-    }
+    private final SimpleStringProperty attribute;
+    private final SimpleStringProperty value;
 
     public PrimaryFlightDisplayEntry(String attribute, String value) {
         this.attribute = new SimpleStringProperty(attribute);

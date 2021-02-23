@@ -1,3 +1,4 @@
+@SuppressWarnings("unused")
 public interface IRadar {
     String version();
 

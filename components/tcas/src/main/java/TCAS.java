@@ -1,9 +1,10 @@
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class TCAS {
 
     private static final TCAS instance = new TCAS();
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String manufacturer = "Andreas Köhler / Manuel Truckses";
     private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String id = "1253402 / 9008480";
     public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;

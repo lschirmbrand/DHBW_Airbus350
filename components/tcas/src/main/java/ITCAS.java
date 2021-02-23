@@ -1,3 +1,4 @@
+@SuppressWarnings({"unused", "SpellCheckingInspection"})
 public interface ITCAS {
     String version();
 

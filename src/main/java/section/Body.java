@@ -35,7 +35,7 @@ import recorder.FlightRecorder;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-@SuppressWarnings("UnstableApiUsage")
+@SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection"})
 public class Body extends Subscriber {
     private final ArrayList<Object> airConditioningPortList;
     private final ArrayList<Object> apuPortList;
@@ -43,7 +43,12 @@ public class Body extends Subscriber {
     private final ArrayList<Object> weatherRadarPortList;
     private final ArrayList<Object> hydraulicPumpPortList;
     private final ArrayList<Object> elevatorPortList;
-    private final ArrayList<Object> radarPortList = new ArrayList<>();
+    private final ArrayList<Object> radarPortList;
+    private final ArrayList<Object> gpsPortList;
+    private final ArrayList<Object> cameraBodyPortList;
+    private final ArrayList<Object> tcasPortList;
+    private final ArrayList<Object> turbulentAirFlowSensorBodyPortList;
+    private final ArrayList<Object> droopNosePortList;
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
@@ -52,6 +57,12 @@ public class Body extends Subscriber {
         weatherRadarPortList = new ArrayList<>();
         hydraulicPumpPortList = new ArrayList<>();
         elevatorPortList = new ArrayList<>();
+        droopNosePortList = new ArrayList<>();
+        turbulentAirFlowSensorBodyPortList = new ArrayList<>();
+        tcasPortList = new ArrayList<>();
+        cameraBodyPortList = new ArrayList<>();
+        gpsPortList = new ArrayList<>();
+        radarPortList = new ArrayList<>();
 
         build();
     }
@@ -97,6 +108,21 @@ public class Body extends Subscriber {
         }
         for (int i = 0; i < Configuration.instance.numberOfRadar; i++) {
             radarPortList.add(RadarFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfTCAS; i++) {
+            tcasPortList.add(TCASFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfCameraBody; i++) {
+            cameraBodyPortList.add(CameraFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfGPS; i++) {
+            gpsPortList.add(GPSFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfTurbulentAirFlowSensorBody; i++) {
+            turbulentAirFlowSensorBodyPortList.add(TurbulentAirFlowSensorFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
+            droopNosePortList.add(DroopNoseFactory.build());
         }
     }
 
@@ -310,7 +336,6 @@ public class Body extends Subscriber {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
         LogEngine.instance.write("PrimaryFlightDisplay (rpmAPU): " + PrimaryFlightDisplay.instance.rpmAPU);
@@ -365,7 +390,6 @@ public class Body extends Subscriber {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
         LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
@@ -392,7 +416,6 @@ public class Body extends Subscriber {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
         LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
@@ -419,7 +442,6 @@ public class Body extends Subscriber {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
         LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
@@ -446,7 +468,6 @@ public class Body extends Subscriber {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
         LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
@@ -473,7 +494,6 @@ public class Body extends Subscriber {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
         LogEngine.instance.write("PrimaryFlightDisplay (isGearDown): " + PrimaryFlightDisplay.instance.isGearDown);
@@ -543,49 +563,160 @@ public class Body extends Subscriber {
 
     //TCAS---------------------------------------------------------
     @Subscribe
-    public void receive(TCASOn tcason) {
-        System.out.println(tcason);
+    public void receive(TCASOn tcasOn) {
+        System.out.println(tcasOn);
+        LogEngine.instance.write("+ Body.receive(" + tcasOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + tcasOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTCAS; i++) {
+                Method onMethod = tcasPortList.get(i).getClass().getDeclaredMethod("on");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                boolean isOn = (boolean) onMethod.invoke(tcasPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isTCASOn = isOn;
+                FlightRecorder.instance.insert("Body", "tcasOn (isTCASOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isTCASOn): " + PrimaryFlightDisplay.instance.isTCASOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isTCASOn: " + PrimaryFlightDisplay.instance.isTCASOn);
     }
 
     @Subscribe
     public void receive(TCASOff tcasOff) {
         System.out.println(tcasOff);
+        LogEngine.instance.write("+ Body.receive(" + tcasOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + tcasOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTCAS; i++) {
+                Method offMethod = tcasPortList.get(i).getClass().getDeclaredMethod("off");
+                LogEngine.instance.write("offMethod = " + offMethod);
+
+                boolean isOn = (boolean) offMethod.invoke(tcasPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isTCASOn = isOn;
+                FlightRecorder.instance.insert("Body", "tcasOff (isTCASOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isTCASOn): " + PrimaryFlightDisplay.instance.isTCASOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isTCASOn: " + PrimaryFlightDisplay.instance.isTCASOn);
     }
 
     @Subscribe
     public void receive(TCASConnect tcasConnect) {
         System.out.println(tcasConnect);
+        LogEngine.instance.write("+ Body.receive(" + tcasConnect.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + tcasConnect.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTCAS; i++) {
+                Method connectMethod = tcasPortList.get(i).getClass().getDeclaredMethod("connect");
+                LogEngine.instance.write("connectMethod = " + connectMethod);
+
+                boolean isConnected = (boolean) connectMethod.invoke(tcasPortList.get(i));
+                LogEngine.instance.write("isConnected = " + isConnected);
+
+                PrimaryFlightDisplay.instance.isTCASConnected = isConnected;
+                FlightRecorder.instance.insert("Body", "tcasConnect (isTCASConnected): " + isConnected);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isTCASConnected): " + PrimaryFlightDisplay.instance.isTCASConnected);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isTCASConnected: " + PrimaryFlightDisplay.instance.isTCASConnected);
     }
 
     @Subscribe
     public void receive(TCASScan tcasScan) {
+        FlightRecorder.instance.insert("Body", "receive(" + tcasScan.toString() + ")");
+        LogEngine.instance.write("Body.receive(" + tcasScan.toString() + ")");
         System.out.println(tcasScan);
     }
 
     @Subscribe
     public void receive(TCASDetermineAltitude tcasDetermineAltitude) {
+        FlightRecorder.instance.insert("Body", "receive(" + tcasDetermineAltitude.toString() + ")");
+        LogEngine.instance.write("Body.receive(" + tcasDetermineAltitude.toString() + ")");
         System.out.println(tcasDetermineAltitude);
     }
-    //-----------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------
 
     //TurbulentAirFlowSensor-------------------------
     @Subscribe
     public void receive(TurbulentAirFlowSensorBodyMeasure turbulentAirFlowSensorBodyMeasure) {
+        FlightRecorder.instance.insert("Body", "receive(" + turbulentAirFlowSensorBodyMeasure.toString() + ")");
+        LogEngine.instance.write("Body.receive(" + turbulentAirFlowSensorBodyMeasure.toString() + ")");
         System.out.println(turbulentAirFlowSensorBodyMeasure);
     }
-    //------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------
 
     //Camera-------------------------------------------
     @Subscribe
     public void receive(CameraBodyOff cameraBodyOff) {
         System.out.println(cameraBodyOff);
+        LogEngine.instance.write("+ Body.receive(" + cameraBodyOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + cameraBodyOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCameraBody; i++) {
+                Method offMethod = cameraBodyPortList.get(i).getClass().getDeclaredMethod("off");
+                LogEngine.instance.write("offMethod = " + offMethod);
+
+                boolean isOn = (boolean) offMethod.invoke(cameraBodyPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isCameraOn = isOn;
+                FlightRecorder.instance.insert("Body", "cameraBodyOff (isCameraOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isCameraOn): " + PrimaryFlightDisplay.instance.isCameraOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isCameraOn: " + PrimaryFlightDisplay.instance.isCameraOn);
     }
 
     @Subscribe
     public void receive(CameraBodyOn cameraBodyOn) {
         System.out.println(cameraBodyOn);
+        LogEngine.instance.write("+ Body.receive(" + cameraBodyOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + cameraBodyOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCameraBody; i++) {
+                Method onMethod = cameraBodyPortList.get(i).getClass().getDeclaredMethod("on");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                boolean isOn = (boolean) onMethod.invoke(cameraBodyPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isCameraOn = isOn;
+                FlightRecorder.instance.insert("Body", "cameraBodyOn (isCameraOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isCameraOn): " + PrimaryFlightDisplay.instance.isCameraOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isCameraOn: " + PrimaryFlightDisplay.instance.isCameraOn);
     }
-    //--------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------
     //NitrogenBottle-------------------------------------------
     @Subscribe
     public void receive(NitrogenBottleRefill nitrogenBottleRefill) {
@@ -612,38 +743,127 @@ public class Body extends Subscriber {
     @Subscribe
     public void receive(GPSOn gpsOn) {
         System.out.println(gpsOn);
+        LogEngine.instance.write("+ Body.receive(" + gpsOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gpsOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGPS; i++) {
+                Method onMethod = gpsPortList.get(i).getClass().getDeclaredMethod("on");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                boolean isOn = (boolean) onMethod.invoke(gpsPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isGPSOn = isOn;
+                FlightRecorder.instance.insert("Body", "gpsOn (isGPSOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isGPSOn): " + PrimaryFlightDisplay.instance.isGPSOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGPSOn: " + PrimaryFlightDisplay.instance.isGPSOn);
     }
 
     @Subscribe
     public void receive(GPSOff gpsOff) {
         System.out.println(gpsOff);
+        LogEngine.instance.write("+ Body.receive(" + gpsOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gpsOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGPS; i++) {
+                Method offMethod = gpsPortList.get(i).getClass().getDeclaredMethod("off");
+                LogEngine.instance.write("offMethod = " + offMethod);
+
+                boolean isOn = (boolean) offMethod.invoke(gpsPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isGPSOn = isOn;
+                FlightRecorder.instance.insert("Body", "gpsOff (isGPSOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isGPSOn): " + PrimaryFlightDisplay.instance.isGPSOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGPSOn: " + PrimaryFlightDisplay.instance.isGPSOn);
     }
 
     @Subscribe
     public void receive(GPSReceive gpsReceive) {
+        FlightRecorder.instance.insert("Body", "receive(" + gpsReceive.toString() + ")");
+        LogEngine.instance.write("Body.receive(" + gpsReceive.toString() + ")");
         System.out.println(gpsReceive);
     }
 
     @Subscribe
     public void receive(GPSConnect gpsConnect) {
         System.out.println(gpsConnect);
+        LogEngine.instance.write("+ Body.receive(" + gpsConnect.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + gpsConnect.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGPS; i++) {
+                Method connectMethod = gpsPortList.get(i).getClass().getDeclaredMethod("connect");
+                LogEngine.instance.write("connectMethod = " + connectMethod);
+
+                boolean isConnected = (boolean) connectMethod.invoke(gpsPortList.get(i));
+                LogEngine.instance.write("isConnected = " + isConnected);
+
+                PrimaryFlightDisplay.instance.isGPSConnected = isConnected;
+                FlightRecorder.instance.insert("Body", "gpsConnect (isGPSConnected): " + isConnected);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isGPSConnected): " + PrimaryFlightDisplay.instance.isGPSConnected);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isGPSConnected: " + PrimaryFlightDisplay.instance.isGPSConnected);
     }
 
     @Subscribe
     public void receive(GPSSend gpsSend) {
+        FlightRecorder.instance.insert("Body", "receive(" + gpsSend.toString() + ")");
+        LogEngine.instance.write("+ Body.receive(" + gpsSend.toString() + ")");
         System.out.println(gpsSend);
     }
-    //----------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------
 
     //Radar------------------------------------------------------
 
     @Subscribe
     public void receive(RadarOn radarOn) {
         System.out.println(radarOn);
+        LogEngine.instance.write("+ Body.receive(" + radarOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + radarOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfRadar; i++) {
+                Method onMethod = radarPortList.get(i).getClass().getDeclaredMethod("on");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                boolean isOn = (boolean) onMethod.invoke(radarPortList.get(i));
+                LogEngine.instance.write("isOn = " + isOn);
+
+                PrimaryFlightDisplay.instance.isRadarOn = isOn;
+                FlightRecorder.instance.insert("Body", "radarOn (isOn): " + isOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isRadarOn): " + PrimaryFlightDisplay.instance.isRadarOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isRadarOn: " + PrimaryFlightDisplay.instance.isRadarOn);
     }
 
     @Subscribe
     public void receive(RadarOff radarOff) {
+        System.out.println(radarOff);
         LogEngine.instance.write("+ Body.receive(" + radarOff.toString() + ")");
         FlightRecorder.instance.insert("Body", "receive(" + radarOff.toString() + ")");
 
@@ -653,39 +873,28 @@ public class Body extends Subscriber {
                 LogEngine.instance.write("offMethod = " + offMethod);
 
                 boolean isOn = (boolean) offMethod.invoke(radarPortList.get(i));
-                LogEngine.instance.write("offMethod = " + isOn);
+                LogEngine.instance.write("isOn = " + isOn);
 
+                PrimaryFlightDisplay.instance.isRadarOn = isOn;
                 FlightRecorder.instance.insert("Body", "radarOff (isOn): " + isOn);
 
                 LogEngine.instance.write("+");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
+        LogEngine.instance.write("PrimaryFlightDisplay (isRadarOn): " + PrimaryFlightDisplay.instance.isRadarOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isRadarOn: " + PrimaryFlightDisplay.instance.isRadarOn);
     }
 
     @Subscribe
     public void receive(RadarScan radarScan) {
-        LogEngine.instance.write("+ Body.receive(" + radarScan.toString() + ")");
         FlightRecorder.instance.insert("Body", "receive(" + radarScan.toString() + ")");
-
-        try {
-            for (int i = 0; i < Configuration.instance.numberOfRadar; i++) {
-                Method radarScanMethod = radarPortList.get(i).getClass().getDeclaredMethod("scan", String.class);
-                LogEngine.instance.write("radarScanMethod = " + radarScanMethod);
-
-                boolean environment = (boolean) radarScanMethod.invoke(radarPortList.get(i), radarScan.getValue());
-                LogEngine.instance.write("radarScanMethod = " + environment);
-
-                FlightRecorder.instance.insert("Body", "radarScan (environment): " + environment);
-
-                LogEngine.instance.write("+");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        LogEngine.instance.write("+ Body.receive(" + radarScan.toString() + ")");
+        System.out.println(radarScan);
     }
-    //------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------
+
     // --- HydraulicPump -------------------------------------------------------------------------------------------------------------
 
     @Subscribe

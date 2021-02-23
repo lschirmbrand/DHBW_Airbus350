@@ -183,7 +183,7 @@ public class ProcedureTest {
         assertEquals(10000, config.oxygenBottleAmount);
 
         // oxygen_sensor
-        assertFalse(config.isOxgenSensorAlarm);
+        assertFalse(config.isOxygenSensorAlarm);
 
         // pitot_tube
         assertTrue(config.isPitotTubeCleaned);
@@ -1237,7 +1237,7 @@ public class ProcedureTest {
         assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
-        assertFalse(config.isOxgenSensorAlarm);
+        assertFalse(config.isOxygenSensorAlarm);
 
         // pitot_tube
         assertFalse(config.isPitotTubeCleaned);

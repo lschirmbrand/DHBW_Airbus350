@@ -1,3 +1,4 @@
+@SuppressWarnings("unused")
 public interface ITurbulentAirFlowSensor {
     String version();
 

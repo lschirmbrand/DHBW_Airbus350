@@ -41,7 +41,7 @@ import event.weather_radar.WeatherRadarOn;
 import section.Body;
 import section.Wing;
 
-@SuppressWarnings("UnstableApiUsage")
+@SuppressWarnings({"UnstableApiUsage", "FieldCanBeLocal"})
 public class Airplane implements IAirplane {
     private final EventBus eventBus;
     private Body body;

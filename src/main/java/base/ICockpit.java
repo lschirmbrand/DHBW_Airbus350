@@ -1,5 +1,6 @@
 package base;
 
+@SuppressWarnings("unused")
 public interface ICockpit {
     void startup();
 

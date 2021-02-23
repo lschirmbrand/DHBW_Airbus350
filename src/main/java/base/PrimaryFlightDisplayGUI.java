@@ -3,8 +3,6 @@ package base;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,10 +17,11 @@ import recorder.FlightRecorder;
 
 import java.util.ArrayList;
 
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class PrimaryFlightDisplayGUI extends Application {
-    private TableView tableView;
+    private TableView<PrimaryFlightDisplayEntry> tableView;
     private ArrayList<PrimaryFlightDisplayEntry> dataList;
-    private ObservableList data;
+    private ObservableList<PrimaryFlightDisplayEntry> data;
 
     // air_conditioning
     private PrimaryFlightDisplayEntry airConditioningOnEntry;
@@ -48,12 +47,6 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry weatherRadarIsOnEntry;
     private RadioButton weatherRadarOffButton;
     private RadioButton weatherRadarOnButton;
-    
-    //droop_nose
-    private Button droopNoseNeutralButton;
-    private Button droopNoseFullDownButton;
-    private TextField droopNoseUpField;
-    private TextField droopNoseDownField;
 
     // engine
     private PrimaryFlightDisplayEntry engineIsStartedEntry;
@@ -69,19 +62,74 @@ public class PrimaryFlightDisplayGUI extends Application {
     private Label hydraulicPumpBodyOilAmountLabel;
     private Label hydraulicPumpWingOilAmountLabel;
 
+    //DroopNose
+    private PrimaryFlightDisplayEntry degreeDroopNoseEntry;
+    private Button droopNoseNeutralButton;
+    private Button droopNoseFullDownButton;
+    private Button droopNoseUpButton;
+    private Button droopNoseDownButton;
+    private Label droopNoseDegreeLabel;
+
+    //TCAS
+    private PrimaryFlightDisplayEntry tcasIsOnEntry;
+    private PrimaryFlightDisplayEntry tcasIsAlarmEntry;
+    private PrimaryFlightDisplayEntry tcasIsConnectedEntry;
+    private PrimaryFlightDisplayEntry tcasAltitudeEntry;
+    private ToggleGroup tcasToggleGroup;
+    private RadioButton tcasOnRadio;
+    private RadioButton tcasOffRadio;
+    private Button tcasConnectButton;
+    private Button tcasDetermineAltitudeButton;
+    private Button tcasScanButton;
+    private Label tcasIsAlarmLabel;
+    private Label tcasIsConnectedLabel;
+    private Label tcasAltitudeLabel;
+
+    //Turbulent AirFlow Sensor
+    private PrimaryFlightDisplayEntry turbulentAirFlowSensorIsAlarmEntry;
+    private Button turbulentAirFlowSensorMeasureBodyButton;
+    private Button turbulentAirFlowSensorMeasureWingButton;
+    private Label turbulentAirFlowSensorIsAlarmLabel;
+
+    //Camera
+    private PrimaryFlightDisplayEntry cameraIsOnEntry;
+    private ToggleGroup cameraBodyToggleGroup;
+    private ToggleGroup cameraWingToggleGroup;
+    private RadioButton cameraBodyOnRadio;
+    private RadioButton cameraBodyOffRadio;
+    private RadioButton cameraWingOnRadio;
+    private RadioButton cameraWingOffRadio;
+
+    //GPS
+    private PrimaryFlightDisplayEntry gpsIsOnEntry;
+    private PrimaryFlightDisplayEntry gpsIsConnectedEntry;
+    private ToggleGroup gpsToggleGroup;
+    private RadioButton gpsOnRadio;
+    private RadioButton gpsOffRadio;
+    private Button gpsSendButton;
+    private Button gpsReceiveButton;
+    private Button gpsConnectButton;
+    private Label gpsConnectedLabel;
+
+    //Radar
+    private PrimaryFlightDisplayEntry radarIsOnEntry;
+    private ToggleGroup radarToggleGroup;
+    private RadioButton radarOnRadio;
+    private RadioButton radarOffRadio;
+    private Button radarScanButton;
 
     // Elevator
     private PrimaryFlightDisplayEntry degreeElevatorEntry;
     private Label degreeElevator;
 
     //OxygenBottle
-    private Button oxygenBottleReffillButton;
+    private Button oxygenBottleRefillButton;
     private Button oxygenBottleTakeOutButton;
     private PrimaryFlightDisplayEntry amountOxygenBottleEntry;
     private Label amountOxygenBottle;
 
     //NitrogenBottle
-    private Button nitrogenBottleReffillButton;
+    private Button nitrogenBottleRefillButton;
     private Button nitrogenBottleTakeOutButton;
     private PrimaryFlightDisplayEntry amountNitrogenBottleEntry;
     private Label amountNitrogenBottle;
@@ -113,91 +161,73 @@ public class PrimaryFlightDisplayGUI extends Application {
         Button startupButton = new Button("Startup");
         startupButton.setPrefSize(75, 20);
 
-        startupButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.startup();
-                update();
-            }
+        startupButton.setOnAction(event -> {
+            cockpit.startup();
+            update();
         });
 
         Button taxiButton = new Button("Taxi");
         taxiButton.setPrefSize(75, 20);
 
-        taxiButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.taxi();
-                update();
-            }
+        taxiButton.setOnAction(event -> {
+            cockpit.taxi();
+            update();
         });
 
         Button takeoffButton = new Button("TakeOff");
         takeoffButton.setPrefSize(75, 20);
 
-        takeoffButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.takeoff();
-                update();
-            }
+        takeoffButton.setOnAction(event -> {
+            cockpit.takeoff();
+            update();
         });
 
         Button climbingButton = new Button("Climbing");
         climbingButton.setPrefSize(75, 20);
 
-        climbingButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.climbing();
-                update();
-            }
+        climbingButton.setOnAction(event -> {
+            cockpit.climbing();
+            update();
         });
 
         Button rightTurnButton = new Button("R-Turn");
         rightTurnButton.setPrefSize(75, 20);
 
-        rightTurnButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.rightTurn();
-                update();
-            }
+        rightTurnButton.setOnAction(event -> {
+            cockpit.rightTurn();
+            update();
         });
 
         Button leftTurnButton = new Button("L-Turn");
         leftTurnButton.setPrefSize(75, 20);
 
-        leftTurnButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.leftTurn();
-                update();
-            }
+        leftTurnButton.setOnAction(event -> {
+            cockpit.leftTurn();
+            update();
         });
 
         Button descentButton = new Button("Descent");
         descentButton.setPrefSize(75, 20);
 
-        descentButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.descent();
-                update();
-            }
+        descentButton.setOnAction(event -> {
+            cockpit.descent();
+            update();
         });
 
         Button landingButton = new Button("Landing");
         landingButton.setPrefSize(75, 20);
 
-        landingButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.landing();
-                update();
-            }
+        landingButton.setOnAction(event -> {
+            cockpit.landing();
+            update();
         });
 
         Button shutdownButton = new Button("Shutdown");
         shutdownButton.setPrefSize(75, 20);
 
-        shutdownButton.setOnAction(new EventHandler<>() {
-            public void handle(ActionEvent event) {
-                cockpit.shutdown();
-                update();
-            }
+        shutdownButton.setOnAction(event -> {
+            cockpit.shutdown();
+            update();
         });
 
         hBox.getChildren().addAll(startupButton, taxiButton, takeoffButton, climbingButton, rightTurnButton,
@@ -225,7 +255,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         sp.setFitToWidth(true);
         vbox.getChildren().addAll(hBox, sp);
 
-        Scene scene = new Scene(vbox, 850, 500);
+        Scene scene = new Scene(vbox, 1300, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -237,15 +267,6 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.setVgap(5);
         gridPane.setHgap(10);
         gridPane.setAlignment(Pos.BASELINE_LEFT);
-
-//        Label flapLabel = new Label("Flap : ");
-//        gridPane.add(flapLabel, 4, 0);
-
-//        ComboBox<String> flapComboBox = new ComboBox<>();
-//        flapComboBox.getItems().addAll("neutral", "one", "two", "three");
-//        flapComboBox.setValue("neutral");
-//        flapComboBox.setEditable(false);
-//        gridPane.add(flapComboBox, 5, 0);
 
         // --- insert section: begin
 
@@ -272,108 +293,115 @@ public class PrimaryFlightDisplayGUI extends Application {
         droopNoseLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(droopNoseLabel, 0, 4);
 
-        Button droopNoseDown = new Button("Down");
-        Button droopNoseFullDown = new Button("FullDown");
-        Button droopNoseUp = new Button("Up");
-        Button droopNoseNeutral = new Button("Neutral");
-        gridPane.add(droopNoseDown, 1, 4);
-        gridPane.add(droopNoseFullDown, 2, 4);
-        gridPane.add(droopNoseUp, 3, 4);
-        gridPane.add(droopNoseNeutral, 4, 4);
+        droopNoseDownButton = new Button("Down");
+        droopNoseFullDownButton = new Button("FullDown");
+        droopNoseUpButton = new Button("Up");
+        droopNoseNeutralButton = new Button("Neutral");
+        droopNoseDegreeLabel = new Label("0\u00B0");
+        gridPane.add(droopNoseDownButton, 1, 4);
+        gridPane.add(droopNoseFullDownButton, 2, 4);
+        gridPane.add(droopNoseUpButton, 3, 4);
+        gridPane.add(droopNoseNeutralButton, 4, 4);
+        gridPane.add(droopNoseDegreeLabel, 5, 4);
 
         //Camera
         Label cameraLabel = new Label("Camera: ");
         cameraLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(cameraLabel, 0, 5);
 
-        ToggleGroup cameraBodyToggleGroup = new ToggleGroup();
+        cameraBodyToggleGroup = new ToggleGroup();
 
         gridPane.add(new Label("Body: "), 1, 5);
-        RadioButton cameraOn = new RadioButton("On");
-        cameraOn.setToggleGroup(cameraBodyToggleGroup);
-        gridPane.add(cameraOn, 2, 5);
+        cameraBodyOnRadio = new RadioButton("On");
+        cameraBodyOnRadio.setToggleGroup(cameraBodyToggleGroup);
+        gridPane.add(cameraBodyOnRadio, 2, 5);
 
-        RadioButton cameraOff = new RadioButton("Off");
-        cameraOff.setToggleGroup(cameraBodyToggleGroup);
-        cameraOff.setSelected(true);
-        gridPane.add(cameraOff, 3, 5);
+        cameraBodyOffRadio = new RadioButton("Off");
+        cameraBodyOffRadio.setToggleGroup(cameraBodyToggleGroup);
+        cameraBodyOffRadio.setSelected(true);
+        gridPane.add(cameraBodyOffRadio, 3, 5);
 
-        ToggleGroup cameraWingToggleGroup = new ToggleGroup();
+        cameraWingToggleGroup = new ToggleGroup();
 
         gridPane.add(new Label("Wing: "), 4, 5);
-        RadioButton cameraWingOn = new RadioButton("On");
-        cameraWingOn.setToggleGroup(cameraWingToggleGroup);
-        gridPane.add(cameraWingOn, 5, 5);
+        cameraWingOnRadio = new RadioButton("On");
+        cameraWingOnRadio.setToggleGroup(cameraWingToggleGroup);
+        gridPane.add(cameraWingOnRadio, 5, 5);
 
-        RadioButton cameraWingOff = new RadioButton("Off");
-        cameraWingOff.setToggleGroup(cameraWingToggleGroup);
-        cameraWingOff.setSelected(true);
-        gridPane.add(cameraWingOff, 6, 5);
+        cameraWingOffRadio = new RadioButton("Off");
+        cameraWingOffRadio.setToggleGroup(cameraWingToggleGroup);
+        cameraWingOffRadio.setSelected(true);
+        gridPane.add(cameraWingOffRadio, 6, 5);
 
         //GPS
         Label gpsLabel = new Label("GPS: ");
         gpsLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(gpsLabel, 0, 6);
 
-        ToggleGroup gpsToggleGroup = new ToggleGroup();
+        gpsToggleGroup = new ToggleGroup();
 
-        RadioButton gpsOn = new RadioButton("On");
-        gpsOn.setToggleGroup(gpsToggleGroup);
-        gridPane.add(gpsOn, 1, 6);
+        gpsOnRadio = new RadioButton("On");
+        gpsOnRadio.setToggleGroup(gpsToggleGroup);
+        gridPane.add(gpsOnRadio, 1, 6);
 
-        RadioButton gpsOff = new RadioButton("Off");
-        gpsOff.setToggleGroup(gpsToggleGroup);
-        gpsOff.setSelected(true);
-        gridPane.add(gpsOff, 2, 6);
+        gpsOffRadio = new RadioButton("Off");
+        gpsOffRadio.setToggleGroup(gpsToggleGroup);
+        gpsOffRadio.setSelected(true);
+        gridPane.add(gpsOffRadio, 2, 6);
 
-        gridPane.add(new Button("Send"), 3, 6);
-        gridPane.add(new Button("Receive"), 4, 6);
-        gridPane.add(new Button("Connect"), 5, 6);
+        gridPane.add((gpsSendButton = new Button("Send")), 3, 6);
+        gridPane.add((gpsReceiveButton = new Button("Receive")), 4, 6);
+        gridPane.add((gpsConnectButton = new Button("Connect")), 5, 6);
+        gridPane.add((gpsConnectedLabel = new Label("Not Connected")), 6, 6);
 
         //Radar
         Label radarLabel = new Label("Radar: ");
         radarLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(radarLabel, 0, 7);
 
-        ToggleGroup radarToggleGroup = new ToggleGroup();
+        radarToggleGroup = new ToggleGroup();
 
-        RadioButton radarOn = new RadioButton("On");
-        radarOn.setToggleGroup(radarToggleGroup);
-        gridPane.add(radarOn, 1, 7);
+        radarOnRadio = new RadioButton("On");
+        radarOnRadio.setToggleGroup(radarToggleGroup);
+        gridPane.add(radarOnRadio, 1, 7);
 
-        RadioButton radarOff = new RadioButton("Off");
-        radarOff.setToggleGroup(radarToggleGroup);
-        radarOff.setSelected(true);
-        gridPane.add(radarOff, 2, 7);
+        radarOffRadio = new RadioButton("Off");
+        radarOffRadio.setToggleGroup(radarToggleGroup);
+        radarOffRadio.setSelected(true);
+        gridPane.add(radarOffRadio, 2, 7);
 
-        gridPane.add(new Button("Scan"), 3, 7);
+        gridPane.add((radarScanButton = new Button("Scan")), 3, 7);
 
         //TCAS
         Label tcasLabel = new Label("TCAS");
         tcasLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(tcasLabel, 0, 8);
 
-        ToggleGroup tcasToggleGroup = new ToggleGroup();
+        tcasToggleGroup = new ToggleGroup();
 
-        RadioButton tcasOn = new RadioButton("On");
-        tcasOn.setToggleGroup(tcasToggleGroup);
-        gridPane.add(tcasOn, 1, 8);
+        tcasOnRadio = new RadioButton("On");
+        tcasOnRadio.setToggleGroup(tcasToggleGroup);
+        gridPane.add(tcasOnRadio, 1, 8);
 
-        RadioButton tcasOff = new RadioButton("Off");
-        tcasOff.setToggleGroup(tcasToggleGroup);
-        tcasOff.setSelected(true);
-        gridPane.add(tcasOff, 2, 8);
+        tcasOffRadio = new RadioButton("Off");
+        tcasOffRadio.setToggleGroup(tcasToggleGroup);
+        tcasOffRadio.setSelected(true);
+        gridPane.add(tcasOffRadio, 2, 8);
 
-        gridPane.add(new Button("Connect"), 3, 8);
-        gridPane.add(new Button("Determine Altitude"), 4, 8);
-        gridPane.add(new Button("Scan"), 5, 8);
+        gridPane.add((tcasConnectButton = new Button("Connect")), 3, 8);
+        gridPane.add((tcasIsConnectedLabel = new Label("Not Connected")), 4, 8);
+        gridPane.add((tcasDetermineAltitudeButton = new Button("Determine Altitude")), 5, 8);
+        gridPane.add((tcasAltitudeLabel = new Label("0\u00B0")), 6, 8);
+        gridPane.add((tcasScanButton = new Button("Scan")), 7, 8);
+        gridPane.add((tcasIsAlarmLabel = new Label("No Alarm")), 8, 8);
 
         //Turbulent Airflow Sensor
         Label turbulentLabel = new Label("Turbulent Airflow Sensor: ");
         turbulentLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(turbulentLabel, 0, 9);
-        gridPane.add(new Button("Measure Body"), 1, 9);
-        gridPane.add(new Button("Measure Wing"), 2, 9);
+        gridPane.add((turbulentAirFlowSensorMeasureBodyButton = new Button("Measure Body")), 1, 9);
+        gridPane.add((turbulentAirFlowSensorMeasureWingButton = new Button("Measure Wing")), 2, 9);
+        gridPane.add((turbulentAirFlowSensorIsAlarmLabel = new Label("No Alarm")), 3, 9);
 
         // apu
         Label apuLabel = new Label("APU : ");
@@ -381,7 +409,6 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(apuLabel, 0, 1);
 
         ToggleGroup apuToggleGroup = new ToggleGroup();
-
         apuShutdownButton = new RadioButton("Off");
         apuShutdownButton.setToggleGroup(apuToggleGroup);
         apuShutdownButton.setSelected(true);
@@ -411,6 +438,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         engineOnButton.setSelected(false);
         gridPane.add(engineOnButton, 1, 10);
 
+        //noinspection SpellCheckingInspection
         engineRPMLabel = new Label("RPM's: 0");
         gridPane.add(engineRPMLabel, 3,10);
 
@@ -472,8 +500,8 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(oxygenBottleLabel,0,15);
         amountOxygenBottle = new Label("100");
         gridPane.add(amountOxygenBottle, 1,15);
-        oxygenBottleReffillButton = new Button("Refill");
-        gridPane.add(oxygenBottleReffillButton, 2, 15);
+        oxygenBottleRefillButton = new Button("Refill");
+        gridPane.add(oxygenBottleRefillButton, 2, 15);
         oxygenBottleTakeOutButton = new Button("TakeOut");
         gridPane.add(oxygenBottleTakeOutButton, 3, 15);
 
@@ -483,36 +511,28 @@ public class PrimaryFlightDisplayGUI extends Application {
         gridPane.add(nitrogenBottleLabel,0,16);
         amountNitrogenBottle = new Label("250");
         gridPane.add(amountNitrogenBottle, 1,16);
-        nitrogenBottleReffillButton = new Button("Refill");
-        gridPane.add(nitrogenBottleReffillButton, 2, 16);
+        nitrogenBottleRefillButton = new Button("Refill");
+        gridPane.add(nitrogenBottleRefillButton, 2, 16);
         nitrogenBottleTakeOutButton = new Button("TakeOut");
         gridPane.add(nitrogenBottleTakeOutButton, 3, 16);
 
         // --- insert section: end
 
-//        Label frequencyLabel = new Label("Frequency : ");
-//        gridPane.add(frequencyLabel, 0, 5);
-//
-//        Spinner<Integer> vcfSpinner = new Spinner<>();
-//        vcfSpinner.setMaxWidth(60);
-//        SpinnerValueFactory<Integer> vcfSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(200, 300, 250);
-//        vcfSpinner.setValueFactory(vcfSpinnerValueFactory);
-//        gridPane.add(vcfSpinner, 1, 5);
-
         return gridPane;
     }
 
     public void buildTableView() {
-        tableView = new TableView();
+        tableView = new TableView<>();
         data = getInitialTableData();
         tableView.setItems(data);
 
-        TableColumn attributeColumn = new TableColumn("attribute");
-        attributeColumn.setCellValueFactory(new PropertyValueFactory("attribute"));
+        TableColumn<PrimaryFlightDisplayEntry, String> attributeColumn = new TableColumn<>("attribute");
+        attributeColumn.setCellValueFactory(new PropertyValueFactory<>("attribute"));
 
-        TableColumn valueColumn = new TableColumn("value");
-        valueColumn.setCellValueFactory(new PropertyValueFactory("value"));
+        TableColumn<PrimaryFlightDisplayEntry, String> valueColumn = new TableColumn<>("value");
+        valueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        //noinspection unchecked
         tableView.getColumns().setAll(attributeColumn, valueColumn);
         tableView.setPrefWidth(450);
         tableView.setPrefHeight(450);
@@ -571,12 +591,76 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void setEngineRPMLabel(int rpm) {
+        //noinspection SpellCheckingInspection
         engineRPMLabel.setText("RPM's: "+rpm);
     }
 
     public void setOilAmount(int amountB, int amountW){
         hydraulicPumpBodyOilAmountLabel.setText(amountB + " psi at Body");
         hydraulicPumpWingOilAmountLabel.setText(amountW + " psi at Wing");
+    }
+
+    public void setDroopNoseDegreeLabel(int degree) {
+        degreeDroopNoseEntry.setValue(Integer.toString(degree));
+        droopNoseDegreeLabel.setText(degree + "\u00B0");
+    }
+
+    public void setTCASStartedToggleGroup(boolean isTCASStarted) {
+        tcasIsOnEntry.setValue(Boolean.toString(isTCASStarted));
+        tcasOffRadio.setSelected(!isTCASStarted);
+        tcasOnRadio.setSelected(isTCASStarted);
+    }
+
+    public void setTCASIsConnected(boolean isTCASConnected) {
+        tcasIsConnectedEntry.setValue(Boolean.toString(isTCASConnected));
+        tcasIsConnectedLabel.setText((isTCASConnected ? "" : "Not ") + "Connected");
+    }
+    public void setTCASIsAlarm(boolean isTCASAlarm) {
+        tcasIsAlarmEntry.setValue(Boolean.toString(isTCASAlarm));
+        tcasIsAlarmLabel.setText((isTCASAlarm ? "" : "No ") + "Alarm");
+    }
+
+    public void setTCASAltitude(int altitude) {
+        tcasAltitudeEntry.setValue(Integer.toString(altitude));
+        tcasAltitudeLabel.setText(altitude + "\u00B0");
+    }
+
+    public void setGPSStartedToggleGroup(boolean isGPSStarted) {
+        gpsIsOnEntry.setValue(Boolean.toString(isGPSStarted));
+        gpsOffRadio.setSelected(!isGPSStarted);
+        gpsOnRadio.setSelected(isGPSStarted);
+    }
+
+    public void setGPSConnectedLabel(boolean isGPSConnected) {
+        gpsIsConnectedEntry.setValue(Boolean.toString(isGPSConnected));
+        gpsConnectedLabel.setText((isGPSConnected ? "" : "Not ") + "Connected");
+    }
+
+    public void setTurbulentAirFlowSensorAlarmLabel(boolean isAlarm) {
+        turbulentAirFlowSensorIsAlarmEntry.setValue(Boolean.toString(isAlarm));
+        turbulentAirFlowSensorIsAlarmLabel.setText((isAlarm ? "" : "No ") + "Alarm");
+    }
+
+    public void setRadarStartedToggleGroup(boolean isTCASStarted) {
+        radarIsOnEntry.setValue(Boolean.toString(isTCASStarted));
+        radarOffRadio.setSelected(!isTCASStarted);
+        radarOnRadio.setSelected(isTCASStarted);
+    }
+
+    public void setCameraBodyToggleGroup(boolean isCameraOnBodyStarted) {
+        cameraBodyOffRadio.setSelected(!isCameraOnBodyStarted);
+        cameraBodyOnRadio.setSelected(isCameraOnBodyStarted);
+    }
+
+    public void setCameraToggleGroups(boolean isCameraStarted) {
+        cameraIsOnEntry.setValue(Boolean.toString(isCameraStarted));
+        setCameraWingToggleGroup(isCameraStarted);
+        setCameraBodyToggleGroup(isCameraStarted);
+    }
+
+    public void setCameraWingToggleGroup(boolean isCameraOnWingStarted) {
+        cameraWingOffRadio.setSelected(!isCameraOnWingStarted);
+        cameraWingOnRadio.setSelected(isCameraOnWingStarted);
     }
 
     public void setDegreeElevator(int degree){
@@ -593,16 +677,29 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         weatherRadarIsOnEntry = new PrimaryFlightDisplayEntry("WeatherRadar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
         dataList.add(weatherRadarIsOnEntry);
-        dataList.add(new PrimaryFlightDisplayEntry("DroopNose (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeDroopNose)));
-        dataList.add(new PrimaryFlightDisplayEntry("TCAS (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASOn)));
-        dataList.add(new PrimaryFlightDisplayEntry("TCAS (isConnected)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASConnected)));
-        dataList.add(new PrimaryFlightDisplayEntry("TCAS (isAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASAlarm)));
-        dataList.add(new PrimaryFlightDisplayEntry("TCAS (Altitude)", Integer.toString(PrimaryFlightDisplay.instance.altitudeTCAS)));
-        dataList.add(new PrimaryFlightDisplayEntry("TurbulentAirFlowSensor (isAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTurbulentAirFlowAlarm)));
-        dataList.add(new PrimaryFlightDisplayEntry("Camera (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isCameraOn)));
-        dataList.add(new PrimaryFlightDisplayEntry("GPS (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isGPSOn)));
-        dataList.add(new PrimaryFlightDisplayEntry("GPS (isConnected)", Boolean.toString(PrimaryFlightDisplay.instance.isGPSConnected)));
-        dataList.add(new PrimaryFlightDisplayEntry("Radar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isRadarOn)));
+
+        //Droop Nose
+        dataList.add((degreeDroopNoseEntry = new PrimaryFlightDisplayEntry("DroopNose (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeDroopNose))));
+
+        //TCAS
+        dataList.add((tcasIsOnEntry = new PrimaryFlightDisplayEntry("TCAS (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASOn))));
+        dataList.add((tcasIsConnectedEntry = new PrimaryFlightDisplayEntry("TCAS (isConnected)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASConnected))));
+        dataList.add((tcasIsAlarmEntry = new PrimaryFlightDisplayEntry("TCAS (isAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTCASAlarm))));
+        dataList.add((tcasAltitudeEntry = new PrimaryFlightDisplayEntry("TCAS (Altitude)", Integer.toString(PrimaryFlightDisplay.instance.altitudeTCAS))));
+
+        //Turbulent AirFlow Sensor
+        dataList.add((turbulentAirFlowSensorIsAlarmEntry = new PrimaryFlightDisplayEntry("TurbulentAirFlowSensor (isAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTurbulentAirFlowAlarm))));
+
+        //Camera
+        dataList.add((cameraIsOnEntry = new PrimaryFlightDisplayEntry("Camera (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isCameraOn))));
+
+        //GPS
+        dataList.add((gpsIsOnEntry = new PrimaryFlightDisplayEntry("GPS (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isGPSOn))));
+        dataList.add((gpsIsConnectedEntry = new PrimaryFlightDisplayEntry("GPS (isConnected)", Boolean.toString(PrimaryFlightDisplay.instance.isGPSConnected))));
+
+        //Radar
+        dataList.add((radarIsOnEntry = new PrimaryFlightDisplayEntry("Radar (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isRadarOn))));
+
         // apu
         apuIsStartedEntry = new PrimaryFlightDisplayEntry("APU (isStarted)", Boolean.toString(PrimaryFlightDisplay.instance.isAPUStarted));
         dataList.add(apuIsStartedEntry);
@@ -647,7 +744,7 @@ public class PrimaryFlightDisplayGUI extends Application {
 
     }
 
-    private ObservableList getInitialTableData() {
+    private ObservableList<PrimaryFlightDisplayEntry> getInitialTableData() {
         initData();
         data = FXCollections.observableList(dataList);
         return data;
@@ -689,6 +786,28 @@ public class PrimaryFlightDisplayGUI extends Application {
         hydraulicPumpWingOilAmountEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount));
         setOilAmount(PrimaryFlightDisplay.instance.hydraulicPumpBodyOilAmount, PrimaryFlightDisplay.instance.hydraulicPumpWingOilAmount);
 
+        //DroopNose
+        setDroopNoseDegreeLabel(PrimaryFlightDisplay.instance.degreeDroopNose);
+
+        //TCAS
+        setTCASStartedToggleGroup(PrimaryFlightDisplay.instance.isTCASOn);
+        setTCASIsAlarm(PrimaryFlightDisplay.instance.isTCASAlarm);
+        setTCASIsConnected(PrimaryFlightDisplay.instance.isTCASConnected);
+        setTCASAltitude(PrimaryFlightDisplay.instance.altitudeTCAS);
+
+        //Turbulent AirFLow Sensor
+        setTurbulentAirFlowSensorAlarmLabel(PrimaryFlightDisplay.instance.isTurbulentAirFlowAlarm);
+
+        //Camera
+        setCameraToggleGroups(PrimaryFlightDisplay.instance.isCameraOn);
+
+        //GPS
+        setGPSConnectedLabel(PrimaryFlightDisplay.instance.isGPSConnected);
+        setGPSStartedToggleGroup(PrimaryFlightDisplay.instance.isGPSOn);
+
+        //Radar
+        setRadarStartedToggleGroup(PrimaryFlightDisplay.instance.isRadarOn);
+
         // Elevator
         degreeElevatorEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeElevator));
         setDegreeElevator(PrimaryFlightDisplay.instance.degreeElevator);
@@ -697,7 +816,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         amountOxygenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountOxygenBottle));
         setOxygenBottleAmount(PrimaryFlightDisplay.instance.amountOxygenBottle);
 
-        //NitrogeBottle
+        //NitrogenBottle
         amountNitrogenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
         setNitrogenBottleAmount(PrimaryFlightDisplay.instance.amountNitrogenBottle);
 
