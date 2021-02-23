@@ -221,7 +221,9 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         VBox vbox = new VBox(20);
         vbox.setPadding(new Insets(25, 25, 25, 25));
-        vbox.getChildren().addAll(hBox, new ScrollPane(tabPane));
+        sp = new ScrollPane(tabPane);
+        sp.setFitToWidth(true);
+        vbox.getChildren().addAll(hBox, sp);
 
         Scene scene = new Scene(vbox, 850, 500);
         primaryStage.setScene(scene);
