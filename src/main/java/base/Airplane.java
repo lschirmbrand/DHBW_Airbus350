@@ -26,6 +26,10 @@ import event.engine.EngineStart;
 import event.gear.*;
 import event.gps.*;
 import event.hydraulicPump.*;
+import event.nitrogen_bottle.NitrogenBottleRefill;
+import event.nitrogen_bottle.NitrogenBottleTakeOut;
+import event.oxygen_bottle.OxygenBottleRefill;
+import event.oxygen_bottle.OxygenBottleTakeOut;
 import event.radar.RadarOff;
 import event.radar.RadarOn;
 import event.radar.RadarScan;
@@ -111,6 +115,12 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        //OxygenTank
+        eventBus.post(new OxygenBottleRefill());
+
+        //NitrogenTank
+        eventBus.post(new NitrogenBottleRefill());
     }
 
     public void taxi() {
@@ -418,5 +428,11 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        //OxygenTank
+        eventBus.post(new OxygenBottleTakeOut(100));
+
+        //NitrogenTank
+        eventBus.post(new NitrogenBottleTakeOut(250));
     }
 }

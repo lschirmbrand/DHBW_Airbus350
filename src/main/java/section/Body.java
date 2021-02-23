@@ -16,6 +16,10 @@ import event.gps.*;
 import event.hydraulicPump.HydraulicPumpBodyCompress;
 import event.hydraulicPump.HydraulicPumpBodyRefillOil;
 import event.hydraulicPump.HydraulicPumpWingDecompress;
+import event.nitrogen_bottle.NitrogenBottleRefill;
+import event.nitrogen_bottle.NitrogenBottleTakeOut;
+import event.oxygen_bottle.OxygenBottleRefill;
+import event.oxygen_bottle.OxygenBottleTakeOut;
 import event.radar.RadarOff;
 import event.radar.RadarOn;
 import event.radar.RadarScan;
@@ -582,6 +586,27 @@ public class Body extends Subscriber {
         System.out.println(cameraBodyOn);
     }
     //--------------------------------------------------------
+    //NitrogenBottle-------------------------------------------
+    @Subscribe
+    public void receive(NitrogenBottleRefill nitrogenBottleRefill) {
+        System.out.println(nitrogenBottleRefill);
+    }
+
+    @Subscribe
+    public void receive(NitrogenBottleTakeOut nitrogenBottleTakeOut) {
+        System.out.println(nitrogenBottleTakeOut);
+    }
+    //--------------------------------------------------------
+    //OxygenBottle-------------------------------------------
+    @Subscribe
+    public void receive(OxygenBottleRefill oxygenBottleRefill) {
+        System.out.println(oxygenBottleRefill);
+    }
+
+    @Subscribe
+    public void receive(OxygenBottleTakeOut oxygenBottleTakeOut) {
+        System.out.println(oxygenBottleTakeOut);
+    }
 
     //GPS-------------------------------------------------------
     @Subscribe
