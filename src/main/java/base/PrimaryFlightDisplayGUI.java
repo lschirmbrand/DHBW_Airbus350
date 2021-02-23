@@ -207,7 +207,10 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         Tab visualTab = new Tab();
         visualTab.setText("Visual");
-        visualTab.setContent(buildVisualView());
+        ScrollPane sp = new ScrollPane(buildVisualView());
+        sp.setFitToHeight(true);
+        sp.setFitToWidth(true);
+        visualTab.setContent(sp);
         tabPane.getTabs().add(visualTab);
 
         Tab tableTab = new Tab();
@@ -218,7 +221,7 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         VBox vbox = new VBox(20);
         vbox.setPadding(new Insets(25, 25, 25, 25));
-        vbox.getChildren().addAll(hBox, tabPane);
+        vbox.getChildren().addAll(hBox, new ScrollPane(tabPane));
 
         Scene scene = new Scene(vbox, 850, 500);
         primaryStage.setScene(scene);
