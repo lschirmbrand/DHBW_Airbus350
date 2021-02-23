@@ -259,4 +259,10 @@ public enum PrimaryFlightDisplay {
 
     // weather_radar
     public boolean isWeatherRadarOn;
+
+    //oxygenBottle
+    public int amountOxygenBottle;
+
+    //nitrogenBottle
+    public int amountNitrogenBottle;
 }
