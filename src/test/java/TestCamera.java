@@ -150,7 +150,12 @@ public class TestCamera {
             Method setTypeMethod = componentPort.getClass().getDeclaredMethod("setType", String.class);
             Object result = setTypeMethod.invoke(componentPort, "Tail");
             assertNotNull(result);
-            System.out.println(result);
+            try {
+                result = setTypeMethod.invoke(componentPort, "Tailer");
+                fail();
+            } catch(Exception ex) {
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
             fail();

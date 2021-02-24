@@ -1,10 +1,10 @@
+import java.util.Locale;
+
 @SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class GPS {
 
     private static final GPS instance = new GPS();
     private final String manufacturer = "1253402";
-    private final String type = "Team 05";
-    private final String id = "1253402";
     public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;
@@ -17,7 +17,7 @@ public class GPS {
     }
 
     public String innerVersion() {
-        return "GPS // " + manufacturer + " - " + type + " - " + id;
+        return "GPS // " + manufacturer;
     }
 
     public boolean innerOn() {
@@ -26,8 +26,8 @@ public class GPS {
     }
 
     public boolean innerConnect(String satellite) {
-        isConnected = true;
-        return true;
+        isConnected = satellite.toLowerCase().trim().equals("astra-8");
+        return isConnected;
     }
 
     public void innerSend(String request) {

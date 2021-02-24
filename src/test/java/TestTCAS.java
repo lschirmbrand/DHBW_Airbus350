@@ -129,6 +129,8 @@ public class TestTCAS {
             Method connectMethod = componentPort.getClass().getDeclaredMethod("connect", String.class);
             boolean result = (boolean) connectMethod.invoke(componentPort, "Astra-8");
             assertTrue(result);
+            result = (boolean) connectMethod.invoke(componentPort, "Neptun-3");
+            assertFalse(result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -157,6 +159,8 @@ public class TestTCAS {
             Method determineAltitudeMethod = componentPort.getClass().getDeclaredMethod("determineAltitude", String.class);
             int result = (int) determineAltitudeMethod.invoke(componentPort, "Earth");
             assertEquals(0, result);
+            result = (int) determineAltitudeMethod.invoke(componentPort, " very low air");
+            assertEquals(50, result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

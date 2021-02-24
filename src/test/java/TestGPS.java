@@ -79,6 +79,8 @@ public class TestGPS {
             Method connectMethod = componentPort.getClass().getDeclaredMethod("connect", String.class);
             boolean result = (boolean) connectMethod.invoke(componentPort, "Astra-8");
             assertTrue(result);
+            result = (boolean) connectMethod.invoke(componentPort, "Neptun-3");
+            assertFalse(result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

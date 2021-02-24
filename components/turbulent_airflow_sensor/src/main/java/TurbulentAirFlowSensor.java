@@ -3,8 +3,6 @@ public class TurbulentAirFlowSensor {
 
     private static final TurbulentAirFlowSensor instance = new TurbulentAirFlowSensor();
     private final String manufacturer = "1253402";
-    private final String type = "Team 05";
-    private final String id = "1253402";
     public Port port = new Port();
     private boolean isAlarm = false;
 
@@ -17,7 +15,7 @@ public class TurbulentAirFlowSensor {
     }
 
     public String innerVersion() {
-        return "TurbulentAirFLowSensor // " + manufacturer + " - " + type + " - " + id;
+        return "TurbulentAirFLowSensor // " + manufacturer;
     }
 
     public boolean innerAlarm() {

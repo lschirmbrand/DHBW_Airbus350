@@ -2,9 +2,7 @@
 public class DroopNose {
 
     private static final DroopNose instance = new DroopNose();
-    private final String manufacturer = "1253402 / 9008480";
-    private final String type = "Team 05";
-    private final String id = "1253402 / 9008480";
+    private final String manufacturer = "1253402";
     public Port port = new Port();
     private int degree;
 
@@ -17,26 +15,32 @@ public class DroopNose {
     }
 
     public String innerVersion() {
-        return "DroopNose // " + manufacturer + " - " + type + " - " + id;
+        return "DroopNose // " + manufacturer;
     }
 
     public int innerNeutral() {
         degree = 0;
-        return 0;
+        return degree;
     }
 
     public int innerFullDown() {
-        degree = -100;
-        return -100;
+        degree = -90;
+        return degree;
     }
 
     public int innerDown(int degree) {
         this.degree -= degree;
-        return degree;
+        if (this.degree < -90) {
+            this.degree = -90;
+        }
+        return this.degree;
     }
 
     public int innerUp(int degree) {
         this.degree += degree;
+        if (this.degree > 90) {
+            this.degree = 90;
+        }
         return this.degree;
     }
 
