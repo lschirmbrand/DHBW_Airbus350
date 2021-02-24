@@ -622,10 +622,10 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfTCAS; i++) {
-                Method connectMethod = tcasPortList.get(i).getClass().getDeclaredMethod("connect");
+                Method connectMethod = tcasPortList.get(i).getClass().getDeclaredMethod("connect", String.class);
                 LogEngine.instance.write("connectMethod = " + connectMethod);
 
-                boolean isConnected = (boolean) connectMethod.invoke(tcasPortList.get(i));
+                boolean isConnected = (boolean) connectMethod.invoke(tcasPortList.get(i), "Astra-8");
                 LogEngine.instance.write("isConnected = " + isConnected);
 
                 PrimaryFlightDisplay.instance.isTCASConnected = isConnected;
@@ -645,6 +645,21 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("Body", "receive(" + tcasScan.toString() + ")");
         LogEngine.instance.write("Body.receive(" + tcasScan.toString() + ")");
         System.out.println(tcasScan);
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTCAS; i++) {
+                Method scanMethod = tcasPortList.get(i).getClass().getDeclaredMethod("scan", String.class);
+                LogEngine.instance.write("scanMethod = " + scanMethod);
+
+                boolean scanned = (boolean) scanMethod.invoke(tcasPortList.get(i), "Cloud");
+                LogEngine.instance.write("scanned = " + scanned);
+
+                FlightRecorder.instance.insert("Body", "tcasScan (scanned): " + scanned);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Subscribe
@@ -652,6 +667,25 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("Body", "receive(" + tcasDetermineAltitude.toString() + ")");
         LogEngine.instance.write("Body.receive(" + tcasDetermineAltitude.toString() + ")");
         System.out.println(tcasDetermineAltitude);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTCAS; i++) {
+                Method determineAltitudeMethod = tcasPortList.get(i).getClass().getDeclaredMethod("determineAltitude", String.class);
+                LogEngine.instance.write("determineAltitudeMethod = " + determineAltitudeMethod);
+
+                int altitude = (int) determineAltitudeMethod.invoke(tcasPortList.get(i), "Earth");
+                LogEngine.instance.write("altitude = " + altitude);
+
+                PrimaryFlightDisplay.instance.altitudeTCAS = altitude;
+                FlightRecorder.instance.insert("Body", "tcasDetermineAltitude (altitudeTCAS): " + altitude);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (altitudeTCAS): " + PrimaryFlightDisplay.instance.altitudeTCAS);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "altitudeTCAS: " + PrimaryFlightDisplay.instance.altitudeTCAS);
     }
     // ----------------------------------------------------------------------------------------------------------------
 
@@ -661,6 +695,22 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("Body", "receive(" + turbulentAirFlowSensorBodyMeasure.toString() + ")");
         LogEngine.instance.write("Body.receive(" + turbulentAirFlowSensorBodyMeasure.toString() + ")");
         System.out.println(turbulentAirFlowSensorBodyMeasure);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTurbulentAirFlowSensorBody; i++) {
+                Method measureMethod = turbulentAirFlowSensorBodyPortList.get(i).getClass().getDeclaredMethod("measure", String.class);
+                LogEngine.instance.write("measureMethod = " + measureMethod);
+
+                int airFlow = (int) measureMethod.invoke(turbulentAirFlowSensorBodyPortList.get(i), "88");
+                LogEngine.instance.write("airFlow = " + airFlow);
+
+                FlightRecorder.instance.insert("Body", "turbulentAirFlowSensorMeasure (airFlowTurbulentAirFlowSensor): " + airFlow);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     // ----------------------------------------------------------------------------------------------------------------
 
@@ -797,6 +847,22 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("Body", "receive(" + gpsReceive.toString() + ")");
         LogEngine.instance.write("Body.receive(" + gpsReceive.toString() + ")");
         System.out.println(gpsReceive);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfGPS; i++) {
+                Method receiveMethod = gpsPortList.get(i).getClass().getDeclaredMethod("receive");
+                LogEngine.instance.write("receiveMethod = " + receiveMethod);
+
+                String received = (String) receiveMethod.invoke(gpsPortList.get(i));
+                LogEngine.instance.write("received = " + received);
+
+                FlightRecorder.instance.insert("Body", "gpsReceived (received): " + received);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Subscribe
@@ -807,10 +873,10 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfGPS; i++) {
-                Method connectMethod = gpsPortList.get(i).getClass().getDeclaredMethod("connect");
+                Method connectMethod = gpsPortList.get(i).getClass().getDeclaredMethod("connect", String.class);
                 LogEngine.instance.write("connectMethod = " + connectMethod);
 
-                boolean isConnected = (boolean) connectMethod.invoke(gpsPortList.get(i));
+                boolean isConnected = (boolean) connectMethod.invoke(gpsPortList.get(i), "Astra-8");
                 LogEngine.instance.write("isConnected = " + isConnected);
 
                 PrimaryFlightDisplay.instance.isGPSConnected = isConnected;
@@ -892,6 +958,22 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("Body", "receive(" + radarScan.toString() + ")");
         LogEngine.instance.write("+ Body.receive(" + radarScan.toString() + ")");
         System.out.println(radarScan);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfRadar; i++) {
+                Method scanMethod = radarPortList.get(i).getClass().getDeclaredMethod("scan", String.class);
+                LogEngine.instance.write("scanMethod = " + scanMethod);
+
+                boolean scanned = (boolean) scanMethod.invoke(radarPortList.get(i), "Cloud");
+                LogEngine.instance.write("scanned = " + scanned);
+
+                FlightRecorder.instance.insert("Body", "radarScan (scanned): " + scanned);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     // ----------------------------------------------------------------------------------------------------------------
 

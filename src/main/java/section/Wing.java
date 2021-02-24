@@ -19,10 +19,7 @@ import event.hydraulicPump.HydraulicPumpWingCompress;
 import event.hydraulicPump.HydraulicPumpWingDecompress;
 import event.hydraulicPump.HydraulicPumpWingRefillOil;
 import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorWingMeasure;
-import factory.CameraFactory;
-import factory.ElevatorFactory;
-import factory.EngineFactory;
-import factory.HydraulicPumpFactory;
+import factory.*;
 import logging.LogEngine;
 import recorder.FlightRecorder;
 
@@ -36,12 +33,16 @@ public class Wing extends Subscriber {
     private final ArrayList<Object> hydraulicPumpPortList;
     private final ArrayList<Object> elevatorPortList;
     private final ArrayList<Object> cameraWingPortList;
+    private final ArrayList<Object> droopNosePortList;
+    private final ArrayList<Object> turbulentAirFlowSensorPortList;
 
     public Wing() {
         enginePortList = new ArrayList<>();
         hydraulicPumpPortList = new ArrayList<>();
         elevatorPortList = new ArrayList<>();
         cameraWingPortList = new ArrayList<>();
+        droopNosePortList = new ArrayList<>();
+        turbulentAirFlowSensorPortList = new ArrayList<>();
         build();
     }
 
@@ -58,6 +59,12 @@ public class Wing extends Subscriber {
         for (int i = 0; i < Configuration.instance.numberOfCameraWing; i++) {
             cameraWingPortList.add(CameraFactory.build());
         }
+        for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
+            droopNosePortList.add(DroopNoseFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfTurbulentAirFlowSensorWing; i++) {
+            turbulentAirFlowSensorPortList.add(TurbulentAirFlowSensorFactory.build());
+        }
     }
 
     //DroopNose---------------------------------
@@ -66,6 +73,25 @@ public class Wing extends Subscriber {
         FlightRecorder.instance.insert("Wing", "receive(" + droopNoseDown.toString() + ")");
         LogEngine.instance.write("Wing.receive(" + droopNoseDown.toString() + ")");
         System.out.println(droopNoseDown);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
+                Method downMethod = droopNosePortList.get(i).getClass().getDeclaredMethod("down", int.class);
+                LogEngine.instance.write("downMethod = " + downMethod);
+
+                int degree = (int) downMethod.invoke(droopNosePortList.get(i), 50);
+                LogEngine.instance.write("degree = " + degree);
+
+                PrimaryFlightDisplay.instance.degreeDroopNose = degree;
+                FlightRecorder.instance.insert("Wing", "droopNoseDown (degree): " + degree);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (degreeDroopNose): " + PrimaryFlightDisplay.instance.degreeDroopNose);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degreeDroopNose: " + PrimaryFlightDisplay.instance.degreeDroopNose);
     }
 
     @Subscribe
@@ -73,6 +99,25 @@ public class Wing extends Subscriber {
         FlightRecorder.instance.insert("Wing", "receive(" + droopNoseFullDown.toString() + ")");
         LogEngine.instance.write("Wing.receive(" + droopNoseFullDown.toString() + ")");
         System.out.println(droopNoseFullDown);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
+                Method fullDownMethod = droopNosePortList.get(i).getClass().getDeclaredMethod("fullDown");
+                LogEngine.instance.write("fullDownMethod = " + fullDownMethod);
+
+                int degree = (int) fullDownMethod.invoke(droopNosePortList.get(i));
+                LogEngine.instance.write("degree = " + degree);
+
+                PrimaryFlightDisplay.instance.degreeDroopNose = degree;
+                FlightRecorder.instance.insert("Wing", "droopNoseFullDown (degree): " + degree);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (degreeDroopNose): " + PrimaryFlightDisplay.instance.degreeDroopNose);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degreeDroopNose: " + PrimaryFlightDisplay.instance.degreeDroopNose);
     }
 
     @Subscribe
@@ -80,6 +125,25 @@ public class Wing extends Subscriber {
         FlightRecorder.instance.insert("Wing", "receive(" + droopNoseNeutral.toString() + ")");
         LogEngine.instance.write("Wing.receive(" + droopNoseNeutral.toString() + ")");
         System.out.println(droopNoseNeutral);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
+                Method neutralMethod = droopNosePortList.get(i).getClass().getDeclaredMethod("neutral");
+                LogEngine.instance.write("neutralMethod = " + neutralMethod);
+
+                int degree = (int) neutralMethod.invoke(droopNosePortList.get(i));
+                LogEngine.instance.write("degree = " + degree);
+
+                PrimaryFlightDisplay.instance.degreeDroopNose = degree;
+                FlightRecorder.instance.insert("Wing", "droopNoseNeutral (degree): " + degree);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (degreeDroopNose): " + PrimaryFlightDisplay.instance.degreeDroopNose);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degreeDroopNose: " + PrimaryFlightDisplay.instance.degreeDroopNose);
     }
 
     @Subscribe
@@ -87,6 +151,25 @@ public class Wing extends Subscriber {
         FlightRecorder.instance.insert("Wing", "receive(" + droopNoseUp.toString() + ")");
         LogEngine.instance.write("Wing.receive(" + droopNoseUp.toString() + ")");
         System.out.println(droopNoseUp);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
+                Method upMethod = droopNosePortList.get(i).getClass().getDeclaredMethod("up", int.class);
+                LogEngine.instance.write("upMethod = " + upMethod);
+
+                int degree = (int) upMethod.invoke(droopNosePortList.get(i), 50);
+                LogEngine.instance.write("degree = " + degree);
+
+                PrimaryFlightDisplay.instance.degreeDroopNose = degree;
+                FlightRecorder.instance.insert("Wing", "droopNoseUp (degree): " + degree);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (degreeDroopNose): " + PrimaryFlightDisplay.instance.degreeDroopNose);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "degreeDroopNose: " + PrimaryFlightDisplay.instance.degreeDroopNose);
     }
     //------------------------------------
 
@@ -96,6 +179,22 @@ public class Wing extends Subscriber {
         FlightRecorder.instance.insert("Wing", "receive(" + turbulentAirFlowSensorWingMeasure.toString() + ")");
         LogEngine.instance.write("Wing.receive(" + turbulentAirFlowSensorWingMeasure.toString() + ")");
         System.out.println(turbulentAirFlowSensorWingMeasure);
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTurbulentAirFlowSensorWing; i++) {
+                Method measureMethod = turbulentAirFlowSensorPortList.get(i).getClass().getDeclaredMethod("measure", String.class);
+                LogEngine.instance.write("measureMethod = " + measureMethod);
+
+                int measured = (int) measureMethod.invoke(turbulentAirFlowSensorPortList.get(i), "88");
+                LogEngine.instance.write("measured = " + measured);
+
+                FlightRecorder.instance.insert("Wing", "turbulentAirFlowSensorWingMeasure (measured): " + measured);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     //------------------------------------------
 
