@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@SuppressWarnings("FieldCanBeLocal")
 public enum FlightRecorder {
     instance;
     private final String driverName = "jdbc:hsqldb:";
@@ -50,6 +51,7 @@ public enum FlightRecorder {
         System.out.println();
     }
 
+    @SuppressWarnings("StringBufferReplaceableByString")
     public void createTable() {
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("CREATE TABLE data ").append(" ( ");
