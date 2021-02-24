@@ -22,7 +22,7 @@ public enum FlightRecorder {
             connection = DriverManager.getConnection(databaseURL, username, password);
             LogEngine.instance.write("Database Connection (isClosed): " + connection.isClosed());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -37,7 +37,8 @@ public enum FlightRecorder {
             statement.executeUpdate(sqlStatement);
             statement.close();
         } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
+            System.err.println("Fehler bei SQL: " + sqlStatement);
+            System.err.println(sqle.getMessage());
         }
     }
 
@@ -53,8 +54,8 @@ public enum FlightRecorder {
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("CREATE TABLE data ").append(" ( ");
         sqlStringBuilder.append("id BIGINT NOT NULL").append(",");
-        sqlStringBuilder.append("className VARCHAR(20) NOT NULL").append(",");
-        sqlStringBuilder.append("message VARCHAR(50) NOT NULL").append(",");
+        sqlStringBuilder.append("className VARCHAR(30) NOT NULL").append(",");
+        sqlStringBuilder.append("message VARCHAR(80) NOT NULL").append(",");
         sqlStringBuilder.append("PRIMARY KEY (id)");
         sqlStringBuilder.append(" )");
         update(sqlStringBuilder.toString());
@@ -65,7 +66,7 @@ public enum FlightRecorder {
         sqlStringBuilder.append("INSERT INTO data (id,className,message) VALUES (");
         sqlStringBuilder.append(id).append(",");
         sqlStringBuilder.append("'").append(className).append("'").append(",");
-        sqlStringBuilder.append("'").append(message).append("'");
+        sqlStringBuilder.append("'").append(message.replace("'", "\"")).append("'");
         sqlStringBuilder.append(")");
         LogEngine.instance.write("sqlStringBuilder = " + sqlStringBuilder.toString());
         return sqlStringBuilder.toString();
@@ -81,7 +82,7 @@ public enum FlightRecorder {
             statement.execute("SHUTDOWN");
             connection.close();
         } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
+            sqle.printStackTrace();
         }
     }
 }
