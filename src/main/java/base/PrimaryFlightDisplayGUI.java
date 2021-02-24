@@ -424,7 +424,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         // engine
         Label engineLabel = new Label("Engine : ");
         engineLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(engineLabel, 0,10);
+        gridPane.add(engineLabel, 0, 10);
 
         ToggleGroup engineToggleGroup = new ToggleGroup();
 
@@ -440,7 +440,7 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         //noinspection SpellCheckingInspection
         engineRPMLabel = new Label("RPM's: 0");
-        gridPane.add(engineRPMLabel, 3,10);
+        gridPane.add(engineRPMLabel, 3, 10);
 
         // gear
         Label gearLabel = new Label("Gear : ");
@@ -464,9 +464,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         hydraulicPumpLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(hydraulicPumpLabel, 0, 12);
         hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
-        gridPane.add(hydraulicPumpBodyOilAmountLabel, 1,12);
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 1, 12);
         hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
-        gridPane.add(hydraulicPumpWingOilAmountLabel, 2,12);
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 2, 12);
 
         // air_conditioning
         Label airConditioningLabel = new Label("AirConditioning : ");
@@ -490,16 +490,16 @@ public class PrimaryFlightDisplayGUI extends Application {
         // Elevator
         Label elevatorLabel = new Label("Elevators");
         elevatorLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(elevatorLabel,0,14);
+        gridPane.add(elevatorLabel, 0, 14);
         degreeElevator = new Label("90 \u00B0");
-        gridPane.add(degreeElevator, 1,14);
+        gridPane.add(degreeElevator, 1, 14);
 
         //OxygenBottle
         Label oxygenBottleLabel = new Label("OxygenBottle");
         oxygenBottleLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(oxygenBottleLabel,0,15);
+        gridPane.add(oxygenBottleLabel, 0, 15);
         amountOxygenBottle = new Label("100");
-        gridPane.add(amountOxygenBottle, 1,15);
+        gridPane.add(amountOxygenBottle, 1, 15);
         oxygenBottleRefillButton = new Button("Refill");
         gridPane.add(oxygenBottleRefillButton, 2, 15);
         oxygenBottleTakeOutButton = new Button("TakeOut");
@@ -508,9 +508,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         //NitrogenBottle
         Label nitrogenBottleLabel = new Label("NitrogenBottle");
         nitrogenBottleLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(nitrogenBottleLabel,0,16);
+        gridPane.add(nitrogenBottleLabel, 0, 16);
         amountNitrogenBottle = new Label("250");
-        gridPane.add(amountNitrogenBottle, 1,16);
+        gridPane.add(amountNitrogenBottle, 1, 16);
         nitrogenBottleRefillButton = new Button("Refill");
         gridPane.add(nitrogenBottleRefillButton, 2, 16);
         nitrogenBottleTakeOutButton = new Button("TakeOut");
@@ -592,10 +592,10 @@ public class PrimaryFlightDisplayGUI extends Application {
 
     public void setEngineRPMLabel(int rpm) {
         //noinspection SpellCheckingInspection
-        engineRPMLabel.setText("RPM's: "+rpm);
+        engineRPMLabel.setText("RPM's: " + rpm);
     }
 
-    public void setOilAmount(int amountB, int amountW){
+    public void setOilAmount(int amountB, int amountW) {
         hydraulicPumpBodyOilAmountLabel.setText(amountB + " psi at Body");
         hydraulicPumpWingOilAmountLabel.setText(amountW + " psi at Wing");
     }
@@ -615,6 +615,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         tcasIsConnectedEntry.setValue(Boolean.toString(isTCASConnected));
         tcasIsConnectedLabel.setText((isTCASConnected ? "" : "Not ") + "Connected");
     }
+
     public void setTCASIsAlarm(boolean isTCASAlarm) {
         tcasIsAlarmEntry.setValue(Boolean.toString(isTCASAlarm));
         tcasIsAlarmLabel.setText((isTCASAlarm ? "" : "No ") + "Alarm");
@@ -663,14 +664,19 @@ public class PrimaryFlightDisplayGUI extends Application {
         cameraWingOnRadio.setSelected(isCameraOnWingStarted);
     }
 
-    public void setDegreeElevator(int degree){
-        degreeElevator.setText(degree+" \u00B0");
+    public void setDegreeElevator(int degree) {
+        degreeElevator.setText(degree + " \u00B0");
     }
 
     //nitrogenBottle
-    public void setNitrogenBottleAmount(int amount){amountNitrogenBottle.setText(String.valueOf(amount));}
+    public void setNitrogenBottleAmount(int amount) {
+        amountNitrogenBottle.setText(String.valueOf(amount));
+    }
+
     //OxygenBottle
-    public void setOxygenBottleAmount(int amount){amountOxygenBottle.setText(String.valueOf(amount));}
+    public void setOxygenBottleAmount(int amount) {
+        amountOxygenBottle.setText(String.valueOf(amount));
+    }
 
     private void initData() {
         dataList = new ArrayList<>();
@@ -736,10 +742,10 @@ public class PrimaryFlightDisplayGUI extends Application {
         dataList.add(degreeElevatorEntry);
 
         //OxygenBottle
-        amountOxygenBottleEntry = new PrimaryFlightDisplayEntry("OxygenBottle (OxygenBottle amount)",Integer.toString(PrimaryFlightDisplay.instance.amountOxygenBottle));
+        amountOxygenBottleEntry = new PrimaryFlightDisplayEntry("OxygenBottle (OxygenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.amountOxygenBottle));
         dataList.add(amountOxygenBottleEntry);
         //NitrogenBottle
-        amountNitrogenBottleEntry = new PrimaryFlightDisplayEntry("NitrogenBottle (NitrogenBottle amount)",Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
+        amountNitrogenBottleEntry = new PrimaryFlightDisplayEntry("NitrogenBottle (NitrogenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
         dataList.add(amountNitrogenBottleEntry);
 
     }

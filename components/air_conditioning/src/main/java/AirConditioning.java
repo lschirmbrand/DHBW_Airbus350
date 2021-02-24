@@ -1,12 +1,11 @@
 public class AirConditioning {
     // static instance
-    private static AirConditioning instance = new AirConditioning();
+    private static final AirConditioning instance = new AirConditioning();
+    private final String manufacturer = "4775194 / 8864957";
+    private final String type = "team 01";
+    private final String id = "4775194 / 8864957";
     // port
     public Port port;
-    private String manufacturer = "4775194 / 8864957";
-    private String type = "team 01";
-    private String id = "4775194 / 8864957";
-
     private int temperature;
     private boolean isOn;
 

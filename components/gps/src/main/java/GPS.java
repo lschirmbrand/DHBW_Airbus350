@@ -2,9 +2,9 @@
 public class GPS {
 
     private static final GPS instance = new GPS();
-    private final String manufacturer = "Andreas Köhler / Manuel Truckses";
+    private final String manufacturer = "1253402";
     private final String type = "Team 05";
-    private final String id = "1253402 / 9008480";
+    private final String id = "1253402";
     public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;
@@ -17,7 +17,7 @@ public class GPS {
     }
 
     public String innerVersion() {
-        return "GPS // " + manufacturer + "; " + type + "; " + id;
+        return "GPS // " + manufacturer + " - " + type + " - " + id;
     }
 
     public boolean innerOn() {

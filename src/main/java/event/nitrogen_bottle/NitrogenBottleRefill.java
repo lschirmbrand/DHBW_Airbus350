@@ -6,6 +6,7 @@ public class NitrogenBottleRefill {
     public NitrogenBottleRefill(int amount) {
         this.amount = amount;
     }
+
     public NitrogenBottleRefill() {
     }
 

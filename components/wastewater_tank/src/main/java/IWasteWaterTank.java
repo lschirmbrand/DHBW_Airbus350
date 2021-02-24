@@ -1,11 +1,11 @@
 public interface IWasteWaterTank {
-    public String version();
+    String version();
 
-    public boolean lock();
+    boolean lock();
 
-    public boolean unlock();
+    boolean unlock();
 
-    public int add(int amount);
+    int add(int amount);
 
-    public int pumpOut();
+    int pumpOut();
 }

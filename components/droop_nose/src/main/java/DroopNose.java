@@ -2,7 +2,7 @@
 public class DroopNose {
 
     private static final DroopNose instance = new DroopNose();
-    private final String manufacturer = "Andreas Köhler / Manuel Truckses";
+    private final String manufacturer = "1253402 / 9008480";
     private final String type = "Team 05";
     private final String id = "1253402 / 9008480";
     public Port port = new Port();
@@ -17,15 +17,17 @@ public class DroopNose {
     }
 
     public String innerVersion() {
-        return "DroopNose // " + manufacturer + "; " + type + "; " + id;
+        return "DroopNose // " + manufacturer + " - " + type + " - " + id;
     }
 
     public int innerNeutral() {
+        degree = 0;
         return 0;
     }
 
     public int innerFullDown() {
-        return 0;
+        degree = -100;
+        return -100;
     }
 
     public int innerDown(int degree) {

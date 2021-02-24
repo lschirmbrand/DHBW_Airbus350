@@ -50,7 +50,7 @@ public class TestGPS {
             Method sendMethod = componentPort.getClass().getDeclaredMethod("send", String.class);
             assertNotNull(sendMethod);
 
-            assertEquals(componentPort.getClass().getDeclaredMethods().length, 6);
+            assertEquals(6, componentPort.getClass().getDeclaredMethods().length);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

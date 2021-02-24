@@ -2,9 +2,9 @@
 public class TurbulentAirFlowSensor {
 
     private static final TurbulentAirFlowSensor instance = new TurbulentAirFlowSensor();
-    private final String manufacturer = "Andreas Köhler / Manuel Truckses";
+    private final String manufacturer = "1253402";
     private final String type = "Team 05";
-    private final String id = "1253402 / 9008480";
+    private final String id = "1253402";
     public Port port = new Port();
     private boolean isAlarm = false;
 
@@ -17,7 +17,7 @@ public class TurbulentAirFlowSensor {
     }
 
     public String innerVersion() {
-        return manufacturer + "; " + type + "; " + id;
+        return "TurbulentAirFLowSensor // " + manufacturer + " - " + type + " - " + id;
     }
 
     public boolean innerAlarm() {
@@ -26,7 +26,7 @@ public class TurbulentAirFlowSensor {
     }
 
     public int innerMeasure(String airFlow) {
-        return 0;
+        return airFlow.length();
     }
 
     public class Port implements ITurbulentAirFlowSensor {

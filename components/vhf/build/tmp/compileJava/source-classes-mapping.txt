@@ -1,5 +1,5 @@
-IWeatherRadar.java
- IWeatherRadar
-WeatherRadar.java
- WeatherRadar
- WeatherRadar$Port
+IVHF.java
+ IVHF
+VHF.java
+ VHF
+ VHF$Port

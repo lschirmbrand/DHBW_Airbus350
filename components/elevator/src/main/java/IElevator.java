@@ -1,14 +1,14 @@
 public interface IElevator {
 
-    public String version();
+    String version();
 
-    public int neutral();
+    int neutral();
 
-    public int fullUp();
+    int fullUp();
 
-    public int fullDown();
+    int fullDown();
 
-    public int up(int degree);
+    int up(int degree);
 
-    public int down(int degree);
+    int down(int degree);
 }

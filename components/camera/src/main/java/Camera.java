@@ -2,8 +2,8 @@
 public class Camera {
 
     private static final Camera instance = new Camera();
-    private final String manufacturer = "Andreas Köhler / Manuel Truckses";
-    private final String id = "1253402 / 9008480";
+    private final String manufacturer = "1253402";
+    private final String id = "1253402";
     public Port port = new Port();
     private CameraType type;
     private boolean isOn;
@@ -17,7 +17,7 @@ public class Camera {
     }
 
     public String innerVersion() {
-        return "Camera // " + manufacturer + ";  " + id;
+        return "Camera // " + manufacturer + " - " + id;
     }
 
     public CameraType innerSetType(String type) {

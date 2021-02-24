@@ -30,7 +30,7 @@ public class VHF {
         return isOn = true;
     }
 
-    public String[] innerSerach() {
+    public String[] innerSearch() {
         return channelList;
     }
 
@@ -62,8 +62,8 @@ public class VHF {
             return innerOn();
         }
 
-        public String[] serach() {
-            return innerSerach();
+        public String[] search() {
+            return innerSearch();
         }
 
         public String forwardChannel() {

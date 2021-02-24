@@ -1,9 +1,9 @@
 public class Engine {
 
-    private static Engine instance = new Engine();
+    private static final Engine instance = new Engine();
 
     public Engine.Port port;
-    private String manufacturer = "4775194";
+    private final String manufacturer = "4775194";
     private boolean isStarted;
     private int rpm;
     private boolean isFire;

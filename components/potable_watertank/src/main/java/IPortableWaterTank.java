@@ -1,13 +1,13 @@
 public interface IPortableWaterTank {
-    public String version();
+    String version();
 
-    public boolean lock();
+    boolean lock();
 
-    public boolean unlock();
+    boolean unlock();
 
-    public int takeOut(int amount);
+    int takeOut(int amount);
 
-    public int refill();
+    int refill();
 
-    public int refill(int amount);
+    int refill(int amount);
 }

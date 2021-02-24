@@ -7,7 +7,8 @@ public class OxygenBottleRefill {
         this.amount = amount;
     }
 
-    public OxygenBottleRefill() { }
+    public OxygenBottleRefill() {
+    }
 
     @Override
     public String toString() {

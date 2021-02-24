@@ -766,6 +766,7 @@ public class Body extends Subscriber {
         LogEngine.instance.write("PrimaryFlightDisplay (isCameraOn): " + PrimaryFlightDisplay.instance.isCameraOn);
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "isCameraOn: " + PrimaryFlightDisplay.instance.isCameraOn);
     }
+
     // ----------------------------------------------------------------------------------------------------------------
     //NitrogenBottle-------------------------------------------
     @Subscribe
@@ -777,6 +778,7 @@ public class Body extends Subscriber {
     public void receive(NitrogenBottleTakeOut nitrogenBottleTakeOut) {
         System.out.println(nitrogenBottleTakeOut);
     }
+
     //--------------------------------------------------------
     //OxygenBottle-------------------------------------------
     @Subscribe

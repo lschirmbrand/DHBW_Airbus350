@@ -2,9 +2,9 @@
 public class Radar {
 
     private static final Radar instance = new Radar();
-    private final String manufacturer = "Andreas Köhler / Manuel Truckses";
+    private final String manufacturer = "1253402";
     private final String type = "Team 05";
-    private final String id = "1253402 / 9008480";
+    private final String id = "1253402";
     public Port port = new Port();
     private boolean isOn;
 
@@ -17,7 +17,7 @@ public class Radar {
     }
 
     public String innerVersion() {
-        return "Radar // " + manufacturer + "; " + type + "; " + id;
+        return "Radar // " + manufacturer + " - " + type + " - " + id;
     }
 
     public boolean innerOn() {
@@ -31,7 +31,7 @@ public class Radar {
     }
 
     public boolean innerScan(String environment) {
-        return true;
+        return environment.contains("bird");
     }
 
     public class Port implements IRadar {

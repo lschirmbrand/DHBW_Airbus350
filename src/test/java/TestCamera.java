@@ -51,7 +51,7 @@ public class TestCamera {
             Method recordMethod = componentPort.getClass().getDeclaredMethod("record");
             assertNotNull(recordMethod);
 
-            assertEquals(componentPort.getClass().getDeclaredMethods().length, 7);
+            assertEquals(7, componentPort.getClass().getDeclaredMethods().length);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -93,7 +93,7 @@ public class TestCamera {
         try {
             Method zoomInMethod = componentPort.getClass().getDeclaredMethod("zoomIn", double.class);
             String result = (String) zoomInMethod.invoke(componentPort, 5.8d);
-            assertEquals(result, "5.8");
+            assertEquals("5.8", result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -121,7 +121,7 @@ public class TestCamera {
         try {
             Method zoomOutMethod = componentPort.getClass().getDeclaredMethod("zoomOut", double.class);
             String result = (String) zoomOutMethod.invoke(componentPort, 5.8d);
-            assertEquals(result, "5.8");
+            assertEquals("5.8", result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

@@ -2,9 +2,9 @@
 public class TCAS {
 
     private static final TCAS instance = new TCAS();
-    private final String manufacturer = "Andreas Köhler / Manuel Truckses";
+    private final String manufacturer = "1253402";
     private final String type = "Team 05";
-    private final String id = "1253402 / 9008480";
+    private final String id = "1253402";
     public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;
@@ -20,7 +20,7 @@ public class TCAS {
     }
 
     public String innerVersion() {
-        return manufacturer + "; " + type + "; " + id;
+        return "TCAS // " + manufacturer + " - " + type + " - " + id;
     }
 
     public boolean innerOn() {
@@ -34,7 +34,7 @@ public class TCAS {
     }
 
     public boolean innerScan(String environment) {
-        return true;
+        return environment.contains("bird");
     }
 
     public boolean innerAlarm() {
@@ -43,7 +43,8 @@ public class TCAS {
     }
 
     public int innerDetermineAltitude(String environment) {
-        return 0;
+        altitude = environment.contains("low air") ? 50 : 0;
+        return altitude;
     }
 
     public int innerSetAltitude(int value) {

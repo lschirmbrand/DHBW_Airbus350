@@ -1,13 +1,13 @@
 public interface ISatCom {
-    public String version();
+    String version();
 
-    public boolean on();
+    boolean on();
 
-    public boolean connect(String satalite, String frequency);
+    boolean connect(String satellite, String frequency);
 
-    public void send(String request);
+    void send(String request);
 
-    public String receive();
+    String receive();
 
-    public boolean off();
+    boolean off();
 }
