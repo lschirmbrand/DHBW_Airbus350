@@ -1,9 +1,9 @@
 public class Elevator {
 
-    private static Elevator instance = new Elevator();
+    private static final Elevator instance = new Elevator();
 
     public Elevator.Port port;
-    private String manufacturer = "4775194";
+    private final String manufacturer = "4775194";
     private int degree = 90;
 
     private Elevator() {
@@ -55,7 +55,6 @@ public class Elevator {
 
         @Override
         public int neutral() {
-            ;
             return innerNeutral();
         }
 

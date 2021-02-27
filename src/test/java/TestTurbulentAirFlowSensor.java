@@ -41,7 +41,7 @@ public class TestTurbulentAirFlowSensor {
             Method versionMethod = componentPort.getClass().getDeclaredMethod("version");
             assertNotNull(versionMethod);
 
-            assertEquals(componentPort.getClass().getDeclaredMethods().length, 3);
+            assertEquals(3, componentPort.getClass().getDeclaredMethods().length);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -83,7 +83,7 @@ public class TestTurbulentAirFlowSensor {
         try {
             Method measureMethod = componentPort.getClass().getDeclaredMethod("measure", String.class);
             int result = (int) measureMethod.invoke(componentPort, "much");
-            assertEquals(result, 0);
+            assertEquals(4, result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

@@ -29,11 +29,12 @@ public enum PrimaryFlightDisplay {
     public boolean isBulkCargoDoorClosed;
     public boolean isBulkCargoDoorLocked;
 
-    // business_class_seat
-    // original (with name conflicts):
-    // public boolean isNonSmokingSignOn;
-    // public boolean isSeatBeltSignOn;
-    // public int levelSeat;
+    /* business_class_seat
+     * original (with name conflicts):
+     * public boolean isNonSmokingSignOn;
+     * public boolean isSeatBeltSignOn;
+     * public int levelSeat;
+     */
     public boolean isBusinessClassNonSmokingSignOn;
     public boolean isBusinessClassSeatBeltSignOn;
     public int businessClassLevelSeat;
@@ -57,10 +58,11 @@ public enum PrimaryFlightDisplay {
     public int indexCostOptimizer;
     public int numberOfCheckPointsCostOptimizer;
 
-    // crew_seat
-    // original (with name conflicts):
-    // public boolean isNonSmokingSignOn;
-    // public boolean isSeatBeltSignOn;
+    /* crew_seat
+     * original (with name conflicts):
+     * public boolean isNonSmokingSignOn;
+     * public boolean isSeatBeltSignOn;
+     */
     public boolean isCrewSeatNonSmokingSignOn;
     public boolean isCrewSeatSeatBeltSignOn;
 
@@ -71,11 +73,12 @@ public enum PrimaryFlightDisplay {
     // droop_nose
     public int degreeDroopNose;
 
-    // economy_class_seat
-    // original (with name conflicts):
-    // public boolean isNonSmokingSignOn;
-    // public boolean isSeatBeltSignOn;
-    // public int levelSeat;
+    /* economy_class_seat
+     * original (with name conflicts):
+     * public boolean isNonSmokingSignOn;
+     * public boolean isSeatBeltSignOn;
+     * public int levelSeat;
+     */
     public boolean isEconomyClassNonSmokingSignOn;
     public boolean isEconomyClassSeatBeltSignOn;
     public int economyClassLevelSeat;
@@ -170,7 +173,7 @@ public enum PrimaryFlightDisplay {
     public int oxygenBottleAmount;
 
     // oxygen_sensor
-    public boolean isOxgenSensorAlarm;
+    public boolean isOxygenSensorAlarm;
 
     // pitot_tube
     public boolean isPitotTubeCleaned;
@@ -180,11 +183,12 @@ public enum PrimaryFlightDisplay {
     public boolean isPotableWaterTankLocked;
     public int amountPotableWater;
 
-    // premium_economy_class_seat
-    // original (with name conflicts):
-    // public boolean isNonSmokingSignOn;
-    // public boolean isSeatBeltSignOn;
-    // public int levelSeat;
+    /* premium_economy_class_seat
+     * original (with name conflicts):
+     * public boolean isNonSmokingSignOn;
+     * public boolean isSeatBeltSignOn;
+     * public int levelSeat;
+     */
     public boolean isPremiumEconomyNonSmokingSignOn;
     public boolean isPremiumEconomySeatBeltSignOn;
     public int premiumEconomyLevelSeat;
@@ -259,4 +263,10 @@ public enum PrimaryFlightDisplay {
 
     // weather_radar
     public boolean isWeatherRadarOn;
+
+    //oxygenBottle
+    public int amountOxygenBottle;
+
+    //nitrogenBottle
+    public int amountNitrogenBottle;
 }

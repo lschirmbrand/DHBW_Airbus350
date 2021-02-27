@@ -1,5 +1,5 @@
-IWeatherRadar.java
- IWeatherRadar
-WeatherRadar.java
- WeatherRadar
- WeatherRadar$Port
+IWasteWaterTank.java
+ IWasteWaterTank
+WasteWaterTank.java
+ WasteWaterTank
+ WasteWaterTank$Port

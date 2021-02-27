@@ -1,9 +1,8 @@
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class DroopNose {
 
     private static final DroopNose instance = new DroopNose();
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String manufacturer = "1253402";
     public Port port = new Port();
     private int degree;
 
@@ -16,24 +15,32 @@ public class DroopNose {
     }
 
     public String innerVersion() {
-        return manufacturer + "; " + type + "; " + id;
+        return "DroopNose // " + manufacturer;
     }
 
     public int innerNeutral() {
-        return 0;
+        degree = 0;
+        return degree;
     }
 
     public int innerFullDown() {
-        return 0;
+        degree = -90;
+        return degree;
     }
 
     public int innerDown(int degree) {
         this.degree -= degree;
-        return degree;
+        if (this.degree < -90) {
+            this.degree = -90;
+        }
+        return this.degree;
     }
 
     public int innerUp(int degree) {
         this.degree += degree;
+        if (this.degree > 90) {
+            this.degree = 90;
+        }
         return this.degree;
     }
 

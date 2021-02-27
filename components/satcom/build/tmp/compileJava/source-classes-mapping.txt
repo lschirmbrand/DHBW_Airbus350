@@ -1,5 +1,5 @@
-IWeatherRadar.java
- IWeatherRadar
-WeatherRadar.java
- WeatherRadar
- WeatherRadar$Port
+ISatCom.java
+ ISatCom
+SatCom.java
+ SatCom
+ SatCom$Port

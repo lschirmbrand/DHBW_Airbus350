@@ -1,14 +1,14 @@
 public interface IEngine {
 
-    public String version();
+    String version();
 
-    public boolean start();
+    boolean start();
 
-    public int increaseRPM(int value);
+    int increaseRPM(int value);
 
-    public int decreaseRPM(int value);
+    int decreaseRPM(int value);
 
-    public boolean shutdown();
+    boolean shutdown();
 
-    public void extinguishFire();
+    void extinguishFire();
 }

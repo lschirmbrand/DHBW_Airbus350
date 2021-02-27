@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'dhbw'
-version '1.0'
+version null
 
 repositories {
     mavenCentral()
@@ -13,7 +13,7 @@ repositories {
 
 javafx {
     version = "15.0.1"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
@@ -33,7 +33,7 @@ compileJava {
     }
 }
 
-mainClassName='base.PrimaryFlightDisplayGUI'
+mainClassName = 'base.PrimaryFlightDisplayGUI'
 
 run {
     doFirst {

@@ -1,9 +1,8 @@
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class Radar {
 
     private static final Radar instance = new Radar();
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String manufacturer = "1253402";
     public Port port = new Port();
     private boolean isOn;
 
@@ -16,7 +15,7 @@ public class Radar {
     }
 
     public String innerVersion() {
-        return manufacturer + "; " + type + "; " + id;
+        return "Radar // " + manufacturer;
     }
 
     public boolean innerOn() {
@@ -30,7 +29,7 @@ public class Radar {
     }
 
     public boolean innerScan(String environment) {
-        return true;
+        return environment.toLowerCase().contains("bird");
     }
 
     public class Port implements IRadar {

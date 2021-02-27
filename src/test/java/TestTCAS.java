@@ -56,7 +56,7 @@ public class TestTCAS {
             Method connectMethod = componentPort.getClass().getDeclaredMethod("connect", String.class);
             assertNotNull(connectMethod);
 
-            assertEquals(componentPort.getClass().getDeclaredMethods().length, 8);
+            assertEquals(8, componentPort.getClass().getDeclaredMethods().length);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -112,6 +112,8 @@ public class TestTCAS {
         try {
             Method scanMethod = componentPort.getClass().getDeclaredMethod("scan", String.class);
             boolean result = (boolean) scanMethod.invoke(componentPort, "Enemy Ship");
+            assertFalse(result);
+            result = (boolean) scanMethod.invoke(componentPort, "bird");
             assertTrue(result);
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,6 +129,8 @@ public class TestTCAS {
             Method connectMethod = componentPort.getClass().getDeclaredMethod("connect", String.class);
             boolean result = (boolean) connectMethod.invoke(componentPort, "Astra-8");
             assertTrue(result);
+            result = (boolean) connectMethod.invoke(componentPort, "Neptun-3");
+            assertFalse(result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -154,7 +158,9 @@ public class TestTCAS {
         try {
             Method determineAltitudeMethod = componentPort.getClass().getDeclaredMethod("determineAltitude", String.class);
             int result = (int) determineAltitudeMethod.invoke(componentPort, "Earth");
-            assertEquals(result, 0);
+            assertEquals(0, result);
+            result = (int) determineAltitudeMethod.invoke(componentPort, " very low air");
+            assertEquals(50, result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -168,7 +174,7 @@ public class TestTCAS {
         try {
             Method setAltitudeMethod = componentPort.getClass().getDeclaredMethod("setAltitude", int.class);
             int result = (int) setAltitudeMethod.invoke(componentPort, 5);
-            assertEquals(result, 5);
+            assertEquals(5, result);
         } catch (Exception e) {
             e.printStackTrace();
             fail();

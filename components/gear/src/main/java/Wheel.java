@@ -1,7 +1,7 @@
 public class Wheel {
-    private String id;
-    private long dateOfManufacture;
-    private Brake brake;
+    private final String id;
+    private final long dateOfManufacture;
+    private final Brake brake;
 
     public Wheel(String id, long dateOfManufacture, Brake brake) {
         this.id = id;

@@ -1,11 +1,11 @@
 public class SatCom {
     // static instance
-    private static SatCom instance = new SatCom();
+    private static final SatCom instance = new SatCom();
     // port
     public Port port;
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private String type = "Team 05";
-    private String id = "9008480 / 1253402";
+    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String type = "Team 05";
+    private final String id = "9008480 / 1253402";
     private boolean isConnected;
 
     // private constructor

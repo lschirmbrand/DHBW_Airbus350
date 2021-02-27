@@ -1,8 +1,8 @@
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class Camera {
 
     private static final Camera instance = new Camera();
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private final String id = "9008480 / 1253402";
+    private final String manufacturer = "1253402";
     public Port port = new Port();
     private CameraType type;
     private boolean isOn;
@@ -16,7 +16,7 @@ public class Camera {
     }
 
     public String innerVersion() {
-        return manufacturer + "; " + type + "; " + id;
+        return "Camera // " + manufacturer;
     }
 
     public CameraType innerSetType(String type) {

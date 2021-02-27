@@ -1,9 +1,8 @@
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class TCAS {
 
     private static final TCAS instance = new TCAS();
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String manufacturer = "1253402";
     public Port port = new Port();
     private boolean isOn;
     private boolean isConnected;
@@ -19,7 +18,7 @@ public class TCAS {
     }
 
     public String innerVersion() {
-        return manufacturer + "; " + type + "; " + id;
+        return "TCAS // " + manufacturer;
     }
 
     public boolean innerOn() {
@@ -28,12 +27,12 @@ public class TCAS {
     }
 
     public boolean innerConnect(String frequency) {
-        isConnected = true;
-        return true;
+        isConnected = frequency.trim().equalsIgnoreCase("astra-8");
+        return isConnected;
     }
 
     public boolean innerScan(String environment) {
-        return true;
+        return environment.toLowerCase().contains("bird");
     }
 
     public boolean innerAlarm() {
@@ -42,12 +41,16 @@ public class TCAS {
     }
 
     public int innerDetermineAltitude(String environment) {
-        return 0;
+        altitude = environment.toLowerCase().contains("low air") ? 50 : 0;
+        return altitude;
     }
 
     public int innerSetAltitude(int value) {
         altitude = value;
-        return value;
+        if(altitude > 90) {
+            altitude = 90;
+        }
+        return altitude;
     }
 
     public boolean innerOff() {

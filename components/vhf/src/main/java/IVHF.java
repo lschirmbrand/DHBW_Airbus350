@@ -1,15 +1,15 @@
 public interface IVHF {
-    public String version();
+    String version();
 
-    public boolean on();
+    boolean on();
 
-    public String[] serach();
+    String[] search();
 
-    public String forwardChannel();
+    String forwardChannel();
 
-    public String backwardChannel();
+    String backwardChannel();
 
-    public String selectChannel(String channel);
+    String selectChannel(String channel);
 
-    public boolean off();
+    boolean off();
 }

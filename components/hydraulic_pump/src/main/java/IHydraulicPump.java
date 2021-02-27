@@ -1,14 +1,14 @@
 public interface IHydraulicPump {
 
-    public String version();
+    String version();
 
-    public int compress();
+    int compress();
 
-    public int compress(int amount);
+    int compress(int amount);
 
-    public int decompress();
+    int decompress();
 
-    public int refillOil();
+    int refillOil();
 
-    public int refillOil(int amount);
+    int refillOil(int amount);
 }

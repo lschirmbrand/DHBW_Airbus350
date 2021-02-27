@@ -44,7 +44,7 @@ public class TestRadar {
             Method sendMethod = componentPort.getClass().getDeclaredMethod("scan", String.class);
             assertNotNull(sendMethod);
 
-            assertEquals(componentPort.getClass().getDeclaredMethods().length, 4);
+            assertEquals(4, componentPort.getClass().getDeclaredMethods().length);
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -99,7 +99,9 @@ public class TestRadar {
         componentPort = RadarFactory.build();
         try {
             Method scanMethod = componentPort.getClass().getDeclaredMethod("scan", String.class);
-            boolean result = (boolean) scanMethod.invoke(componentPort, "Enemy Ship");
+            boolean result = (boolean) scanMethod.invoke(componentPort, "Air");
+            assertFalse(result);
+            result = (boolean) scanMethod.invoke(componentPort, "bird");
             assertTrue(result);
         } catch (Exception e) {
             e.printStackTrace();

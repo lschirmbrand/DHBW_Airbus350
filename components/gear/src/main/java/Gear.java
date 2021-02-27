@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Gear {
     // static instance
-    private static Gear instance = new Gear();
+    private static final Gear instance = new Gear();
     // port
     public Port port;
-    private String manufacturer = "4775194 / 8864957";
+    private final String manufacturer = "4775194 / 8864957";
 
     private GearType type;
-    private ArrayList<Wheel> wheels = new ArrayList<>();
+    private final ArrayList<Wheel> wheels = new ArrayList<>();
     private boolean isDown = true;
 
     // private constructor
@@ -30,7 +30,7 @@ public class Gear {
 
     // inner methods
     public String innerVersion() {
-        return "Gear // " + manufacturer + " - " + type + " - " + id;
+        return "Gear // " + manufacturer + " - " + type;
     }
 
     public GearType innerSetGearType(String type) {
