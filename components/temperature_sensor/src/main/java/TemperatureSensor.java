@@ -4,9 +4,8 @@ public class TemperatureSensor {
     // port
     public Port port;
     private String manufacturer = "2529977, 6499887";
-    private String type = "team 04";
-    private String id = "2529977, 6499887";
-
+    private int temperature;
+    private boolean isAlarm = false;
 
     // private constructor
     private TemperatureSensor() {
@@ -20,16 +19,32 @@ public class TemperatureSensor {
 
     // inner methods
     public String innerVersion() {
-        return "WeatherRadar // " + manufacturer + " - " + type + " - " + id;
+        return "TemperatureSensor // " + manufacturer;
     }
 
+    public int innnerMeasure() { return temperature; }
+
+    public boolean innerAlarm(int threshold) {
+        if (threshold > temperature) {
+            isAlarm = true;
+            return true;
+        } else {
+            isAlarm = false;
+            return false;
+        }
+    }
 
     // inner class port
     public class Port implements ITemperatureSensor {
+        @Override
         public String version() {
             return innerVersion();
         }
 
+        @Override
+        public int measure() { return innnerMeasure(); }
 
-	}
+        @Override
+        public boolean alarm(int threshold) { return innerAlarm(threshold); }
+    }
 }

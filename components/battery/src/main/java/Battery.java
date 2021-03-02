@@ -4,9 +4,7 @@ public class Battery {
     // port
     public Port port;
     private String manufacturer = "2529977, 6499887";
-    private String type = "team 04";
-    private String id = "2529977, 6499887";
-
+    private int percentage;
 
     // private constructor
     private Battery() {
@@ -19,8 +17,20 @@ public class Battery {
     }
 
     // inner methods
-    public String innerVersion() {
-        return "WeatherRadar // " + manufacturer + " - " + type + " - " + id;
+    public String innerVersion() { return "Battery // " + manufacturer; }
+
+    public int innerCharge() {
+        if (percentage < 100) {
+            percentage++;
+        }
+        return percentage;
+    }
+
+    public int innerDischarge() {
+        if (percentage > 0 ) {
+            percentage--;
+        }
+        return percentage;
     }
 
 
@@ -30,6 +40,14 @@ public class Battery {
             return innerVersion();
         }
 
+        @Override
+        public int charge() {
+            return 0;
+        }
 
-	}
+        @Override
+        public int discharge() {
+            return 0;
+        }
+    }
 }

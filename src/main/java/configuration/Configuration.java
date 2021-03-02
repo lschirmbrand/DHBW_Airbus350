@@ -36,7 +36,6 @@ public enum Configuration {
     public int numberOfDeIcingSystemBody = 2;
     public int numberOfDeIcingSystemWing = 2;
 
-
     // gear
     public String pathToGearJavaArchive = commonPathToJavaArchive + fileSeparator + "gear" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "gear.jar";
     public int numberOfGearFront = 1;

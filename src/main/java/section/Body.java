@@ -32,13 +32,17 @@ import factory.*;
 import logging.LogEngine;
 import recorder.FlightRecorder;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 @SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection"})
 public class Body extends Subscriber {
     private final ArrayList<Object> airConditioningPortList;
+    private final ArrayList<Object> airFlowSensorPortList;
     private final ArrayList<Object> apuPortList;
+    private final ArrayList<Object> batteryPortList;
+    private final ArrayList<Object> deIcingSystemPortList;
     private final ArrayList<Object> gearPortList;
     private final ArrayList<Object> weatherRadarPortList;
     private final ArrayList<Object> hydraulicPumpPortList;
@@ -47,12 +51,16 @@ public class Body extends Subscriber {
     private final ArrayList<Object> gpsPortList;
     private final ArrayList<Object> cameraBodyPortList;
     private final ArrayList<Object> tcasPortList;
+    private final ArrayList<Object> temperatureSensorPortList;
     private final ArrayList<Object> turbulentAirFlowSensorBodyPortList;
     private final ArrayList<Object> droopNosePortList;
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
+        airFlowSensorPortList = new ArrayList<>();
         apuPortList = new ArrayList<>();
+        batteryPortList = new ArrayList<>();
+        deIcingSystemPortList = new ArrayList<>();
         gearPortList = new ArrayList<>();
         weatherRadarPortList = new ArrayList<>();
         hydraulicPumpPortList = new ArrayList<>();
@@ -60,6 +68,7 @@ public class Body extends Subscriber {
         droopNosePortList = new ArrayList<>();
         turbulentAirFlowSensorBodyPortList = new ArrayList<>();
         tcasPortList = new ArrayList<>();
+        temperatureSensorPortList = new ArrayList<>();
         cameraBodyPortList = new ArrayList<>();
         gpsPortList = new ArrayList<>();
         radarPortList = new ArrayList<>();
