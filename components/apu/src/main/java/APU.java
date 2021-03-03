@@ -1,9 +1,9 @@
 public class APU {
     // static instance
     private static final APU instance = new APU();
+    private final String manufacturer = "8864957";
     // port
     public Port port;
-    private final String manufacturer = "8864957";
     private boolean isStarted = false;
     private int rpm = 0;
 

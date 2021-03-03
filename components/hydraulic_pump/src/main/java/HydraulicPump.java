@@ -5,8 +5,8 @@ public class HydraulicPump {
     private final int decompressed = 0;
     private final int oil_filled = 5000;
     private final int oil_empty = 0;
-    public Port port;
     private final String manufacturer = "4775194";
+    public Port port;
     private int compress_amount = compressed;
 
     private int oil_amount = 1000;

@@ -5,12 +5,11 @@ import java.util.List;
 public class Gear {
     // static instance
     private static final Gear instance = new Gear();
+    private final String manufacturer = "8864957";
+    private final ArrayList<Wheel> wheels = new ArrayList<>();
     // port
     public Port port;
-    private final String manufacturer = "8864957";
-
     private GearType type;
-    private final ArrayList<Wheel> wheels = new ArrayList<>();
     private boolean isDown = true;
 
     // private constructor

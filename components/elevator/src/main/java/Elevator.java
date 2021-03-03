@@ -1,9 +1,8 @@
 public class Elevator {
 
     private static final Elevator instance = new Elevator();
-
-    public Elevator.Port port;
     private final String manufacturer = "4775194";
+    public Elevator.Port port;
     private int degree = 90;
 
     private Elevator() {

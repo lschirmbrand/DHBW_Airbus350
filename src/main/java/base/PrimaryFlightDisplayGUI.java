@@ -17,7 +17,6 @@ import recorder.FlightRecorder;
 
 import java.util.ArrayList;
 
-@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class PrimaryFlightDisplayGUI extends Application {
     private TableView<PrimaryFlightDisplayEntry> tableView;
     private ArrayList<PrimaryFlightDisplayEntry> dataList;
