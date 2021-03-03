@@ -1,5 +1,0 @@
-IWasteWaterTank.java
- IWasteWaterTank
-WasteWaterTank.java
- WasteWaterTank
- WasteWaterTank$Port

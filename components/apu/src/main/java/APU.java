@@ -3,7 +3,7 @@ public class APU {
     private static final APU instance = new APU();
     // port
     public Port port;
-    private final String manufacturer = "4775194 / 8864957";
+    private final String manufacturer = "8864957";
     private boolean isStarted = false;
     private int rpm = 0;
 

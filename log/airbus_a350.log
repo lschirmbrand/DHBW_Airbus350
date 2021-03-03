@@ -1,5 +1,1096 @@
-2021-03-01 10:55:29 : Database Connection (isClosed): false
-2021-03-01 10:55:29 : sqlStringBuilder = DROP TABLE data
-2021-03-01 10:55:29 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (394984455104400,'EngineFactory','engineClass: 977420729')
-2021-03-01 10:55:29 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (394984455910300,'EngineFactory','engineInstance: 1680476443')
-2021-03-01 10:55:29 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (394984456161500,'EngineFactory','enginePort: 1945113369')
+2021-03-03 11:05:26 : Database Connection (isClosed): false
+2021-03-03 11:05:26 : sqlStringBuilder = DROP TABLE data
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225974607200,'AirConditioningFactory','airConditioningClass: 444832343')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225975395799,'AirConditioningFactory','airConditioningInstance: 1912163841')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225976119600,'AirConditioningFactory','airConditioningPort: 437613476')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225978602400,'AirConditioningFactory','airConditioningClass: 971035925')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225980330599,'AirConditioningFactory','airConditioningInstance: 23177866')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225982483600,'AirConditioningFactory','airConditioningPort: 259631876')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225987808800,'AirConditioningFactory','airConditioningClass: 561325756')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225988648000,'AirConditioningFactory','airConditioningInstance: 1145786434')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225989421200,'AirConditioningFactory','airConditioningPort: 993384421')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225994942499,'AirConditioningFactory','airConditioningClass: 664650380')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66225998672799,'AirConditioningFactory','airConditioningInstance: 1235948254')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226000169199,'AirConditioningFactory','airConditioningPort: 188106277')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226006071200,'APUFactory','apuClass: 535167217')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226008036300,'APUFactory','apuInstance: 2101497781')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226009715099,'APUFactory','apuPort: 1617991623')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226018737499,'GearFactory','gearClass: 870161202')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226021096200,'GearFactory','gearInstance: 1361157968')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226022479399,'GearFactory','gearPort: 870161202')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226026566000,'GearFactory','gearClass: 1728052591')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226028312300,'GearFactory','gearInstance: 1649805488')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226029108699,'GearFactory','gearPort: 1728052591')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226043199399,'GearFactory','gearClass: 243292416')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226044670000,'GearFactory','gearInstance: 1379534360')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226045389800,'GearFactory','gearPort: 243292416')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226051990199,'WeatherRadarFactory','weatherRadarClass: 1392438528')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226053412199,'WeatherRadarFactory','weatherRadarInstance: 1447437914')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226054439000,'WeatherRadarFactory','weatherRadarPort: 754389778')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226058917500,'WeatherRadarFactory','weatherRadarClass: 292565634')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226059777799,'WeatherRadarFactory','weatherRadarInstance: 1334303822')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226060342900,'WeatherRadarFactory','weatherRadarPort: 1623933287')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226067843500,'HydraulicPumpFactory','hydraulicPumpClass: 3595335')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226069411200,'HydraulicPumpFactory','hydraulicPumpInstance: 1348003860')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226070651100,'HydraulicPumpFactory','hydraulicPumpPort: 304747963')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226073543299,'HydraulicPumpFactory','hydraulicPumpClass: 629316179')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226074517300,'HydraulicPumpFactory','hydraulicPumpInstance: 1485905040')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226075020100,'HydraulicPumpFactory','hydraulicPumpPort: 1918528127')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226077903400,'HydraulicPumpFactory','hydraulicPumpClass: 1019729971')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226078654100,'HydraulicPumpFactory','hydraulicPumpInstance: 1016557794')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226079115800,'HydraulicPumpFactory','hydraulicPumpPort: 1929247979')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226082152500,'HydraulicPumpFactory','hydraulicPumpClass: 1509549407')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226083083699,'HydraulicPumpFactory','hydraulicPumpInstance: 1250484578')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226083760700,'HydraulicPumpFactory','hydraulicPumpPort: 1020165253')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226087985100,'HydraulicPumpFactory','hydraulicPumpClass: 1098114407')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226088874299,'HydraulicPumpFactory','hydraulicPumpInstance: 518745828')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226089445900,'HydraulicPumpFactory','hydraulicPumpPort: 1657257147')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226092840600,'HydraulicPumpFactory','hydraulicPumpClass: 1811508983')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226093715900,'HydraulicPumpFactory','hydraulicPumpInstance: 1150051165')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226094436400,'HydraulicPumpFactory','hydraulicPumpPort: 1943138406')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226100165500,'EngineFactory','engineClass: 226736821')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226101607599,'EngineFactory','engineInstance: 545441232')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226103216300,'EngineFactory','enginePort: 1205663301')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226105983799,'EngineFactory','engineClass: 1453041060')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226107363100,'EngineFactory','engineInstance: 1237947050')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226107813200,'EngineFactory','enginePort: 1495105911')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226109807200,'EngineFactory','engineClass: 1923952434')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226110402000,'EngineFactory','engineInstance: 1221830595')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226110707500,'EngineFactory','enginePort: 1109157455')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226112694100,'EngineFactory','engineClass: 1080412947')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226115052600,'EngineFactory','engineInstance: 1447486952')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226115922400,'EngineFactory','enginePort: 821038438')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226221205800,'EngineFactory','engineClass: 499941968')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226222038000,'EngineFactory','engineInstance: 323633548')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226222712200,'EngineFactory','enginePort: 89501611')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226225229699,'HydraulicPumpFactory','hydraulicPumpClass: 1923746686')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226225996500,'HydraulicPumpFactory','hydraulicPumpInstance: 1871797097')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226226900500,'HydraulicPumpFactory','hydraulicPumpPort: 1008863247')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226230221100,'HydraulicPumpFactory','hydraulicPumpClass: 543476953')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226231104399,'HydraulicPumpFactory','hydraulicPumpInstance: 1290014736')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226232042699,'HydraulicPumpFactory','hydraulicPumpPort: 1361305030')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226236261300,'HydraulicPumpFactory','hydraulicPumpClass: 40126513')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226236934500,'HydraulicPumpFactory','hydraulicPumpInstance: 395868969')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226237452600,'HydraulicPumpFactory','hydraulicPumpPort: 1947129806')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226241556900,'HydraulicPumpFactory','hydraulicPumpClass: 294237661')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226242334200,'HydraulicPumpFactory','hydraulicPumpInstance: 592408416')
+2021-03-03 11:05:26 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226242915400,'HydraulicPumpFactory','hydraulicPumpPort: 1267559666')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226246876800,'ElevatorFactory','elevatorClass: 318398686')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226247944500,'ElevatorFactory','elevatorInstance: 734483138')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226248704700,'ElevatorFactory','elevatorPort: 602142973')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226250798900,'ElevatorFactory','elevatorClass: 819534037')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226251480499,'ElevatorFactory','elevatorInstance: 375484570')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226251854000,'ElevatorFactory','elevatorPort: 1621937703')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226254191600,'ElevatorFactory','elevatorClass: 1414128587')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226255017599,'ElevatorFactory','elevatorInstance: 1817586339')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226255652000,'ElevatorFactory','elevatorPort: 805382017')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226258072400,'ElevatorFactory','elevatorClass: 31152391')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226258908799,'ElevatorFactory','elevatorInstance: 183468990')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226262741700,'ElevatorFactory','elevatorPort: 406211639')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226271426600,'EngineFactory','engineClass: 55611188')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226272131800,'EngineFactory','engineInstance: 914073705')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226272838100,'EngineFactory','enginePort: 280874644')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226275185700,'HydraulicPumpFactory','hydraulicPumpClass: 1505289081')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226275754400,'HydraulicPumpFactory','hydraulicPumpInstance: 447618751')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226276155100,'HydraulicPumpFactory','hydraulicPumpPort: 1569928899')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226278056800,'HydraulicPumpFactory','hydraulicPumpClass: 410385083')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226278553200,'HydraulicPumpFactory','hydraulicPumpInstance: 775181146')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226278871699,'HydraulicPumpFactory','hydraulicPumpPort: 1785982149')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226281504800,'HydraulicPumpFactory','hydraulicPumpClass: 465230349')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226282276200,'HydraulicPumpFactory','hydraulicPumpInstance: 251380407')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226282769700,'HydraulicPumpFactory','hydraulicPumpPort: 1891841622')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226285428799,'HydraulicPumpFactory','hydraulicPumpClass: 756587618')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226286173500,'HydraulicPumpFactory','hydraulicPumpInstance: 510951371')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226286510200,'HydraulicPumpFactory','hydraulicPumpPort: 976638115')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226288607300,'ElevatorFactory','elevatorClass: 439706538')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226289241100,'ElevatorFactory','elevatorInstance: 360537057')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226290323800,'ElevatorFactory','elevatorPort: 656753578')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226292049800,'ElevatorFactory','elevatorClass: 467088510')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226292606200,'ElevatorFactory','elevatorInstance: 1288813927')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226292844100,'ElevatorFactory','elevatorPort: 400085017')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226294422399,'ElevatorFactory','elevatorClass: 1456152341')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226294845300,'ElevatorFactory','elevatorInstance: 1170095172')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226295081100,'ElevatorFactory','elevatorPort: 1961834390')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226297525700,'ElevatorFactory','elevatorClass: 1899899067')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226298652300,'ElevatorFactory','elevatorInstance: 1858949888')
+2021-03-03 11:05:27 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66226299447800,'ElevatorFactory','elevatorPort: 545108124')
+2021-03-03 11:05:31 : *** Cockpit.startup ***
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230900066999,'Cockpit','startup')
+2021-03-03 11:05:31 : + Body.receive(Event: AirConditioning - On)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230902880700,'Body','receiveEvent: AirConditioning - On)')
+2021-03-03 11:05:31 : onMethod = public boolean AirConditioning$Port.on()
+2021-03-03 11:05:31 : isOn = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230904702000,'Body','AirConditioning (isOn): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : onMethod = public boolean AirConditioning$Port.on()
+2021-03-03 11:05:31 : isOn = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230905314599,'Body','AirConditioning (isOn): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : onMethod = public boolean AirConditioning$Port.on()
+2021-03-03 11:05:31 : isOn = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230905685499,'Body','AirConditioning (isOn): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : onMethod = public boolean AirConditioning$Port.on()
+2021-03-03 11:05:31 : isOn = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230906025200,'Body','AirConditioning (isOn): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (isAirConditioningOn): true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230906402199,'PrimaryFlightDisplay','isAirConditioningOn: true')
+2021-03-03 11:05:31 : + Body.receive(Event: AirConditioning - Clean(wusch))
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230907084299,'Body','receiveEvent: AirConditioning - Clean(wusch))')
+2021-03-03 11:05:31 : cleanMethod = public java.lang.String AirConditioning$Port.clean(java.lang.String)
+2021-03-03 11:05:31 : cleanResult = wusch
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230907595900,'Body','AirConditioning (cleanResult): wusch')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : cleanMethod = public java.lang.String AirConditioning$Port.clean(java.lang.String)
+2021-03-03 11:05:31 : cleanResult = wusch
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230907979600,'Body','AirConditioning (cleanResult): wusch')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : cleanMethod = public java.lang.String AirConditioning$Port.clean(java.lang.String)
+2021-03-03 11:05:31 : cleanResult = wusch
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230908324400,'Body','AirConditioning (cleanResult): wusch')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : cleanMethod = public java.lang.String AirConditioning$Port.clean(java.lang.String)
+2021-03-03 11:05:31 : cleanResult = wusch
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230908681000,'Body','AirConditioning (cleanResult): wusch')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : + Body.receive(Event: Gear - down)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230909287899,'Body','receive(Event: Gear - down)')
+2021-03-03 11:05:31 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:31 : isGearDown = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230909764000,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:31 : isGearDown = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230910133900,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:31 : isGearDown = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230910485800,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (isGearDown): true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230910816100,'PrimaryFlightDisplay','isGearDown: true')
+2021-03-03 11:05:31 : + Body.receive(Event: Gear - setBrake)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230911285700,'Body','receive(Event: Gear - setBrake)')
+2021-03-03 11:05:31 : setBrakeMethod = public int Gear$Port.setBrake()
+2021-03-03 11:05:31 : gearBrakePercentage = 100
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230911722799,'Body','Gear (gearBrakePercentage): 100')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : setBrakeMethod = public int Gear$Port.setBrake()
+2021-03-03 11:05:31 : gearBrakePercentage = 100
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230912132100,'Body','Gear (gearBrakePercentage): 100')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : setBrakeMethod = public int Gear$Port.setBrake()
+2021-03-03 11:05:31 : gearBrakePercentage = 100
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230912466400,'Body','Gear (gearBrakePercentage): 100')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (isGearDown): true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230912782500,'PrimaryFlightDisplay','isGearDown: true')
+2021-03-03 11:05:31 : + Body.receive(Event: WeatherRadar - On)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230913267200,'Body','receive(Event: WeatherRadar - On)')
+2021-03-03 11:05:31 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:31 : isOn = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230913714900,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:31 : isOn = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230914023699,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230914316400,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-03-03 11:05:31 : + Wing.receive(Event: EngineStart)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230915629500,'Wing','receive(Event: EngineStart)')
+2021-03-03 11:05:31 : startMethod = public boolean Engine$Port.start()
+2021-03-03 11:05:31 : IsStarted = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230916473000,'Wing','Engine (isStarted): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (isEngineStarted): true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230916993900,'PrimaryFlightDisplay','isEngineStarted: true')
+2021-03-03 11:05:31 : + Wing.receive(Event: EngineStart)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230917228399,'Wing','receive(Event: EngineStart)')
+2021-03-03 11:05:31 : startMethod = public boolean Engine$Port.start()
+2021-03-03 11:05:31 : IsStarted = true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230917516700,'Wing','Engine (isStarted): true')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (isEngineStarted): true
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230917766900,'PrimaryFlightDisplay','isEngineStarted: true')
+2021-03-03 11:05:31 : + Wing.receive(Event: EngineRPM - Increased(to0))
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230918493599,'Wing','receive(Event: EngineRPM - Increased(to0))')
+2021-03-03 11:05:31 : rpmMethod = public int Engine$Port.increaseRPM(int)
+2021-03-03 11:05:31 : currentRPMs = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230919250600,'Wing','Engine (currentRPMs): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (rpmEngine): 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230919642500,'PrimaryFlightDisplay','rpmEngine: 1000')
+2021-03-03 11:05:31 : + Wing.receive(Event: EngineRPM - Increased(to0))
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230919865799,'Wing','receive(Event: EngineRPM - Increased(to0))')
+2021-03-03 11:05:31 : rpmMethod = public int Engine$Port.increaseRPM(int)
+2021-03-03 11:05:31 : currentRPMs = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230920157000,'Wing','Engine (currentRPMs): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (rpmEngine): 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230920360400,'PrimaryFlightDisplay','rpmEngine: 1000')
+2021-03-03 11:05:31 : + Body.receive(Event: HydraulicPump Body - Compressed)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230920968000,'Body','receive(Event: HydraulicPump Body - Compressed)')
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230921487700,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230921827800,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230922168000,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230922495100,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230922786200,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230923059600,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : + Wing.receive(Event: HydraulicPump Body - Compressed)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230923616300,'Wing','receive(Event: HydraulicPump Body - Compressed)')
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230923987000,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230924276699,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230924552000,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230924884299,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : + Wing.receive(Event: HydraulicPump Body - Compressed)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230925082600,'Wing','receive(Event: HydraulicPump Body - Compressed)')
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230925333600,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230925623100,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230925899500,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:31 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230926725900,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : + Body.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230927169899,'Body','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:31 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230927553799,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230927826700,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230928098799,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230928379900,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230928657400,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230928907900,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : + Wing.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230929325200,'Wing','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230929689000,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230929947500,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230930317000,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230930594000,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (hydraulicPumpBodyOilAmount): 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230930892200,'PrimaryFlightDisplay','hydraulicPumpBodyOilAmount: 6000')
+2021-03-03 11:05:31 : + Wing.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230931094800,'Wing','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230931326100,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230931634099,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230931908600,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:31 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230932204900,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (hydraulicPumpBodyOilAmount): 6000
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230932393400,'PrimaryFlightDisplay','hydraulicPumpBodyOilAmount: 6000')
+2021-03-03 11:05:31 : + Wing.receive(Event: ElevatorAngle - Neutral)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230932918399,'Wing','receive(Event: ElevatorAngle - Neutral)')
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230935049199,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230935798299,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230936247299,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230936677699,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (degrees): 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230937894600,'PrimaryFlightDisplay','degrees: 90')
+2021-03-03 11:05:31 : + Wing.receive(Event: ElevatorAngle - Neutral)
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230938209300,'Wing','receive(Event: ElevatorAngle - Neutral)')
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230938586799,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230938935100,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230939287700,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : elevatorNeutralMethod = public int Elevator$Port.neutral()
+2021-03-03 11:05:31 : elevatorNeutralMethod = 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230939629400,'Wing','elevatorNeutralMethod (degrees): 90')
+2021-03-03 11:05:31 : +
+2021-03-03 11:05:31 : PrimaryFlightDisplay (degrees): 90
+2021-03-03 11:05:31 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66230939866500,'PrimaryFlightDisplay','degrees: 90')
+2021-03-03 11:05:31 : 
+2021-03-03 11:05:32 : *** Cockpit.taxi ***
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231289981400,'Cockpit','taxi')
+2021-03-03 11:05:32 : + Body.receive(Event: Gear - down)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231290449600,'Body','receive(Event: Gear - down)')
+2021-03-03 11:05:32 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:32 : isGearDown = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231290721300,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:32 : isGearDown = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231290941300,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:32 : isGearDown = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231291182899,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (isGearDown): true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231291339599,'PrimaryFlightDisplay','isGearDown: true')
+2021-03-03 11:05:32 : + Body.receive(Event: Gear - releaseBrake)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231292144600,'Body','receive(Event: Gear - releaseBrake)')
+2021-03-03 11:05:32 : releaseBrakeMethod = public int Gear$Port.releaseBrake()
+2021-03-03 11:05:32 : gearBrakePercentage = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231292798900,'Body','Gear (gearBrakePercentage): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : releaseBrakeMethod = public int Gear$Port.releaseBrake()
+2021-03-03 11:05:32 : gearBrakePercentage = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231293073900,'Body','Gear (gearBrakePercentage): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : releaseBrakeMethod = public int Gear$Port.releaseBrake()
+2021-03-03 11:05:32 : gearBrakePercentage = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231293298499,'Body','Gear (gearBrakePercentage): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (isGearDown): true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231293571000,'PrimaryFlightDisplay','isGearDown: true')
+2021-03-03 11:05:32 : + Body.receive(Event: WeatherRadar - On)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231293824800,'Body','receive(Event: WeatherRadar - On)')
+2021-03-03 11:05:32 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:32 : isOn = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231294029300,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:32 : isOn = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231294257000,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231294406700,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-03-03 11:05:32 : + Body.receive(Event: AirConditioning - Heat(wusch, 25))
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231294978800,'Body','receiveEvent: AirConditioning - Heat(wusch, 25))')
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231295431599,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231295685399,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231295908900,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231296147200,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (temperatureAirConditioning): 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231296394599,'PrimaryFlightDisplay','temperatureAirConditioning: 25')
+2021-03-03 11:05:32 : 
+2021-03-03 11:05:32 : *** Cockpit.takeoff ***
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231731609200,'Cockpit','takeoff')
+2021-03-03 11:05:32 : + Body.receive(Event: APU - Start)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231732288100,'Body','receiveEvent: APU - Start)')
+2021-03-03 11:05:32 : startMethod = public boolean APU$Port.start()
+2021-03-03 11:05:32 : isStarted = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231732684000,'Body','APU (isStarted): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (isAPUStarted): true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231732988100,'PrimaryFlightDisplay','isAPUStarted: true')
+2021-03-03 11:05:32 : + Body.receive(Event: APU - IncreaseRPM(5000))
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231733968999,'Body','receive(Event: APU - IncreaseRPM(5000))')
+2021-03-03 11:05:32 : increaseRPMMethod = public int APU$Port.increaseRPM(int)
+2021-03-03 11:05:32 : rpm = 5000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231734325400,'Body','APU (rpm): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (rpmAPU): 5000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231734558900,'PrimaryFlightDisplay','rpmAPU: 5000')
+2021-03-03 11:05:32 : + Body.receive(Event: WeatherRadar - On)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231734736800,'Body','receive(Event: WeatherRadar - On)')
+2021-03-03 11:05:32 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:32 : isOn = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231734934900,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:32 : isOn = true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231735160200,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231735311700,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-03-03 11:05:32 : + Body.receive(Event: AirConditioning - Heat(wusch, 25))
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231735572399,'Body','receiveEvent: AirConditioning - Heat(wusch, 25))')
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231735946999,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231736545099,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231736803800,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:32 : temperature = 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231737071600,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (temperatureAirConditioning): 25
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231737229499,'PrimaryFlightDisplay','temperatureAirConditioning: 25')
+2021-03-03 11:05:32 : + Wing.receive(Event: EngineRPM - Increased(to15000))
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231737455800,'Wing','receive(Event: EngineRPM - Increased(to15000))')
+2021-03-03 11:05:32 : rpmMethod = public int Engine$Port.increaseRPM(int)
+2021-03-03 11:05:32 : currentRPMs = 15000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231737653799,'Wing','Engine (currentRPMs): 15000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (rpmEngine): 15000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231737813800,'PrimaryFlightDisplay','rpmEngine: 15000')
+2021-03-03 11:05:32 : + Wing.receive(Event: EngineRPM - Increased(to15000))
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231737964200,'Wing','receive(Event: EngineRPM - Increased(to15000))')
+2021-03-03 11:05:32 : rpmMethod = public int Engine$Port.increaseRPM(int)
+2021-03-03 11:05:32 : currentRPMs = 15000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231738165699,'Wing','Engine (currentRPMs): 15000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (rpmEngine): 15000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231738306500,'PrimaryFlightDisplay','rpmEngine: 15000')
+2021-03-03 11:05:32 : + Body.receive(Event: HydraulicPump Wing - Decompressed)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231739535999,'Body','receive(Event: HydraulicPump Wing - Decompressed)')
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231740013100,'Body','hydraulicPumpBodyDecompress (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231740257900,'Body','hydraulicPumpBodyDecompress (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231740502200,'Body','hydraulicPumpBodyDecompress (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231740709399,'Body','hydraulicPumpBodyDecompress (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231740922300,'Body','hydraulicPumpBodyDecompress (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231741123400,'Body','hydraulicPumpBodyDecompress (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : + Wing.receive(Event: HydraulicPump Wing - Decompressed)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231741452899,'Wing','receive(Event: HydraulicPump Wing - Decompressed)')
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231741760000,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231742019800,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231742766400,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231743023200,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : + Wing.receive(Event: HydraulicPump Wing - Decompressed)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231743185400,'Wing','receive(Event: HydraulicPump Wing - Decompressed)')
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231743375399,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231743592100,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231743824399,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = public int HydraulicPump$Port.decompress()
+2021-03-03 11:05:32 : hydraulicPumpWingDecompressMethod = 0
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231744040299,'Wing','hydraulicPumpWingDecompressMethod (compressionAmount): 0')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : + Body.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231744239299,'Body','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:32 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231744465100,'Body','hydraulicPumpBodyDecompress (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231744662600,'Body','hydraulicPumpBodyDecompress (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231744858200,'Body','hydraulicPumpBodyDecompress (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231745062200,'Body','hydraulicPumpBodyDecompress (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231745258100,'Body','hydraulicPumpBodyDecompress (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpBodyDecompressMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231745473200,'Body','hydraulicPumpBodyDecompress (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : + Wing.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231745671100,'Wing','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231745956500,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231746198500,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231746452900,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231746653600,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (hydraulicPumpBodyOilAmount): 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231746824600,'PrimaryFlightDisplay','hydraulicPumpBodyOilAmount: 1000')
+2021-03-03 11:05:32 : + Wing.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231746968000,'Wing','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231747141999,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231747328800,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231747514600,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:32 : hydraulicPumpWingRefillOilMethod = 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231748209900,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 1000')
+2021-03-03 11:05:32 : +
+2021-03-03 11:05:32 : PrimaryFlightDisplay (hydraulicPumpBodyOilAmount): 1000
+2021-03-03 11:05:32 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66231748363599,'PrimaryFlightDisplay','hydraulicPumpBodyOilAmount: 1000')
+2021-03-03 11:05:32 : 
+2021-03-03 11:05:33 : *** Cockpit.leftTurn ***
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232525739300,'Cockpit','leftTurn')
+2021-03-03 11:05:33 : + Body.receive(Event: APU - DecreaseRPM(5000))
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232526628000,'Body','receive(Event: APU - DecreaseRPM(5000))')
+2021-03-03 11:05:33 : decreaseRPMMethod = public int APU$Port.decreaseRPM(int)
+2021-03-03 11:05:33 : rpm = 0
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232526952999,'Body','APU (rpm): 0')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (rpmAPU): 0
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232527171199,'PrimaryFlightDisplay','rpmAPU: 0')
+2021-03-03 11:05:33 : + Body.receive(Event: APU - IncreaseRPM(1000))
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232527337499,'Body','receive(Event: APU - IncreaseRPM(1000))')
+2021-03-03 11:05:33 : increaseRPMMethod = public int APU$Port.increaseRPM(int)
+2021-03-03 11:05:33 : rpm = 1000
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232527506300,'Body','APU (rpm): 0')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (rpmAPU): 1000
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232527638300,'PrimaryFlightDisplay','rpmAPU: 1000')
+2021-03-03 11:05:33 : + Body.receive(Event: Gear - up)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232527964500,'Body','receive(Event: Gear - up)')
+2021-03-03 11:05:33 : upMethod = public boolean Gear$Port.up()
+2021-03-03 11:05:33 : isGearDown = false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232528229599,'Body','Gear (isGearDown): false')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : upMethod = public boolean Gear$Port.up()
+2021-03-03 11:05:33 : isGearDown = false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232528408600,'Body','Gear (isGearDown): false')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : upMethod = public boolean Gear$Port.up()
+2021-03-03 11:05:33 : isGearDown = false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232528618500,'Body','Gear (isGearDown): false')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (isGearDown): false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232528877200,'PrimaryFlightDisplay','isGearDown: false')
+2021-03-03 11:05:33 : + Body.receive(Event: Gear - setBrakePercentage)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232529254099,'Body','receive(Event: Gear - setBrakePercentage)')
+2021-03-03 11:05:33 : setBrakePercentageMethod = public int Gear$Port.setBrake(int)
+2021-03-03 11:05:33 : gearBrakePercentage = 50
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232529559000,'Body','Gear (gearBrakePercentage): 50')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : setBrakePercentageMethod = public int Gear$Port.setBrake(int)
+2021-03-03 11:05:33 : gearBrakePercentage = 50
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232529780500,'Body','Gear (gearBrakePercentage): 50')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : setBrakePercentageMethod = public int Gear$Port.setBrake(int)
+2021-03-03 11:05:33 : gearBrakePercentage = 50
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232529955200,'Body','Gear (gearBrakePercentage): 50')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (isGearDown): false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232530140200,'PrimaryFlightDisplay','isGearDown: false')
+2021-03-03 11:05:33 : + Body.receive(Event: WeatherRadar - On)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232530300000,'Body','receive(Event: WeatherRadar - On)')
+2021-03-03 11:05:33 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:33 : isOn = true
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232530470000,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:33 : isOn = true
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232530633300,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232530747100,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-03-03 11:05:33 : + Body.receive(Event: AirConditioning - Heat(wusch, 25))
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232530898400,'Body','receiveEvent: AirConditioning - Heat(wusch, 25))')
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232531063600,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232531288300,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232531458800,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232531634600,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (temperatureAirConditioning): 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232531779200,'PrimaryFlightDisplay','temperatureAirConditioning: 25')
+2021-03-03 11:05:33 : 
+2021-03-03 11:05:33 : *** Cockpit.descent ***
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232920668199,'Cockpit','descent')
+2021-03-03 11:05:33 : + Body.receive(Event: APU - DecreaseRPM(5000))
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232921140100,'Body','receive(Event: APU - DecreaseRPM(5000))')
+2021-03-03 11:05:33 : decreaseRPMMethod = public int APU$Port.decreaseRPM(int)
+2021-03-03 11:05:33 : rpm = 0
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232921376500,'Body','APU (rpm): 0')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (rpmAPU): 0
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232921524100,'PrimaryFlightDisplay','rpmAPU: 0')
+2021-03-03 11:05:33 : + Body.receive(Event: Gear - up)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232922233399,'Body','receive(Event: Gear - up)')
+2021-03-03 11:05:33 : upMethod = public boolean Gear$Port.up()
+2021-03-03 11:05:33 : isGearDown = false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232922416999,'Body','Gear (isGearDown): false')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : upMethod = public boolean Gear$Port.up()
+2021-03-03 11:05:33 : isGearDown = false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232922622900,'Body','Gear (isGearDown): false')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : upMethod = public boolean Gear$Port.up()
+2021-03-03 11:05:33 : isGearDown = false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232922793100,'Body','Gear (isGearDown): false')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (isGearDown): false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232922921800,'PrimaryFlightDisplay','isGearDown: false')
+2021-03-03 11:05:33 : + Body.receive(Event: Gear - setBrakePercentage)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232923087500,'Body','receive(Event: Gear - setBrakePercentage)')
+2021-03-03 11:05:33 : setBrakePercentageMethod = public int Gear$Port.setBrake(int)
+2021-03-03 11:05:33 : gearBrakePercentage = 50
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232923255600,'Body','Gear (gearBrakePercentage): 50')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : setBrakePercentageMethod = public int Gear$Port.setBrake(int)
+2021-03-03 11:05:33 : gearBrakePercentage = 50
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232923438500,'Body','Gear (gearBrakePercentage): 50')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : setBrakePercentageMethod = public int Gear$Port.setBrake(int)
+2021-03-03 11:05:33 : gearBrakePercentage = 50
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232923616400,'Body','Gear (gearBrakePercentage): 50')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (isGearDown): false
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232923753800,'PrimaryFlightDisplay','isGearDown: false')
+2021-03-03 11:05:33 : + Body.receive(Event: WeatherRadar - On)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232923903400,'Body','receive(Event: WeatherRadar - On)')
+2021-03-03 11:05:33 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:33 : isOn = true
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232924116600,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:33 : isOn = true
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232924269700,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232924376500,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-03-03 11:05:33 : + Body.receive(Event: AirConditioning - Heat(wusch, 25))
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232924519299,'Body','receiveEvent: AirConditioning - Heat(wusch, 25))')
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232924679899,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232924832100,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232924987199,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:33 : temperature = 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232925153000,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (temperatureAirConditioning): 25
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232925260400,'PrimaryFlightDisplay','temperatureAirConditioning: 25')
+2021-03-03 11:05:33 : + Wing.receive(Event: ElevatorAngle - Down at 10)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232925807399,'Wing','receive(Event: ElevatorAngle - Down at 10)')
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232926077600,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232926244600,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232926400100,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232926568099,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (degrees): 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232926792200,'PrimaryFlightDisplay','degrees: 80')
+2021-03-03 11:05:33 : + Wing.receive(Event: ElevatorAngle - Down at 10)
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232926926900,'Wing','receive(Event: ElevatorAngle - Down at 10)')
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232927079000,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232927237400,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232927413600,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : elevatorDownMethod = public int Elevator$Port.down(int)
+2021-03-03 11:05:33 : elevatorDownMethod = 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232927601300,'Wing','elevatorDown (degrees): 80')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (degrees): 80
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232927997499,'PrimaryFlightDisplay','degrees: 80')
+2021-03-03 11:05:33 : + Wing.receive(Event: EngineRPM - Decreased(to 500))
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232928447400,'Wing','receive(Event: EngineRPM - Decreased(to 500))')
+2021-03-03 11:05:33 : decreaseRPMMethod = public int Engine$Port.decreaseRPM(int)
+2021-03-03 11:05:33 : currentRPMs = 14500
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232928708099,'Wing','Engine (currentRPMs): 14500')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (rpmEngine): 14500
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232928888099,'PrimaryFlightDisplay','rpmEngine: 14500')
+2021-03-03 11:05:33 : + Wing.receive(Event: EngineRPM - Decreased(to 500))
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232929011000,'Wing','receive(Event: EngineRPM - Decreased(to 500))')
+2021-03-03 11:05:33 : decreaseRPMMethod = public int Engine$Port.decreaseRPM(int)
+2021-03-03 11:05:33 : currentRPMs = 14500
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232929176800,'Wing','Engine (currentRPMs): 14500')
+2021-03-03 11:05:33 : +
+2021-03-03 11:05:33 : PrimaryFlightDisplay (rpmEngine): 14500
+2021-03-03 11:05:33 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66232929286700,'PrimaryFlightDisplay','rpmEngine: 14500')
+2021-03-03 11:05:33 : 
+2021-03-03 11:05:34 : *** Cockpit.landing ***
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233253554700,'Cockpit','landing')
+2021-03-03 11:05:34 : + Body.receive(Event: APU - DecreaseRPM(5000))
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233253954700,'Body','receive(Event: APU - DecreaseRPM(5000))')
+2021-03-03 11:05:34 : decreaseRPMMethod = public int APU$Port.decreaseRPM(int)
+2021-03-03 11:05:34 : rpm = 0
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233254163000,'Body','APU (rpm): 0')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (rpmAPU): 0
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233254303900,'PrimaryFlightDisplay','rpmAPU: 0')
+2021-03-03 11:05:34 : + Body.receive(Event: Gear - down)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233254445800,'Body','receive(Event: Gear - down)')
+2021-03-03 11:05:34 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:34 : isGearDown = true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233254679900,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:34 : isGearDown = true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233254895100,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : downMethod = public boolean Gear$Port.down()
+2021-03-03 11:05:34 : isGearDown = true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233255056700,'Body','Gear (isGearDown): true')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (isGearDown): true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233255168799,'PrimaryFlightDisplay','isGearDown: true')
+2021-03-03 11:05:34 : + Body.receive(Event: Gear - releaseBrake)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233255315899,'Body','receive(Event: Gear - releaseBrake)')
+2021-03-03 11:05:34 : releaseBrakeMethod = public int Gear$Port.releaseBrake()
+2021-03-03 11:05:34 : gearBrakePercentage = 0
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233255510899,'Body','Gear (gearBrakePercentage): 0')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : releaseBrakeMethod = public int Gear$Port.releaseBrake()
+2021-03-03 11:05:34 : gearBrakePercentage = 0
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233255678700,'Body','Gear (gearBrakePercentage): 0')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : releaseBrakeMethod = public int Gear$Port.releaseBrake()
+2021-03-03 11:05:34 : gearBrakePercentage = 0
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233255833200,'Body','Gear (gearBrakePercentage): 0')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (isGearDown): true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233256017199,'PrimaryFlightDisplay','isGearDown: true')
+2021-03-03 11:05:34 : + Body.receive(Event: WeatherRadar - On)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233256167400,'Body','receive(Event: WeatherRadar - On)')
+2021-03-03 11:05:34 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:34 : isOn = true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233256315000,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : onMethod = public boolean WeatherRadar$Port.on()
+2021-03-03 11:05:34 : isOn = true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233256489399,'Body','WeatherRadar (isOn): true')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (isWeatherRadarOn): true
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233256598500,'PrimaryFlightDisplay','isWeatherRadarOn: true')
+2021-03-03 11:05:34 : + Body.receive(Event: AirConditioning - Heat(wusch, 25))
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233256752800,'Body','receiveEvent: AirConditioning - Heat(wusch, 25))')
+2021-03-03 11:05:34 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:34 : temperature = 25
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233256908400,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:34 : temperature = 25
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233257092900,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:34 : temperature = 25
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233257261499,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : heatMethod = public int AirConditioning$Port.heat(java.lang.String,int)
+2021-03-03 11:05:34 : temperature = 25
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233257416800,'Body','AirConditioning (temperature): 25')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (temperatureAirConditioning): 25
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233257527700,'PrimaryFlightDisplay','temperatureAirConditioning: 25')
+2021-03-03 11:05:34 : + Wing.receive(Event: EngineRPM - Decreased(to 10000))
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233257701600,'Wing','receive(Event: EngineRPM - Decreased(to 10000))')
+2021-03-03 11:05:34 : decreaseRPMMethod = public int Engine$Port.decreaseRPM(int)
+2021-03-03 11:05:34 : currentRPMs = 4500
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233258076000,'Wing','Engine (currentRPMs): 4500')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (rpmEngine): 4500
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233258210400,'PrimaryFlightDisplay','rpmEngine: 4500')
+2021-03-03 11:05:34 : + Wing.receive(Event: EngineRPM - Decreased(to 10000))
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233258333499,'Wing','receive(Event: EngineRPM - Decreased(to 10000))')
+2021-03-03 11:05:34 : decreaseRPMMethod = public int Engine$Port.decreaseRPM(int)
+2021-03-03 11:05:34 : currentRPMs = 4500
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233258486299,'Wing','Engine (currentRPMs): 4500')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (rpmEngine): 4500
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233258598999,'PrimaryFlightDisplay','rpmEngine: 4500')
+2021-03-03 11:05:34 : + Body.receive(Event: HydraulicPump Body - Compressed)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233258770900,'Body','receive(Event: HydraulicPump Body - Compressed)')
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233258923799,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233259075700,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233259287400,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233259447200,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233259622900,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233259785699,'Body','hydraulicPumpBodyCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : + Wing.receive(Event: HydraulicPump Body - Compressed)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233259943600,'Wing','receive(Event: HydraulicPump Body - Compressed)')
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233260108600,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233260265599,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233260454300,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233260613199,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : + Wing.receive(Event: HydraulicPump Body - Compressed)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233260739300,'Wing','receive(Event: HydraulicPump Body - Compressed)')
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233260880600,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233261029100,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233261177199,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyCompressMethod = public int HydraulicPump$Port.compress(int)
+2021-03-03 11:05:34 : hydraulicPumpWingCompressMethod = 1000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233261315200,'Wing','hydraulicPumpWingCompress (compressionAmount): 1000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : + Body.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233261460099,'Body','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:34 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233261600500,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233261797500,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233261941100,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233262311200,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233262531999,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpBodyRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpBodyDecompressMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233262774600,'Body','hydraulicPumpBodyDecompress (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : + Wing.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233262971100,'Wing','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233263118200,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233263268200,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233263431500,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233263577599,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (hydraulicPumpBodyOilAmount): 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233263696700,'PrimaryFlightDisplay','hydraulicPumpBodyOilAmount: 6000')
+2021-03-03 11:05:34 : + Wing.receive(Event: HydraulicPump Body Oil - Increased)
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233263795600,'Wing','receive(Event: HydraulicPump Body Oil - Increased)')
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233263941000,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233264083999,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233264216600,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = public int HydraulicPump$Port.refillOil(int)
+2021-03-03 11:05:34 : hydraulicPumpWingRefillOilMethod = 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233264384099,'Wing','hydraulicPumpWingRefillOil (compressionAmount): 6000')
+2021-03-03 11:05:34 : +
+2021-03-03 11:05:34 : PrimaryFlightDisplay (hydraulicPumpBodyOilAmount): 6000
+2021-03-03 11:05:34 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (66233264523800,'PrimaryFlightDisplay','hydraulicPumpBodyOilAmount: 6000')
+2021-03-03 11:05:34 : 

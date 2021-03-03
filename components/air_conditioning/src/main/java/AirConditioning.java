@@ -1,9 +1,7 @@
 public class AirConditioning {
     // static instance
     private static final AirConditioning instance = new AirConditioning();
-    private final String manufacturer = "4775194 / 8864957";
-    private final String type = "team 01";
-    private final String id = "4775194 / 8864957";
+    private final String manufacturer = "8864957";
     // port
     public Port port;
     private int temperature;
@@ -21,7 +19,7 @@ public class AirConditioning {
 
     // inner methods
     public String innerVersion() {
-        return "AirConditioning // " + manufacturer + " - " + type + " - " + id;
+        return "AirConditioning // " + manufacturer;
     }
 
     public boolean innerOn() {
