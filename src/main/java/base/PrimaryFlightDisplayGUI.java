@@ -591,11 +591,17 @@ public class PrimaryFlightDisplayGUI extends Application {
         deIcingSystemLabel.setStyle("-fx-font-weight: bold");
         gridPane.add(deIcingSystemLabel, 0, 19);
 
-        deIcingSystemOnButton = new RadioButton("On");
-        gridPane.add(deIcingSystemOnButton, 1, 19);
+        ToggleGroup deIcingSystemToggleGroup = new ToggleGroup();
 
         deIcingSystemOffButton = new RadioButton("Off");
+        deIcingSystemOffButton.setToggleGroup(deIcingSystemToggleGroup);
+        deIcingSystemOffButton.setSelected(true);
         gridPane.add(deIcingSystemOffButton, 2, 19);
+
+        deIcingSystemOnButton = new RadioButton("On");
+        deIcingSystemOnButton.setToggleGroup(deIcingSystemToggleGroup);
+        deIcingSystemOnButton.setSelected(false);
+        gridPane.add(deIcingSystemOnButton, 1, 19);
 
         amountDeIcingSystemLabel = new Label("Amount: 50");
         gridPane.add(amountDeIcingSystemLabel, 3, 19);
