@@ -17,9 +17,9 @@ public class AirFlowSensor {
     // inner methods
     public String innerVersion() { return "AirFlowSensor // " + manufacturer; }
 
-    public boolean innerAlarm() {
-        isAlarm = true;
-        return true;
+    public boolean innerAlarm(int threshold) {
+        isAlarm = airPressure > threshold;
+        return isAlarm;
     }
 
     public int innerMeasure(String airFlow) {
@@ -39,6 +39,6 @@ public class AirFlowSensor {
         public int measure(String airFlow) { return innerMeasure(airFlow); }
 
         @Override
-        public boolean alarm(int threshold) { return innerAlarm(); }
+        public boolean alarm(int threshold) { return innerAlarm(threshold); }
     }
 }

@@ -4,8 +4,8 @@ public class TemperatureSensor {
     // port
     public Port port;
     private String manufacturer = "2529977, 6499887";
-    private int temperature;
-    private boolean isAlarm = false;
+    private int temperature = 20;
+    private boolean isAlarm;
 
     // private constructor
     private TemperatureSensor() {

@@ -4,7 +4,7 @@ public class Battery {
     // port
     public Port port;
     private String manufacturer = "2529977, 6499887";
-    private int percentage;
+    private int percentage = 100;
 
     // private constructor
     private Battery() {
@@ -20,10 +20,8 @@ public class Battery {
     public String innerVersion() { return "Battery // " + manufacturer; }
 
     public int innerCharge() {
-        if (percentage < 100) {
-            percentage++;
-        }
-        return percentage;
+        percentage = 100;
+        return 100;
     }
 
     public int innerDischarge() {
