@@ -86,7 +86,7 @@ public class Wing extends Subscriber {
         for (int i = 0; i < Configuration.instance.numberOfTemperatureSensorWing; i++) {
             temperatureSensorWingPortList.add(TemperatureSensorFactory.build());
         }
-        for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+        for (int i = 0; i < Configuration.instance.numberOfTemperatureSensorWing; i++) {
             deIcingSystemPortList.add(DeIcingSystemFactory.build());
         }
     }
