@@ -42,12 +42,12 @@ public class Battery {
 
         @Override
         public int charge() {
-            return 0;
+            return innerCharge();
         }
 
         @Override
         public int discharge() {
-            return 0;
+            return innerDischarge();
         }
     }
 }

@@ -19,7 +19,7 @@ public enum Configuration {
     public int numberOfAirConditioning = 4;
 
     // airflow_sensor
-    public String pathToAirFlowSensorJavaArchive = commonPathToJavaArchive + "airflow_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "air_flow_sensor.jar";
+    public String pathToAirFlowSensorJavaArchive = commonPathToJavaArchive + "airflow_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "airflow_sensor.jar";
     public int numberOfAirFlowSensorBody = 2;
     public int numberOfAirFlowSensorWing = 2;
 

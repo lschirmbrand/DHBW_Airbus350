@@ -10,6 +10,8 @@ import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.battery.BatteryCharge;
+import event.battery.BatteryDischarge;
 import event.camera.CameraBodyOff;
 import event.camera.CameraBodyOn;
 import event.camera.CameraWingOff;
@@ -121,6 +123,9 @@ public class Airplane implements IAirplane {
 
         //NitrogenTank
         eventBus.post(new NitrogenBottleRefill());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void taxi() {
@@ -143,6 +148,9 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void takeoff() {
@@ -186,6 +194,9 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void climbing() {
@@ -226,6 +237,9 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void rightTurn() {
@@ -260,6 +274,9 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void leftTurn() {
@@ -294,6 +311,9 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void descent() {
@@ -334,6 +354,9 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void landing() {
@@ -380,6 +403,9 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
     }
 
     public void shutdown() {
@@ -434,5 +460,8 @@ public class Airplane implements IAirplane {
 
         //NitrogenTank
         eventBus.post(new NitrogenBottleTakeOut(250));
+
+        // battery
+        eventBus.post(new BatteryCharge());
     }
 }
