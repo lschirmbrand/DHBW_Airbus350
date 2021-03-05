@@ -164,7 +164,7 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry temperatureSensorTemperatureBodyEntry;
     private PrimaryFlightDisplayEntry temperatureSensorBodyAlarmEntry;
     private PrimaryFlightDisplayEntry temperatureSensorTemperatureWingEntry;
-    private PrimaryFlightDisplayEntry temperatureSensorSensorWingAlarm;
+    private PrimaryFlightDisplayEntry temperatureSensorWingAlarmEntry;
     private Button temperatureSensorBodyMeasureButton;
     private Button temperatureSensorWingMeasureButton;
     private Label temperatureBodyLabel;
@@ -891,16 +891,23 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         // battery
         batteryPercentageBatteryEntry = new PrimaryFlightDisplayEntry("Battery (percentage)", Integer.toString(PrimaryFlightDisplay.instance.percentageBattery));
+        dataList.add(batteryPercentageBatteryEntry);
 
         // de_icing_sensor
-        deicingSystemOnEntry = new PrimaryFlightDisplayEntry("DeIcingSystem (On)", Boolean.toString(PrimaryFlightDisplay.instance.isDeIcingSystemActivated));
+        deicingSystemOnEntry = new PrimaryFlightDisplayEntry("DeIcingSystem (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isDeIcingSystemActivated));
+        dataList.add(deicingSystemOnEntry);
         deicingSystemAmountDeIcingSystemEntry = new PrimaryFlightDisplayEntry("DeIcingSystem (amount)", Integer.toString(PrimaryFlightDisplay.instance.amountDeIcingSystem));
+        dataList.add(deicingSystemAmountDeIcingSystemEntry);
 
         // temperature_sensor
         temperatureSensorTemperatureBodyEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (temperatureBody)", Integer.toString(PrimaryFlightDisplay.instance.temperatureBody));
         temperatureSensorTemperatureWingEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (temperatureWing)", Integer.toString(PrimaryFlightDisplay.instance.temperatureWing));
         temperatureSensorBodyAlarmEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (bodyAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTemperatureSensorBodyAlarm));
-        temperatureSensorSensorWingAlarm = new PrimaryFlightDisplayEntry("TemperatureSensor (wingAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTemperatureSensorWingAlarm));
+        temperatureSensorWingAlarmEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (wingAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTemperatureSensorWingAlarm));
+        dataList.add(temperatureSensorTemperatureBodyEntry);
+        dataList.add(temperatureSensorTemperatureWingEntry);
+        dataList.add(temperatureSensorBodyAlarmEntry);
+        dataList.add(temperatureSensorWingAlarmEntry);
 
         // engine
         engineIsStartedEntry = new PrimaryFlightDisplayEntry("Engine (isStarted)", Boolean.toString(PrimaryFlightDisplay.instance.isEngineStarted));
