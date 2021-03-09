@@ -2,9 +2,9 @@ public class NitrogenBottle {
 
     //static instance
     private static final NitrogenBottle instance = new NitrogenBottle();
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String manufacturer = "";
     private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String id = "9008480";
     //port
     public Port port;
     private int amount = 250;

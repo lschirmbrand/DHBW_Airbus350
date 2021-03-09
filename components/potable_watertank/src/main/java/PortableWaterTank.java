@@ -3,9 +3,9 @@ public class PortableWaterTank {
     private static final PortableWaterTank instance = new PortableWaterTank();
     // port
     public Port port;
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String manufacturer = "";
     private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String id = "9008480";
     private int amount = 1000;
     private boolean isLocked = false;
 

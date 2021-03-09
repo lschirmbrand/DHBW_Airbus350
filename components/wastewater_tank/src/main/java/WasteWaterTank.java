@@ -3,9 +3,9 @@ public class WasteWaterTank {
     private static final WasteWaterTank instance = new WasteWaterTank();
     // port
     public Port port;
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
+    private final String manufacturer = "";
     private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String id = "9008480";
     private int capacity = 1000;//1000
     private boolean isLocked;
 
