@@ -5,9 +5,7 @@ public class VHF {
     private static VHF instance = new VHF();
     // port
     public Port port;
-    private String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private String type = "Team 05";
-    private String id = "9008480 / 1253402";
+    private String manufacturer = "9008480";
     private boolean isOn = true;
     private String[] channelList;
     private String selectedChannel;
@@ -23,7 +21,7 @@ public class VHF {
 
     //inner methods
     public String innerVersion() {
-        return "VHF // " + manufacturer + " - " + type + " - " + id;
+        return "VHF // " + manufacturer;
     }
 
     public boolean innerOn() {

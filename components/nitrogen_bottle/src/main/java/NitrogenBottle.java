@@ -2,9 +2,7 @@ public class NitrogenBottle {
 
     //static instance
     private static final NitrogenBottle instance = new NitrogenBottle();
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String manufacturer = "9008480";
     //port
     public Port port;
     private int amount = 250;
@@ -21,12 +19,16 @@ public class NitrogenBottle {
 
     // inner methods
     public String innerVersion() {
-        return "NitrogenBottle // " + manufacturer + " - " + type + " - " + id;
+        return "NitrogenBottle // " + manufacturer;
     }
 
 
     public int innerTakeOut(int amount) {
-        return this.amount -= amount;
+        this.amount -= amount;
+        if (this.amount < 0) {
+            this.amount = 0;
+        }
+        return this.amount;
     }
 
 
@@ -36,7 +38,9 @@ public class NitrogenBottle {
 
 
     public int innerRefill(int amount) {
-        return this.amount += amount;
+        this.amount += amount;
+        if (this.amount > 250) this.amount = 250;
+        return this.amount;
     }
 
     // inner class port

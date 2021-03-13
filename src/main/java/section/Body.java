@@ -5,12 +5,19 @@ import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.Subscriber;
 import event.air_conditioning.*;
+import event.airflow_sensor.AirFlowSensorBodyMeasure;
 import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.battery.BatteryCharge;
+import event.battery.BatteryDischarge;
 import event.camera.CameraBodyOff;
 import event.camera.CameraBodyOn;
+import event.deicing_system.DeIcingSystemActivate;
+import event.deicing_system.DeIcingSystemDeIce;
+import event.deicing_system.DeIcingSystemDeactivate;
+import event.deicing_system.DeIcingSystemRefill;
 import event.gear.*;
 import event.gps.*;
 import event.hydraulicPump.HydraulicPumpBodyCompress;
@@ -24,6 +31,7 @@ import event.radar.RadarOff;
 import event.radar.RadarOn;
 import event.radar.RadarScan;
 import event.tcas.*;
+import event.temperature_sensor.TemperatureSensorBodyMeasure;
 import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorBodyMeasure;
 import event.weather_radar.WeatherRadarOff;
 import event.weather_radar.WeatherRadarOn;
@@ -35,10 +43,13 @@ import recorder.FlightRecorder;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-@SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection"})
+@SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection", "DuplicatedCode"})
 public class Body extends Subscriber {
     private final ArrayList<Object> airConditioningPortList;
+    private final ArrayList<Object> airFlowSensorBodyPortList;
     private final ArrayList<Object> apuPortList;
+    private final ArrayList<Object> batteryPortList;
+    private final ArrayList<Object> deIcingSystemPortList;
     private final ArrayList<Object> gearPortList;
     private final ArrayList<Object> weatherRadarPortList;
     private final ArrayList<Object> hydraulicPumpPortList;
@@ -47,12 +58,16 @@ public class Body extends Subscriber {
     private final ArrayList<Object> gpsPortList;
     private final ArrayList<Object> cameraBodyPortList;
     private final ArrayList<Object> tcasPortList;
+    private final ArrayList<Object> temperatureSensorPortList;
     private final ArrayList<Object> turbulentAirFlowSensorBodyPortList;
     private final ArrayList<Object> droopNosePortList;
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
+        airFlowSensorBodyPortList = new ArrayList<>();
         apuPortList = new ArrayList<>();
+        batteryPortList = new ArrayList<>();
+        deIcingSystemPortList = new ArrayList<>();
         gearPortList = new ArrayList<>();
         weatherRadarPortList = new ArrayList<>();
         hydraulicPumpPortList = new ArrayList<>();
@@ -60,6 +75,7 @@ public class Body extends Subscriber {
         droopNosePortList = new ArrayList<>();
         turbulentAirFlowSensorBodyPortList = new ArrayList<>();
         tcasPortList = new ArrayList<>();
+        temperatureSensorPortList = new ArrayList<>();
         cameraBodyPortList = new ArrayList<>();
         gpsPortList = new ArrayList<>();
         radarPortList = new ArrayList<>();
@@ -73,8 +89,16 @@ public class Body extends Subscriber {
             airConditioningPortList.add(AirConditioningFactory.build());
         }
 
+        for (int i = 0; i < Configuration.instance.numberOfAirFlowSensorBody; i++) {
+            airFlowSensorBodyPortList.add(AirFlowSensorFactory.build());
+        }
+
         for (int i = 0; i < Configuration.instance.numberOfApu; i++) {
             apuPortList.add(APUFactory.build());
+        }
+
+        for (int i = 0; i < Configuration.instance.numberOfBattery ; i++) {
+            batteryPortList.add(BatteryFactory.build());
         }
 
         for (int i = 0; i < Configuration.instance.numberOfGearFront; i++) {
@@ -95,7 +119,6 @@ public class Body extends Subscriber {
             }
             gearPortList.add(gear);
         }
-
 
         for (int i = 0; i < Configuration.instance.numberOfWeatherRadar; i++) {
             weatherRadarPortList.add(WeatherRadarFactory.build());
@@ -123,6 +146,12 @@ public class Body extends Subscriber {
         }
         for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
             droopNosePortList.add(DroopNoseFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+            deIcingSystemPortList.add(DeIcingSystemFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfTemperatureSensorBody; i++) {
+            temperatureSensorPortList.add(TemperatureSensorFactory.build());
         }
     }
 
@@ -255,6 +284,32 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "temperatureAirConditioning: " + PrimaryFlightDisplay.instance.temperatureAirConditioning);
     }
 
+    // --- AirFlowSensor --------------------------------------------------------------------------------------------
+    @Subscribe
+    public void receive(AirFlowSensorBodyMeasure airFlowSensorBodyMeasure) {
+        System.out.println(airFlowSensorBodyMeasure);
+        LogEngine.instance.write("+ Body.receive(" + airFlowSensorBodyMeasure.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + airFlowSensorBodyMeasure.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfAirFlowSensorBody; i++) {
+                Method measureMethod = airFlowSensorBodyPortList.get(i).getClass().getDeclaredMethod("measure", String.class);
+                LogEngine.instance.write("measureMethod = " + measureMethod);
+
+                int airPressure = (int) measureMethod.invoke(airFlowSensorBodyPortList.get(i), "FLOWFLOWFLOW");
+                LogEngine.instance.write("airFlow = " + airPressure);
+
+                FlightRecorder.instance.insert("Body", "AirFlowSensor (airPressure): " + airPressure);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isAirFlowBodyAlarm): " + PrimaryFlightDisplay.instance.isAirFlowSensorBodyAlarm);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isAirFlowBodyAlarm: " + PrimaryFlightDisplay.instance.isAirFlowSensorBodyAlarm);
+    }
+
     // --- APU --------------------------------------------------------------------------------------------------------
 
     @Subscribe
@@ -366,6 +421,169 @@ public class Body extends Subscriber {
 
         LogEngine.instance.write("PrimaryFlightDisplay (rpmAPU): " + PrimaryFlightDisplay.instance.rpmAPU);
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "rpmAPU: " + PrimaryFlightDisplay.instance.rpmAPU);
+    }
+
+    // --- Battery --------------------------------------------------------------------------------------------
+    @Subscribe
+    public void receive(BatteryCharge batteryCharge) {
+        System.out.println(batteryCharge);
+        LogEngine.instance.write("+ Body.receive(" + batteryCharge.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + batteryCharge.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfBattery; i++) {
+               Method chargeMethod = batteryPortList.get(i).getClass().getDeclaredMethod("charge");
+               LogEngine.instance.write("chargeMethod = " + chargeMethod);
+
+               int stateOfCharge = (int) chargeMethod.invoke(batteryPortList.get(i));
+               LogEngine.instance.write("stateOfCharge = " + stateOfCharge);
+
+               FlightRecorder.instance.insert("Body", "Battery (charge): " + stateOfCharge);
+
+               LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (charge): " + PrimaryFlightDisplay.instance.percentageBattery);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "charge: " + PrimaryFlightDisplay.instance.percentageBattery);
+    }
+
+    @Subscribe
+    public void receive(BatteryDischarge batteryDischarge) {
+        System.out.println(batteryDischarge);
+        LogEngine.instance.write("+ Body.receive(" + batteryDischarge.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + batteryDischarge.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfBattery; i++) {
+                Method dischargeMethod = batteryPortList.get(i).getClass().getDeclaredMethod("discharge");
+                LogEngine.instance.write("dischargeMethod = " + dischargeMethod);
+
+                int stateOfCharge = (int) dischargeMethod.invoke(batteryPortList.get(i));
+                LogEngine.instance.write("stateOfCharge = " + stateOfCharge);
+
+                FlightRecorder.instance.insert("Body", "Battery (discharge): " + stateOfCharge);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (discharge): " + PrimaryFlightDisplay.instance.percentageBattery);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "discharge: " + PrimaryFlightDisplay.instance.percentageBattery);
+    }
+
+    // --- DeIcingSystem --------------------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(DeIcingSystemActivate deIcingSystemActivate) {
+        System.out.println(deIcingSystemActivate);
+        LogEngine.instance.write("+ Body.receive(" + deIcingSystemActivate.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + deIcingSystemActivate.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method activateMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("activate");
+                LogEngine.instance.write("activateMethod = " + activateMethod);
+
+                boolean isActivated = (boolean) activateMethod.invoke(deIcingSystemPortList.get(i));
+                LogEngine.instance.write("isActivated = " + isActivated);
+
+                PrimaryFlightDisplay.instance.isDeIcingSystemActivated = isActivated;
+                FlightRecorder.instance.insert("Body", "DeIcingSystem (isActivated): " + isActivated);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isDeIcingSystemActive): " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isDeIcingSystemActive: " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+    }
+
+    @Subscribe
+    public void receive(DeIcingSystemDeactivate deIcingSystemDeactivate) {
+        System.out.println(deIcingSystemDeactivate);
+        LogEngine.instance.write("+ Body.receive(" + deIcingSystemDeactivate.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + deIcingSystemDeactivate.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method deactivateMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("deactivate");
+                LogEngine.instance.write("deactivateMethod = " + deactivateMethod);
+
+                boolean isDeactivated = (boolean) deactivateMethod.invoke(deIcingSystemPortList.get(i));
+                LogEngine.instance.write("isActivated = " + isDeactivated);
+
+                PrimaryFlightDisplay.instance.isDeIcingSystemActivated = isDeactivated;
+                FlightRecorder.instance.insert("Body", "DeIcingSystem (isDeactivated): " + isDeactivated);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isDeIcingSystemDeactive): " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isDeIcingSystemDeactive: " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+    }
+
+    @Subscribe
+    public void receive(DeIcingSystemDeIce deIcingSystemDeIce) {
+        System.out.println(deIcingSystemDeIce);
+        LogEngine.instance.write("+ Body.receive(" + deIcingSystemDeIce.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + deIcingSystemDeIce.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method deIceMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("deIce", int.class);
+                LogEngine.instance.write("deIceMethod = " + deIceMethod);
+
+                int deIceAmount = (int) deIceMethod.invoke(deIcingSystemPortList.get(i), deIcingSystemDeIce.getValue());
+
+                LogEngine.instance.write("deIceAmount = " + deIceAmount);
+                PrimaryFlightDisplay.instance.amountDeIcingSystem = deIceAmount;
+                FlightRecorder.instance.insert("Body", "DeIcingSystem (deIceAmount): " + deIceAmount);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (deIceAmount): " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "deIceAmount: " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
+    }
+
+    @Subscribe
+    public void receive(DeIcingSystemRefill deIcingSystemRefill) {
+        System.out.println(deIcingSystemRefill);
+        LogEngine.instance.write("+ Body.receive(" + deIcingSystemRefill.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + deIcingSystemRefill.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method refillMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("refill");
+                LogEngine.instance.write("refilleMethod = " + refillMethod);
+
+                int deIceAmount = (int) refillMethod.invoke(deIcingSystemPortList.get(i));
+
+                LogEngine.instance.write("deIceAmount = " + deIceAmount);
+                PrimaryFlightDisplay.instance.amountDeIcingSystem = deIceAmount;
+                FlightRecorder.instance.insert("Body", "DeIcingSystem (refill): " + deIceAmount);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (DeIcingRefill): " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "DeIcingRefill: " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
     }
 
     // --- Gear -------------------------------------------------------------------------------------------------------
@@ -688,6 +906,32 @@ public class Body extends Subscriber {
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "altitudeTCAS: " + PrimaryFlightDisplay.instance.altitudeTCAS);
     }
     // ----------------------------------------------------------------------------------------------------------------
+
+    // --- TemperatureSensor --------------------------------------------------------------------------------------------
+    @Subscribe
+    public void receive(TemperatureSensorBodyMeasure temperatureSensorBodyMeasure) {
+        System.out.println(temperatureSensorBodyMeasure);
+        LogEngine.instance.write("+ Body.receive(" + temperatureSensorBodyMeasure.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + temperatureSensorBodyMeasure.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTemperatureSensorBody; i++) {
+                Method measureMethod = temperatureSensorPortList.get(i).getClass().getDeclaredMethod("measure");
+                LogEngine.instance.write("measureMethod = " + measureMethod);
+
+                int temperature = (int) measureMethod.invoke(temperatureSensorPortList.get(i));
+                LogEngine.instance.write("temperature = " + temperature);
+
+                FlightRecorder.instance.insert("Body", "TemperatureSensor (temperature): " + temperature);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (temperature): " + PrimaryFlightDisplay.instance.temperatureBody);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "temperature: " + PrimaryFlightDisplay.instance.temperatureBody);
+    }
 
     //TurbulentAirFlowSensor-------------------------
     @Subscribe
