@@ -1,7 +1,7 @@
 CameraType.java
  CameraType
+ICamera.java
+ ICamera
 Camera.java
  Camera
  Camera$Port
-ICamera.java
- ICamera
