@@ -35,7 +35,7 @@ import java.io.ObjectInputFilter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-@SuppressWarnings({"UnstableApiUsage", "unused"})
+@SuppressWarnings({"UnstableApiUsage", "unused", "DuplicatedCode"})
 public class Wing extends Subscriber {
 
     private final ArrayList<Object> enginePortList;

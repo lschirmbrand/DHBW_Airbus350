@@ -43,7 +43,7 @@ import recorder.FlightRecorder;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-@SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection"})
+@SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection", "DuplicatedCode"})
 public class Body extends Subscriber {
     private final ArrayList<Object> airConditioningPortList;
     private final ArrayList<Object> airFlowSensorBodyPortList;

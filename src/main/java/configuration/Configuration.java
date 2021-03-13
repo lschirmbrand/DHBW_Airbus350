@@ -1,5 +1,6 @@
 package configuration;
 
+@SuppressWarnings("unused")
 public enum Configuration {
     instance;
 
