@@ -169,7 +169,8 @@ public class Body extends Subscriber {
             fireDetectorPortList.add(FireDetectorFactory.build());
         }
         for (int i = 0; i < Configuration.instance.numberOfOxygenSensor; i++) {
-            oxygenSensorPortList.add(OxygenSensorFactory.build());
+            oxygenSensorPortList.add(OxygenSensorFactory.build()); }
+        
         for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
             deIcingSystemPortList.add(DeIcingSystemFactory.build());
         }
