@@ -14,6 +14,10 @@ import event.camera.CameraBodyOff;
 import event.camera.CameraBodyOn;
 import event.camera.CameraWingOff;
 import event.camera.CameraWingOn;
+import event.crew_seat.NonSmokingSignOff;
+import event.crew_seat.NonSmokingSignOn;
+import event.crew_seat.SeatBeltSignOff;
+import event.crew_seat.SeatBeltSignOn;
 import event.droop_nose.DroopNoseDown;
 import event.droop_nose.DroopNoseFullDown;
 import event.droop_nose.DroopNoseNeutral;
@@ -23,6 +27,8 @@ import event.engine.EngineDecreaseRPM;
 import event.engine.EngineIncreaseRPM;
 import event.engine.EngineShutdown;
 import event.engine.EngineStart;
+import event.fire_detector.FireDetectorBodyScan;
+import event.fire_detector.FireDetectorWingScan;
 import event.gear.*;
 import event.gps.*;
 import event.hydraulicPump.*;
@@ -30,6 +36,7 @@ import event.nitrogen_bottle.NitrogenBottleRefill;
 import event.nitrogen_bottle.NitrogenBottleTakeOut;
 import event.oxygen_bottle.OxygenBottleRefill;
 import event.oxygen_bottle.OxygenBottleTakeOut;
+import event.oxygen_sensor.OxygenSensorMeasure;
 import event.radar.RadarOff;
 import event.radar.RadarOn;
 import event.radar.RadarScan;
@@ -121,6 +128,19 @@ public class Airplane implements IAirplane {
 
         //NitrogenTank
         eventBus.post(new NitrogenBottleRefill());
+
+ 	// crew_seat
+        eventBus.post(new NonSmokingSignOff());
+        eventBus.post(new SeatBeltSignOff());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOff());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOff());
+
+        // fireDetector no action in startup
+
+        // oxygenSensor no action in startup
+
     }
 
     public void taxi() {
@@ -143,6 +163,17 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+	// crew_seat
+        eventBus.post(new NonSmokingSignOff());
+        eventBus.post(new SeatBeltSignOff());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOff());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOff());
+
+        // fireDetector no action in taxi
+
+        // oxygenSensor no action in taxi
     }
 
     public void takeoff() {
@@ -186,6 +217,21 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+	// crew_seat
+        eventBus.post(new NonSmokingSignOn());
+        eventBus.post(new SeatBeltSignOn());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOn());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOn());
+
+        // fireDetector
+        eventBus.post(new FireDetectorBodyScan("air"));
+        eventBus.post(new FireDetectorWingScan("air"));
+
+        // oxygenSensor
+        eventBus.post(new OxygenSensorMeasure());
     }
 
     public void climbing() {
@@ -226,6 +272,21 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // crew_seat
+        eventBus.post(new NonSmokingSignOn());
+        eventBus.post(new SeatBeltSignOn());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOn());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOn());
+
+        // fireDetector
+        eventBus.post(new FireDetectorBodyScan("air"));
+        eventBus.post(new FireDetectorWingScan("air"));
+
+        // oxygenSensor
+        eventBus.post(new OxygenSensorMeasure());
     }
 
     public void rightTurn() {
@@ -260,6 +321,21 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // crew_seat
+        eventBus.post(new NonSmokingSignOn());
+        eventBus.post(new SeatBeltSignOn());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOn());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOn());
+
+        // fireDetector
+        eventBus.post(new FireDetectorBodyScan("air"));
+        eventBus.post(new FireDetectorWingScan("air"));
+
+        // oxygenSensor
+        eventBus.post(new OxygenSensorMeasure());
     }
 
     public void leftTurn() {
@@ -294,6 +370,21 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // crew_seat
+        eventBus.post(new NonSmokingSignOn());
+        eventBus.post(new SeatBeltSignOn());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOn());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOn());
+
+        // fireDetector
+        eventBus.post(new FireDetectorBodyScan("air"));
+        eventBus.post(new FireDetectorWingScan("air"));
+
+        // oxygenSensor
+        eventBus.post(new OxygenSensorMeasure());
     }
 
     public void descent() {
@@ -334,6 +425,21 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+	// crew_seat
+        eventBus.post(new NonSmokingSignOn());
+        eventBus.post(new SeatBeltSignOn());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOn());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOn());
+
+        // fireDetector
+        eventBus.post(new FireDetectorBodyScan("air"));
+        eventBus.post(new FireDetectorWingScan("air"));
+
+        // oxygenSensor
+        eventBus.post(new OxygenSensorMeasure());
     }
 
     public void landing() {
@@ -380,6 +486,21 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
+
+        // crew_seat
+        eventBus.post(new NonSmokingSignOn());
+        eventBus.post(new SeatBeltSignOn());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOn());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOn());
+
+        // fireDetector
+        eventBus.post(new FireDetectorBodyScan("air"));
+        eventBus.post(new FireDetectorWingScan("air"));
+
+        // oxygenSensor
+        eventBus.post(new OxygenSensorMeasure());
     }
 
     public void shutdown() {
@@ -434,5 +555,17 @@ public class Airplane implements IAirplane {
 
         //NitrogenTank
         eventBus.post(new NitrogenBottleTakeOut(250));
+
+	// crew_seat
+        eventBus.post(new NonSmokingSignOff());
+        eventBus.post(new SeatBeltSignOff());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOff());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOff());
+
+        // fireDetector no action in shutdown
+
+        // oxygenSensor no action in shutdown
     }
 }

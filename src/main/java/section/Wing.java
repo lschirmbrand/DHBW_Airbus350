@@ -15,6 +15,7 @@ import event.engine.EngineDecreaseRPM;
 import event.engine.EngineIncreaseRPM;
 import event.engine.EngineShutdown;
 import event.engine.EngineStart;
+import event.fire_detector.FireDetectorWingScan;
 import event.hydraulicPump.HydraulicPumpWingCompress;
 import event.hydraulicPump.HydraulicPumpWingDecompress;
 import event.hydraulicPump.HydraulicPumpWingRefillOil;
@@ -35,6 +36,7 @@ public class Wing extends Subscriber {
     private final ArrayList<Object> cameraWingPortList;
     private final ArrayList<Object> droopNosePortList;
     private final ArrayList<Object> turbulentAirFlowSensorPortList;
+    private final ArrayList<Object> fireDetectorPortList;
 
     public Wing() {
         enginePortList = new ArrayList<>();
@@ -43,6 +45,7 @@ public class Wing extends Subscriber {
         cameraWingPortList = new ArrayList<>();
         droopNosePortList = new ArrayList<>();
         turbulentAirFlowSensorPortList = new ArrayList<>();
+	fireDetectorPortList = new ArrayList<>();
         build();
     }
 
@@ -64,6 +67,9 @@ public class Wing extends Subscriber {
         }
         for (int i = 0; i < Configuration.instance.numberOfTurbulentAirFlowSensorWing; i++) {
             turbulentAirFlowSensorPortList.add(TurbulentAirFlowSensorFactory.build());
+        }
+	for (int i = 0; i < Configuration.instance.numberOfFireDetectorWing; i++) {
+            fireDetectorPortList.add(FireDetectorFactory.build());
         }
     }
 
@@ -564,4 +570,34 @@ public class Wing extends Subscriber {
         LogEngine.instance.write("PrimaryFlightDisplay (degrees): " + PrimaryFlightDisplay.instance.degreeElevator);
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "degrees: " + PrimaryFlightDisplay.instance.degreeElevator);
     }
+    // --- FireDetector -----------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(FireDetectorWingScan fireDetectorWingScan) {
+        LogEngine.instance.write("+ Wing.receive(" + fireDetectorWingScan.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + fireDetectorWingScan.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfFireDetectorWing; i++) {
+                Method scanMethod = fireDetectorPortList.get(i).getClass().getDeclaredMethod("scan");
+                LogEngine.instance.write("scanMethod = " + scanMethod);
+
+                boolean wingIsScanned = (boolean) scanMethod.invoke(fireDetectorPortList.get(i));
+                LogEngine.instance.write("wingIsScanned = " + wingIsScanned);
+
+                PrimaryFlightDisplay.instance.isFireDetectedWing = wingIsScanned;
+                FlightRecorder.instance.insert("Wing", "FireDetector (wingIsScanned): " + wingIsScanned);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isFireDetectedWing): " + PrimaryFlightDisplay.instance.isFireDetectedWing);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isFireDetectedWing: " + PrimaryFlightDisplay.instance.isFireDetectedWing);
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+
 }

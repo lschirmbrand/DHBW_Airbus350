@@ -93,4 +93,21 @@ public enum Configuration {
     //Elevator
     public String pathToElevatorJavaArchive = commonPathToJavaArchive + "elevator" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "elevator.jar";
     public int numberOfElevator = 4;
+
+    // crew_seat
+    public String pathToCrewSeatJavaArchive = commonPathToJavaArchive + "crew_seat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "crew_seat.jar";
+    public int numberOfCrewSeat = 8;
+
+    // economy_class_seat
+    public String pathToEconomyClassSeatJavaArchive = commonPathToJavaArchive + "economy_class_seat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "economy_class_seat.jar";
+    public int numberOfEconomyClassSeat = 262;
+
+    // fire_detector
+    public String pathToFireDetectorJavaArchive = commonPathToJavaArchive + "fire_detector" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "fire_detector.jar";
+    public int numberOfFireDetectorBody = 14;
+    public int numberOfFireDetectorWing = 4;
+
+    // oxygen_sensor
+    public String pathToOxygenSensorJavaArchive = commonPathToJavaArchive + "oxygen_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "oxygen_sensor.jar";
+    public int numberOfOxygenSensor = 8;
 }
