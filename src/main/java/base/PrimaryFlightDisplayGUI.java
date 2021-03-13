@@ -200,6 +200,67 @@ public class PrimaryFlightDisplayGUI extends Application {
     private Label temperatureWingLabel;
     private Label isTemperatureSensorWingAlarmLabel;
 
+    // slat
+    private PrimaryFlightDisplayEntry slatDegreeEntry;
+    private Spinner<Integer> slatDegreeSpinner;
+    // left_aileron
+    private PrimaryFlightDisplayEntry leftAileronDegreeEntry;
+    private Spinner<Integer> leftAileronDegreeSpinner;
+    // right_aileron
+    private PrimaryFlightDisplayEntry rightAileronDegreeEntry;
+    private Spinner<Integer> rightAileronDegreeSpinner;
+    // rudder
+    private PrimaryFlightDisplayEntry rudderDegreeEntry;
+    private Spinner<Integer> rudderDegreeSpinner;
+    // spoiler
+    private PrimaryFlightDisplayEntry spoilerDegreeEntry;
+    private Spinner<Integer> spoilerDegreeSpinner;
+    // anti_collision_light
+    private PrimaryFlightDisplayEntry antiCollisionLightIsOnEntry;
+    private RadioButton antiCollisionLightOffButton;
+    private RadioButton antiCollisionLightOnButton;
+
+    // cargo_compartment_light
+    private PrimaryFlightDisplayEntry isCargoCompartmentLightOn;
+    private RadioButton cargoCompartmentLightOffButton;
+    private RadioButton cargoCompartmentLightOnButton;
+
+    //cost_optimizer
+    private PrimaryFlightDisplayEntry isCostOptimizerOn;
+    private RadioButton costOptimizerOnButton;
+    private RadioButton costOptimizerOffButton;
+    private PrimaryFlightDisplayEntry indexCostOptimizer;
+    private Label indexCostOptimizerLabel;
+    private PrimaryFlightDisplayEntry numberOfCheckPointsCostOptimizer;
+    private Label numberOfCheckPointsCostOptimizerLabel;
+
+    //landing_light
+    private PrimaryFlightDisplayEntry isLandingLightBodyOn;
+    private RadioButton landingLightBodyOnButton;
+    private RadioButton landingLightBodyOffButton;
+    private PrimaryFlightDisplayEntry isLandingLightWingOn;
+    private RadioButton landingLightWingOnButton;
+    private RadioButton landingLightWingOffButton;
+
+    //left_navigation_light
+    private PrimaryFlightDisplayEntry isLeftNavigationLightOn;
+    private RadioButton leftNavigationLightOnButton;
+    private RadioButton leftNavigationLightOffButton;
+
+    //logo_light
+    private PrimaryFlightDisplayEntry isLogoLightOn;
+    private RadioButton logoLightOnButton;
+    private RadioButton logoLightOffButton;
+
+    //route_management
+    private PrimaryFlightDisplayEntry isRouteManagementOn;
+    private RadioButton routeManagementOnButton;
+    private RadioButton routeManagementOffButton;
+    private PrimaryFlightDisplayEntry indexRouteManagement;
+    private Label indexRouteManagementLabel;
+    private PrimaryFlightDisplayEntry numberOfCheckPointsRouteManagement;
+    private Label numberOfCheckPointsRouteManagementLabel;
+
     public static void main(String... args) {
         LogEngine.instance.init();
         FlightRecorder.instance.startup();
@@ -582,7 +643,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         nitrogenBottleTakeOutButton = new Button("TakeOut");
         gridPane.add(nitrogenBottleTakeOutButton, 3, 16);
 
-// crew_seat
+        // crew_seat
         Label crewSeatNonSmokingSignLabel = new Label("CrewSeatNonSmokingSign : ");
         gridPane.add(crewSeatNonSmokingSignLabel, 0, 3);
 
@@ -615,7 +676,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         crewSeatBeltSignOff = new RadioButton("Off");
         crewSeatBeltSignOff.setToggleGroup(crewSeatBeltSignToggleGroup);
         crewSeatBeltSignOff.setSelected(true);
-        gridPane.add(crewSeatBeltSignOff, 2,4);
+        gridPane.add(crewSeatBeltSignOff, 2, 4);
 
         // economy_class_seat
         Label economyClassSeatNonSmokingSignLabel = new Label("EconomyClassSeatNonSmokingSign : ");
@@ -726,7 +787,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         // temperature_sensor
         Label temperatureSensorLabel = new Label("TemperatureSensor");
         temperatureSensorLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(temperatureSensorLabel, 0,20);
+        gridPane.add(temperatureSensorLabel, 0, 20);
 
         temperatureBodyLabel = new Label("TemperatureBody: 0\u2103");
         gridPane.add(temperatureBodyLabel, 1, 20);
@@ -745,6 +806,197 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         isTemperatureSensorWingAlarmLabel = new Label("No wing alarm");
         gridPane.add(isTemperatureSensorWingAlarmLabel, 7, 20);
+
+        // slat
+        Label slatDegreeLabel = new Label("Slat : ");
+        gridPane.add(slatDegreeLabel, 0, 14);
+
+        slatDegreeSpinner = new Spinner<>();
+        slatDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> slatDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-20, 0, 0);
+        slatDegreeSpinner.setValueFactory(slatDegreeSpinnerValueFactory);
+        gridPane.add(slatDegreeSpinner, 1, 14);
+
+        // left_aileron
+        Label left_aileronDegreeLabel = new Label("Left_aileron : ");
+        gridPane.add(left_aileronDegreeLabel, 0, 15);
+
+        leftAileronDegreeSpinner = new Spinner<>();
+        leftAileronDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> left_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        leftAileronDegreeSpinner.setValueFactory(left_aileronDegreeSpinnerValueFactory);
+        gridPane.add(leftAileronDegreeSpinner, 1, 15);
+
+        // right_aileron
+        Label right_aileronDegreeLabel = new Label("Right_aileron : ");
+        gridPane.add(right_aileronDegreeLabel, 0, 16);
+
+        rightAileronDegreeSpinner = new Spinner<>();
+        rightAileronDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> right_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        rightAileronDegreeSpinner.setValueFactory(right_aileronDegreeSpinnerValueFactory);
+        gridPane.add(rightAileronDegreeSpinner, 1, 16);
+
+        // rudder
+        Label rudderDegreeLabel = new Label("Rudder : ");
+        gridPane.add(rudderDegreeLabel, 0, 17);
+
+        rudderDegreeSpinner = new Spinner<>();
+        rudderDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> rudderDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        rudderDegreeSpinner.setValueFactory(rudderDegreeSpinnerValueFactory);
+        gridPane.add(rudderDegreeSpinner, 1, 17);
+
+        // spoiler
+        Label spoilerDegreeLabel = new Label("Spoiler : ");
+        gridPane.add(spoilerDegreeLabel, 0, 18);
+
+        spoilerDegreeSpinner = new Spinner<>();
+        spoilerDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> spoilerDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, 0);
+        spoilerDegreeSpinner.setValueFactory(spoilerDegreeSpinnerValueFactory);
+        gridPane.add(spoilerDegreeSpinner, 1, 18);
+
+        // anti_collision_light
+        Label antiCollisionLightLabel = new Label("AntiCollisionLight : ");
+        gridPane.add(antiCollisionLightLabel, 0, 19);
+
+        ToggleGroup antiCollisionLightToggleGroup = new ToggleGroup();
+
+        antiCollisionLightOffButton = new RadioButton("Off");
+        antiCollisionLightOffButton.setToggleGroup(antiCollisionLightToggleGroup);
+        antiCollisionLightOffButton.setSelected(true);
+        gridPane.add(antiCollisionLightOffButton, 1, 19);
+
+        antiCollisionLightOnButton = new RadioButton("On");
+        antiCollisionLightOnButton.setToggleGroup(antiCollisionLightToggleGroup);
+        antiCollisionLightOnButton.setSelected(false);
+        gridPane.add(antiCollisionLightOnButton, 2, 19);
+
+        // cargo_compartment_light
+        Label cargoCompartentLightLabel = new Label("CargoCompartmentLight : ");
+        gridPane.add(cargoCompartentLightLabel, 0, 20);
+
+        ToggleGroup cargoCompartentLightToggleGroup = new ToggleGroup();
+
+        cargoCompartmentLightOffButton = new RadioButton("Off");
+        cargoCompartmentLightOffButton.setToggleGroup(cargoCompartentLightToggleGroup);
+        cargoCompartmentLightOffButton.setSelected(true);
+        gridPane.add(cargoCompartmentLightOffButton, 1, 20);
+
+        cargoCompartmentLightOnButton = new RadioButton("On");
+        cargoCompartmentLightOnButton.setToggleGroup(cargoCompartentLightToggleGroup);
+        cargoCompartmentLightOnButton.setSelected(false);
+        gridPane.add(cargoCompartmentLightOnButton, 2, 20);
+
+        // cost_optimizer
+        Label costOptimizerLabel = new Label("CostOptimizer : ");
+        gridPane.add(costOptimizerLabel, 0, 27);
+
+        ToggleGroup costOptimizerToggleGroup = new ToggleGroup();
+
+        costOptimizerOffButton = new RadioButton("Off");
+        costOptimizerOffButton.setToggleGroup(costOptimizerToggleGroup);
+        costOptimizerOffButton.setSelected(true);
+        gridPane.add(costOptimizerOffButton, 1, 27);
+
+        costOptimizerOnButton = new RadioButton("On");
+        costOptimizerOnButton.setToggleGroup(costOptimizerToggleGroup);
+        costOptimizerOnButton.setSelected(false);
+        gridPane.add(costOptimizerOnButton, 2, 27);
+
+        indexCostOptimizerLabel = new Label("IndexCostOptimizer: " + (PrimaryFlightDisplay.instance.indexCostOptimizer));
+        gridPane.add(indexCostOptimizerLabel, 3, 27);
+
+        numberOfCheckPointsCostOptimizerLabel = new Label("NumberOfCheckPoints: " + (PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer));
+        gridPane.add(numberOfCheckPointsCostOptimizerLabel, 4, 27);
+
+        // landing_light_body
+        Label landingLightBodyLabel = new Label("LandingLightBody : ");
+        gridPane.add(landingLightBodyLabel, 0, 21);
+
+        ToggleGroup landingLightBodyToggleGroup = new ToggleGroup();
+
+        landingLightBodyOffButton = new RadioButton("Off");
+        landingLightBodyOffButton.setToggleGroup(landingLightBodyToggleGroup);
+        landingLightBodyOffButton.setSelected(true);
+        gridPane.add(landingLightBodyOffButton, 1, 21);
+
+        landingLightBodyOnButton = new RadioButton("On");
+        landingLightBodyOnButton.setToggleGroup(landingLightBodyToggleGroup);
+        landingLightBodyOnButton.setSelected(false);
+        gridPane.add(landingLightBodyOnButton, 2, 21);
+
+        // landing_light_wing
+        Label landingLightWingLabel = new Label("LandingLightWing : ");
+        gridPane.add(landingLightWingLabel, 3, 21);
+
+        ToggleGroup landingLightWingToggleGroup = new ToggleGroup();
+
+        landingLightWingOffButton = new RadioButton("Off");
+        landingLightWingOffButton.setToggleGroup(landingLightWingToggleGroup);
+        landingLightWingOffButton.setSelected(true);
+        gridPane.add(landingLightWingOffButton, 4, 21);
+
+        landingLightWingOnButton = new RadioButton("On");
+        landingLightWingOnButton.setToggleGroup(landingLightWingToggleGroup);
+        landingLightWingOnButton.setSelected(false);
+        gridPane.add(landingLightWingOnButton, 5, 21);
+
+
+        // left_navigation_light
+        Label leftNavigationLightLabel = new Label("LeftNavigationLight : ");
+        gridPane.add(leftNavigationLightLabel, 0, 22);
+
+        ToggleGroup leftNavigationLightToggleGroupe = new ToggleGroup();
+
+        leftNavigationLightOffButton = new RadioButton("Off");
+        leftNavigationLightOffButton.setToggleGroup(leftNavigationLightToggleGroupe);
+        leftNavigationLightOffButton.setSelected(true);
+        gridPane.add(leftNavigationLightOffButton, 1, 22);
+
+        leftNavigationLightOnButton = new RadioButton("On");
+        leftNavigationLightOnButton.setToggleGroup(leftNavigationLightToggleGroupe);
+        leftNavigationLightOnButton.setSelected(false);
+        gridPane.add(leftNavigationLightOnButton, 2, 22);
+
+        // logo_light
+        Label logoLightLabel = new Label("logoLight : ");
+        gridPane.add(logoLightLabel, 0, 23);
+
+        ToggleGroup logoLightToggleGoup = new ToggleGroup();
+
+        logoLightOffButton = new RadioButton("Off");
+        logoLightOffButton.setToggleGroup(logoLightToggleGoup);
+        logoLightOffButton.setSelected(true);
+        gridPane.add(logoLightOffButton, 1, 23);
+
+        logoLightOnButton = new RadioButton("On");
+        logoLightOnButton.setToggleGroup(logoLightToggleGoup);
+        logoLightOnButton.setSelected(false);
+        gridPane.add(logoLightOnButton, 2, 23);
+
+        // route_management
+        Label routeManageLabel = new Label("routeManage : ");
+        gridPane.add(routeManageLabel, 0, 28);
+
+        ToggleGroup routeManageToggleGroup = new ToggleGroup();
+
+        routeManagementOffButton = new RadioButton("Off");
+        routeManagementOffButton.setToggleGroup(routeManageToggleGroup);
+        routeManagementOffButton.setSelected(true);
+        gridPane.add(routeManagementOffButton, 1, 28);
+
+        routeManagementOnButton = new RadioButton("On");
+        routeManagementOnButton.setToggleGroup(routeManageToggleGroup);
+        routeManagementOnButton.setSelected(false);
+        gridPane.add(routeManagementOnButton, 2, 28);
+
+        indexRouteManagementLabel = new Label("IndexRouteManager: " + (PrimaryFlightDisplay.instance.indexRouteManagement));
+        gridPane.add(indexRouteManagementLabel, 3, 28);
+
+        numberOfCheckPointsRouteManagementLabel = new Label("NumberOfCheckPoints: " + (PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement));
+        gridPane.add(numberOfCheckPointsRouteManagementLabel, 4, 28);
 
 
         // --- insert section: end
@@ -812,39 +1064,47 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     // air_flow_sensor
-    public void setAirFlowSensorAirPressureLabel(int airPressure){
+    public void setAirFlowSensorAirPressureLabel(int airPressure) {
         airPressureLabel.setText("AirPressure:" + airPressure);
     }
-    public void setIsAirFlowSensorBodyAlarmLabel(boolean bodyAlarm){
+
+    public void setIsAirFlowSensorBodyAlarmLabel(boolean bodyAlarm) {
         isAirFlowSensorBodyAlarmLabel.setText((bodyAlarm ? "" : "No ") + "body alarm");
     }
-    public void setIsAirFlowSensorWingAlarmLabel(boolean wingAlarm){
+
+    public void setIsAirFlowSensorWingAlarmLabel(boolean wingAlarm) {
         isAirFlowSensorBodyAlarmLabel.setText((wingAlarm ? "" : "No ") + "wing alarm");
     }
 
     //battery
-    public void setBatteryPercentageLabel(int batteryPercentage){
+    public void setBatteryPercentageLabel(int batteryPercentage) {
         batteryPercentageLabel.setText(batteryPercentage + " %");
     }
+
     // de_icing_system
-    public void setDeIcingSystemToggleGroup(boolean isDeIcingSystemOn){
+    public void setDeIcingSystemToggleGroup(boolean isDeIcingSystemOn) {
         deIcingSystemOnButton.setSelected(isDeIcingSystemOn);
         deIcingSystemOffButton.setSelected(!isDeIcingSystemOn);
     }
-    public void setAmountDeIcingSystemLabel(int amountDeIcingSystem){
+
+    public void setAmountDeIcingSystemLabel(int amountDeIcingSystem) {
         amountDeIcingSystemLabel.setText(Integer.toString(amountDeIcingSystem));
     }
+
     //temperature_sensor
-    public void setTemperatureBodyLabel(int temperatureBody){
+    public void setTemperatureBodyLabel(int temperatureBody) {
         temperatureBodyLabel.setText("TemperatureBody: " + temperatureBody + "\u2103");
     }
-    public void setTemperatureWingLabel(int temperatureWing){
+
+    public void setTemperatureWingLabel(int temperatureWing) {
         temperatureWingLabel.setText("TemperatureBody: " + temperatureWing + "\u2103");
     }
-    public void setIsTemperatureSensorBodyAlarmLabel(boolean isTemperatureSensorBodyAlarm){
+
+    public void setIsTemperatureSensorBodyAlarmLabel(boolean isTemperatureSensorBodyAlarm) {
         isTemperatureSensorBodyAlarmLabel.setText((isTemperatureSensorBodyAlarm ? "" : "No ") + "body alarm");
     }
-    public void setIsTemperatureSensorWingAlarmLabel(boolean isTemperatureSensorWingAlarm){
+
+    public void setIsTemperatureSensorWingAlarmLabel(boolean isTemperatureSensorWingAlarm) {
         isTemperatureSensorWingAlarmLabel.setText((isTemperatureSensorWingAlarm ? "" : "No ") + "wing alarm");
     }
 
@@ -946,9 +1206,9 @@ public class PrimaryFlightDisplayGUI extends Application {
         amountOxygenBottle.setText(String.valueOf(amount));
     }
 
- // crew_seat
+    // crew_seat
     public void setCrewSeatNonSmokingSignToggleGroup(boolean isNonSmokingSignOn) {
-        if(isNonSmokingSignOn) {
+        if (isNonSmokingSignOn) {
             crewSeatNonSmokingSignOn.setSelected(true);
             crewSeatNonSmokingSignOff.setSelected(false);
         } else {
@@ -958,7 +1218,7 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void setCrewSeatBeltSignToggleGroup(boolean isSeatBeltSignOn) {
-        if(isSeatBeltSignOn) {
+        if (isSeatBeltSignOn) {
             crewSeatBeltSignOn.setSelected(true);
             crewSeatBeltSignOff.setSelected(false);
         } else {
@@ -969,7 +1229,7 @@ public class PrimaryFlightDisplayGUI extends Application {
 
     // economy_class_seat
     public void setEconomyClassSeatNonSmokingSignToggleGroup(boolean isNonSmokingSignOn) {
-        if(isNonSmokingSignOn) {
+        if (isNonSmokingSignOn) {
             economyClassSeatNonSmokingSignOn.setSelected(true);
             economyClassSeatNonSmokingSignOff.setSelected(false);
         } else {
@@ -979,7 +1239,7 @@ public class PrimaryFlightDisplayGUI extends Application {
     }
 
     public void setEconomyClassSeatBeltSignToggleGroup(boolean isSeatBeltSignOn) {
-        if(isSeatBeltSignOn) {
+        if (isSeatBeltSignOn) {
             economyClassSeatBeltSignOn.setSelected(true);
             economyClassSeatBeltSignOff.setSelected(false);
         } else {
@@ -1004,6 +1264,92 @@ public class PrimaryFlightDisplayGUI extends Application {
     // oxygen_sensor
     public void setOxygenSensorAlarmLabel(boolean isOxygenSensorAlarm) {
         oxygenSensorAlarm.setText("OxygenSensor Alarm : " + isOxygenSensorAlarm);
+    }
+
+    // slat
+    public void setSlatDegreeValue(int slatDegreeValue) {
+        slatDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-20, 0, slatDegreeValue));
+    }
+
+    // left_aileron
+    public void setLeftAileronDegreeValue(int leftAileronDegreeValue) {
+        leftAileronDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, leftAileronDegreeValue));
+    }
+
+    // right_aileron
+    public void setRightAileronDegreeValue(int rightAileronDegreeValue) {
+        rightAileronDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, rightAileronDegreeValue));
+    }
+
+    // rudder
+    public void setRudderDegreeValue(int rudderDegreeValue) {
+        rudderDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, rudderDegreeValue));
+    }
+
+    // spoiler
+    public void setSpoilerDegreeValue(int spoilerDegreeValue) {
+        spoilerDegreeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, spoilerDegreeValue));
+    }
+
+    // anti_collision_light
+    public void setAntiCollisionLightToggleGroup(boolean isAntiCollisionLightOn) {
+        if (isAntiCollisionLightOn) {
+            antiCollisionLightOffButton.setSelected(false);
+            antiCollisionLightOnButton.setSelected(true);
+        } else {
+            antiCollisionLightOffButton.setSelected(true);
+            antiCollisionLightOnButton.setSelected(false);
+        }
+    }
+
+    // cargo_compartment_light
+    public void setCargoCompartmentLightToggleGroup(boolean isCargoCompartmentLightOn) {
+        cargoCompartmentLightOffButton.setSelected(!isCargoCompartmentLightOn);
+        cargoCompartmentLightOnButton.setSelected(isCargoCompartmentLightOn);
+    }
+
+    // cost_optimizer
+    public void setCostOptimizerToggleGroup(boolean isCostOptimizerOn) {
+        costOptimizerOffButton.setSelected(!isCostOptimizerOn);
+        costOptimizerOnButton.setSelected(isCostOptimizerOn);
+    }
+
+    public void setCheckPointsAndIndexCostOptimizer(int cp, int i) {
+        i = 0;
+        cp = 0;
+        numberOfCheckPointsCostOptimizerLabel.setText("Number of CheckPoints: " + Integer.toString(cp));
+        indexCostOptimizerLabel.setText("Cost Index: " + Integer.toString(i));
+    }
+
+    // landing_light
+    public void setLandingLightToggleGroup(boolean isLandingLightBodyOn, boolean isLandingLightWingOn) {
+        landingLightBodyOffButton.setSelected(!isLandingLightBodyOn);
+        landingLightBodyOnButton.setSelected(isLandingLightBodyOn);
+        landingLightWingOffButton.setSelected(!isLandingLightWingOn);
+        landingLightWingOnButton.setSelected(isLandingLightWingOn);
+    }
+
+    // left_navigation_light
+    public void setLeftNavigationLightToggleGroup(boolean isLeftNavigationLightOn) {
+        leftNavigationLightOffButton.setSelected(!isLeftNavigationLightOn);
+        leftNavigationLightOnButton.setSelected(isLeftNavigationLightOn);
+    }
+
+    // logo_light
+    public void setLogoLightToggleGroup(boolean isLogoLightOn) {
+        logoLightOffButton.setSelected(!isLogoLightOn);
+        logoLightOnButton.setSelected(isLogoLightOn);
+    }
+
+    // route_management
+    public void setRouteManagementToggleGroup(boolean isRouteManagementOn) {
+        routeManagementOffButton.setSelected(!isRouteManagementOn);
+        routeManagementOnButton.setSelected(isRouteManagementOn);
+    }
+
+    public void setCheckPointsAndIndexRouteManagement(int cp, int i) {
+        numberOfCheckPointsRouteManagementLabel.setText("Number of CheckPoints" + Integer.toString(cp));
+        indexRouteManagementLabel.setText("Cost Index: " + Integer.toString(i));
     }
 
     private void initData() {
@@ -1104,7 +1450,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         amountNitrogenBottleEntry = new PrimaryFlightDisplayEntry("NitrogenBottle (NitrogenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
         dataList.add(amountNitrogenBottleEntry);
 
-// crew_seat
+        // crew_seat
         crewSeatNonSmokingSignEntry = new PrimaryFlightDisplayEntry("CrewSeat (NonSmokingSign)", Boolean.toString(PrimaryFlightDisplay.instance.isNonSmokingSignOn));
         dataList.add(crewSeatNonSmokingSignEntry);
         crewSeatSeatBeltSignEntry = new PrimaryFlightDisplayEntry("CrewSeat (BeltSign)", Boolean.toString(PrimaryFlightDisplay.instance.isSeatBeltSignOn));
@@ -1127,6 +1473,58 @@ public class PrimaryFlightDisplayGUI extends Application {
         // oxygen_sensor
         oxygenSensorEntry = new PrimaryFlightDisplayEntry("OxygenSensor (isOxygenSensorAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isOxygenSensorAlarm));
         dataList.add(oxygenSensorEntry);
+
+        // slat
+        slatDegreeEntry = new PrimaryFlightDisplayEntry("Slat (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeSlat));
+        dataList.add(slatDegreeEntry);
+        // left_aileron
+        leftAileronDegreeEntry = new PrimaryFlightDisplayEntry("LeftAileron (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeLeftAileron));
+        dataList.add(leftAileronDegreeEntry);
+        // right_aileron
+        rightAileronDegreeEntry = new PrimaryFlightDisplayEntry("RightAileron (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeRightAileron));
+        dataList.add(rightAileronDegreeEntry);
+        // rudder
+        rudderDegreeEntry = new PrimaryFlightDisplayEntry("Rudder (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeRudder));
+        dataList.add(rudderDegreeEntry);
+        // spoiler
+        spoilerDegreeEntry = new PrimaryFlightDisplayEntry("Spoiler (degree)", Integer.toString(PrimaryFlightDisplay.instance.degreeSpoiler));
+        dataList.add(spoilerDegreeEntry);
+        // anti_collision_light
+        antiCollisionLightIsOnEntry = new PrimaryFlightDisplayEntry("AntiCollisionLight (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isAntiCollisionLightOn));
+        dataList.add(antiCollisionLightIsOnEntry);
+
+        // cargo_compartment_light
+        isCargoCompartmentLightOn = new PrimaryFlightDisplayEntry("CargoCompartmentLight (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isCargoCompartmentLightOn));
+        dataList.add(isCargoCompartmentLightOn);
+
+        // cost_optimizer
+        isCostOptimizerOn = new PrimaryFlightDisplayEntry("CostOptimizer (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isCostOptimizerOn));
+        dataList.add(isCostOptimizerOn);
+        numberOfCheckPointsCostOptimizer = new PrimaryFlightDisplayEntry("CostOptimizer (numberOfCheckPoints)", Integer.toString(PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer));
+        dataList.add(numberOfCheckPointsCostOptimizer);
+        indexCostOptimizer = new PrimaryFlightDisplayEntry("CostOptimizer (Index)", Integer.toString(PrimaryFlightDisplay.instance.indexCostOptimizer));
+        dataList.add(indexCostOptimizer);
+
+        // landing_light
+        isLandingLightBodyOn = new PrimaryFlightDisplayEntry("LandingLightBody (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isLandingLightBodyOn));
+        dataList.add(isLandingLightBodyOn);
+        isLandingLightWingOn = new PrimaryFlightDisplayEntry("LandingLightWing (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isLandingLightWingOn));
+        dataList.add(isLandingLightWingOn);
+
+        // left_navigation_light
+        isLeftNavigationLightOn = new PrimaryFlightDisplayEntry("LeftNavigationLight (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isLeftNavigationLightOn));
+        dataList.add(isLeftNavigationLightOn);
+
+        // logo_light
+        isLogoLightOn = new PrimaryFlightDisplayEntry("LogoLight (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isLogoLightOn));
+        dataList.add(isLogoLightOn);
+
+        // route_management
+        isRouteManagementOn = new PrimaryFlightDisplayEntry("RouteManagement (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isRouteManagementOn));
+        dataList.add(isRouteManagementOn);
+        numberOfCheckPointsRouteManagement = new PrimaryFlightDisplayEntry("RouteManagement (numberOfCheckPoints)", Integer.toString(PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement));
+        dataList.add(numberOfCheckPointsRouteManagement);
+        indexRouteManagement = new PrimaryFlightDisplayEntry("RouteManagement (Index)", Integer.toString(PrimaryFlightDisplay.instance.indexRouteManagement));
     }
 
     private ObservableList<PrimaryFlightDisplayEntry> getInitialTableData() {
@@ -1229,7 +1627,7 @@ public class PrimaryFlightDisplayGUI extends Application {
         amountNitrogenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
         setNitrogenBottleAmount(PrimaryFlightDisplay.instance.amountNitrogenBottle);
 
-// crew_seat
+        // crew_seat
         crewSeatNonSmokingSignEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isNonSmokingSignOn));
         setCrewSeatNonSmokingSignToggleGroup(PrimaryFlightDisplay.instance.isNonSmokingSignOn);
         crewSeatSeatBeltSignEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isSeatBeltSignOn));
@@ -1252,6 +1650,56 @@ public class PrimaryFlightDisplayGUI extends Application {
         // oxygen_sensor
         oxygenSensorEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isOxygenSensorAlarm));
         setOxygenSensorAlarmLabel(PrimaryFlightDisplay.instance.isOxygenSensorAlarm);
+
+        // slat
+        slatDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeSlat));
+        setSlatDegreeValue(PrimaryFlightDisplay.instance.degreeSlat);
+        // left_aileron
+        leftAileronDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeLeftAileron));
+        setLeftAileronDegreeValue(PrimaryFlightDisplay.instance.degreeLeftAileron);
+        // right_aileron
+        rightAileronDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeRightAileron));
+        setRightAileronDegreeValue(PrimaryFlightDisplay.instance.degreeRightAileron);
+        // rudder
+        rudderDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeRudder));
+        setRudderDegreeValue(PrimaryFlightDisplay.instance.degreeRudder);
+        // spoiler
+        spoilerDegreeEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.degreeSpoiler));
+        setSpoilerDegreeValue(PrimaryFlightDisplay.instance.degreeSpoiler);
+        // anti_collision_light
+        antiCollisionLightIsOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isWeatherRadarOn));
+        setAntiCollisionLightToggleGroup(PrimaryFlightDisplay.instance.isAntiCollisionLightOn);
+
+        // cargoCompartmentLight
+        isCargoCompartmentLightOn.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isCargoCompartmentLightOn));
+        setCargoCompartmentLightToggleGroup(PrimaryFlightDisplay.instance.isCargoCompartmentLightOn);
+
+        //costOptimizer
+        isCostOptimizerOn.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isCostOptimizerOn));
+        setCostOptimizerToggleGroup(PrimaryFlightDisplay.instance.isCostOptimizerOn);
+        numberOfCheckPointsCostOptimizer.setValue(Integer.toString(PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer));
+        indexCostOptimizer.setValue(Integer.toString(PrimaryFlightDisplay.instance.indexCostOptimizer));
+        setCheckPointsAndIndexCostOptimizer(PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer, PrimaryFlightDisplay.instance.indexCostOptimizer);
+
+        //landingLight
+        isLandingLightBodyOn.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isLandingLightBodyOn));
+        isLandingLightWingOn.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isLandingLightWingOn));
+        setLandingLightToggleGroup(PrimaryFlightDisplay.instance.isLandingLightBodyOn, PrimaryFlightDisplay.instance.isLandingLightWingOn);
+
+        //leftNavigationLight
+        isLeftNavigationLightOn.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isLeftNavigationLightOn));
+        setLeftNavigationLightToggleGroup(PrimaryFlightDisplay.instance.isLeftNavigationLightOn);
+
+        //LogoLight
+        isLogoLightOn.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isLogoLightOn));
+        setLogoLightToggleGroup(PrimaryFlightDisplay.instance.isLogoLightOn);
+
+        //RouteManagement
+        isRouteManagementOn.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isRouteManagementOn));
+        setRouteManagementToggleGroup(PrimaryFlightDisplay.instance.isRouteManagementOn);
+        numberOfCheckPointsRouteManagement.setValue(Integer.toString(PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement));
+        indexRouteManagement.setValue(Integer.toString(PrimaryFlightDisplay.instance.indexRouteManagement));
+        setCheckPointsAndIndexRouteManagement(PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement, PrimaryFlightDisplay.instance.indexRouteManagement);
 
         tableView.refresh();
     }

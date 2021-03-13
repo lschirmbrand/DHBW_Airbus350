@@ -8,6 +8,8 @@ import event.air_conditioning.AirConditioningOff;
 import event.air_conditioning.AirConditioningOn;
 import event.airflow_sensor.AirFlowSensorBodyMeasure;
 import event.airflow_sensor.AirFlowSensorWingMeasure;
+import event.anti_collision_light.AntiCollisionLightOff;
+import event.anti_collision_light.AntiCollisionLightOn;
 import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
@@ -18,6 +20,9 @@ import event.camera.CameraBodyOff;
 import event.camera.CameraBodyOn;
 import event.camera.CameraWingOff;
 import event.camera.CameraWingOn;
+import event.cargo_compartment_light.CargoCompartmentLightOff;
+import event.cost_optimizer.CostOptimizerOff;
+import event.cost_optimizer.CostOptimizerOn;
 import event.crew_seat.NonSmokingSignOff;
 import event.crew_seat.NonSmokingSignOn;
 import event.crew_seat.SeatBeltSignOff;
@@ -38,6 +43,15 @@ import event.fire_detector.FireDetectorWingScan;
 import event.gear.*;
 import event.gps.*;
 import event.hydraulicPump.*;
+import event.landing_light.LandingLightBodyOff;
+import event.landing_light.LandingLightBodyOn;
+import event.landing_light.LandingLightWingOff;
+import event.landing_light.LandingLightWingOn;
+import event.left_aileron.LeftAileronFullDown;
+import event.left_aileron.LeftAileronNeutral;
+import event.left_aileron.LeftAileronUp;
+import event.left_navigation_light.LeftNavigationLightOn;
+import event.logo_light.LogoLightOn;
 import event.nitrogen_bottle.NitrogenBottleRefill;
 import event.nitrogen_bottle.NitrogenBottleTakeOut;
 import event.oxygen_bottle.OxygenBottleRefill;
@@ -46,6 +60,21 @@ import event.oxygen_sensor.OxygenSensorMeasure;
 import event.radar.RadarOff;
 import event.radar.RadarOn;
 import event.radar.RadarScan;
+import event.right_aileron.RightAileronDown;
+import event.right_aileron.RightAileronFullUp;
+import event.right_aileron.RightAileronNeutral;
+import event.route_management.RouteManagementOff;
+import event.route_management.RouteManagementOn;
+import event.rudder.RudderFullLeft;
+import event.rudder.RudderNeutral;
+import event.rudder.RudderRight;
+import event.slat.SlatDown;
+import event.slat.SlatFullDown;
+import event.slat.SlatNeutral;
+import event.slat.SlatUp;
+import event.spoiler.SpoilerFullUp;
+import event.spoiler.SpoilerNeutral;
+import event.spoiler.SpoilerUp;
 import event.tcas.*;
 import event.temperature_sensor.TemperatureSensorBodyMeasure;
 import event.temperature_sensor.TemperatureSensorWingMeasure;
@@ -137,7 +166,7 @@ public class Airplane implements IAirplane {
         //NitrogenTank
         eventBus.post(new NitrogenBottleRefill());
 
- 	// crew_seat
+        // crew_seat
         eventBus.post(new NonSmokingSignOff());
         eventBus.post(new SeatBeltSignOff());
 
@@ -159,6 +188,28 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatNeutral());
+        //left_aileron
+        eventBus.post(new LeftAileronNeutral());
+        //right_aileron
+        eventBus.post(new RightAileronNeutral());
+        //rudder
+        eventBus.post(new RudderNeutral());
+        //spoiler
+        eventBus.post(new SpoilerNeutral());
+        // anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
+
+        //CostOptimizer
+        eventBus.post(new CostOptimizerOn());
+
+        //RouteManagement
+        eventBus.post(new RouteManagementOn());
+
+        //LogoLight
+        eventBus.post(new LogoLightOn());
     }
 
     public void taxi() {
@@ -181,7 +232,7 @@ public class Airplane implements IAirplane {
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
-	// crew_seat
+        // crew_seat
         eventBus.post(new NonSmokingSignOff());
         eventBus.post(new SeatBeltSignOff());
 
@@ -203,6 +254,19 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatNeutral());
+        //left_aileron
+        eventBus.post(new LeftAileronNeutral());
+        //right_aileron
+        eventBus.post(new RightAileronNeutral());
+        //rudder
+        eventBus.post(new RudderNeutral());
+        //spoiler
+        eventBus.post(new SpoilerNeutral());
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
     }
 
     public void takeoff() {
@@ -247,7 +311,7 @@ public class Airplane implements IAirplane {
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
 
-	// crew_seat
+        // crew_seat
         eventBus.post(new NonSmokingSignOn());
         eventBus.post(new SeatBeltSignOn());
 
@@ -271,6 +335,19 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatFullDown());
+        //left_aileron
+        eventBus.post(new LeftAileronNeutral());
+        //right_aileron
+        eventBus.post(new RightAileronNeutral());
+        //rudder
+        eventBus.post(new RudderNeutral());
+        //spoiler
+        eventBus.post(new SpoilerFullUp());
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
     }
 
     public void climbing() {
@@ -336,6 +413,19 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatNeutral());
+        //left_aileron
+        eventBus.post(new LeftAileronNeutral());
+        //right_aileron
+        eventBus.post(new RightAileronNeutral());
+        //rudder
+        eventBus.post(new RudderNeutral());
+        //spoiler
+        eventBus.post(new SpoilerNeutral());
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
     }
 
     public void rightTurn() {
@@ -395,6 +485,19 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatNeutral());
+        //left_aileron
+        eventBus.post(new LeftAileronFullDown());
+        //right_aileron
+        eventBus.post(new RightAileronFullUp());
+        //rudder
+        eventBus.post(new RudderRight(15));
+        //spoiler
+        eventBus.post(new SpoilerNeutral());
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
     }
 
     public void leftTurn() {
@@ -454,6 +557,22 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatNeutral());
+        //left_aileron
+        eventBus.post(new LeftAileronUp(15));
+        //right_aileron
+        eventBus.post(new RightAileronDown(15));
+        //rudder
+        eventBus.post(new RudderFullLeft());
+        //spoiler
+        eventBus.post(new SpoilerNeutral());
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
+
+        //LeftNavigationLight
+        eventBus.post(new LeftNavigationLightOn());
     }
 
     public void descent() {
@@ -495,7 +614,7 @@ public class Airplane implements IAirplane {
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
 
-	// crew_seat
+        // crew_seat
         eventBus.post(new NonSmokingSignOn());
         eventBus.post(new SeatBeltSignOn());
 
@@ -519,6 +638,19 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatNeutral());
+        //left_aileron
+        eventBus.post(new LeftAileronNeutral());
+        //right_aileron
+        eventBus.post(new RightAileronNeutral());
+        //rudder
+        eventBus.post(new RudderNeutral());
+        //spoiler
+        eventBus.post(new SpoilerUp(15));
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
     }
 
     public void landing() {
@@ -590,6 +722,23 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatDown(15));
+        //left_aileron
+        eventBus.post(new LeftAileronNeutral());
+        //right_aileron
+        eventBus.post(new RightAileronNeutral());
+        //rudder
+        eventBus.post(new RudderNeutral());
+        //spoiler
+        eventBus.post(new SpoilerNeutral());
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
+
+        //LandingLight
+        eventBus.post(new LandingLightBodyOn());
+        eventBus.post(new LandingLightWingOn());
     }
 
     public void shutdown() {
@@ -645,7 +794,7 @@ public class Airplane implements IAirplane {
         //NitrogenTank
         eventBus.post(new NitrogenBottleTakeOut(250));
 
-	// crew_seat
+        // crew_seat
         eventBus.post(new NonSmokingSignOff());
         eventBus.post(new SeatBeltSignOff());
 
@@ -662,5 +811,31 @@ public class Airplane implements IAirplane {
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
         eventBus.post(new TemperatureSensorWingMeasure());
+
+        // slat
+        eventBus.post(new SlatUp(15));
+        //left_aileron
+        eventBus.post(new LeftAileronNeutral());
+        //right_aileron
+        eventBus.post(new RightAileronNeutral());
+        //rudder
+        eventBus.post(new RudderNeutral());
+        //spoiler
+        eventBus.post(new SpoilerNeutral());
+        //anti_collision_light
+        eventBus.post(new AntiCollisionLightOff());
+
+        //cargoCompartmentLight
+        eventBus.post(new CargoCompartmentLightOff());
+
+        //costOptimizer
+        eventBus.post(new CostOptimizerOff());
+
+        //LandingLight
+        eventBus.post(new LandingLightBodyOff());
+        eventBus.post(new LandingLightWingOff());
+
+        //RouteManagement
+        eventBus.post(new RouteManagementOff());
     }
 }
