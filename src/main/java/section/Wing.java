@@ -4,8 +4,14 @@ import base.PrimaryFlightDisplay;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.Subscriber;
+import event.airflow_sensor.AirFlowSensorBodyMeasure;
+import event.airflow_sensor.AirFlowSensorWingMeasure;
 import event.camera.CameraWingOff;
 import event.camera.CameraWingOn;
+import event.deicing_system.DeIcingSystemActivate;
+import event.deicing_system.DeIcingSystemDeIce;
+import event.deicing_system.DeIcingSystemDeactivate;
+import event.deicing_system.DeIcingSystemRefill;
 import event.droop_nose.DroopNoseDown;
 import event.droop_nose.DroopNoseFullDown;
 import event.droop_nose.DroopNoseNeutral;
@@ -18,11 +24,14 @@ import event.engine.EngineStart;
 import event.hydraulicPump.HydraulicPumpWingCompress;
 import event.hydraulicPump.HydraulicPumpWingDecompress;
 import event.hydraulicPump.HydraulicPumpWingRefillOil;
+import event.temperature_sensor.TemperatureSensorBodyMeasure;
+import event.temperature_sensor.TemperatureSensorWingMeasure;
 import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorWingMeasure;
 import factory.*;
 import logging.LogEngine;
 import recorder.FlightRecorder;
 
+import java.io.ObjectInputFilter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -35,6 +44,9 @@ public class Wing extends Subscriber {
     private final ArrayList<Object> cameraWingPortList;
     private final ArrayList<Object> droopNosePortList;
     private final ArrayList<Object> turbulentAirFlowSensorPortList;
+    private final ArrayList<Object> airFlowSensorWingPortList;
+    private final ArrayList<Object> temperatureSensorWingPortList;
+    private final ArrayList<Object> deIcingSystemPortList;
 
     public Wing() {
         enginePortList = new ArrayList<>();
@@ -43,6 +55,9 @@ public class Wing extends Subscriber {
         cameraWingPortList = new ArrayList<>();
         droopNosePortList = new ArrayList<>();
         turbulentAirFlowSensorPortList = new ArrayList<>();
+        airFlowSensorWingPortList = new ArrayList<>();
+        temperatureSensorWingPortList = new ArrayList<>();
+        deIcingSystemPortList = new ArrayList<>();
         build();
     }
 
@@ -65,6 +80,151 @@ public class Wing extends Subscriber {
         for (int i = 0; i < Configuration.instance.numberOfTurbulentAirFlowSensorWing; i++) {
             turbulentAirFlowSensorPortList.add(TurbulentAirFlowSensorFactory.build());
         }
+        for (int i = 0; i < Configuration.instance.numberOfAirFlowSensorWing; i++) {
+            airFlowSensorWingPortList.add(AirFlowSensorFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfTemperatureSensorWing; i++) {
+            temperatureSensorWingPortList.add(TemperatureSensorFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfTemperatureSensorWing; i++) {
+            deIcingSystemPortList.add(DeIcingSystemFactory.build());
+        }
+    }
+
+    // --- AirFlowSensor --------------------------------------------------------------------------------------------
+    @Subscribe
+    public void receive(AirFlowSensorWingMeasure airFlowSensorWingMeasure) {
+        System.out.println(airFlowSensorWingMeasure);
+        LogEngine.instance.write("+ Wing.receive(" + airFlowSensorWingMeasure.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive" + airFlowSensorWingMeasure.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfAirFlowSensorBody; i++) {
+                Method measureMethod = airFlowSensorWingPortList.get(i).getClass().getDeclaredMethod("measure", String.class);
+                LogEngine.instance.write("measureMethod = " + measureMethod);
+
+                int airPressure = (int) measureMethod.invoke(airFlowSensorWingPortList.get(i), "FLOWFLOWFLOW");
+                LogEngine.instance.write("airFlow = " + airPressure);
+
+                FlightRecorder.instance.insert("Wing", "AirFlowSensor (airPressure): " + airPressure);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (isAirFlowWingAlarm): " + PrimaryFlightDisplay.instance.isAirFlowSensorWingAlarm);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isAirFlowWingAlarm: " + PrimaryFlightDisplay.instance.isAirFlowSensorWingAlarm);
+    }
+
+    // --- DeIcingSystem --------------------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(DeIcingSystemActivate deIcingSystemActivate) {
+        System.out.println(deIcingSystemActivate);
+        LogEngine.instance.write("+ Wing.receive(" + deIcingSystemActivate.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive" + deIcingSystemActivate.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method activateMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("activate");
+                LogEngine.instance.write("activateMethod = " + activateMethod);
+
+                boolean isActivated = (boolean) activateMethod.invoke(deIcingSystemPortList.get(i));
+                LogEngine.instance.write("isActivated = " + isActivated);
+
+                PrimaryFlightDisplay.instance.isDeIcingSystemActivated = isActivated;
+                FlightRecorder.instance.insert("Wing", "DeIcingSystem (isActivated): " + isActivated);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isDeIcingSystemActive): " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isDeIcingSystemActive: " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+    }
+
+    @Subscribe
+    public void receive(DeIcingSystemDeactivate deIcingSystemDeactivate) {
+        System.out.println(deIcingSystemDeactivate);
+        LogEngine.instance.write("+ Wing.receive(" + deIcingSystemDeactivate.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive" + deIcingSystemDeactivate.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method deactivateMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("deactivate");
+                LogEngine.instance.write("deactivateMethod = " + deactivateMethod);
+
+                boolean isDeactivated = (boolean) deactivateMethod.invoke(deIcingSystemPortList.get(i));
+                LogEngine.instance.write("isActivated = " + isDeactivated);
+
+                PrimaryFlightDisplay.instance.isDeIcingSystemActivated = isDeactivated;
+                FlightRecorder.instance.insert("Wing", "DeIcingSystem (isDeactivated): " + isDeactivated);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isDeIcingSystemDeactive): " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isDeIcingSystemDeactive: " + PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+    }
+
+    @Subscribe
+    public void receive(DeIcingSystemDeIce deIcingSystemDeIce) {
+        System.out.println(deIcingSystemDeIce);
+        LogEngine.instance.write("+ Wing.receive(" + deIcingSystemDeIce.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + deIcingSystemDeIce.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method deIceMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("deIce", int.class);
+                LogEngine.instance.write("deIceMethod = " + deIceMethod);
+
+                int deIceAmount = (int) deIceMethod.invoke(deIcingSystemPortList.get(i), deIcingSystemDeIce.getValue());
+
+                LogEngine.instance.write("deIceAmount = " + deIceAmount);
+                PrimaryFlightDisplay.instance.amountDeIcingSystem = deIceAmount;
+                FlightRecorder.instance.insert("Wing", "DeIcingSystem (deIceAmount): " + deIceAmount);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (deIceAmount): " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "deIceAmount: " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
+    }
+
+    @Subscribe
+    public void receive(DeIcingSystemRefill deIcingSystemRefill) {
+        System.out.println(deIcingSystemRefill);
+        LogEngine.instance.write("+ Wing.receive(" + deIcingSystemRefill.toString() + ")");
+        FlightRecorder.instance.insert("Wing", "receive(" + deIcingSystemRefill.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
+                Method refillMethod = deIcingSystemPortList.get(i).getClass().getDeclaredMethod("refill");
+                LogEngine.instance.write("refilleMethod = " + refillMethod);
+
+                int deIceAmount = (int) refillMethod.invoke(deIcingSystemPortList.get(i));
+
+                LogEngine.instance.write("deIceAmount = " + deIceAmount);
+                PrimaryFlightDisplay.instance.amountDeIcingSystem = deIceAmount;
+                FlightRecorder.instance.insert("Wing", "DeIcingSystem (refill): " + deIceAmount);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (DeIcingRefill): " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "DeIcingRefill: " + PrimaryFlightDisplay.instance.amountDeIcingSystem);
     }
 
     //DroopNose---------------------------------
@@ -172,6 +332,32 @@ public class Wing extends Subscriber {
         FlightRecorder.instance.insert("PrimaryFlightDisplay", "degreeDroopNose: " + PrimaryFlightDisplay.instance.degreeDroopNose);
     }
     //------------------------------------
+
+    // --- TemperatureSensor --------------------------------------------------------------------------------------------
+    @Subscribe
+    public void receive(TemperatureSensorWingMeasure temperatureSensorWingMeasure) {
+        System.out.println(temperatureSensorWingMeasure);
+        LogEngine.instance.write("+ Body.receive(" + temperatureSensorWingMeasure.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive" + temperatureSensorWingMeasure.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfTemperatureSensorWing; i++) {
+                Method measureMethod = temperatureSensorWingPortList.get(i).getClass().getDeclaredMethod("measure");
+                LogEngine.instance.write("measureMethod = " + measureMethod);
+
+                int temperature = (int) measureMethod.invoke(temperatureSensorWingPortList.get(i));
+                LogEngine.instance.write("temperature = " + temperature);
+
+                FlightRecorder.instance.insert("Body", "TemperatureSensor (temperature): " + temperature);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (temperature): " + PrimaryFlightDisplay.instance.temperatureBody);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "temperature: " + PrimaryFlightDisplay.instance.temperatureBody);
+    }
 
     //TurbulentAirFlowSensor-------------------------
     @Subscribe
