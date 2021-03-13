@@ -14,6 +14,9 @@ import event.battery.BatteryCharge;
 import event.battery.BatteryDischarge;
 import event.camera.CameraBodyOff;
 import event.camera.CameraBodyOn;
+import event.crew_seat.SeatAssignCrewMember;
+import event.economy_class_seat.*;
+import event.fire_detector.FireDetectorBodyScan;
 import event.deicing_system.DeIcingSystemActivate;
 import event.deicing_system.DeIcingSystemDeIce;
 import event.deicing_system.DeIcingSystemDeactivate;
@@ -27,6 +30,7 @@ import event.nitrogen_bottle.NitrogenBottleRefill;
 import event.nitrogen_bottle.NitrogenBottleTakeOut;
 import event.oxygen_bottle.OxygenBottleRefill;
 import event.oxygen_bottle.OxygenBottleTakeOut;
+import event.oxygen_sensor.OxygenSensorMeasure;
 import event.radar.RadarOff;
 import event.radar.RadarOn;
 import event.radar.RadarScan;
@@ -61,6 +65,10 @@ public class Body extends Subscriber {
     private final ArrayList<Object> temperatureSensorPortList;
     private final ArrayList<Object> turbulentAirFlowSensorBodyPortList;
     private final ArrayList<Object> droopNosePortList;
+    private final ArrayList<Object> crewSeatPortList;
+    private final ArrayList<Object> economyClassSeatPortList;
+    private final ArrayList<Object> fireDetectorPortList;
+    private final ArrayList<Object> oxygenSensorPortList;
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
@@ -79,6 +87,10 @@ public class Body extends Subscriber {
         cameraBodyPortList = new ArrayList<>();
         gpsPortList = new ArrayList<>();
         radarPortList = new ArrayList<>();
+        crewSeatPortList = new ArrayList<>();
+        economyClassSeatPortList = new ArrayList<>();
+        fireDetectorPortList = new ArrayList<>();
+        oxygenSensorPortList = new ArrayList<>();
 
         build();
     }
@@ -147,6 +159,17 @@ public class Body extends Subscriber {
         for (int i = 0; i < Configuration.instance.numberOfDroopNose; i++) {
             droopNosePortList.add(DroopNoseFactory.build());
         }
+        for (int i = 0; i < Configuration.instance.numberOfCrewSeat; i++) {
+            crewSeatPortList.add(CrewSeatFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfEconomyClassSeat; i++) {
+            economyClassSeatPortList.add(EconomyClassSeatFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfFireDetectorBody; i++) {
+            fireDetectorPortList.add(FireDetectorFactory.build());
+        }
+        for (int i = 0; i < Configuration.instance.numberOfOxygenSensor; i++) {
+            oxygenSensorPortList.add(OxygenSensorFactory.build());
         for (int i = 0; i < Configuration.instance.numberOfDeIcingSystemBody; i++) {
             deIcingSystemPortList.add(DeIcingSystemFactory.build());
         }
@@ -1292,4 +1315,317 @@ public class Body extends Subscriber {
             System.out.println(e.getMessage());
         }
     }
+
+ // --- CrewSeat ---------------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(SeatAssignCrewMember seatAssignCrewMember) {
+        FlightRecorder.instance.insert("Body", "receive(" + seatAssignCrewMember.toString() + ")");
+    }
+
+    @Subscribe
+    public void receive(event.crew_seat.NonSmokingSignOn nonSmokingSignOn) {
+        LogEngine.instance.write("+ Body.receive(" + nonSmokingSignOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + nonSmokingSignOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCrewSeat; i++) {
+                Method nonSmokingSignOnMethod = crewSeatPortList.get(i).getClass().getDeclaredMethod("nonSmokingSignOn");
+                LogEngine.instance.write("nonSmokingSignOnMethod = " + nonSmokingSignOnMethod);
+
+                boolean nonSmokingSignIsOn = (boolean) nonSmokingSignOnMethod.invoke(crewSeatPortList.get(i));
+                LogEngine.instance.write("nonSmokingSignIsOn = " + nonSmokingSignIsOn);
+
+                PrimaryFlightDisplay.instance.isNonSmokingSignOn = nonSmokingSignIsOn;
+                FlightRecorder.instance.insert("Body", "CrewSeat (nonSmokingSignIsOn): " + nonSmokingSignIsOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isNonSmokingSignOn): " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isNonSmokingSignOn: " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+    }
+
+    @Subscribe
+    public void receive(event.crew_seat.NonSmokingSignOff nonSmokingSignOff) {
+        LogEngine.instance.write("+ Body.receive(" + nonSmokingSignOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + nonSmokingSignOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCrewSeat; i++) {
+                Method nonSmokingSignOffMethod = crewSeatPortList.get(i).getClass().getDeclaredMethod("nonSmokingSignOff");
+                LogEngine.instance.write("nonSmokingSignOffMethod = " + nonSmokingSignOffMethod);
+
+                boolean nonSmokingSignIsOff = (boolean) nonSmokingSignOffMethod.invoke(crewSeatPortList.get(i));
+                LogEngine.instance.write("nonSmokingSignIsOff = " + nonSmokingSignIsOff);
+
+                PrimaryFlightDisplay.instance.isNonSmokingSignOn = nonSmokingSignIsOff;
+                FlightRecorder.instance.insert("Body", "CrewSeat (nonSmokingSignIsOff): " + nonSmokingSignIsOff);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isNonSmokingSignOn): " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isNonSmokingSignOn: " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+    }
+
+    @Subscribe
+    public void receive(event.crew_seat.SeatBeltSignOn seatBeltSignOn) {
+        LogEngine.instance.write("+ Body.receive(" + seatBeltSignOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + seatBeltSignOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCrewSeat; i++) {
+                Method seatBeltSignOnMethod = crewSeatPortList.get(i).getClass().getDeclaredMethod("seatBeltSignOn");
+                LogEngine.instance.write("seatBeltSignOnMethod = " + seatBeltSignOnMethod);
+
+                boolean seatBeltSignIsOn = (boolean) seatBeltSignOnMethod.invoke(crewSeatPortList.get(i));
+                LogEngine.instance.write("seatBeltSignIsOn = " + seatBeltSignIsOn);
+
+                PrimaryFlightDisplay.instance.isSeatBeltSignOn = seatBeltSignIsOn;
+                FlightRecorder.instance.insert("Body", "CrewSeat (seatBeltSignIsOn): " + seatBeltSignIsOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isSeatBeltSignOn): " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isSeatBeltSignOn: " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+    }
+
+    @Subscribe
+    public void receive(event.crew_seat.SeatBeltSignOff seatBeltSignOff) {
+        LogEngine.instance.write("+ Body.receive(" + seatBeltSignOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + seatBeltSignOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfCrewSeat; i++) {
+                Method seatBeltSignOffMethod = crewSeatPortList.get(i).getClass().getDeclaredMethod("seatBeltSignOff");
+                LogEngine.instance.write("seatBeltSignOffMethod = " + seatBeltSignOffMethod);
+
+                boolean seatBeltSignIsOff = (boolean) seatBeltSignOffMethod.invoke(crewSeatPortList.get(i));
+                LogEngine.instance.write("seatBeltSignIsOff = " + seatBeltSignIsOff);
+
+                PrimaryFlightDisplay.instance.isSeatBeltSignOn = seatBeltSignIsOff;
+                FlightRecorder.instance.insert("Body", "CrewSeat (seatBeltSignIsOff): " + seatBeltSignIsOff);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isSeatBeltSignOn): " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isSeatBeltSignOn: " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+
+    // --- EconomyClassSeat -------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(event.economy_class_seat.SeatAssignPassenger seatAssignPassenger) {
+        FlightRecorder.instance.insert("Body", "receive(" + seatAssignPassenger.toString() + ")");
+    }
+
+    @Subscribe
+    public void receive(NonSmokingSignOn nonSmokingSignOn) {
+        LogEngine.instance.write("+ Body.receive(" + nonSmokingSignOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + nonSmokingSignOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfEconomyClassSeat; i++) {
+                Method nonSmokingSignOnMethod = economyClassSeatPortList.get(i).getClass().getDeclaredMethod("nonSmokingSignOn");
+                LogEngine.instance.write("nonSmokingSignOnMethod = " + nonSmokingSignOnMethod);
+
+                boolean nonSmokingSignIsOn = (boolean) nonSmokingSignOnMethod.invoke(economyClassSeatPortList.get(i));
+                LogEngine.instance.write("nonSmokingSignIsOn = " + nonSmokingSignIsOn);
+
+                PrimaryFlightDisplay.instance.isNonSmokingSignOn = nonSmokingSignIsOn;
+                FlightRecorder.instance.insert("Body", "EconomyClassSeat (nonSmokingSignIsOn): " + nonSmokingSignIsOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isNonSmokingSignOn): " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isNonSmokingSignOn: " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+    }
+
+    @Subscribe
+    public void receive(NonSmokingSignOff nonSmokingSignOff) {
+        LogEngine.instance.write("+ Body.receive(" + nonSmokingSignOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + nonSmokingSignOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfEconomyClassSeat; i++) {
+                Method nonSmokingSignOffMethod = economyClassSeatPortList.get(i).getClass().getDeclaredMethod("nonSmokingSignOff");
+                LogEngine.instance.write("nonSmokingSignOffMethod = " + nonSmokingSignOffMethod);
+
+                boolean nonSmokingSignIsOff = (boolean) nonSmokingSignOffMethod.invoke(economyClassSeatPortList.get(i));
+                LogEngine.instance.write("nonSmokingSignIsOff = " + nonSmokingSignIsOff);
+
+                PrimaryFlightDisplay.instance.isNonSmokingSignOn = nonSmokingSignIsOff;
+                FlightRecorder.instance.insert("Body", "EconomyClassSeat (nonSmokingSignIsOff): " + nonSmokingSignIsOff);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isNonSmokingSignOn): " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isNonSmokingSignOn: " + PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+    }
+
+    @Subscribe
+    public void receive(SeatBeltSignOn seatBeltSignOn) {
+        LogEngine.instance.write("+ Body.receive(" + seatBeltSignOn.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + seatBeltSignOn.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfEconomyClassSeat; i++) {
+                Method seatBeltSignOnMethod = economyClassSeatPortList.get(i).getClass().getDeclaredMethod("seatBeltSignOn");
+                LogEngine.instance.write("seatBeltSignOnMethod = " + seatBeltSignOnMethod);
+
+                boolean seatBeltSignIsOn = (boolean) seatBeltSignOnMethod.invoke(economyClassSeatPortList.get(i));
+                LogEngine.instance.write("seatBeltSignIsOn = " + seatBeltSignIsOn);
+
+                PrimaryFlightDisplay.instance.isSeatBeltSignOn = seatBeltSignIsOn;
+                FlightRecorder.instance.insert("Body", "EconomyClassSeat (seatBeltSignIsOn): " + seatBeltSignIsOn);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isSeatBeltSignOn): " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isSeatBeltSignOn: " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+    }
+
+    @Subscribe
+    public void receive(SeatBeltSignOff seatBeltSignOff) {
+        LogEngine.instance.write("+ Body.receive(" + seatBeltSignOff.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + seatBeltSignOff.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfEconomyClassSeat; i++) {
+                Method seatBeltSignOffMethod = economyClassSeatPortList.get(i).getClass().getDeclaredMethod("seatBeltSignOff");
+                LogEngine.instance.write("seatBeltSignOffMethod = " + seatBeltSignOffMethod);
+
+                boolean seatBeltSignIsOff = (boolean) seatBeltSignOffMethod.invoke(economyClassSeatPortList.get(i));
+                LogEngine.instance.write("seatBeltSignIsOff = " + seatBeltSignIsOff);
+
+                PrimaryFlightDisplay.instance.isSeatBeltSignOn = seatBeltSignIsOff;
+                FlightRecorder.instance.insert("Body", "EconomyClassSeat (seatBeltSignIsOff): " + seatBeltSignIsOff);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isSeatBeltSignOn): " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isSeatBeltSignOn: " + PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+    }
+
+    @Subscribe
+    public void receive(SeatLevelOne seatLevelOne) {
+        LogEngine.instance.write("+ Body.receive(" + seatLevelOne.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + seatLevelOne.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfEconomyClassSeat; i++) {
+                Method level1Method = economyClassSeatPortList.get(i).getClass().getDeclaredMethod("level1");
+                LogEngine.instance.write("level1Method = " + level1Method);
+
+                int isLevel1 = (int) level1Method.invoke(economyClassSeatPortList.get(i));
+                LogEngine.instance.write("isLevel1 = " + isLevel1);
+
+                PrimaryFlightDisplay.instance.levelSeat = isLevel1;
+                FlightRecorder.instance.insert("Body", "EconomyClassSeat (isLevel1): " + isLevel1);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (levelOneSeat): " + PrimaryFlightDisplay.instance.levelSeat);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "levelOneSeat: " + PrimaryFlightDisplay.instance.levelSeat);
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+
+    // --- FireDetector -----------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(FireDetectorBodyScan fireDetectorBodyScan) {
+        LogEngine.instance.write("+ Body.receive(" + fireDetectorBodyScan.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + fireDetectorBodyScan.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfFireDetectorBody; i++) {
+                Method scanMethod = fireDetectorPortList.get(i).getClass().getDeclaredMethod("scan");
+                LogEngine.instance.write("scanMethod = " + scanMethod);
+
+                boolean isScanned = (boolean) scanMethod.invoke(fireDetectorPortList.get(i));
+                LogEngine.instance.write("isScanned = " + isScanned);
+
+                PrimaryFlightDisplay.instance.isFireDetectedBody = isScanned;
+                FlightRecorder.instance.insert("Body", "FireDetector (isScanned): " + isScanned);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isFireDetectedBody): " + PrimaryFlightDisplay.instance.isFireDetectedBody);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isFireDetectedBody: " + PrimaryFlightDisplay.instance.isFireDetectedBody);
+    }
+
+
+    // ----------------------------------------------------------------------------------------------------------------
+
+    // --- OxygenSensor -----------------------------------------------------------------------------------------------
+
+    @Subscribe
+    public void receive(OxygenSensorMeasure oxygenSensorMeasure) {
+        LogEngine.instance.write("+ Body.receive(" + oxygenSensorMeasure.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + oxygenSensorMeasure.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfOxygenSensor; i++) {
+                Method measureMethod = oxygenSensorPortList.get(i).getClass().getDeclaredMethod("measure");
+                LogEngine.instance.write("measureMethod = " + measureMethod);
+
+                boolean measureResult = (boolean) measureMethod.invoke(oxygenSensorPortList.get(i));
+                LogEngine.instance.write("measureResult = " + measureResult);
+
+                PrimaryFlightDisplay.instance.isOxygenSensorAlarm = measureResult;
+                FlightRecorder.instance.insert("Body", "OxygenSensor (measureResult): " + measureResult);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        LogEngine.instance.write("PrimaryFlightDisplay (isOxygenSensorAlarm): " + PrimaryFlightDisplay.instance.isOxygenSensorAlarm);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "isOxygenSensorAlarm: " + PrimaryFlightDisplay.instance.isOxygenSensorAlarm);
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
 }

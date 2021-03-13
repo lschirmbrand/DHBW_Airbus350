@@ -134,6 +134,34 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry amountNitrogenBottleEntry;
     private Label amountNitrogenBottle;
 
+    // crew_seat
+    private PrimaryFlightDisplayEntry crewSeatNonSmokingSignEntry;
+    private RadioButton crewSeatNonSmokingSignOn;
+    private RadioButton crewSeatNonSmokingSignOff;
+    private PrimaryFlightDisplayEntry crewSeatSeatBeltSignEntry;
+    private RadioButton crewSeatBeltSignOn;
+    private RadioButton crewSeatBeltSignOff;
+
+    // economy_class_seat
+    private PrimaryFlightDisplayEntry economyClassSeatNonSmokingSignEntry;
+    private RadioButton economyClassSeatNonSmokingSignOn;
+    private RadioButton economyClassSeatNonSmokingSignOff;
+    private PrimaryFlightDisplayEntry economyClassSeatSeatBeltSignEntry;
+    private RadioButton economyClassSeatBeltSignOn;
+    private RadioButton economyClassSeatBeltSignOff;
+    private PrimaryFlightDisplayEntry economyClassSeatLevelOneSeatEntry;
+    private Label economyClassSeatLevelOneSeat;
+
+    // fire_detector
+    private PrimaryFlightDisplayEntry fireDetectorBodyEntry;
+    private Label fireDetectorBodyAlarm;
+    private PrimaryFlightDisplayEntry fireDetectorWingEntry;
+    private Label fireDetectorWingAlarm;
+
+    //oxygen_sensor
+    private PrimaryFlightDisplayEntry oxygenSensorEntry;
+    private Label oxygenSensorAlarm;
+
     // air_flow_sensor
     private PrimaryFlightDisplayEntry airFlowSensorIsBodyAlarmEntry;
     private PrimaryFlightDisplayEntry airFlowSensorIsWingAlarmEntry;
@@ -554,6 +582,89 @@ public class PrimaryFlightDisplayGUI extends Application {
         nitrogenBottleTakeOutButton = new Button("TakeOut");
         gridPane.add(nitrogenBottleTakeOutButton, 3, 16);
 
+// crew_seat
+        Label crewSeatNonSmokingSignLabel = new Label("CrewSeatNonSmokingSign : ");
+        gridPane.add(crewSeatNonSmokingSignLabel, 0, 3);
+
+        ToggleGroup crewSeatNonSmokingSignToggleGroup = new ToggleGroup();
+
+        //crew_seat_smoking_sign_On
+        crewSeatNonSmokingSignOn = new RadioButton("On");
+        crewSeatNonSmokingSignOn.setToggleGroup(crewSeatNonSmokingSignToggleGroup);
+        crewSeatNonSmokingSignOn.setSelected(false);
+        gridPane.add(crewSeatNonSmokingSignOn, 1, 3);
+
+        //crew_seat_smoking_sign_Off
+        crewSeatNonSmokingSignOff = new RadioButton("Off");
+        crewSeatNonSmokingSignOff.setToggleGroup(crewSeatNonSmokingSignToggleGroup);
+        crewSeatNonSmokingSignOff.setSelected(true);
+        gridPane.add(crewSeatNonSmokingSignOff, 2, 3);
+
+        Label crewSeatSeatBeltSignLabel = new Label("CrewSeatBeltSign : ");
+        gridPane.add(crewSeatSeatBeltSignLabel, 0, 4);
+
+        ToggleGroup crewSeatBeltSignToggleGroup = new ToggleGroup();
+
+        //crew_seat_belt_sign_On
+        crewSeatBeltSignOn = new RadioButton("On");
+        crewSeatBeltSignOn.setToggleGroup(crewSeatBeltSignToggleGroup);
+        crewSeatBeltSignOn.setSelected(false);
+        gridPane.add(crewSeatBeltSignOn, 1, 4);
+
+        //crew_seat_belt_sign_Off
+        crewSeatBeltSignOff = new RadioButton("Off");
+        crewSeatBeltSignOff.setToggleGroup(crewSeatBeltSignToggleGroup);
+        crewSeatBeltSignOff.setSelected(true);
+        gridPane.add(crewSeatBeltSignOff, 2,4);
+
+        // economy_class_seat
+        Label economyClassSeatNonSmokingSignLabel = new Label("EconomyClassSeatNonSmokingSign : ");
+        gridPane.add(economyClassSeatNonSmokingSignLabel, 0, 5);
+
+        ToggleGroup economyClassSeatNonSmokingSignToggleGroup = new ToggleGroup();
+
+        // economy_class_seat_smoking_sign_On
+        economyClassSeatNonSmokingSignOn = new RadioButton("On");
+        economyClassSeatNonSmokingSignOn.setToggleGroup(economyClassSeatNonSmokingSignToggleGroup);
+        economyClassSeatNonSmokingSignOn.setSelected(false);
+        gridPane.add(economyClassSeatNonSmokingSignOn, 1, 5);
+
+        //economy_class_seat_smoking_sign_Off
+        economyClassSeatNonSmokingSignOff = new RadioButton("Off");
+        economyClassSeatNonSmokingSignOff.setToggleGroup(economyClassSeatNonSmokingSignToggleGroup);
+        economyClassSeatNonSmokingSignOff.setSelected(true);
+        gridPane.add(economyClassSeatNonSmokingSignOff, 2, 5);
+
+        Label economyClassSeatSeatBeltSignLabel = new Label("EconomyClassSeatBeltSign : ");
+        gridPane.add(economyClassSeatSeatBeltSignLabel, 0, 6);
+
+        ToggleGroup economyClassSeatBeltSignToggleGroup = new ToggleGroup();
+
+        // economy_class_seat_belt_sign_On
+        economyClassSeatBeltSignOn = new RadioButton("On");
+        economyClassSeatBeltSignOn.setToggleGroup(economyClassSeatBeltSignToggleGroup);
+        economyClassSeatBeltSignOn.setSelected(false);
+        gridPane.add(economyClassSeatBeltSignOn, 1, 6);
+
+        // economy_class_seat_belt_sign_Off
+        economyClassSeatBeltSignOff = new RadioButton("Off");
+        economyClassSeatBeltSignOff.setToggleGroup(economyClassSeatBeltSignToggleGroup);
+        economyClassSeatBeltSignOff.setSelected(true);
+        gridPane.add(economyClassSeatBeltSignOff, 2, 6);
+
+        economyClassSeatLevelOneSeat = new Label("EconomyClassSeatLevelOne :");
+        gridPane.add(economyClassSeatLevelOneSeat, 0, 7);
+
+        // fire_detector
+        fireDetectorBodyAlarm = new Label("FireDetector Body : ");
+        gridPane.add(fireDetectorBodyAlarm, 0, 8);
+
+        fireDetectorWingAlarm = new Label("FireDetector Wing : ");
+        gridPane.add(fireDetectorWingAlarm, 0, 9);
+
+        // oxygen_sensor
+        oxygenSensorAlarm = new Label("OxygenSensor Alarm : ");
+        gridPane.add(oxygenSensorAlarm, 0, 10);
         // air_flow_sensor
         Label airFlowSensorLabel = new Label("AirFlowSensor");
         airFlowSensorLabel.setStyle("-fx-font-weight: bold");
@@ -835,6 +946,66 @@ public class PrimaryFlightDisplayGUI extends Application {
         amountOxygenBottle.setText(String.valueOf(amount));
     }
 
+ // crew_seat
+    public void setCrewSeatNonSmokingSignToggleGroup(boolean isNonSmokingSignOn) {
+        if(isNonSmokingSignOn) {
+            crewSeatNonSmokingSignOn.setSelected(true);
+            crewSeatNonSmokingSignOff.setSelected(false);
+        } else {
+            crewSeatNonSmokingSignOff.setSelected(true);
+            crewSeatNonSmokingSignOn.setSelected(false);
+        }
+    }
+
+    public void setCrewSeatBeltSignToggleGroup(boolean isSeatBeltSignOn) {
+        if(isSeatBeltSignOn) {
+            crewSeatBeltSignOn.setSelected(true);
+            crewSeatBeltSignOff.setSelected(false);
+        } else {
+            crewSeatBeltSignOff.setSelected(true);
+            crewSeatBeltSignOn.setSelected(false);
+        }
+    }
+
+    // economy_class_seat
+    public void setEconomyClassSeatNonSmokingSignToggleGroup(boolean isNonSmokingSignOn) {
+        if(isNonSmokingSignOn) {
+            economyClassSeatNonSmokingSignOn.setSelected(true);
+            economyClassSeatNonSmokingSignOff.setSelected(false);
+        } else {
+            economyClassSeatNonSmokingSignOff.setSelected(true);
+            economyClassSeatNonSmokingSignOn.setSelected(false);
+        }
+    }
+
+    public void setEconomyClassSeatBeltSignToggleGroup(boolean isSeatBeltSignOn) {
+        if(isSeatBeltSignOn) {
+            economyClassSeatBeltSignOn.setSelected(true);
+            economyClassSeatBeltSignOff.setSelected(false);
+        } else {
+            economyClassSeatBeltSignOn.setSelected(false);
+            economyClassSeatBeltSignOff.setSelected(true);
+        }
+    }
+
+    public void setEconomyClassSeatLevelOneSeatLabel(int levelOneSeat) {
+        economyClassSeatLevelOneSeat.setText("EconomyClassSeatLevelOne : " + levelOneSeat);
+    }
+
+    // fire_detector
+    public void setFireDetectorBodyAlarmLabel(boolean isFireDetectedBody) {
+        fireDetectorBodyAlarm.setText("FireDetector Body : " + isFireDetectedBody);
+    }
+
+    public void setFireDetectorWingAlarmLabel(boolean isFireDetectedWing) {
+        fireDetectorWingAlarm.setText("FireDetector Wing : " + isFireDetectedWing);
+    }
+
+    // oxygen_sensor
+    public void setOxygenSensorAlarmLabel(boolean isOxygenSensorAlarm) {
+        oxygenSensorAlarm.setText("OxygenSensor Alarm : " + isOxygenSensorAlarm);
+    }
+
     private void initData() {
         dataList = new ArrayList<>();
 
@@ -933,6 +1104,29 @@ public class PrimaryFlightDisplayGUI extends Application {
         amountNitrogenBottleEntry = new PrimaryFlightDisplayEntry("NitrogenBottle (NitrogenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
         dataList.add(amountNitrogenBottleEntry);
 
+// crew_seat
+        crewSeatNonSmokingSignEntry = new PrimaryFlightDisplayEntry("CrewSeat (NonSmokingSign)", Boolean.toString(PrimaryFlightDisplay.instance.isNonSmokingSignOn));
+        dataList.add(crewSeatNonSmokingSignEntry);
+        crewSeatSeatBeltSignEntry = new PrimaryFlightDisplayEntry("CrewSeat (BeltSign)", Boolean.toString(PrimaryFlightDisplay.instance.isSeatBeltSignOn));
+        dataList.add(crewSeatSeatBeltSignEntry);
+
+        // economy_class_seat
+        economyClassSeatNonSmokingSignEntry = new PrimaryFlightDisplayEntry("EconomyClassSeat (NonSmokingSign)", Boolean.toString(PrimaryFlightDisplay.instance.isNonSmokingSignOn));
+        dataList.add(economyClassSeatNonSmokingSignEntry);
+        economyClassSeatSeatBeltSignEntry = new PrimaryFlightDisplayEntry("EconomyClassSeat (BeltSign)", Boolean.toString(PrimaryFlightDisplay.instance.isSeatBeltSignOn));
+        dataList.add(economyClassSeatSeatBeltSignEntry);
+        economyClassSeatLevelOneSeatEntry = new PrimaryFlightDisplayEntry("EconomyClassSeat (LevelSeat)", Integer.toString(PrimaryFlightDisplay.instance.levelSeat));
+        dataList.add(economyClassSeatLevelOneSeatEntry);
+
+        // fire_detector
+        fireDetectorBodyEntry = new PrimaryFlightDisplayEntry("FireDetector (FireDetectedBody)", Boolean.toString(PrimaryFlightDisplay.instance.isFireDetectedBody));
+        dataList.add(fireDetectorBodyEntry);
+        fireDetectorWingEntry = new PrimaryFlightDisplayEntry("FireDetector (FireDetectedWing)", Boolean.toString(PrimaryFlightDisplay.instance.isFireDetectedWing));
+        dataList.add(fireDetectorWingEntry);
+
+        // oxygen_sensor
+        oxygenSensorEntry = new PrimaryFlightDisplayEntry("OxygenSensor (isOxygenSensorAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isOxygenSensorAlarm));
+        dataList.add(oxygenSensorEntry);
     }
 
     private ObservableList<PrimaryFlightDisplayEntry> getInitialTableData() {
@@ -1034,6 +1228,30 @@ public class PrimaryFlightDisplayGUI extends Application {
         //NitrogenBottle
         amountNitrogenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
         setNitrogenBottleAmount(PrimaryFlightDisplay.instance.amountNitrogenBottle);
+
+// crew_seat
+        crewSeatNonSmokingSignEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isNonSmokingSignOn));
+        setCrewSeatNonSmokingSignToggleGroup(PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+        crewSeatSeatBeltSignEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isSeatBeltSignOn));
+        setCrewSeatBeltSignToggleGroup(PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+
+        // economy_class_seat
+        economyClassSeatNonSmokingSignEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isNonSmokingSignOn));
+        setEconomyClassSeatNonSmokingSignToggleGroup(PrimaryFlightDisplay.instance.isNonSmokingSignOn);
+        economyClassSeatSeatBeltSignEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isSeatBeltSignOn));
+        setEconomyClassSeatBeltSignToggleGroup(PrimaryFlightDisplay.instance.isSeatBeltSignOn);
+        economyClassSeatLevelOneSeatEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.levelSeat));
+        setEconomyClassSeatLevelOneSeatLabel(PrimaryFlightDisplay.instance.levelSeat);
+
+        // fire_detector
+        fireDetectorBodyEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isFireDetectedBody));
+        setFireDetectorBodyAlarmLabel(PrimaryFlightDisplay.instance.isFireDetectedBody);
+        fireDetectorWingEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isFireDetectedWing));
+        setFireDetectorWingAlarmLabel(PrimaryFlightDisplay.instance.isFireDetectedWing);
+
+        // oxygen_sensor
+        oxygenSensorEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isOxygenSensorAlarm));
+        setOxygenSensorAlarmLabel(PrimaryFlightDisplay.instance.isOxygenSensorAlarm);
 
         tableView.refresh();
     }

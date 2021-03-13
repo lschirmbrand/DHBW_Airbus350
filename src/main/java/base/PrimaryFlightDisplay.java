@@ -270,4 +270,12 @@ public enum PrimaryFlightDisplay {
 
     //nitrogenBottle
     public int amountNitrogenBottle;
+
+    //crew_seat & economy_class_seat
+    public boolean isNonSmokingSignOn;
+    public boolean isSeatBeltSignOn;
+
+    //economy_class_seat
+    public int levelSeat;
+    
 }
