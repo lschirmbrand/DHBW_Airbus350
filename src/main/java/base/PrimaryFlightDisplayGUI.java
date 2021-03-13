@@ -162,6 +162,43 @@ public class PrimaryFlightDisplayGUI extends Application {
     private PrimaryFlightDisplayEntry oxygenSensorEntry;
     private Label oxygenSensorAlarm;
 
+    // air_flow_sensor
+    private PrimaryFlightDisplayEntry airFlowSensorIsBodyAlarmEntry;
+    private PrimaryFlightDisplayEntry airFlowSensorIsWingAlarmEntry;
+    private PrimaryFlightDisplayEntry airFlowSensorAirPressureEntry;
+    private Button airFlowSensorBodyMeasureButton;
+    private Button airFlowSensorWingMeasureButton;
+    private Label airPressureLabel;
+    private Label isAirFlowSensorBodyAlarmLabel;
+    private Label isAirFlowSensorWingAlarmLabel;
+
+    //battery
+    private PrimaryFlightDisplayEntry batteryPercentageBatteryEntry;
+    private Button batteryChargeButton;
+    private Button batteryDischargeButton;
+    private Label batteryPercentageLabel;
+
+    //deicing_system
+    private PrimaryFlightDisplayEntry deicingSystemOnEntry;
+    private PrimaryFlightDisplayEntry deicingSystemAmountDeIcingSystemEntry;
+    private RadioButton deIcingSystemOnButton;
+    private RadioButton deIcingSystemOffButton;
+    private Button deIcingSystemDeIceButton;
+    private Button deIcingSystemRefillButton;
+    private Label amountDeIcingSystemLabel;
+    private Label isDeIcingSystemActivatedLabel;
+
+    // temperature_sensor
+    private PrimaryFlightDisplayEntry temperatureSensorTemperatureBodyEntry;
+    private PrimaryFlightDisplayEntry temperatureSensorBodyAlarmEntry;
+    private PrimaryFlightDisplayEntry temperatureSensorTemperatureWingEntry;
+    private PrimaryFlightDisplayEntry temperatureSensorWingAlarmEntry;
+    private Button temperatureSensorBodyMeasureButton;
+    private Button temperatureSensorWingMeasureButton;
+    private Label temperatureBodyLabel;
+    private Label isTemperatureSensorBodyAlarmLabel;
+    private Label temperatureWingLabel;
+    private Label isTemperatureSensorWingAlarmLabel;
 
     public static void main(String... args) {
         LogEngine.instance.init();
@@ -628,6 +665,87 @@ public class PrimaryFlightDisplayGUI extends Application {
         // oxygen_sensor
         oxygenSensorAlarm = new Label("OxygenSensor Alarm : ");
         gridPane.add(oxygenSensorAlarm, 0, 10);
+        // air_flow_sensor
+        Label airFlowSensorLabel = new Label("AirFlowSensor");
+        airFlowSensorLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(airFlowSensorLabel, 0, 17);
+
+        isAirFlowSensorBodyAlarmLabel = new Label("AirPressure: 0");
+        gridPane.add(isAirFlowSensorBodyAlarmLabel, 1, 17);
+
+        airFlowSensorBodyMeasureButton = new Button("MeasureBody");
+        gridPane.add(airFlowSensorBodyMeasureButton, 2, 17);
+        isAirFlowSensorWingAlarmLabel = new Label("No body alarm");
+        gridPane.add(isAirFlowSensorWingAlarmLabel, 3, 17);
+
+        airFlowSensorWingMeasureButton = new Button("MeasureWing");
+        gridPane.add(airFlowSensorWingMeasureButton, 4, 17);
+        airPressureLabel = new Label("No wing alarm");
+        gridPane.add(airPressureLabel, 5, 17);
+
+        // battery
+        Label batteryLabel = new Label("Battery");
+        batteryLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(batteryLabel, 0, 18);
+
+        batteryPercentageLabel = new Label("BatteryPercentage: 100%");
+        gridPane.add(batteryPercentageLabel, 1, 18);
+
+        batteryChargeButton = new Button("ChargeBattery");
+        gridPane.add(batteryChargeButton, 2, 18);
+
+        batteryDischargeButton = new Button("DischargeBattery");
+        gridPane.add(batteryDischargeButton, 3, 18);
+
+        // de_icing_system
+        Label deIcingSystemLabel = new Label("DeIcingSystem");
+        deIcingSystemLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(deIcingSystemLabel, 0, 19);
+
+        ToggleGroup deIcingSystemToggleGroup = new ToggleGroup();
+
+        deIcingSystemOffButton = new RadioButton("Off");
+        deIcingSystemOffButton.setToggleGroup(deIcingSystemToggleGroup);
+        deIcingSystemOffButton.setSelected(true);
+        gridPane.add(deIcingSystemOffButton, 2, 19);
+
+        deIcingSystemOnButton = new RadioButton("On");
+        deIcingSystemOnButton.setToggleGroup(deIcingSystemToggleGroup);
+        deIcingSystemOnButton.setSelected(false);
+        gridPane.add(deIcingSystemOnButton, 1, 19);
+
+        amountDeIcingSystemLabel = new Label("Amount: 50");
+        gridPane.add(amountDeIcingSystemLabel, 3, 19);
+
+        deIcingSystemDeIceButton = new Button("DeIce");
+        gridPane.add(deIcingSystemDeIceButton, 4, 19);
+
+        deIcingSystemRefillButton = new Button("Refill");
+        gridPane.add(deIcingSystemRefillButton, 5, 19);
+
+        // temperature_sensor
+        Label temperatureSensorLabel = new Label("TemperatureSensor");
+        temperatureSensorLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(temperatureSensorLabel, 0,20);
+
+        temperatureBodyLabel = new Label("TemperatureBody: 0\u2103");
+        gridPane.add(temperatureBodyLabel, 1, 20);
+
+        temperatureSensorBodyMeasureButton = new Button("MeasureBody");
+        gridPane.add(temperatureSensorBodyMeasureButton, 3, 20);
+
+        isTemperatureSensorBodyAlarmLabel = new Label("No body alarm");
+        gridPane.add(isTemperatureSensorBodyAlarmLabel, 4, 20);
+
+        temperatureWingLabel = new Label("TemperatureWing: 0\u2103");
+        gridPane.add(temperatureWingLabel, 5, 20);
+
+        temperatureSensorWingMeasureButton = new Button("MeasureWing");
+        gridPane.add(temperatureSensorWingMeasureButton, 6, 20);
+
+        isTemperatureSensorWingAlarmLabel = new Label("No wing alarm");
+        gridPane.add(isTemperatureSensorWingAlarmLabel, 7, 20);
+
 
         // --- insert section: end
 
@@ -691,6 +809,43 @@ public class PrimaryFlightDisplayGUI extends Application {
 
     public void setTemperatureAirConditioningLabel(int temperature) {
         temperatureAirConditioningLabel.setText(temperature + " \u2103");
+    }
+
+    // air_flow_sensor
+    public void setAirFlowSensorAirPressureLabel(int airPressure){
+        airPressureLabel.setText("AirPressure:" + airPressure);
+    }
+    public void setIsAirFlowSensorBodyAlarmLabel(boolean bodyAlarm){
+        isAirFlowSensorBodyAlarmLabel.setText((bodyAlarm ? "" : "No ") + "body alarm");
+    }
+    public void setIsAirFlowSensorWingAlarmLabel(boolean wingAlarm){
+        isAirFlowSensorBodyAlarmLabel.setText((wingAlarm ? "" : "No ") + "wing alarm");
+    }
+
+    //battery
+    public void setBatteryPercentageLabel(int batteryPercentage){
+        batteryPercentageLabel.setText(batteryPercentage + " %");
+    }
+    // de_icing_system
+    public void setDeIcingSystemToggleGroup(boolean isDeIcingSystemOn){
+        deIcingSystemOnButton.setSelected(isDeIcingSystemOn);
+        deIcingSystemOffButton.setSelected(!isDeIcingSystemOn);
+    }
+    public void setAmountDeIcingSystemLabel(int amountDeIcingSystem){
+        amountDeIcingSystemLabel.setText(Integer.toString(amountDeIcingSystem));
+    }
+    //temperature_sensor
+    public void setTemperatureBodyLabel(int temperatureBody){
+        temperatureBodyLabel.setText("TemperatureBody: " + temperatureBody + "\u2103");
+    }
+    public void setTemperatureWingLabel(int temperatureWing){
+        temperatureWingLabel.setText("TemperatureBody: " + temperatureWing + "\u2103");
+    }
+    public void setIsTemperatureSensorBodyAlarmLabel(boolean isTemperatureSensorBodyAlarm){
+        isTemperatureSensorBodyAlarmLabel.setText((isTemperatureSensorBodyAlarm ? "" : "No ") + "body alarm");
+    }
+    public void setIsTemperatureSensorWingAlarmLabel(boolean isTemperatureSensorWingAlarm){
+        isTemperatureSensorWingAlarmLabel.setText((isTemperatureSensorWingAlarm ? "" : "No ") + "wing alarm");
     }
 
     public void setEngineToggleGroup(boolean isEngineStarted) {
@@ -897,6 +1052,34 @@ public class PrimaryFlightDisplayGUI extends Application {
         temperatureAirConditioningEntry = new PrimaryFlightDisplayEntry("AirConditioning (temperature)", Integer.toString(PrimaryFlightDisplay.instance.temperatureAirConditioning));
         dataList.add(temperatureAirConditioningEntry);
 
+        // air_flow_sensor
+        airFlowSensorIsBodyAlarmEntry = new PrimaryFlightDisplayEntry("AirFlowSensor (isBodyAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isAirFlowSensorBodyAlarm));
+        dataList.add(airFlowSensorIsBodyAlarmEntry);
+        airFlowSensorIsWingAlarmEntry = new PrimaryFlightDisplayEntry("AirFlowSensor (isWingAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isAirFlowSensorWingAlarm));
+        dataList.add(airFlowSensorIsWingAlarmEntry);
+        airFlowSensorAirPressureEntry = new PrimaryFlightDisplayEntry("AirFlowSensor (airPressure)", Integer.toString(PrimaryFlightDisplay.instance.airPressure));
+        dataList.add(airFlowSensorAirPressureEntry);
+
+        // battery
+        batteryPercentageBatteryEntry = new PrimaryFlightDisplayEntry("Battery (percentage)", Integer.toString(PrimaryFlightDisplay.instance.percentageBattery));
+        dataList.add(batteryPercentageBatteryEntry);
+
+        // de_icing_sensor
+        deicingSystemOnEntry = new PrimaryFlightDisplayEntry("DeIcingSystem (isOn)", Boolean.toString(PrimaryFlightDisplay.instance.isDeIcingSystemActivated));
+        dataList.add(deicingSystemOnEntry);
+        deicingSystemAmountDeIcingSystemEntry = new PrimaryFlightDisplayEntry("DeIcingSystem (amount)", Integer.toString(PrimaryFlightDisplay.instance.amountDeIcingSystem));
+        dataList.add(deicingSystemAmountDeIcingSystemEntry);
+
+        // temperature_sensor
+        temperatureSensorTemperatureBodyEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (temperatureBody)", Integer.toString(PrimaryFlightDisplay.instance.temperatureBody));
+        temperatureSensorTemperatureWingEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (temperatureWing)", Integer.toString(PrimaryFlightDisplay.instance.temperatureWing));
+        temperatureSensorBodyAlarmEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (bodyAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTemperatureSensorBodyAlarm));
+        temperatureSensorWingAlarmEntry = new PrimaryFlightDisplayEntry("TemperatureSensor (wingAlarm)", Boolean.toString(PrimaryFlightDisplay.instance.isTemperatureSensorWingAlarm));
+        dataList.add(temperatureSensorTemperatureBodyEntry);
+        dataList.add(temperatureSensorTemperatureWingEntry);
+        dataList.add(temperatureSensorBodyAlarmEntry);
+        dataList.add(temperatureSensorWingAlarmEntry);
+
         // engine
         engineIsStartedEntry = new PrimaryFlightDisplayEntry("Engine (isStarted)", Boolean.toString(PrimaryFlightDisplay.instance.isEngineStarted));
         dataList.add(engineIsStartedEntry);
@@ -975,6 +1158,30 @@ public class PrimaryFlightDisplayGUI extends Application {
         setAirConditioningToggleGroup(PrimaryFlightDisplay.instance.isAirConditioningOn);
         temperatureAirConditioningEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.temperatureAirConditioning));
         setTemperatureAirConditioningLabel(PrimaryFlightDisplay.instance.temperatureAirConditioning);
+
+        // air_flow_sensor
+        airFlowSensorIsBodyAlarmEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAirFlowSensorBodyAlarm));
+        airFlowSensorIsWingAlarmEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isAirFlowSensorWingAlarm));
+        airFlowSensorAirPressureEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.airPressure));
+        setAirFlowSensorAirPressureLabel(PrimaryFlightDisplay.instance.airPressure);
+        setIsAirFlowSensorBodyAlarmLabel(PrimaryFlightDisplay.instance.isAirFlowSensorBodyAlarm);
+        setIsAirFlowSensorWingAlarmLabel(PrimaryFlightDisplay.instance.isAirFlowSensorWingAlarm);
+
+        // battery
+        batteryPercentageBatteryEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.percentageBattery));
+        setBatteryPercentageLabel(PrimaryFlightDisplay.instance.percentageBattery);
+
+        // de_icing_system
+        deicingSystemOnEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isDeIcingSystemActivated));
+        deicingSystemAmountDeIcingSystemEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountDeIcingSystem));
+        setDeIcingSystemToggleGroup(PrimaryFlightDisplay.instance.isDeIcingSystemActivated);
+        setAmountDeIcingSystemLabel(PrimaryFlightDisplay.instance.amountDeIcingSystem);
+
+        // temperature_sensor
+        temperatureSensorBodyAlarmEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isTemperatureSensorBodyAlarm));
+        temperatureSensorTemperatureWingEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isTemperatureSensorWingAlarm));
+        setTemperatureBodyLabel(PrimaryFlightDisplay.instance.temperatureBody);
+        setTemperatureWingLabel(PrimaryFlightDisplay.instance.temperatureWing);
 
         //engine
         engineIsStartedEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isEngineStarted));

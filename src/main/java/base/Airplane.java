@@ -6,10 +6,14 @@ import event.air_conditioning.AirConditioningClean;
 import event.air_conditioning.AirConditioningHeat;
 import event.air_conditioning.AirConditioningOff;
 import event.air_conditioning.AirConditioningOn;
+import event.airflow_sensor.AirFlowSensorBodyMeasure;
+import event.airflow_sensor.AirFlowSensorWingMeasure;
 import event.apu.APUDecreaseRPM;
 import event.apu.APUIncreaseRPM;
 import event.apu.APUShutdown;
 import event.apu.APUStart;
+import event.battery.BatteryCharge;
+import event.battery.BatteryDischarge;
 import event.camera.CameraBodyOff;
 import event.camera.CameraBodyOn;
 import event.camera.CameraWingOff;
@@ -18,6 +22,8 @@ import event.crew_seat.NonSmokingSignOff;
 import event.crew_seat.NonSmokingSignOn;
 import event.crew_seat.SeatBeltSignOff;
 import event.crew_seat.SeatBeltSignOn;
+import event.deicing_system.DeIcingSystemActivate;
+import event.deicing_system.DeIcingSystemDeIce;
 import event.droop_nose.DroopNoseDown;
 import event.droop_nose.DroopNoseFullDown;
 import event.droop_nose.DroopNoseNeutral;
@@ -41,6 +47,8 @@ import event.radar.RadarOff;
 import event.radar.RadarOn;
 import event.radar.RadarScan;
 import event.tcas.*;
+import event.temperature_sensor.TemperatureSensorBodyMeasure;
+import event.temperature_sensor.TemperatureSensorWingMeasure;
 import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorBodyMeasure;
 import event.turbulent_air_flow_sensor.TurbulentAirFlowSensorWingMeasure;
 import event.weather_radar.WeatherRadarOff;
@@ -141,6 +149,16 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor no action in startup
 
+        //Battery
+        eventBus.post(new BatteryDischarge());
+
+        //DeIcingSystem
+        eventBus.post(new DeIcingSystemActivate());
+        eventBus.post(new DeIcingSystemDeIce(200));
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void taxi() {
@@ -174,6 +192,17 @@ public class Airplane implements IAirplane {
         // fireDetector no action in taxi
 
         // oxygenSensor no action in taxi
+
+        //Battery
+        eventBus.post(new BatteryDischarge());
+
+        //AirFlowSensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+        eventBus.post(new AirFlowSensorWingMeasure());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void takeoff() {
@@ -232,6 +261,16 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+        //AirFlowSensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+        eventBus.post(new AirFlowSensorWingMeasure());
+
+        // battery
+        eventBus.post(new BatteryDischarge());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void climbing() {
@@ -287,6 +326,16 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+        // battery
+        eventBus.post(new BatteryDischarge());
+
+        //AirFlowSensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+        eventBus.post(new AirFlowSensorWingMeasure());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void rightTurn() {
@@ -336,6 +385,16 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+        // battery
+        eventBus.post(new BatteryDischarge());
+
+        //AirFlowSensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+        eventBus.post(new AirFlowSensorWingMeasure());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void leftTurn() {
@@ -385,6 +444,16 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+        // battery
+        eventBus.post(new BatteryDischarge());
+
+        //AirFlowSensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+        eventBus.post(new AirFlowSensorWingMeasure());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void descent() {
@@ -440,6 +509,16 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+        // battery
+        eventBus.post(new BatteryDischarge());
+
+        //AirFlowSensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+        eventBus.post(new AirFlowSensorWingMeasure());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void landing() {
@@ -501,6 +580,16 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+        // battery
+        eventBus.post(new BatteryDischarge());
+
+        //AirFlowSensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+        eventBus.post(new AirFlowSensorWingMeasure());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 
     public void shutdown() {
@@ -567,5 +656,11 @@ public class Airplane implements IAirplane {
         // fireDetector no action in shutdown
 
         // oxygenSensor no action in shutdown
+        // battery
+        eventBus.post(new BatteryCharge());
+
+        //TemperatureSensor
+        eventBus.post(new TemperatureSensorBodyMeasure());
+        eventBus.post(new TemperatureSensorWingMeasure());
     }
 }

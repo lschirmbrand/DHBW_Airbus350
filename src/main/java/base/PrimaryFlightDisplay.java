@@ -1,5 +1,6 @@
 package base;
 
+@SuppressWarnings("unused")
 public enum PrimaryFlightDisplay {
     instance;
 
@@ -247,7 +248,7 @@ public enum PrimaryFlightDisplay {
     // temperature_sensor
     public int temperatureBody;
     public boolean isTemperatureSensorBodyAlarm;
-    public int TemperatureWing;
+    public int temperatureWing;
     public boolean isTemperatureSensorWingAlarm;
 
     // turbulent_airflow_sensor

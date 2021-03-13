@@ -1,5 +1,6 @@
 package configuration;
 
+@SuppressWarnings("unused")
 public enum Configuration {
     instance;
 
@@ -18,9 +19,23 @@ public enum Configuration {
     public String pathToAirConditioningJavaArchive = commonPathToJavaArchive + "air_conditioning" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "air_conditioning.jar";
     public int numberOfAirConditioning = 4;
 
+    // airflow_sensor
+    public String pathToAirFlowSensorJavaArchive = commonPathToJavaArchive + "airflow_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "airflow_sensor.jar";
+    public int numberOfAirFlowSensorBody = 2;
+    public int numberOfAirFlowSensorWing = 2;
+
     // apu
     public String pathToApuJavaArchive = commonPathToJavaArchive + "apu" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "apu.jar";
     public int numberOfApu = 1;
+
+    // battery
+    public String pathToBatteryJavaArchive = commonPathToJavaArchive + "battery" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "battery.jar";
+    public int numberOfBattery = 24;
+
+    // deicing_system
+    public String pathToDeIcingSystemJavaArchive = commonPathToJavaArchive + "deicing_system" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "deicing_system.jar";
+    public int numberOfDeIcingSystemBody = 2;
+    public int numberOfDeIcingSystemWing = 2;
 
     // gear
     public String pathToGearJavaArchive = commonPathToJavaArchive + fileSeparator + "gear" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "gear.jar";
@@ -62,6 +77,11 @@ public enum Configuration {
     //tcas
     public String pathToTCASJavaArchive = commonPathToJavaArchive + "tcas" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "tcas.jar";
     public int numberOfTCAS = 2;
+
+    //temperature_sensor
+    public String pathToTemperatureSensorJavaArchive = commonPathToJavaArchive + "temperature_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "temperature_sensor.jar";
+    public int numberOfTemperatureSensorBody = 2;
+    public int numberOfTemperatureSensorWing = 4;
 
     //turbulent_air_flow_sensor
     public String pathToTurbulentAirFlowSensorJavaArchive = commonPathToJavaArchive + "turbulent_airflow_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "turbulent_air_flow_sensor.jar";

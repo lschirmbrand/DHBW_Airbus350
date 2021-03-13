@@ -3,9 +3,7 @@ public class SatCom {
     private static final SatCom instance = new SatCom();
     // port
     public Port port;
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String manufacturer = "9008480";
     private boolean isConnected;
 
     // private constructor
@@ -20,14 +18,14 @@ public class SatCom {
 
     // inner Methods
     public String innerVersion() {
-        return "SatCom // " + manufacturer + " - " + type + " - " + id;
+        return "SatCom // " + manufacturer;
     }
 
     public boolean innerOn() {
         return isConnected = true;
     }
 
-    public boolean innerConnect(String satalite, String frequency) {
+    public boolean innerConnect(String satellite, String frequency) {
         return isConnected;
     }
 
@@ -36,7 +34,7 @@ public class SatCom {
     }
 
     public String innerReceive() {
-        return null;
+        return "";
     }
 
     public boolean innerOff() {
@@ -54,8 +52,8 @@ public class SatCom {
             return innerOn();
         }
 
-        public boolean connect(String satalite, String frequency) {
-            return innerConnect(satalite, frequency);
+        public boolean connect(String satellite, String frequency) {
+            return innerConnect(satellite, frequency);
         }
 
         public void send(String request) {

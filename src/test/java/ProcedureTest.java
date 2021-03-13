@@ -26,7 +26,7 @@ public class ProcedureTest {
         this.config = PrimaryFlightDisplay.instance;
     }
 
-    @Test
+   /* @Test
     @Order(1)
     public void startUpTest() {
         cockpit.startup();
@@ -1322,5 +1322,5 @@ public class ProcedureTest {
 
         // weather_radar
         assertFalse(config.isWeatherRadarOn);
-    }
+    }*/
 }

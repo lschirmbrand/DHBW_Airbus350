@@ -3,9 +3,7 @@ public class WasteWaterTank {
     private static final WasteWaterTank instance = new WasteWaterTank();
     // port
     public Port port;
-    private final String manufacturer = "Manuel Truckses / Andreas Köhler";
-    private final String type = "Team 05";
-    private final String id = "9008480 / 1253402";
+    private final String manufacturer = "9008480";
     private int capacity = 1000;//1000
     private boolean isLocked;
 
@@ -21,7 +19,7 @@ public class WasteWaterTank {
 
     //inner methodes
     public String innerVersion() {
-        return "WasteWaterTank // " + manufacturer + " - " + type + " - " + id;
+        return "WasteWaterTank // " + manufacturer;
     }
 
     public boolean innerLock() {
@@ -33,7 +31,8 @@ public class WasteWaterTank {
     }
 
     public int innerAdd(int amount) {
-        return capacity + amount;
+        capacity += amount;
+        return capacity;
     }
 
     public int innerPumpOut() {
