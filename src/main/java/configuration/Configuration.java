@@ -113,4 +113,71 @@ public enum Configuration {
     //Elevator
     public String pathToElevatorJavaArchive = commonPathToJavaArchive + "elevator" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "elevator.jar";
     public int numberOfElevator = 4;
+
+    // crew_seat
+    public String pathToCrewSeatJavaArchive = commonPathToJavaArchive + "crew_seat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "crew_seat.jar";
+    public int numberOfCrewSeat = 8;
+
+    // economy_class_seat
+    public String pathToEconomyClassSeatJavaArchive = commonPathToJavaArchive + "economy_class_seat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "economy_class_seat.jar";
+    public int numberOfEconomyClassSeat = 262;
+
+    // fire_detector
+    public String pathToFireDetectorJavaArchive = commonPathToJavaArchive + "fire_detector" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "fire_detector.jar";
+    public int numberOfFireDetectorBody = 14;
+    public int numberOfFireDetectorWing = 4;
+
+    // oxygen_sensor
+    public String pathToOxygenSensorJavaArchive = commonPathToJavaArchive + "oxygen_sensor" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "oxygen_sensor.jar";
+    public int numberOfOxygenSensor = 8;
+
+    // slat
+    public String pathToSlatJavaArchive = commonPathToJavaArchive + "flight_controls_01" + fileSeparator + "slat" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "slat.jar";
+    public int numberOfSlat = 6;
+
+    // left_Aileron
+    public String pathToLeftAileronJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "left_aileron" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "left_aileron.jar";
+    public int numberOfLeftAileron = 3;
+
+    // right_Aileron
+    public String pathToRightAileronJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "right_aileron" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "right_aileron.jar";
+    public int numberOfRightAileron = 3;
+
+    // rudder
+    public String pathToRudderJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "rudder" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "rudder.jar";
+    public int numberOfRudder = 2;
+
+    // spoiler
+    public String pathToSpoilerJavaArchive = commonPathToJavaArchive + "flight_controls_02" + fileSeparator + "spoiler" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "spoiler.jar";
+    public int numberOfSpoiler = 8;
+
+    // anti_collision_light
+    public String pathToAntiCollisionLightJavaArchive = commonPathToJavaArchive + "light" + fileSeparator + "anti_collision_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "anti_collision_light.jar";
+    public int numberOfAntiCollisionLight = 2;
+
+
+    //cargo_compartment_light
+    public String pathToCargoCompartmentLight = commonPathToJavaArchive + "cargo_compartment_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "cargo_compartment_light.jar";
+    public int numberOfCargoCompartmentLight = 4;
+
+    //landing_light
+    public String pathToLandingLight = commonPathToJavaArchive + "landing_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "landing_light.jar";
+    public int numberOfLandingLightBody = 2;
+    public int numberOfLandingLightWing = 2;
+
+    //left_navigation_light
+    public String pathToLeftNavigationLight = commonPathToJavaArchive + "left_navigation_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "left_navigation_light.jar";
+    public int numberOfLeftNavigationLight = 1;
+
+    //logo_light
+    public String pathToLogoLight = commonPathToJavaArchive + "logo_light" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "logo_light.jar";
+    public int numberOfLogoLight = 2;
+
+    //cost_optimizer
+    public String pathToCostOptimizer = commonPathToJavaArchive + "cost_optimizer" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "cost_optimizer.jar";
+    public int numberOfCostOptimizer = 2;
+
+    //route_management
+    public String pathToRouteManagement = commonPathToJavaArchive + "route_management" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "route_management.jar";
+    public int numberOfRouteManagement = 2;
 }
