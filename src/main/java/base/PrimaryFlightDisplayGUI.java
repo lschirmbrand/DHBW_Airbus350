@@ -1444,10 +1444,10 @@ public class PrimaryFlightDisplayGUI extends Application {
         dataList.add(degreeElevatorEntry);
 
         //OxygenBottle
-        amountOxygenBottleEntry = new PrimaryFlightDisplayEntry("OxygenBottle (OxygenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.amountOxygenBottle));
+        amountOxygenBottleEntry = new PrimaryFlightDisplayEntry("OxygenBottle (OxygenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.oxygenBottleAmount));
         dataList.add(amountOxygenBottleEntry);
         //NitrogenBottle
-        amountNitrogenBottleEntry = new PrimaryFlightDisplayEntry("NitrogenBottle (NitrogenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
+        amountNitrogenBottleEntry = new PrimaryFlightDisplayEntry("NitrogenBottle (NitrogenBottle amount)", Integer.toString(PrimaryFlightDisplay.instance.amountOfNitrogen));
         dataList.add(amountNitrogenBottleEntry);
 
         // crew_seat
@@ -1620,12 +1620,12 @@ public class PrimaryFlightDisplayGUI extends Application {
         setDegreeElevator(PrimaryFlightDisplay.instance.degreeElevator);
 
         //OxygenBottle
-        amountOxygenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountOxygenBottle));
-        setOxygenBottleAmount(PrimaryFlightDisplay.instance.amountOxygenBottle);
+        amountOxygenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.oxygenBottleAmount));
+        setOxygenBottleAmount(PrimaryFlightDisplay.instance.oxygenBottleAmount);
 
         //NitrogenBottle
-        amountNitrogenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountNitrogenBottle));
-        setNitrogenBottleAmount(PrimaryFlightDisplay.instance.amountNitrogenBottle);
+        amountNitrogenBottleEntry.setValue(Integer.toString(PrimaryFlightDisplay.instance.amountOfNitrogen));
+        setNitrogenBottleAmount(PrimaryFlightDisplay.instance.amountOfNitrogen);
 
         // crew_seat
         crewSeatNonSmokingSignEntry.setValue(Boolean.toString(PrimaryFlightDisplay.instance.isNonSmokingSignOn));

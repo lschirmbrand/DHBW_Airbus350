@@ -265,11 +265,6 @@ public enum PrimaryFlightDisplay {
     // weather_radar
     public boolean isWeatherRadarOn;
 
-    //oxygenBottle
-    public int amountOxygenBottle;
-
-    //nitrogenBottle
-    public int amountNitrogenBottle;
 
     //crew_seat & economy_class_seat
     public boolean isNonSmokingSignOn;
@@ -277,5 +272,5 @@ public enum PrimaryFlightDisplay {
 
     //economy_class_seat
     public int levelSeat;
-    
+
 }
