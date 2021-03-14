@@ -397,39 +397,90 @@ public class PrimaryFlightDisplayGUI extends Application {
 
         // --- insert section: begin
 
-        // weather_radar
-        Label weatherRadarLabel = new Label("WeatherRadar : ");
-        weatherRadarLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(weatherRadarLabel, 0, 3);
+        // air_conditioning
+        Label airConditioningLabel = new Label("AirConditioning : ");
+        airConditioningLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(airConditioningLabel, 0, 0);
 
-        ToggleGroup weatherRadarToggleGroup = new ToggleGroup();
+        ToggleGroup ACToggleGroup = new ToggleGroup();
 
-        weatherRadarOffButton = new RadioButton("Off");
-        weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
-        weatherRadarOffButton.setSelected(true);
-        gridPane.add(weatherRadarOffButton, 2, 3);
+        airConditioningOffButton = new RadioButton("Off");
+        airConditioningOffButton.setToggleGroup(ACToggleGroup);
+        airConditioningOffButton.setSelected(true);
+        gridPane.add(airConditioningOffButton, 2, 0);
 
-        weatherRadarOnButton = new RadioButton("On");
-        weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
-        weatherRadarOnButton.setSelected(false);
+        airConditioningOnButton = new RadioButton("On");
+        airConditioningOnButton.setToggleGroup(ACToggleGroup);
+        gridPane.add(airConditioningOnButton, 1, 0);
 
-        gridPane.add(weatherRadarOnButton, 1, 3);
+        temperatureAirConditioningLabel = new Label("0 \u2103");
+        gridPane.add(temperatureAirConditioningLabel, 3, 0);
 
-        // droop_nose
-        Label droopNoseLabel = new Label("DroopNose : ");
-        droopNoseLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(droopNoseLabel, 0, 4);
+        // air_flow_sensor
+        Label airFlowSensorLabel = new Label("AirFlowSensor");
+        airFlowSensorLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(airFlowSensorLabel, 0, 1);
 
-        droopNoseDownButton = new Button("Down");
-        droopNoseFullDownButton = new Button("FullDown");
-        droopNoseUpButton = new Button("Up");
-        droopNoseNeutralButton = new Button("Neutral");
-        droopNoseDegreeLabel = new Label("0\u00B0");
-        gridPane.add(droopNoseDownButton, 1, 4);
-        gridPane.add(droopNoseFullDownButton, 2, 4);
-        gridPane.add(droopNoseUpButton, 3, 4);
-        gridPane.add(droopNoseNeutralButton, 4, 4);
-        gridPane.add(droopNoseDegreeLabel, 5, 4);
+        isAirFlowSensorBodyAlarmLabel = new Label("AirPressure: 0");
+        gridPane.add(isAirFlowSensorBodyAlarmLabel, 1, 1);
+
+        airFlowSensorBodyMeasureButton = new Button("MeasureBody");
+        gridPane.add(airFlowSensorBodyMeasureButton, 2, 1);
+        isAirFlowSensorWingAlarmLabel = new Label("No body alarm");
+        gridPane.add(isAirFlowSensorWingAlarmLabel, 3, 1);
+
+        airFlowSensorWingMeasureButton = new Button("MeasureWing");
+        gridPane.add(airFlowSensorWingMeasureButton, 4, 1);
+        airPressureLabel = new Label("No wing alarm");
+        gridPane.add(airPressureLabel, 5, 1);
+
+        // anti_collision_light
+        Label antiCollisionLightLabel = new Label("AntiCollisionLight : ");
+        gridPane.add(antiCollisionLightLabel, 0, 2);
+
+        ToggleGroup antiCollisionLightToggleGroup = new ToggleGroup();
+
+        antiCollisionLightOffButton = new RadioButton("Off");
+        antiCollisionLightOffButton.setToggleGroup(antiCollisionLightToggleGroup);
+        antiCollisionLightOffButton.setSelected(true);
+        gridPane.add(antiCollisionLightOffButton, 1, 2);
+
+        antiCollisionLightOnButton = new RadioButton("On");
+        antiCollisionLightOnButton.setToggleGroup(antiCollisionLightToggleGroup);
+        antiCollisionLightOnButton.setSelected(false);
+        gridPane.add(antiCollisionLightOnButton, 2, 2);
+
+        // apu
+        Label apuLabel = new Label("APU : ");
+        apuLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(apuLabel, 0, 3);
+
+        ToggleGroup apuToggleGroup = new ToggleGroup();
+        apuShutdownButton = new RadioButton("Off");
+        apuShutdownButton.setToggleGroup(apuToggleGroup);
+        apuShutdownButton.setSelected(true);
+        gridPane.add(apuShutdownButton, 2, 3);
+
+        apuStartedButton = new RadioButton("On");
+        apuStartedButton.setToggleGroup(apuToggleGroup);
+        gridPane.add(apuStartedButton, 1, 3);
+
+        apuRPMLabel = new Label("0 rpm");
+        gridPane.add(apuRPMLabel, 3, 3);
+
+        // battery
+        Label batteryLabel = new Label("Battery");
+        batteryLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(batteryLabel, 0, 4);
+
+        batteryPercentageLabel = new Label("BatteryPercentage: 100%");
+        gridPane.add(batteryPercentageLabel, 1, 4);
+
+        batteryChargeButton = new Button("ChargeBattery");
+        gridPane.add(batteryChargeButton, 2, 4);
+
+        batteryDischargeButton = new Button("DischargeBattery");
+        gridPane.add(batteryDischargeButton, 3, 4);
 
         //Camera
         Label cameraLabel = new Label("Camera: ");
@@ -460,192 +511,47 @@ public class PrimaryFlightDisplayGUI extends Application {
         cameraWingOffRadio.setSelected(true);
         gridPane.add(cameraWingOffRadio, 6, 5);
 
-        //GPS
-        Label gpsLabel = new Label("GPS: ");
-        gpsLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(gpsLabel, 0, 6);
+        // cargo_compartment_light
+        Label cargoCompartentLightLabel = new Label("CargoCompartmentLight : ");
+        gridPane.add(cargoCompartentLightLabel, 0, 6);
 
-        gpsToggleGroup = new ToggleGroup();
+        ToggleGroup cargoCompartentLightToggleGroup = new ToggleGroup();
 
-        gpsOnRadio = new RadioButton("On");
-        gpsOnRadio.setToggleGroup(gpsToggleGroup);
-        gridPane.add(gpsOnRadio, 1, 6);
+        cargoCompartmentLightOffButton = new RadioButton("Off");
+        cargoCompartmentLightOffButton.setToggleGroup(cargoCompartentLightToggleGroup);
+        cargoCompartmentLightOffButton.setSelected(true);
+        gridPane.add(cargoCompartmentLightOffButton, 1, 6);
 
-        gpsOffRadio = new RadioButton("Off");
-        gpsOffRadio.setToggleGroup(gpsToggleGroup);
-        gpsOffRadio.setSelected(true);
-        gridPane.add(gpsOffRadio, 2, 6);
+        cargoCompartmentLightOnButton = new RadioButton("On");
+        cargoCompartmentLightOnButton.setToggleGroup(cargoCompartentLightToggleGroup);
+        cargoCompartmentLightOnButton.setSelected(false);
+        gridPane.add(cargoCompartmentLightOnButton, 2, 6);
 
-        gridPane.add((gpsSendButton = new Button("Send")), 3, 6);
-        gridPane.add((gpsReceiveButton = new Button("Receive")), 4, 6);
-        gridPane.add((gpsConnectButton = new Button("Connect")), 5, 6);
-        gridPane.add((gpsConnectedLabel = new Label("Not Connected")), 6, 6);
+        // cost_optimizer
+        Label costOptimizerLabel = new Label("CostOptimizer : ");
+        gridPane.add(costOptimizerLabel, 0, 7);
 
-        //Radar
-        Label radarLabel = new Label("Radar: ");
-        radarLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(radarLabel, 0, 7);
+        ToggleGroup costOptimizerToggleGroup = new ToggleGroup();
 
-        radarToggleGroup = new ToggleGroup();
+        costOptimizerOffButton = new RadioButton("Off");
+        costOptimizerOffButton.setToggleGroup(costOptimizerToggleGroup);
+        costOptimizerOffButton.setSelected(true);
+        gridPane.add(costOptimizerOffButton, 1, 7);
 
-        radarOnRadio = new RadioButton("On");
-        radarOnRadio.setToggleGroup(radarToggleGroup);
-        gridPane.add(radarOnRadio, 1, 7);
+        costOptimizerOnButton = new RadioButton("On");
+        costOptimizerOnButton.setToggleGroup(costOptimizerToggleGroup);
+        costOptimizerOnButton.setSelected(false);
+        gridPane.add(costOptimizerOnButton, 2, 7);
 
-        radarOffRadio = new RadioButton("Off");
-        radarOffRadio.setToggleGroup(radarToggleGroup);
-        radarOffRadio.setSelected(true);
-        gridPane.add(radarOffRadio, 2, 7);
+        indexCostOptimizerLabel = new Label("IndexCostOptimizer: " + (PrimaryFlightDisplay.instance.indexCostOptimizer));
+        gridPane.add(indexCostOptimizerLabel, 3, 7);
 
-        gridPane.add((radarScanButton = new Button("Scan")), 3, 7);
-
-        //TCAS
-        Label tcasLabel = new Label("TCAS");
-        tcasLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(tcasLabel, 0, 8);
-
-        tcasToggleGroup = new ToggleGroup();
-
-        tcasOnRadio = new RadioButton("On");
-        tcasOnRadio.setToggleGroup(tcasToggleGroup);
-        gridPane.add(tcasOnRadio, 1, 8);
-
-        tcasOffRadio = new RadioButton("Off");
-        tcasOffRadio.setToggleGroup(tcasToggleGroup);
-        tcasOffRadio.setSelected(true);
-        gridPane.add(tcasOffRadio, 2, 8);
-
-        gridPane.add((tcasConnectButton = new Button("Connect")), 3, 8);
-        gridPane.add((tcasIsConnectedLabel = new Label("Not Connected")), 4, 8);
-        gridPane.add((tcasDetermineAltitudeButton = new Button("Determine Altitude")), 5, 8);
-        gridPane.add((tcasAltitudeLabel = new Label("0\u00B0")), 6, 8);
-        gridPane.add((tcasScanButton = new Button("Scan")), 7, 8);
-        gridPane.add((tcasIsAlarmLabel = new Label("No Alarm")), 8, 8);
-
-        //Turbulent Airflow Sensor
-        Label turbulentLabel = new Label("Turbulent Airflow Sensor: ");
-        turbulentLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(turbulentLabel, 0, 9);
-        gridPane.add((turbulentAirFlowSensorMeasureBodyButton = new Button("Measure Body")), 1, 9);
-        gridPane.add((turbulentAirFlowSensorMeasureWingButton = new Button("Measure Wing")), 2, 9);
-        gridPane.add((turbulentAirFlowSensorIsAlarmLabel = new Label("No Alarm")), 3, 9);
-
-        // apu
-        Label apuLabel = new Label("APU : ");
-        apuLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(apuLabel, 0, 1);
-
-        ToggleGroup apuToggleGroup = new ToggleGroup();
-        apuShutdownButton = new RadioButton("Off");
-        apuShutdownButton.setToggleGroup(apuToggleGroup);
-        apuShutdownButton.setSelected(true);
-        gridPane.add(apuShutdownButton, 2, 1);
-
-        apuStartedButton = new RadioButton("On");
-        apuStartedButton.setToggleGroup(apuToggleGroup);
-        gridPane.add(apuStartedButton, 1, 1);
-
-        apuRPMLabel = new Label("0 rpm");
-        gridPane.add(apuRPMLabel, 3, 1);
-
-        // engine
-        Label engineLabel = new Label("Engine : ");
-        engineLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(engineLabel, 0, 10);
-
-        ToggleGroup engineToggleGroup = new ToggleGroup();
-
-        engineOffButton = new RadioButton("Off");
-        engineOffButton.setToggleGroup(engineToggleGroup);
-        engineOffButton.setSelected(true);
-        gridPane.add(engineOffButton, 2, 10);
-
-        engineOnButton = new RadioButton("On");
-        engineOnButton.setToggleGroup(engineToggleGroup);
-        engineOnButton.setSelected(false);
-        gridPane.add(engineOnButton, 1, 10);
-
-        //noinspection SpellCheckingInspection
-        engineRPMLabel = new Label("RPM's: 0");
-        gridPane.add(engineRPMLabel, 3, 10);
-
-        // gear
-        Label gearLabel = new Label("Gear : ");
-        gearLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(gearLabel, 0, 11);
-
-        gearComboBox = new ComboBox<>();
-        gearComboBox.getItems().addAll("down", "up");
-        gearComboBox.setValue("down");
-        gearComboBox.setEditable(false);
-        gridPane.add(gearComboBox, 1, 11);
-
-        Label gearBrakeLabel = new Label("Brake: ");
-        gridPane.add(gearBrakeLabel, 2, 11);
-
-        gearBrakePercentageLabel = new Label(0 + "%");
-        gridPane.add(gearBrakePercentageLabel, 3, 11);
-
-        // Hydraulic Pump
-        Label hydraulicPumpLabel = new Label("Hydraulic Pump:");
-        hydraulicPumpLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(hydraulicPumpLabel, 0, 12);
-        hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
-        gridPane.add(hydraulicPumpBodyOilAmountLabel, 1, 12);
-        hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
-        gridPane.add(hydraulicPumpWingOilAmountLabel, 2, 12);
-
-        // air_conditioning
-        Label airConditioningLabel = new Label("AirConditioning : ");
-        airConditioningLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(airConditioningLabel, 0, 13);
-
-        ToggleGroup ACToggleGroup = new ToggleGroup();
-
-        airConditioningOffButton = new RadioButton("Off");
-        airConditioningOffButton.setToggleGroup(ACToggleGroup);
-        airConditioningOffButton.setSelected(true);
-        gridPane.add(airConditioningOffButton, 2, 13);
-
-        airConditioningOnButton = new RadioButton("On");
-        airConditioningOnButton.setToggleGroup(ACToggleGroup);
-        gridPane.add(airConditioningOnButton, 1, 13);
-
-        temperatureAirConditioningLabel = new Label("0 \u2103");
-        gridPane.add(temperatureAirConditioningLabel, 3, 13);
-
-        // Elevator
-        Label elevatorLabel = new Label("Elevators");
-        elevatorLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(elevatorLabel, 0, 14);
-        degreeElevator = new Label("90 \u00B0");
-        gridPane.add(degreeElevator, 1, 14);
-
-        //OxygenBottle
-        Label oxygenBottleLabel = new Label("OxygenBottle");
-        oxygenBottleLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(oxygenBottleLabel, 0, 15);
-        amountOxygenBottle = new Label("100");
-        gridPane.add(amountOxygenBottle, 1, 15);
-        oxygenBottleRefillButton = new Button("Refill");
-        gridPane.add(oxygenBottleRefillButton, 2, 15);
-        oxygenBottleTakeOutButton = new Button("TakeOut");
-        gridPane.add(oxygenBottleTakeOutButton, 3, 15);
-
-        //NitrogenBottle
-        Label nitrogenBottleLabel = new Label("NitrogenBottle");
-        nitrogenBottleLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(nitrogenBottleLabel, 0, 16);
-        amountNitrogenBottle = new Label("250");
-        gridPane.add(amountNitrogenBottle, 1, 16);
-        nitrogenBottleRefillButton = new Button("Refill");
-        gridPane.add(nitrogenBottleRefillButton, 2, 16);
-        nitrogenBottleTakeOutButton = new Button("TakeOut");
-        gridPane.add(nitrogenBottleTakeOutButton, 3, 16);
+        numberOfCheckPointsCostOptimizerLabel = new Label("NumberOfCheckPoints: " + (PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer));
+        gridPane.add(numberOfCheckPointsCostOptimizerLabel, 4, 7);
 
         // crew_seat
         Label crewSeatNonSmokingSignLabel = new Label("CrewSeatNonSmokingSign : ");
-        gridPane.add(crewSeatNonSmokingSignLabel, 0, 3);
+        gridPane.add(crewSeatNonSmokingSignLabel, 0, 8);
 
         ToggleGroup crewSeatNonSmokingSignToggleGroup = new ToggleGroup();
 
@@ -653,16 +559,16 @@ public class PrimaryFlightDisplayGUI extends Application {
         crewSeatNonSmokingSignOn = new RadioButton("On");
         crewSeatNonSmokingSignOn.setToggleGroup(crewSeatNonSmokingSignToggleGroup);
         crewSeatNonSmokingSignOn.setSelected(false);
-        gridPane.add(crewSeatNonSmokingSignOn, 1, 3);
+        gridPane.add(crewSeatNonSmokingSignOn, 1, 8);
 
         //crew_seat_smoking_sign_Off
         crewSeatNonSmokingSignOff = new RadioButton("Off");
         crewSeatNonSmokingSignOff.setToggleGroup(crewSeatNonSmokingSignToggleGroup);
         crewSeatNonSmokingSignOff.setSelected(true);
-        gridPane.add(crewSeatNonSmokingSignOff, 2, 3);
+        gridPane.add(crewSeatNonSmokingSignOff, 2, 8);
 
         Label crewSeatSeatBeltSignLabel = new Label("CrewSeatBeltSign : ");
-        gridPane.add(crewSeatSeatBeltSignLabel, 0, 4);
+        gridPane.add(crewSeatSeatBeltSignLabel, 0, 9);
 
         ToggleGroup crewSeatBeltSignToggleGroup = new ToggleGroup();
 
@@ -670,17 +576,59 @@ public class PrimaryFlightDisplayGUI extends Application {
         crewSeatBeltSignOn = new RadioButton("On");
         crewSeatBeltSignOn.setToggleGroup(crewSeatBeltSignToggleGroup);
         crewSeatBeltSignOn.setSelected(false);
-        gridPane.add(crewSeatBeltSignOn, 1, 4);
+        gridPane.add(crewSeatBeltSignOn, 1, 9);
 
         //crew_seat_belt_sign_Off
         crewSeatBeltSignOff = new RadioButton("Off");
         crewSeatBeltSignOff.setToggleGroup(crewSeatBeltSignToggleGroup);
         crewSeatBeltSignOff.setSelected(true);
-        gridPane.add(crewSeatBeltSignOff, 2, 4);
+        gridPane.add(crewSeatBeltSignOff, 2, 9);
+
+        // de_icing_system
+        Label deIcingSystemLabel = new Label("DeIcingSystem");
+        deIcingSystemLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(deIcingSystemLabel, 0, 10);
+
+        ToggleGroup deIcingSystemToggleGroup = new ToggleGroup();
+
+        deIcingSystemOffButton = new RadioButton("Off");
+        deIcingSystemOffButton.setToggleGroup(deIcingSystemToggleGroup);
+        deIcingSystemOffButton.setSelected(true);
+        gridPane.add(deIcingSystemOffButton, 2, 10);
+
+        deIcingSystemOnButton = new RadioButton("On");
+        deIcingSystemOnButton.setToggleGroup(deIcingSystemToggleGroup);
+        deIcingSystemOnButton.setSelected(false);
+        gridPane.add(deIcingSystemOnButton, 1, 10);
+
+        amountDeIcingSystemLabel = new Label("Amount: 50");
+        gridPane.add(amountDeIcingSystemLabel, 3, 10);
+
+        deIcingSystemDeIceButton = new Button("DeIce");
+        gridPane.add(deIcingSystemDeIceButton, 4, 10);
+
+        deIcingSystemRefillButton = new Button("Refill");
+        gridPane.add(deIcingSystemRefillButton, 5, 10);
+
+        // droop_nose
+        Label droopNoseLabel = new Label("DroopNose : ");
+        droopNoseLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(droopNoseLabel, 0, 11);
+
+        droopNoseDownButton = new Button("Down");
+        droopNoseFullDownButton = new Button("FullDown");
+        droopNoseUpButton = new Button("Up");
+        droopNoseNeutralButton = new Button("Neutral");
+        droopNoseDegreeLabel = new Label("0\u00B0");
+        gridPane.add(droopNoseDownButton, 1, 11);
+        gridPane.add(droopNoseFullDownButton, 2, 11);
+        gridPane.add(droopNoseUpButton, 3, 11);
+        gridPane.add(droopNoseNeutralButton, 4, 11);
+        gridPane.add(droopNoseDegreeLabel, 5, 11);
 
         // economy_class_seat
         Label economyClassSeatNonSmokingSignLabel = new Label("EconomyClassSeatNonSmokingSign : ");
-        gridPane.add(economyClassSeatNonSmokingSignLabel, 0, 5);
+        gridPane.add(economyClassSeatNonSmokingSignLabel, 0, 12);
 
         ToggleGroup economyClassSeatNonSmokingSignToggleGroup = new ToggleGroup();
 
@@ -688,16 +636,16 @@ public class PrimaryFlightDisplayGUI extends Application {
         economyClassSeatNonSmokingSignOn = new RadioButton("On");
         economyClassSeatNonSmokingSignOn.setToggleGroup(economyClassSeatNonSmokingSignToggleGroup);
         economyClassSeatNonSmokingSignOn.setSelected(false);
-        gridPane.add(economyClassSeatNonSmokingSignOn, 1, 5);
+        gridPane.add(economyClassSeatNonSmokingSignOn, 1, 12);
 
         //economy_class_seat_smoking_sign_Off
         economyClassSeatNonSmokingSignOff = new RadioButton("Off");
         economyClassSeatNonSmokingSignOff.setToggleGroup(economyClassSeatNonSmokingSignToggleGroup);
         economyClassSeatNonSmokingSignOff.setSelected(true);
-        gridPane.add(economyClassSeatNonSmokingSignOff, 2, 5);
+        gridPane.add(economyClassSeatNonSmokingSignOff, 2, 12);
 
         Label economyClassSeatSeatBeltSignLabel = new Label("EconomyClassSeatBeltSign : ");
-        gridPane.add(economyClassSeatSeatBeltSignLabel, 0, 6);
+        gridPane.add(economyClassSeatSeatBeltSignLabel, 0, 13);
 
         ToggleGroup economyClassSeatBeltSignToggleGroup = new ToggleGroup();
 
@@ -705,299 +653,350 @@ public class PrimaryFlightDisplayGUI extends Application {
         economyClassSeatBeltSignOn = new RadioButton("On");
         economyClassSeatBeltSignOn.setToggleGroup(economyClassSeatBeltSignToggleGroup);
         economyClassSeatBeltSignOn.setSelected(false);
-        gridPane.add(economyClassSeatBeltSignOn, 1, 6);
+        gridPane.add(economyClassSeatBeltSignOn, 1, 13);
 
         // economy_class_seat_belt_sign_Off
         economyClassSeatBeltSignOff = new RadioButton("Off");
         economyClassSeatBeltSignOff.setToggleGroup(economyClassSeatBeltSignToggleGroup);
         economyClassSeatBeltSignOff.setSelected(true);
-        gridPane.add(economyClassSeatBeltSignOff, 2, 6);
+        gridPane.add(economyClassSeatBeltSignOff, 2, 13);
 
         economyClassSeatLevelOneSeat = new Label("EconomyClassSeatLevelOne :");
-        gridPane.add(economyClassSeatLevelOneSeat, 0, 7);
+        gridPane.add(economyClassSeatLevelOneSeat, 0, 14);
+
+        // Elevator
+        Label elevatorLabel = new Label("Elevators");
+        elevatorLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(elevatorLabel, 0, 15);
+        degreeElevator = new Label("90 \u00B0");
+        gridPane.add(degreeElevator, 1, 15);
+
+        // engine
+        Label engineLabel = new Label("Engine : ");
+        engineLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(engineLabel, 0, 16);
+
+        ToggleGroup engineToggleGroup = new ToggleGroup();
+
+        engineOffButton = new RadioButton("Off");
+        engineOffButton.setToggleGroup(engineToggleGroup);
+        engineOffButton.setSelected(true);
+        gridPane.add(engineOffButton, 2, 16);
+
+        engineOnButton = new RadioButton("On");
+        engineOnButton.setToggleGroup(engineToggleGroup);
+        engineOnButton.setSelected(false);
+        gridPane.add(engineOnButton, 1, 16);
+
+        //noinspection SpellCheckingInspection
+        engineRPMLabel = new Label("RPM's: 0");
+        gridPane.add(engineRPMLabel, 3, 16);
 
         // fire_detector
         fireDetectorBodyAlarm = new Label("FireDetector Body : ");
-        gridPane.add(fireDetectorBodyAlarm, 0, 8);
+        gridPane.add(fireDetectorBodyAlarm, 0, 17);
 
         fireDetectorWingAlarm = new Label("FireDetector Wing : ");
-        gridPane.add(fireDetectorWingAlarm, 0, 9);
+        gridPane.add(fireDetectorWingAlarm, 0, 18);
 
-        // oxygen_sensor
-        oxygenSensorAlarm = new Label("OxygenSensor Alarm : ");
-        gridPane.add(oxygenSensorAlarm, 0, 10);
-        // air_flow_sensor
-        Label airFlowSensorLabel = new Label("AirFlowSensor");
-        airFlowSensorLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(airFlowSensorLabel, 0, 17);
+        // gear
+        Label gearLabel = new Label("Gear : ");
+        gearLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(gearLabel, 0, 19);
 
-        isAirFlowSensorBodyAlarmLabel = new Label("AirPressure: 0");
-        gridPane.add(isAirFlowSensorBodyAlarmLabel, 1, 17);
+        gearComboBox = new ComboBox<>();
+        gearComboBox.getItems().addAll("down", "up");
+        gearComboBox.setValue("down");
+        gearComboBox.setEditable(false);
+        gridPane.add(gearComboBox, 1, 19);
 
-        airFlowSensorBodyMeasureButton = new Button("MeasureBody");
-        gridPane.add(airFlowSensorBodyMeasureButton, 2, 17);
-        isAirFlowSensorWingAlarmLabel = new Label("No body alarm");
-        gridPane.add(isAirFlowSensorWingAlarmLabel, 3, 17);
+        Label gearBrakeLabel = new Label("Brake: ");
+        gridPane.add(gearBrakeLabel, 2, 19);
 
-        airFlowSensorWingMeasureButton = new Button("MeasureWing");
-        gridPane.add(airFlowSensorWingMeasureButton, 4, 17);
-        airPressureLabel = new Label("No wing alarm");
-        gridPane.add(airPressureLabel, 5, 17);
+        gearBrakePercentageLabel = new Label(0 + "%");
+        gridPane.add(gearBrakePercentageLabel, 3, 19);
 
-        // battery
-        Label batteryLabel = new Label("Battery");
-        batteryLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(batteryLabel, 0, 18);
+        //GPS
+        Label gpsLabel = new Label("GPS: ");
+        gpsLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(gpsLabel, 0, 20);
 
-        batteryPercentageLabel = new Label("BatteryPercentage: 100%");
-        gridPane.add(batteryPercentageLabel, 1, 18);
+        gpsToggleGroup = new ToggleGroup();
 
-        batteryChargeButton = new Button("ChargeBattery");
-        gridPane.add(batteryChargeButton, 2, 18);
+        gpsOnRadio = new RadioButton("On");
+        gpsOnRadio.setToggleGroup(gpsToggleGroup);
+        gridPane.add(gpsOnRadio, 1, 20);
 
-        batteryDischargeButton = new Button("DischargeBattery");
-        gridPane.add(batteryDischargeButton, 3, 18);
+        gpsOffRadio = new RadioButton("Off");
+        gpsOffRadio.setToggleGroup(gpsToggleGroup);
+        gpsOffRadio.setSelected(true);
+        gridPane.add(gpsOffRadio, 2, 20);
 
-        // de_icing_system
-        Label deIcingSystemLabel = new Label("DeIcingSystem");
-        deIcingSystemLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(deIcingSystemLabel, 0, 19);
+        gridPane.add((gpsSendButton = new Button("Send")), 3, 20);
+        gridPane.add((gpsReceiveButton = new Button("Receive")), 4, 20);
+        gridPane.add((gpsConnectButton = new Button("Connect")), 5, 20);
+        gridPane.add((gpsConnectedLabel = new Label("Not Connected")), 6, 20);
 
-        ToggleGroup deIcingSystemToggleGroup = new ToggleGroup();
-
-        deIcingSystemOffButton = new RadioButton("Off");
-        deIcingSystemOffButton.setToggleGroup(deIcingSystemToggleGroup);
-        deIcingSystemOffButton.setSelected(true);
-        gridPane.add(deIcingSystemOffButton, 2, 19);
-
-        deIcingSystemOnButton = new RadioButton("On");
-        deIcingSystemOnButton.setToggleGroup(deIcingSystemToggleGroup);
-        deIcingSystemOnButton.setSelected(false);
-        gridPane.add(deIcingSystemOnButton, 1, 19);
-
-        amountDeIcingSystemLabel = new Label("Amount: 50");
-        gridPane.add(amountDeIcingSystemLabel, 3, 19);
-
-        deIcingSystemDeIceButton = new Button("DeIce");
-        gridPane.add(deIcingSystemDeIceButton, 4, 19);
-
-        deIcingSystemRefillButton = new Button("Refill");
-        gridPane.add(deIcingSystemRefillButton, 5, 19);
-
-        // temperature_sensor
-        Label temperatureSensorLabel = new Label("TemperatureSensor");
-        temperatureSensorLabel.setStyle("-fx-font-weight: bold");
-        gridPane.add(temperatureSensorLabel, 0, 20);
-
-        temperatureBodyLabel = new Label("TemperatureBody: 0\u2103");
-        gridPane.add(temperatureBodyLabel, 1, 20);
-
-        temperatureSensorBodyMeasureButton = new Button("MeasureBody");
-        gridPane.add(temperatureSensorBodyMeasureButton, 3, 20);
-
-        isTemperatureSensorBodyAlarmLabel = new Label("No body alarm");
-        gridPane.add(isTemperatureSensorBodyAlarmLabel, 4, 20);
-
-        temperatureWingLabel = new Label("TemperatureWing: 0\u2103");
-        gridPane.add(temperatureWingLabel, 5, 20);
-
-        temperatureSensorWingMeasureButton = new Button("MeasureWing");
-        gridPane.add(temperatureSensorWingMeasureButton, 6, 20);
-
-        isTemperatureSensorWingAlarmLabel = new Label("No wing alarm");
-        gridPane.add(isTemperatureSensorWingAlarmLabel, 7, 20);
-
-        // slat
-        Label slatDegreeLabel = new Label("Slat : ");
-        gridPane.add(slatDegreeLabel, 0, 14);
-
-        slatDegreeSpinner = new Spinner<>();
-        slatDegreeSpinner.setMaxWidth(60);
-        SpinnerValueFactory<Integer> slatDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-20, 0, 0);
-        slatDegreeSpinner.setValueFactory(slatDegreeSpinnerValueFactory);
-        gridPane.add(slatDegreeSpinner, 1, 14);
-
-        // left_aileron
-        Label left_aileronDegreeLabel = new Label("Left_aileron : ");
-        gridPane.add(left_aileronDegreeLabel, 0, 15);
-
-        leftAileronDegreeSpinner = new Spinner<>();
-        leftAileronDegreeSpinner.setMaxWidth(60);
-        SpinnerValueFactory<Integer> left_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
-        leftAileronDegreeSpinner.setValueFactory(left_aileronDegreeSpinnerValueFactory);
-        gridPane.add(leftAileronDegreeSpinner, 1, 15);
-
-        // right_aileron
-        Label right_aileronDegreeLabel = new Label("Right_aileron : ");
-        gridPane.add(right_aileronDegreeLabel, 0, 16);
-
-        rightAileronDegreeSpinner = new Spinner<>();
-        rightAileronDegreeSpinner.setMaxWidth(60);
-        SpinnerValueFactory<Integer> right_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
-        rightAileronDegreeSpinner.setValueFactory(right_aileronDegreeSpinnerValueFactory);
-        gridPane.add(rightAileronDegreeSpinner, 1, 16);
-
-        // rudder
-        Label rudderDegreeLabel = new Label("Rudder : ");
-        gridPane.add(rudderDegreeLabel, 0, 17);
-
-        rudderDegreeSpinner = new Spinner<>();
-        rudderDegreeSpinner.setMaxWidth(60);
-        SpinnerValueFactory<Integer> rudderDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
-        rudderDegreeSpinner.setValueFactory(rudderDegreeSpinnerValueFactory);
-        gridPane.add(rudderDegreeSpinner, 1, 17);
-
-        // spoiler
-        Label spoilerDegreeLabel = new Label("Spoiler : ");
-        gridPane.add(spoilerDegreeLabel, 0, 18);
-
-        spoilerDegreeSpinner = new Spinner<>();
-        spoilerDegreeSpinner.setMaxWidth(60);
-        SpinnerValueFactory<Integer> spoilerDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, 0);
-        spoilerDegreeSpinner.setValueFactory(spoilerDegreeSpinnerValueFactory);
-        gridPane.add(spoilerDegreeSpinner, 1, 18);
-
-        // anti_collision_light
-        Label antiCollisionLightLabel = new Label("AntiCollisionLight : ");
-        gridPane.add(antiCollisionLightLabel, 0, 19);
-
-        ToggleGroup antiCollisionLightToggleGroup = new ToggleGroup();
-
-        antiCollisionLightOffButton = new RadioButton("Off");
-        antiCollisionLightOffButton.setToggleGroup(antiCollisionLightToggleGroup);
-        antiCollisionLightOffButton.setSelected(true);
-        gridPane.add(antiCollisionLightOffButton, 1, 19);
-
-        antiCollisionLightOnButton = new RadioButton("On");
-        antiCollisionLightOnButton.setToggleGroup(antiCollisionLightToggleGroup);
-        antiCollisionLightOnButton.setSelected(false);
-        gridPane.add(antiCollisionLightOnButton, 2, 19);
-
-        // cargo_compartment_light
-        Label cargoCompartentLightLabel = new Label("CargoCompartmentLight : ");
-        gridPane.add(cargoCompartentLightLabel, 0, 20);
-
-        ToggleGroup cargoCompartentLightToggleGroup = new ToggleGroup();
-
-        cargoCompartmentLightOffButton = new RadioButton("Off");
-        cargoCompartmentLightOffButton.setToggleGroup(cargoCompartentLightToggleGroup);
-        cargoCompartmentLightOffButton.setSelected(true);
-        gridPane.add(cargoCompartmentLightOffButton, 1, 20);
-
-        cargoCompartmentLightOnButton = new RadioButton("On");
-        cargoCompartmentLightOnButton.setToggleGroup(cargoCompartentLightToggleGroup);
-        cargoCompartmentLightOnButton.setSelected(false);
-        gridPane.add(cargoCompartmentLightOnButton, 2, 20);
-
-        // cost_optimizer
-        Label costOptimizerLabel = new Label("CostOptimizer : ");
-        gridPane.add(costOptimizerLabel, 0, 27);
-
-        ToggleGroup costOptimizerToggleGroup = new ToggleGroup();
-
-        costOptimizerOffButton = new RadioButton("Off");
-        costOptimizerOffButton.setToggleGroup(costOptimizerToggleGroup);
-        costOptimizerOffButton.setSelected(true);
-        gridPane.add(costOptimizerOffButton, 1, 27);
-
-        costOptimizerOnButton = new RadioButton("On");
-        costOptimizerOnButton.setToggleGroup(costOptimizerToggleGroup);
-        costOptimizerOnButton.setSelected(false);
-        gridPane.add(costOptimizerOnButton, 2, 27);
-
-        indexCostOptimizerLabel = new Label("IndexCostOptimizer: " + (PrimaryFlightDisplay.instance.indexCostOptimizer));
-        gridPane.add(indexCostOptimizerLabel, 3, 27);
-
-        numberOfCheckPointsCostOptimizerLabel = new Label("NumberOfCheckPoints: " + (PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer));
-        gridPane.add(numberOfCheckPointsCostOptimizerLabel, 4, 27);
+        // Hydraulic Pump
+        Label hydraulicPumpLabel = new Label("Hydraulic Pump:");
+        hydraulicPumpLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(hydraulicPumpLabel, 0, 21);
+        hydraulicPumpBodyOilAmountLabel = new Label("5000 PSI at Body");
+        gridPane.add(hydraulicPumpBodyOilAmountLabel, 1, 21);
+        hydraulicPumpWingOilAmountLabel = new Label("5000 PSI at Wing");
+        gridPane.add(hydraulicPumpWingOilAmountLabel, 2, 21);
 
         // landing_light_body
         Label landingLightBodyLabel = new Label("LandingLightBody : ");
-        gridPane.add(landingLightBodyLabel, 0, 21);
+        gridPane.add(landingLightBodyLabel, 0, 22);
 
         ToggleGroup landingLightBodyToggleGroup = new ToggleGroup();
 
         landingLightBodyOffButton = new RadioButton("Off");
         landingLightBodyOffButton.setToggleGroup(landingLightBodyToggleGroup);
         landingLightBodyOffButton.setSelected(true);
-        gridPane.add(landingLightBodyOffButton, 1, 21);
+        gridPane.add(landingLightBodyOffButton, 1, 22);
 
         landingLightBodyOnButton = new RadioButton("On");
         landingLightBodyOnButton.setToggleGroup(landingLightBodyToggleGroup);
         landingLightBodyOnButton.setSelected(false);
-        gridPane.add(landingLightBodyOnButton, 2, 21);
+        gridPane.add(landingLightBodyOnButton, 2, 22);
 
         // landing_light_wing
         Label landingLightWingLabel = new Label("LandingLightWing : ");
-        gridPane.add(landingLightWingLabel, 3, 21);
+        gridPane.add(landingLightWingLabel, 3, 22);
 
         ToggleGroup landingLightWingToggleGroup = new ToggleGroup();
 
         landingLightWingOffButton = new RadioButton("Off");
         landingLightWingOffButton.setToggleGroup(landingLightWingToggleGroup);
         landingLightWingOffButton.setSelected(true);
-        gridPane.add(landingLightWingOffButton, 4, 21);
+        gridPane.add(landingLightWingOffButton, 4, 22);
 
         landingLightWingOnButton = new RadioButton("On");
         landingLightWingOnButton.setToggleGroup(landingLightWingToggleGroup);
         landingLightWingOnButton.setSelected(false);
-        gridPane.add(landingLightWingOnButton, 5, 21);
+        gridPane.add(landingLightWingOnButton, 5, 22);
 
+        // left_aileron
+        Label left_aileronDegreeLabel = new Label("Left_aileron : ");
+        gridPane.add(left_aileronDegreeLabel, 0, 23);
+
+        leftAileronDegreeSpinner = new Spinner<>();
+        leftAileronDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> left_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        leftAileronDegreeSpinner.setValueFactory(left_aileronDegreeSpinnerValueFactory);
+        gridPane.add(leftAileronDegreeSpinner, 1, 23);
 
         // left_navigation_light
         Label leftNavigationLightLabel = new Label("LeftNavigationLight : ");
-        gridPane.add(leftNavigationLightLabel, 0, 22);
+        gridPane.add(leftNavigationLightLabel, 0, 24);
 
         ToggleGroup leftNavigationLightToggleGroupe = new ToggleGroup();
 
         leftNavigationLightOffButton = new RadioButton("Off");
         leftNavigationLightOffButton.setToggleGroup(leftNavigationLightToggleGroupe);
         leftNavigationLightOffButton.setSelected(true);
-        gridPane.add(leftNavigationLightOffButton, 1, 22);
+        gridPane.add(leftNavigationLightOffButton, 1, 24);
 
         leftNavigationLightOnButton = new RadioButton("On");
         leftNavigationLightOnButton.setToggleGroup(leftNavigationLightToggleGroupe);
         leftNavigationLightOnButton.setSelected(false);
-        gridPane.add(leftNavigationLightOnButton, 2, 22);
+        gridPane.add(leftNavigationLightOnButton, 2, 24);
 
         // logo_light
         Label logoLightLabel = new Label("logoLight : ");
-        gridPane.add(logoLightLabel, 0, 23);
+        gridPane.add(logoLightLabel, 0, 25);
 
         ToggleGroup logoLightToggleGoup = new ToggleGroup();
 
         logoLightOffButton = new RadioButton("Off");
         logoLightOffButton.setToggleGroup(logoLightToggleGoup);
         logoLightOffButton.setSelected(true);
-        gridPane.add(logoLightOffButton, 1, 23);
+        gridPane.add(logoLightOffButton, 1, 25);
 
         logoLightOnButton = new RadioButton("On");
         logoLightOnButton.setToggleGroup(logoLightToggleGoup);
         logoLightOnButton.setSelected(false);
-        gridPane.add(logoLightOnButton, 2, 23);
+        gridPane.add(logoLightOnButton, 2, 25);
+
+        //NitrogenBottle
+        Label nitrogenBottleLabel = new Label("NitrogenBottle");
+        nitrogenBottleLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(nitrogenBottleLabel, 0, 26);
+        amountNitrogenBottle = new Label("250");
+        gridPane.add(amountNitrogenBottle, 1, 26);
+        nitrogenBottleRefillButton = new Button("Refill");
+        gridPane.add(nitrogenBottleRefillButton, 2, 26);
+        nitrogenBottleTakeOutButton = new Button("TakeOut");
+        gridPane.add(nitrogenBottleTakeOutButton, 3, 26);
+
+        //OxygenBottle
+        Label oxygenBottleLabel = new Label("OxygenBottle");
+        oxygenBottleLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(oxygenBottleLabel, 0, 27);
+        amountOxygenBottle = new Label("100");
+        gridPane.add(amountOxygenBottle, 1, 27);
+        oxygenBottleRefillButton = new Button("Refill");
+        gridPane.add(oxygenBottleRefillButton, 2, 27);
+        oxygenBottleTakeOutButton = new Button("TakeOut");
+        gridPane.add(oxygenBottleTakeOutButton, 3, 27);
+
+        // oxygen_sensor
+        oxygenSensorAlarm = new Label("OxygenSensor Alarm : ");
+        gridPane.add(oxygenSensorAlarm, 0, 28);
+
+        //Radar
+        Label radarLabel = new Label("Radar: ");
+        radarLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(radarLabel, 0, 29);
+
+        radarToggleGroup = new ToggleGroup();
+
+        radarOnRadio = new RadioButton("On");
+        radarOnRadio.setToggleGroup(radarToggleGroup);
+        gridPane.add(radarOnRadio, 1, 29);
+
+        radarOffRadio = new RadioButton("Off");
+        radarOffRadio.setToggleGroup(radarToggleGroup);
+        radarOffRadio.setSelected(true);
+        gridPane.add(radarOffRadio, 2, 29);
+
+        gridPane.add((radarScanButton = new Button("Scan")), 3, 29);
+
+        // right_aileron
+        Label right_aileronDegreeLabel = new Label("Right_aileron : ");
+        gridPane.add(right_aileronDegreeLabel, 0, 30);
+
+        rightAileronDegreeSpinner = new Spinner<>();
+        rightAileronDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> right_aileronDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        rightAileronDegreeSpinner.setValueFactory(right_aileronDegreeSpinnerValueFactory);
+        gridPane.add(rightAileronDegreeSpinner, 1, 30);
 
         // route_management
         Label routeManageLabel = new Label("routeManage : ");
-        gridPane.add(routeManageLabel, 0, 28);
+        gridPane.add(routeManageLabel, 0, 31);
 
         ToggleGroup routeManageToggleGroup = new ToggleGroup();
 
         routeManagementOffButton = new RadioButton("Off");
         routeManagementOffButton.setToggleGroup(routeManageToggleGroup);
         routeManagementOffButton.setSelected(true);
-        gridPane.add(routeManagementOffButton, 1, 28);
+        gridPane.add(routeManagementOffButton, 1, 31);
 
         routeManagementOnButton = new RadioButton("On");
         routeManagementOnButton.setToggleGroup(routeManageToggleGroup);
         routeManagementOnButton.setSelected(false);
-        gridPane.add(routeManagementOnButton, 2, 28);
+        gridPane.add(routeManagementOnButton, 2, 31);
 
         indexRouteManagementLabel = new Label("IndexRouteManager: " + (PrimaryFlightDisplay.instance.indexRouteManagement));
-        gridPane.add(indexRouteManagementLabel, 3, 28);
+        gridPane.add(indexRouteManagementLabel, 3, 31);
 
         numberOfCheckPointsRouteManagementLabel = new Label("NumberOfCheckPoints: " + (PrimaryFlightDisplay.instance.numberOfCheckPointsRouteManagement));
-        gridPane.add(numberOfCheckPointsRouteManagementLabel, 4, 28);
+        gridPane.add(numberOfCheckPointsRouteManagementLabel, 4, 31);
 
+        // rudder
+        Label rudderDegreeLabel = new Label("Rudder : ");
+        gridPane.add(rudderDegreeLabel, 0, 32);
+
+        rudderDegreeSpinner = new Spinner<>();
+        rudderDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> rudderDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-30, 30, 0);
+        rudderDegreeSpinner.setValueFactory(rudderDegreeSpinnerValueFactory);
+        gridPane.add(rudderDegreeSpinner, 1, 32);
+
+        // slat
+        Label slatDegreeLabel = new Label("Slat : ");
+        gridPane.add(slatDegreeLabel, 0, 34);
+
+        slatDegreeSpinner = new Spinner<>();
+        slatDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> slatDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(-20, 0, 0);
+        slatDegreeSpinner.setValueFactory(slatDegreeSpinnerValueFactory);
+        gridPane.add(slatDegreeSpinner, 1, 34);
+
+        // spoiler
+        Label spoilerDegreeLabel = new Label("Spoiler : ");
+        gridPane.add(spoilerDegreeLabel, 0, 35);
+
+        spoilerDegreeSpinner = new Spinner<>();
+        spoilerDegreeSpinner.setMaxWidth(60);
+        SpinnerValueFactory<Integer> spoilerDegreeSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, 0);
+        spoilerDegreeSpinner.setValueFactory(spoilerDegreeSpinnerValueFactory);
+        gridPane.add(spoilerDegreeSpinner, 1, 35);
+
+        //TCAS
+        Label tcasLabel = new Label("TCAS");
+        tcasLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(tcasLabel, 0, 36);
+
+        tcasToggleGroup = new ToggleGroup();
+
+        tcasOnRadio = new RadioButton("On");
+        tcasOnRadio.setToggleGroup(tcasToggleGroup);
+        gridPane.add(tcasOnRadio, 1, 36);
+
+        tcasOffRadio = new RadioButton("Off");
+        tcasOffRadio.setToggleGroup(tcasToggleGroup);
+        tcasOffRadio.setSelected(true);
+        gridPane.add(tcasOffRadio, 2, 36);
+
+        gridPane.add((tcasConnectButton = new Button("Connect")), 3, 36);
+        gridPane.add((tcasIsConnectedLabel = new Label("Not Connected")), 4, 36);
+        gridPane.add((tcasDetermineAltitudeButton = new Button("Determine Altitude")), 5, 36);
+        gridPane.add((tcasAltitudeLabel = new Label("0\u00B0")), 6, 36);
+        gridPane.add((tcasScanButton = new Button("Scan")), 7, 36);
+        gridPane.add((tcasIsAlarmLabel = new Label("No Alarm")), 8, 36);
+
+        // temperature_sensor
+        Label temperatureSensorLabel = new Label("TemperatureSensor");
+        temperatureSensorLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(temperatureSensorLabel, 0, 37);
+
+        temperatureBodyLabel = new Label("TemperatureBody: 0\u2103");
+        gridPane.add(temperatureBodyLabel, 1, 37);
+
+        temperatureSensorBodyMeasureButton = new Button("MeasureBody");
+        gridPane.add(temperatureSensorBodyMeasureButton, 3, 37);
+
+        isTemperatureSensorBodyAlarmLabel = new Label("No body alarm");
+        gridPane.add(isTemperatureSensorBodyAlarmLabel, 4, 37);
+
+        temperatureWingLabel = new Label("TemperatureWing: 0\u2103");
+        gridPane.add(temperatureWingLabel, 5, 37);
+
+        temperatureSensorWingMeasureButton = new Button("MeasureWing");
+        gridPane.add(temperatureSensorWingMeasureButton, 6, 37);
+
+        isTemperatureSensorWingAlarmLabel = new Label("No wing alarm");
+        gridPane.add(isTemperatureSensorWingAlarmLabel, 7, 37);
+
+        //Turbulent Airflow Sensor
+        Label turbulentLabel = new Label("Turbulent Airflow Sensor: ");
+        turbulentLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(turbulentLabel, 0, 38);
+        gridPane.add((turbulentAirFlowSensorMeasureBodyButton = new Button("Measure Body")), 1, 38);
+        gridPane.add((turbulentAirFlowSensorMeasureWingButton = new Button("Measure Wing")), 2, 38);
+        gridPane.add((turbulentAirFlowSensorIsAlarmLabel = new Label("No Alarm")), 3, 38);
+
+        // weather_radar
+        Label weatherRadarLabel = new Label("WeatherRadar : ");
+        weatherRadarLabel.setStyle("-fx-font-weight: bold");
+        gridPane.add(weatherRadarLabel, 0, 39);
+
+        ToggleGroup weatherRadarToggleGroup = new ToggleGroup();
+
+        weatherRadarOffButton = new RadioButton("Off");
+        weatherRadarOffButton.setToggleGroup(weatherRadarToggleGroup);
+        weatherRadarOffButton.setSelected(true);
+        gridPane.add(weatherRadarOffButton, 2, 39);
+
+        weatherRadarOnButton = new RadioButton("On");
+        weatherRadarOnButton.setToggleGroup(weatherRadarToggleGroup);
+        weatherRadarOnButton.setSelected(false);
+
+        gridPane.add(weatherRadarOnButton, 1, 39);
 
         // --- insert section: end
 
