@@ -4,7 +4,7 @@ public class OxygenBottle {
     private final String manufacturer = "9008480";
     // port
     public Port port;
-    private int amount = 100;
+    private int amount = 0;
 
     // private constructor
     private OxygenBottle() {

@@ -5,7 +5,7 @@ public class NitrogenBottle {
     private final String manufacturer = "9008480";
     //port
     public Port port;
-    private int amount = 250;
+    private int amount = 0;
 
     // private constructor
     private NitrogenBottle() {
