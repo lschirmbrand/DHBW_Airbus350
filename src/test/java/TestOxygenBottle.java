@@ -63,7 +63,7 @@ public class TestOxygenBottle {
         assertDoesNotThrow(() -> {
             Method refillMethod = componentPort.getClass().getDeclaredMethod("refill", int.class);
             int amount = (int) refillMethod.invoke(componentPort, 50);
-            assertEquals(150, amount);
+            assertEquals(100, amount);
         });
         assertDoesNotThrow(() -> {
             Method refillMethod = componentPort.getClass().getDeclaredMethod("refill");

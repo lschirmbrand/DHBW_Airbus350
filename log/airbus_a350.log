@@ -1,5 +1,5 @@
-2021-03-14 12:27:40 : Database Connection (isClosed): false
-2021-03-14 12:27:40 : sqlStringBuilder = DROP TABLE data
-2021-03-14 12:27:40 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (423247710230800,'EngineFactory','engineClass: 802321643')
-2021-03-14 12:27:40 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (423247710768000,'EngineFactory','engineInstance: 1850096767')
-2021-03-14 12:27:40 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (423247711130500,'EngineFactory','enginePort: 1844086528')
+2021-03-14 12:51:01 : Database Connection (isClosed): false
+2021-03-14 12:51:01 : sqlStringBuilder = DROP TABLE data
+2021-03-14 12:51:01 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (424649570768300,'EngineFactory','engineClass: 1218415855')
+2021-03-14 12:51:01 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (424649570967100,'EngineFactory','engineInstance: 990228')
+2021-03-14 12:51:01 : sqlStringBuilder = INSERT INTO data (id,className,message) VALUES (424649571071800,'EngineFactory','enginePort: 1925442397')
