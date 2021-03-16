@@ -1,6 +1,9 @@
 .idea
-build
 data
 .gradle
 log
 /local.properties
+/build/
+components/*/build/classes
+components/*/build/tmp
+components/*/build/generated
