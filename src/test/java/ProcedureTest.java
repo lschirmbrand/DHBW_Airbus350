@@ -166,11 +166,11 @@ public class ProcedureTest {
         cockpit.taxi();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -178,22 +178,22 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
-        assertTrue(config.isAPUStarted);
+        assertEquals(0, config.rpmAPU);
+        assertFalse(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertFalse(config.isNonSmokingSignOn);
@@ -213,7 +213,7 @@ public class ProcedureTest {
         assertEquals(0, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
+        assertFalse(config.isEngineStarted);
         assertEquals(0, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
@@ -223,15 +223,15 @@ public class ProcedureTest {
 
         // gear
         assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(0, config.hydraulicPumpBodyOilAmount);
+        assertEquals(0, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -241,50 +241,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(0, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -300,11 +300,11 @@ public class ProcedureTest {
         cockpit.takeoff();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -312,43 +312,43 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
+        assertEquals(5000, config.rpmAPU);
         assertTrue(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
-        assertFalse(config.isNonSmokingSignOn);
-        assertFalse(config.isSeatBeltSignOn);
+        assertTrue(config.isNonSmokingSignOn);
+        assertTrue(config.isSeatBeltSignOn);
 
         // deicing_system
         assertFalse(config.isDeIcingSystemActivated);
         assertEquals(0, config.amountDeIcingSystem);
 
         // droop_nose
-        assertEquals(0, config.degreeDroopNose);
+        assertEquals(-50, config.degreeDroopNose);
 
         // economy_class_seat
         assertEquals(0, config.levelSeat);
 
         // elevator
-        assertEquals(0, config.degreeElevator);
+        assertEquals(180, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
-        assertEquals(0, config.rpmEngine);
+        assertFalse(config.isEngineStarted);
+        assertEquals(15000, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
         // fire_detector
@@ -356,16 +356,16 @@ public class ProcedureTest {
         assertFalse(config.isFireDetectedWing);
 
         // gear
-        assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertFalse(config.isGearDown);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(1000, config.hydraulicPumpBodyOilAmount);
+        assertEquals(1000, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -375,50 +375,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(-20, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(20, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -434,11 +434,11 @@ public class ProcedureTest {
         cockpit.climbing();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -446,22 +446,22 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
-        assertTrue(config.isAPUStarted);
+        assertEquals(0, config.rpmAPU);
+        assertFalse(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertFalse(config.isNonSmokingSignOn);
@@ -481,7 +481,7 @@ public class ProcedureTest {
         assertEquals(0, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
+        assertFalse(config.isEngineStarted);
         assertEquals(0, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
@@ -491,15 +491,15 @@ public class ProcedureTest {
 
         // gear
         assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(0, config.hydraulicPumpBodyOilAmount);
+        assertEquals(0, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -509,50 +509,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(0, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -568,11 +568,11 @@ public class ProcedureTest {
         cockpit.rightTurn();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -580,22 +580,22 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
-        assertTrue(config.isAPUStarted);
+        assertEquals(0, config.rpmAPU);
+        assertFalse(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertFalse(config.isNonSmokingSignOn);
@@ -615,7 +615,7 @@ public class ProcedureTest {
         assertEquals(0, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
+        assertFalse(config.isEngineStarted);
         assertEquals(0, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
@@ -625,15 +625,15 @@ public class ProcedureTest {
 
         // gear
         assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(0, config.hydraulicPumpBodyOilAmount);
+        assertEquals(0, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -643,50 +643,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(0, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -702,11 +702,11 @@ public class ProcedureTest {
         cockpit.leftTurn();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -714,22 +714,22 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
-        assertTrue(config.isAPUStarted);
+        assertEquals(0, config.rpmAPU);
+        assertFalse(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertFalse(config.isNonSmokingSignOn);
@@ -749,7 +749,7 @@ public class ProcedureTest {
         assertEquals(0, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
+        assertFalse(config.isEngineStarted);
         assertEquals(0, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
@@ -759,15 +759,15 @@ public class ProcedureTest {
 
         // gear
         assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(0, config.hydraulicPumpBodyOilAmount);
+        assertEquals(0, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -777,50 +777,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(0, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -836,11 +836,11 @@ public class ProcedureTest {
         cockpit.descent();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -848,22 +848,22 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
-        assertTrue(config.isAPUStarted);
+        assertEquals(0, config.rpmAPU);
+        assertFalse(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertFalse(config.isNonSmokingSignOn);
@@ -883,7 +883,7 @@ public class ProcedureTest {
         assertEquals(0, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
+        assertFalse(config.isEngineStarted);
         assertEquals(0, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
@@ -893,15 +893,15 @@ public class ProcedureTest {
 
         // gear
         assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(0, config.hydraulicPumpBodyOilAmount);
+        assertEquals(0, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -911,50 +911,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(0, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -970,11 +970,11 @@ public class ProcedureTest {
         cockpit.landing();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -982,22 +982,22 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
-        assertTrue(config.isAPUStarted);
+        assertEquals(0, config.rpmAPU);
+        assertFalse(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertFalse(config.isNonSmokingSignOn);
@@ -1017,7 +1017,7 @@ public class ProcedureTest {
         assertEquals(0, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
+        assertFalse(config.isEngineStarted);
         assertEquals(0, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
@@ -1027,15 +1027,15 @@ public class ProcedureTest {
 
         // gear
         assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(0, config.hydraulicPumpBodyOilAmount);
+        assertEquals(0, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -1045,50 +1045,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(0, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -1104,11 +1104,11 @@ public class ProcedureTest {
         cockpit.shutdown();
 
         // air_conditioning
-        assertTrue(config.isAirConditioningOn);
-        assertEquals(22, config.temperatureAirConditioning);
+        assertFalse(config.isAirConditioningOn);
+        assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(1013, config.airPressure);
+        assertEquals(0, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -1116,22 +1116,22 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(7500, config.rpmAPU);
-        assertTrue(config.isAPUStarted);
+        assertEquals(0, config.rpmAPU);
+        assertFalse(config.isAPUStarted);
 
         // battery
-        assertEquals(100, config.percentageBattery);
+        assertEquals(0, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        assertFalse(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertTrue(config.isCostOptimizerOn);
-        assertEquals(30, config.indexCostOptimizer);
-        assertEquals(250, config.numberOfCheckPointsCostOptimizer);
+        assertFalse(config.isCostOptimizerOn);
+        assertEquals(0, config.indexCostOptimizer);
+        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertFalse(config.isNonSmokingSignOn);
@@ -1151,7 +1151,7 @@ public class ProcedureTest {
         assertEquals(0, config.degreeElevator);
 
         // engine
-        assertTrue(config.isEngineStarted);
+        assertFalse(config.isEngineStarted);
         assertEquals(0, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
@@ -1161,15 +1161,15 @@ public class ProcedureTest {
 
         // gear
         assertTrue(config.isGearDown);
-        assertEquals(100, config.gearBrakePercentage);
+        assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertTrue(config.isGPSOn);
-        assertTrue(config.isGPSConnected);
+        assertFalse(config.isGPSOn);
+        assertFalse(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(10000, config.hydraulicPumpBodyOilAmount);
-        assertEquals(2500, config.hydraulicPumpWingOilAmount);
+        assertEquals(0, config.hydraulicPumpBodyOilAmount);
+        assertEquals(0, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -1179,50 +1179,50 @@ public class ProcedureTest {
         assertEquals(0, config.degreeLeftAileron);
 
         // left_navigation_light
-        assertTrue(config.isLeftNavigationLightOn);
+        assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertTrue(config.isLogoLightOn);
+        assertFalse(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(3000, config.amountOfNitrogen);
+        assertEquals(0, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(10000, config.oxygenBottleAmount);
+        assertEquals(0, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertTrue(config.isRadarOn);
+        assertFalse(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertTrue(config.isRouteManagementOn);
+        assertFalse(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(10, config.degreeRudder);
+        assertEquals(0, config.degreeRudder);
 
         // slat
-        assertEquals(10, config.degreeSlat);
+        assertEquals(0, config.degreeSlat);
 
         // spoiler
-        assertEquals(10, config.degreeSpoiler);
+        assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertTrue(config.isTCASOn);
-        assertTrue(config.isTCASConnected);
+        assertFalse(config.isTCASOn);
+        assertFalse(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
         // temperature_sensor
-        assertEquals(10, config.temperatureBody);
+        assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.temperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
