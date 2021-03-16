@@ -117,6 +117,9 @@ public class Airplane implements IAirplane {
         eventBus.post(new AirConditioningOn());
         eventBus.post(new AirConditioningClean("wusch"));
 
+        // airflow_sensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+
         // anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
 
@@ -125,7 +128,7 @@ public class Airplane implements IAirplane {
         eventBus.post(new APUIncreaseRPM(5000));
 
         // battery
-        eventBus.post(new BatteryDischarge());
+        eventBus.post(new BatteryCharge());
 
         // camera
         eventBus.post(new CameraBodyOn());

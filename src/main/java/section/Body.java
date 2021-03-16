@@ -369,12 +369,13 @@ public class Body extends Subscriber {
                 Method measureMethod = airFlowSensorBodyPortList.get(i).getClass().getDeclaredMethod("measure", String.class);
                 LogEngine.instance.write("measureMethod = " + measureMethod);
 
-                int airPressure = (int) measureMethod.invoke(airFlowSensorBodyPortList.get(i), "FLOWFLOWFLOW");
+                int airPressure = (int) measureMethod.invoke(airFlowSensorBodyPortList.get(i), "a".repeat(1013));
                 LogEngine.instance.write("airFlow = " + airPressure);
 
                 FlightRecorder.instance.insert("Body", "AirFlowSensor (airPressure): " + airPressure);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.airPressure = airPressure;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -514,6 +515,7 @@ public class Body extends Subscriber {
                 FlightRecorder.instance.insert("Body", "Battery (charge): " + stateOfCharge);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.percentageBattery = stateOfCharge;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -540,6 +542,7 @@ public class Body extends Subscriber {
                 FlightRecorder.instance.insert("Body", "Battery (discharge): " + stateOfCharge);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.percentageBattery = stateOfCharge;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

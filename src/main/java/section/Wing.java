@@ -151,12 +151,13 @@ public class Wing extends Subscriber {
                 Method measureMethod = airFlowSensorWingPortList.get(i).getClass().getDeclaredMethod("measure", String.class);
                 LogEngine.instance.write("measureMethod = " + measureMethod);
 
-                int airPressure = (int) measureMethod.invoke(airFlowSensorWingPortList.get(i), "FLOWFLOWFLOW");
+                int airPressure = (int) measureMethod.invoke(airFlowSensorWingPortList.get(i), "a".repeat(1013));
                 LogEngine.instance.write("airFlow = " + airPressure);
 
                 FlightRecorder.instance.insert("Wing", "AirFlowSensor (airPressure): " + airPressure);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.airPressure = airPressure;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

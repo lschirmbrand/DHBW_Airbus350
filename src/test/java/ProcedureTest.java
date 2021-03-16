@@ -36,7 +36,7 @@ public class ProcedureTest {
         assertEquals(0, config.temperatureAirConditioning);
 
         // airflow_sensor
-        // TODO: Event Handler ändert die Werte im PFD nicht!  assertEquals(1013, config.airPressure);
+        assertEquals(1013, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -48,7 +48,6 @@ public class ProcedureTest {
         assertTrue(config.isAPUStarted);
 
         // battery
-        // TODO:
         assertEquals(100, config.percentageBattery);
 
         // camera
@@ -59,7 +58,7 @@ public class ProcedureTest {
 
         // cost_optimizer
         assertTrue(config.isCostOptimizerOn);
-        // TODO: assertEquals(30, config.indexCostOptimizer);
+        assertEquals(0, config.indexCostOptimizer);
         assertEquals(0  , config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
@@ -114,6 +113,7 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
+        // TODO: Event Handler leer, WTF
         // TODO: assertEquals(250, config.amountOfNitrogen);
 
         // oxygen_bottle
