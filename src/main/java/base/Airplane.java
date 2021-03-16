@@ -218,11 +218,36 @@ public class Airplane implements IAirplane {
         //RouteManagement
         eventBus.post(new RouteManagementOn());
 
-        //LogoLight
+        // LogoLight
         eventBus.post(new LogoLightOn());
     }
 
     public void taxi() {
+        // Radar
+        eventBus.post(new RadarOn());
+        // LogoLight
+        eventBus.post(new LogoLightOn());
+        // hydraulic_pump
+        eventBus.post(new HydraulicPumpBodyCompress());
+        eventBus.post(new HydraulicPumpWingCompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
+        // gps
+        eventBus.post(new GPSOn());
+        eventBus.post(new GPSConnect("Astra-8"));
+        // engine
+        eventBus.post(new EngineStart());
+        eventBus.post(new EngineIncreaseRPM(0));
+        // camera
+        eventBus.post(new CameraBodyOn());
+        eventBus.post(new CameraWingOn());
+        // air_conditioning
+        eventBus.post(new AirConditioningOn());
+        // apu
+        eventBus.post(new APUStart());
+        eventBus.post(new APUIncreaseRPM(5000));
+        //CostOptimizer
+        eventBus.post(new CostOptimizerOn());
         //gear
         eventBus.post(new GearDown());
         eventBus.post(new GearReleaseBrake());
@@ -235,10 +260,15 @@ public class Airplane implements IAirplane {
         //GPS
         eventBus.post(new GPSSend("Taxi"));
         eventBus.post(new GPSReceive());
+        // deicing_system
+        eventBus.post(new DeIcingSystemActivate());
+        eventBus.post(new DeIcingSystemDeIce(200));
         //Radar
         eventBus.post(new RadarScan("Erde"));
         //TCAS
         eventBus.post(new TCASScan("Erde"));
+        // elevator
+        eventBus.post(new ElevatorNeutral());
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());

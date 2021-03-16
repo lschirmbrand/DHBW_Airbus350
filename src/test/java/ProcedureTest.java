@@ -167,11 +167,11 @@ public class ProcedureTest {
         cockpit.taxi();
 
         // air_conditioning
-        assertFalse(config.isAirConditioningOn);
+        assertTrue(config.isAirConditioningOn);
         assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(0, config.airPressure);
+        assertEquals(1013, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -179,20 +179,20 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(0, config.rpmAPU);
-        assertFalse(config.isAPUStarted);
+        assertEquals(5000, config.rpmAPU);
+        assertTrue(config.isAPUStarted);
 
         // battery
-        assertEquals(0, config.percentageBattery);
+        assertEquals(99, config.percentageBattery);
 
         // camera
-        assertFalse(config.isCameraOn);
+        assertTrue(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertFalse(config.isCostOptimizerOn);
+        assertTrue(config.isCostOptimizerOn);
         assertEquals(0, config.indexCostOptimizer);
         assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
@@ -201,8 +201,8 @@ public class ProcedureTest {
         assertFalse(config.isSeatBeltSignOn);
 
         // deicing_system
-        assertFalse(config.isDeIcingSystemActivated);
-        assertEquals(0, config.amountDeIcingSystem);
+        assertTrue(config.isDeIcingSystemActivated);
+        assertEquals(800, config.amountDeIcingSystem);
 
         // droop_nose
         assertEquals(0, config.degreeDroopNose);
@@ -211,11 +211,11 @@ public class ProcedureTest {
         assertEquals(0, config.levelSeat);
 
         // elevator
-        assertEquals(0, config.degreeElevator);
+        assertEquals(90, config.degreeElevator);
 
         // engine
-        assertFalse(config.isEngineStarted);
-        assertEquals(0, config.rpmEngine);
+        assertTrue(config.isEngineStarted);
+        assertEquals(1000, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
         // fire_detector
@@ -227,12 +227,12 @@ public class ProcedureTest {
         assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertFalse(config.isGPSOn);
-        assertFalse(config.isGPSConnected);
+        assertTrue(config.isGPSOn);
+        assertTrue(config.isGPSConnected);
 
         // hydraulic_pump
-        assertEquals(0, config.hydraulicPumpBodyOilAmount);
-        assertEquals(0, config.hydraulicPumpWingOilAmount);
+        assertEquals(6000, config.hydraulicPumpBodyOilAmount);
+        assertEquals(6000, config.hydraulicPumpWingOilAmount);
 
         // landing_light
         assertFalse(config.isLandingLightBodyOn);
@@ -245,7 +245,7 @@ public class ProcedureTest {
         assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertFalse(config.isLogoLightOn);
+        assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
         assertEquals(0, config.amountOfNitrogen);
@@ -257,13 +257,13 @@ public class ProcedureTest {
         assertFalse(config.isOxygenSensorAlarm);
 
         // radar
-        assertFalse(config.isRadarOn);
+        assertTrue(config.isRadarOn);
 
         // right_aileron
         assertEquals(0, config.degreeRightAileron);
 
         // route_management
-        assertFalse(config.isRouteManagementOn);
+        assertTrue(config.isRouteManagementOn);
         assertEquals(0, config.indexRouteManagement);
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
@@ -277,8 +277,8 @@ public class ProcedureTest {
         assertEquals(0, config.degreeSpoiler);
 
         // tcas
-        assertFalse(config.isTCASOn);
-        assertFalse(config.isTCASConnected);
+        assertTrue(config.isTCASOn);
+        assertTrue(config.isTCASConnected);
         assertFalse(config.isTCASAlarm);
         assertEquals(0, config.altitudeTCAS);
 
