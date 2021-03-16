@@ -23,6 +23,7 @@ import event.camera.CameraWingOn;
 import event.cargo_compartment_light.CargoCompartmentLightOff;
 import event.cost_optimizer.CostOptimizerOff;
 import event.cost_optimizer.CostOptimizerOn;
+import event.cost_optimizer.CostOptimizerOptimize;
 import event.crew_seat.NonSmokingSignOff;
 import event.crew_seat.NonSmokingSignOn;
 import event.crew_seat.SeatBeltSignOff;
@@ -116,38 +117,63 @@ public class Airplane implements IAirplane {
         eventBus.post(new AirConditioningOn());
         eventBus.post(new AirConditioningClean("wusch"));
 
-        //Radar
-        eventBus.post(new RadarOn());
+        // anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
+
+        // apu
+        eventBus.post(new APUStart());
+        eventBus.post(new APUIncreaseRPM(5000));
+
+        // battery
+        eventBus.post(new BatteryDischarge());
+
+        // camera
+        eventBus.post(new CameraBodyOn());
+        eventBus.post(new CameraWingOn());
+
+        // crew_seat
+        eventBus.post(new NonSmokingSignOff());
+        eventBus.post(new SeatBeltSignOff());
+
+        // deicing_system
+        eventBus.post(new DeIcingSystemActivate());
+        eventBus.post(new DeIcingSystemDeIce(200));
+
+        // droop_nose
+        eventBus.post(new DroopNoseNeutral());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOff());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOff());
+
+        // elevator
+        eventBus.post(new ElevatorNeutral());
+
+        // engine
+        eventBus.post(new EngineStart());
+        eventBus.post(new EngineIncreaseRPM(0));
+
+        // fire_detector no action in startup
 
         // gear
         eventBus.post(new GearDown());
         eventBus.post(new GearSetBrake());
-        // weather_radar
-        eventBus.post(new WeatherRadarOn());
 
-        //Engine
-        eventBus.post(new EngineStart());
-        eventBus.post(new EngineIncreaseRPM(0));
+        // gps
+        eventBus.post(new GPSOn());
+        eventBus.post(new GPSConnect("Astra-8"));
 
-        // hydraulic pumps
+        // hydraulic_pump
         eventBus.post(new HydraulicPumpBodyCompress());
         eventBus.post(new HydraulicPumpWingCompress());
         eventBus.post(new HydraulicPumpBodyRefillOil(0));
         eventBus.post(new HydraulicPumpWingRefillOil(0));
 
-        //Droop Nose
-        eventBus.post(new DroopNoseNeutral());
+        //Radar
+        eventBus.post(new RadarOn());
 
-        // Elevator
-        eventBus.post(new ElevatorNeutral());
-
-        //Camera
-        eventBus.post(new CameraBodyOn());
-        eventBus.post(new CameraWingOn());
-
-        //GPS
-        eventBus.post(new GPSOn());
-        eventBus.post(new GPSConnect("Astra-8"));
+        // weather_radar
+        eventBus.post(new WeatherRadarOn());
 
         //Radar
         eventBus.post(new RadarScan("Erde"));
@@ -166,24 +192,7 @@ public class Airplane implements IAirplane {
         //NitrogenTank
         eventBus.post(new NitrogenBottleRefill());
 
-        // crew_seat
-        eventBus.post(new NonSmokingSignOff());
-        eventBus.post(new SeatBeltSignOff());
-
-        // economy_class_seat
-        eventBus.post(new event.economy_class_seat.NonSmokingSignOff());
-        eventBus.post(new event.economy_class_seat.SeatBeltSignOff());
-
-        // fireDetector no action in startup
-
         // oxygenSensor no action in startup
-
-        //Battery
-        eventBus.post(new BatteryDischarge());
-
-        //DeIcingSystem
-        eventBus.post(new DeIcingSystemActivate());
-        eventBus.post(new DeIcingSystemDeIce(200));
 
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
@@ -199,8 +208,6 @@ public class Airplane implements IAirplane {
         eventBus.post(new RudderNeutral());
         //spoiler
         eventBus.post(new SpoilerNeutral());
-        // anti_collision_light
-        eventBus.post(new AntiCollisionLightOn());
 
         //CostOptimizer
         eventBus.post(new CostOptimizerOn());
