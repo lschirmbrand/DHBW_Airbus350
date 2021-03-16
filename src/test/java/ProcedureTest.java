@@ -447,7 +447,7 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(0, config.rpmAPU);
+        assertEquals(2500, config.rpmAPU);
         assertFalse(config.isAPUStarted);
 
         // battery
@@ -465,8 +465,8 @@ public class ProcedureTest {
         assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
-        assertFalse(config.isNonSmokingSignOn);
-        assertFalse(config.isSeatBeltSignOn);
+        assertTrue(config.isNonSmokingSignOn);
+        assertTrue(config.isSeatBeltSignOn);
 
         // deicing_system
         assertFalse(config.isDeIcingSystemActivated);
@@ -479,11 +479,11 @@ public class ProcedureTest {
         assertEquals(0, config.levelSeat);
 
         // elevator
-        assertEquals(0, config.degreeElevator);
+        assertEquals(100, config.degreeElevator);
 
         // engine
         assertFalse(config.isEngineStarted);
-        assertEquals(0, config.rpmEngine);
+        assertEquals(500, config.rpmEngine);
         assertFalse(config.isEngineFire);
 
         // fire_detector
@@ -491,8 +491,8 @@ public class ProcedureTest {
         assertFalse(config.isFireDetectedWing);
 
         // gear
-        assertTrue(config.isGearDown);
-        assertEquals(0, config.gearBrakePercentage);
+        assertFalse(config.isGearDown);
+        assertEquals(50, config.gearBrakePercentage);
 
         // gps
         assertFalse(config.isGPSOn);
