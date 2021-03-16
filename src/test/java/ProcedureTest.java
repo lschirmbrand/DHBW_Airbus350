@@ -581,7 +581,7 @@ public class ProcedureTest {
         assertTrue(config.isAntiCollisionLightOn);
 
         // apu
-        assertEquals(0, config.rpmAPU);
+        assertEquals(1000, config.rpmAPU);
         assertFalse(config.isAPUStarted);
 
         // battery
@@ -599,8 +599,8 @@ public class ProcedureTest {
         assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
-        assertFalse(config.isNonSmokingSignOn);
-        assertFalse(config.isSeatBeltSignOn);
+        assertTrue(config.isNonSmokingSignOn);
+        assertTrue(config.isSeatBeltSignOn);
 
         // deicing_system
         assertFalse(config.isDeIcingSystemActivated);
@@ -625,8 +625,8 @@ public class ProcedureTest {
         assertFalse(config.isFireDetectedWing);
 
         // gear
-        assertTrue(config.isGearDown);
-        assertEquals(0, config.gearBrakePercentage);
+        assertFalse(config.isGearDown);
+        assertEquals(50, config.gearBrakePercentage);
 
         // gps
         assertFalse(config.isGPSOn);
@@ -641,7 +641,7 @@ public class ProcedureTest {
         assertFalse(config.isLandingLightWingOn);
 
         // left_aileron
-        assertEquals(0, config.degreeLeftAileron);
+        assertEquals(-30, config.degreeLeftAileron);
 
         // left_navigation_light
         assertFalse(config.isLeftNavigationLightOn);
@@ -662,7 +662,7 @@ public class ProcedureTest {
         assertFalse(config.isRadarOn);
 
         // right_aileron
-        assertEquals(0, config.degreeRightAileron);
+        assertEquals(30, config.degreeRightAileron);
 
         // route_management
         assertFalse(config.isRouteManagementOn);
@@ -670,7 +670,7 @@ public class ProcedureTest {
         assertEquals(0, config.numberOfCheckPointsRouteManagement);
 
         // rudder
-        assertEquals(0, config.degreeRudder);
+        assertEquals(15, config.degreeRudder);
 
         // slat
         assertEquals(0, config.degreeSlat);
