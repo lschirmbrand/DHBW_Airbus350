@@ -15,7 +15,7 @@ public class DeIcingSystemFactory {
         try {
             URL[] urls = {new File(Configuration.instance.pathToDeIcingSystemJavaArchive).toURI().toURL()};
             URLClassLoader urlClassLoader = new URLClassLoader(urls, DeIcingSystemFactory.class.getClassLoader());
-            Class deIcingSystemClass = Class.forName("DeIcingSystem", true, urlClassLoader);
+            Class deIcingSystemClass = Class.forName("DeicingSystem", true, urlClassLoader);
             FlightRecorder.instance.insert("DeIcingSystemFactory", "deIcingSystemClass: " + deIcingSystemClass.hashCode());
 
             Object DeIcingSystemInstance = deIcingSystemClass.getMethod("getInstance").invoke(null);
