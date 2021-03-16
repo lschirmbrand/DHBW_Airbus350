@@ -62,8 +62,8 @@ public class ProcedureTest {
         assertEquals(250, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
-        assertFalse(config.isCrewSeatNonSmokingSignOn);
-        assertFalse(config.isCrewSeatSeatBeltSignOn);
+        assertFalse(config.isNonSmokingSignOn);
+        assertFalse(config.isSeatBeltSignOn);
 
         // deicing_system
         assertFalse(config.isDeIcingSystemActivated);
@@ -73,9 +73,9 @@ public class ProcedureTest {
         assertEquals(0, config.degreeDroopNose);
 
         // economy_class_seat
-        assertFalse(config.isEconomyClassNonSmokingSignOn);
-        assertFalse(config.isEconomyClassSeatBeltSignOn);
-        assertEquals(0, config.economyClassLevelSeat);
+        assertFalse(config.isNonSmokingSignOn);
+        assertFalse(config.isSeatBeltSignOn);
+        assertEquals(0, config.levelSeat);
 
         // elevator
         assertEquals(0, config.degreeElevator);
@@ -152,7 +152,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(10, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.TemperatureWing);
+        assertEquals(10, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
@@ -178,9 +178,9 @@ public class ProcedureTest {
         assertFalse(config.isBulkCargoDoorLocked);
 
         // business_class_seat
-        assertTrue(config.isBusinessClassNonSmokingSignOn);
-        assertTrue(config.isBusinessClassSeatBeltSignOn);
-        assertEquals(1, config.businessClassLevelSeat);
+        assertTrue(config.isNonSmokingSignOn);
+        assertTrue(config.isSeatBeltSignOn);
+        assertEquals(1, config.levelSeat);
 
         // cargo_compartment_light
         assertTrue(config.isCargoCompartmentLightOn);
@@ -194,13 +194,13 @@ public class ProcedureTest {
         assertEquals(4000, config.totalWeightContainerRearStowage);
 
         // crew_seat
-        assertTrue(config.isCrewSeatNonSmokingSignOn);
-        assertTrue(config.isCrewSeatSeatBeltSignOn);
+        assertTrue(config.isNonSmokingSignOn);
+        assertTrue(config.isSeatBeltSignOn);
 
         // economy_class_seat
-        assertTrue(config.isEconomyClassNonSmokingSignOn);
-        assertTrue(config.isEconomyClassSeatBeltSignOn);
-        assertEquals(1, config.economyClassLevelSeat);
+        assertTrue(config.isNonSmokingSignOn);
+        assertTrue(config.isSeatBeltSignOn);
+        assertEquals(1, config.levelSeat);
 
         // emergency_exit_door
         assertFalse(config.isEmergencyExitDoorClosed);
@@ -209,10 +209,10 @@ public class ProcedureTest {
         assertEquals(95, config.levelEngineOilTank);
 
         // fuel_sensor
-        assertEquals(20000, config.fuelSensorAmountOfFuel);
+        assertEquals(20000, config.amountOfFuel);
 
         // fuel_tank
-        assertEquals(20000, config.fuelTankAmountOfFuel);
+        assertEquals(20000, config.amountOfFuel);
 
         // hydraulic_pump
         assertEquals(9900, config.hydraulicPumpBodyOilAmount);
@@ -250,9 +250,9 @@ public class ProcedureTest {
         assertEquals(10000, config.amountPotableWater);
 
         // premium_economy_class_seat
-        assertTrue(config.isPremiumEconomyNonSmokingSignOn);
-        assertTrue(config.isPremiumEconomySeatBeltSignOn);
-        assertEquals(1, config.premiumEconomyLevelSeat);
+        assertTrue(config.isNonSmokingSignOn);
+        assertTrue(config.isSeatBeltSignOn);
+        assertEquals(1, config.levelSeat);
 
         // radar_altimeter
         assertTrue(config.isRadarAltimeterOn);
@@ -281,7 +281,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(10, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.TemperatureWing);
+        assertEquals(10, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // vhf
@@ -315,7 +315,7 @@ public class ProcedureTest {
         assertTrue(config.isBulkCargoDoorLocked);
 
         // business_class_seat
-        assertEquals(2, config.businessClassLevelSeat);
+        assertEquals(2, config.levelSeat);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
@@ -332,7 +332,7 @@ public class ProcedureTest {
         assertEquals(20, config.degreeDroopNose);
 
         // economy_class_seat
-        assertEquals(2, config.economyClassLevelSeat);
+        assertEquals(2, config.levelSeat);
 
         // elevator
         assertEquals(75, config.degreeElevator);
@@ -356,10 +356,10 @@ public class ProcedureTest {
         assertEquals(40, config.fuelFlow);
 
         // fuel_sensor
-        assertEquals(17500, config.fuelSensorAmountOfFuel);
+        assertEquals(17500, config.amountOfFuel);
 
         // fuel_tank
-        assertEquals(17500, config.fuelTankAmountOfFuel);
+        assertEquals(17500, config.amountOfFuel);
 
         // gear
         assertFalse(config.isGearDown);
@@ -430,7 +430,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(10, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.TemperatureWing);
+        assertEquals(10, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // vhf
@@ -481,10 +481,10 @@ public class ProcedureTest {
         assertEquals(20, config.fuelFlow);
 
         // fuel_sensor
-        assertEquals(15000, config.fuelSensorAmountOfFuel);
+        assertEquals(15000, config.amountOfFuel);
 
         // fuel_tank
-        assertEquals(15000, config.fuelTankAmountOfFuel);
+        assertEquals(15000, config.amountOfFuel);
 
         // hydraulic_pump
         assertEquals(9700, config.hydraulicPumpBodyOilAmount);
@@ -548,7 +548,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(5, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(5, config.TemperatureWing);
+        assertEquals(5, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // vhf
@@ -584,10 +584,10 @@ public class ProcedureTest {
         assertEquals(30, config.degreeFlap);
 
         // fuel_sensor
-        assertEquals(12500, config.fuelSensorAmountOfFuel);
+        assertEquals(12500, config.amountOfFuel);
 
         // fuel_tank
-        assertEquals(12500, config.fuelTankAmountOfFuel);
+        assertEquals(12500, config.amountOfFuel);
 
         // hydraulic_pump
         assertEquals(9600, config.hydraulicPumpBodyOilAmount);
@@ -651,7 +651,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(-10, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(-10, config.TemperatureWing);
+        assertEquals(-10, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // vhf
@@ -684,10 +684,10 @@ public class ProcedureTest {
         assertEquals(55, config.levelEngineOilTank);
 
         // fuel_sensor
-        assertEquals(10000, config.fuelSensorAmountOfFuel);
+        assertEquals(10000, config.amountOfFuel);
 
         // fuel_tank
-        assertEquals(10000, config.fuelTankAmountOfFuel);
+        assertEquals(10000, config.amountOfFuel);
 
         // hydraulic_pump
         assertEquals(9500, config.hydraulicPumpBodyOilAmount);
@@ -751,7 +751,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(-10, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(-10, config.TemperatureWing);
+        assertEquals(-10, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // vhf
@@ -787,10 +787,10 @@ public class ProcedureTest {
         assertEquals(0, config.degreeFlap);
 
         // fuel_sensor
-        assertEquals(7500, config.fuelSensorAmountOfFuel);
+        assertEquals(7500, config.amountOfFuel);
 
         // fuel_tank
-        assertEquals(7500, config.fuelTankAmountOfFuel);
+        assertEquals(7500, config.amountOfFuel);
 
         // hydraulic_pump
         assertEquals(9400, config.hydraulicPumpBodyOilAmount);
@@ -854,7 +854,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(-5, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(-5, config.TemperatureWing);
+        assertEquals(-5, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // vhf
@@ -890,10 +890,10 @@ public class ProcedureTest {
         assertEquals(20, config.degreeFlap);
 
         // fuel_sensor
-        assertEquals(5000, config.fuelSensorAmountOfFuel);
+        assertEquals(5000, config.amountOfFuel);
 
         // fuel_tank
-        assertEquals(5000, config.fuelTankAmountOfFuel);
+        assertEquals(5000, config.amountOfFuel);
 
         // hydraulic_pump
         assertEquals(9300, config.hydraulicPumpBodyOilAmount);
@@ -957,7 +957,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(10, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(10, config.TemperatureWing);
+        assertEquals(10, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // vhf
@@ -1004,9 +1004,9 @@ public class ProcedureTest {
         assertTrue(config.isBulkCargoDoorLocked);
 
         // business_class_seat
-        assertFalse(config.isBusinessClassNonSmokingSignOn);
-        assertFalse(config.isBusinessClassSeatBeltSignOn);
-        assertEquals(0, config.businessClassLevelSeat);
+        assertFalse(config.isNonSmokingSignOn);
+        assertFalse(config.isSeatBeltSignOn);
+        assertEquals(0, config.levelSeat);
 
         // camera
         assertFalse(config.isCameraOn);
@@ -1028,8 +1028,8 @@ public class ProcedureTest {
         assertEquals(0, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
-        assertFalse(config.isCrewSeatNonSmokingSignOn);
-        assertFalse(config.isCrewSeatSeatBeltSignOn);
+        assertFalse(config.isNonSmokingSignOn);
+        assertFalse(config.isSeatBeltSignOn);
 
         // deicing_system
         assertFalse(config.isDeIcingSystemActivated);
@@ -1039,9 +1039,9 @@ public class ProcedureTest {
         assertEquals(0, config.degreeDroopNose);
 
         // economy_class_seat
-        assertFalse(config.isEconomyClassNonSmokingSignOn);
-        assertFalse(config.isEconomyClassSeatBeltSignOn);
-        assertEquals(0, config.economyClassLevelSeat);
+        assertFalse(config.isNonSmokingSignOn);
+        assertFalse(config.isSeatBeltSignOn);
+        assertEquals(0, config.levelSeat);
 
         // elevator
         assertEquals(0, config.degreeElevator);
@@ -1075,13 +1075,13 @@ public class ProcedureTest {
         assertEquals(0, config.fuelFlow);
 
         // fuel_sensor
-        assertEquals(0, config.fuelSensorAmountOfFuel);
+        assertEquals(0, config.amountOfFuel);
         assertFalse(config.isAlarmReserveFuelSensor);
         assertFalse(config.isAlarmMajorFuelSensor);
         assertFalse(config.isAlarmCriticalFuelSensor);
 
         // fuel_tank
-        assertEquals(0, config.fuelTankAmountOfFuel);
+        assertEquals(0, config.amountOfFuel);
 
         // gear
         assertFalse(config.isGearDown);
@@ -1140,9 +1140,9 @@ public class ProcedureTest {
         assertEquals(0, config.amountPotableWater);
 
         // premium_economy_class_seat
-        assertFalse(config.isPremiumEconomyNonSmokingSignOn);
-        assertFalse(config.isPremiumEconomySeatBeltSignOn);
-        assertEquals(0, config.premiumEconomyLevelSeat);
+        assertFalse(config.isNonSmokingSignOn);
+        assertFalse(config.isSeatBeltSignOn);
+        assertEquals(0, config.levelSeat);
 
         // radar
         assertFalse(config.isRadarOn);
@@ -1198,7 +1198,7 @@ public class ProcedureTest {
         // temperature_sensor
         assertEquals(0, config.temperatureBody);
         assertFalse(config.isTemperatureSensorBodyAlarm);
-        assertEquals(0, config.TemperatureWing);
+        assertEquals(0, config.temperatureWing);
         assertFalse(config.isTemperatureSensorWingAlarm);
 
         // turbulent_airflow_sensor
