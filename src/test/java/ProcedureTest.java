@@ -73,8 +73,6 @@ public class ProcedureTest {
         assertEquals(0, config.degreeDroopNose);
 
         // economy_class_seat
-        assertFalse(config.isNonSmokingSignOn);
-        assertFalse(config.isSeatBeltSignOn);
         assertEquals(0, config.levelSeat);
 
         // elevator
