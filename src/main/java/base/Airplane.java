@@ -318,8 +318,15 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOn());
 
         // air_conditioning
+        eventBus.post(new AirConditioningOn());
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
+        // cost_optimizer
+        eventBus.post(new CostOptimizerOn());
+
+        // deicing_system
+        eventBus.post(new DeIcingSystemActivate());
+        eventBus.post(new DeIcingSystemDeIce(150));
 
         // engine
         eventBus.post(new EngineIncreaseRPM(15000));
@@ -337,6 +344,8 @@ public class Airplane implements IAirplane {
         eventBus.post(new ElevatorFullUp());
 
         //GPS
+        eventBus.post(new GPSOn());
+        eventBus.post(new GPSConnect("Astra-8"));
         eventBus.post(new GPSSend("TakeoOff"));
         eventBus.post(new GPSReceive());
 
@@ -388,6 +397,15 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerFullUp());
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // logo_light
+        eventBus.post(new LogoLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleTakeOut(25));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleTakeOut(25));
     }
 
     public void climbing() {

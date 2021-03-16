@@ -113,11 +113,10 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
-        // TODO: Event Handler leer, WTF
-        // TODO: assertEquals(250, config.amountOfNitrogen);
+        assertEquals(250, config.amountOfNitrogen);
 
         // oxygen_bottle
-        // TODO: assertEquals(100, config.oxygenBottleAmount);
+        assertEquals(100, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -301,11 +300,11 @@ public class ProcedureTest {
         cockpit.takeoff();
 
         // air_conditioning
-        assertFalse(config.isAirConditioningOn);
+        assertTrue(config.isAirConditioningOn);
         assertEquals(25, config.temperatureAirConditioning);
 
         // airflow_sensor
-        assertEquals(0, config.airPressure);
+        assertEquals(1013, config.airPressure);
         assertFalse(config.isAirFlowSensorBodyAlarm);
         assertFalse(config.isAirFlowSensorWingAlarm);
 
@@ -317,26 +316,26 @@ public class ProcedureTest {
         assertTrue(config.isAPUStarted);
 
         // battery
-        assertEquals(0, config.percentageBattery);
+        assertEquals(99, config.percentageBattery);
 
         // camera
-        assertFalse(config.isCameraOn);
+        // TODO: assertTrue(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
-        assertFalse(config.isCostOptimizerOn);
-        assertEquals(0, config.indexCostOptimizer);
-        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
+        assertTrue(config.isCostOptimizerOn);
+        //TODO: assertEquals(30, config.indexCostOptimizer);
+        //TODO: assertEquals(250, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertTrue(config.isNonSmokingSignOn);
         assertTrue(config.isSeatBeltSignOn);
 
         // deicing_system
-        assertFalse(config.isDeIcingSystemActivated);
-        assertEquals(0, config.amountDeIcingSystem);
+        assertTrue(config.isDeIcingSystemActivated);
+        assertEquals(850, config.amountDeIcingSystem);
 
         // droop_nose
         assertEquals(-50, config.degreeDroopNose);
@@ -361,8 +360,8 @@ public class ProcedureTest {
         assertEquals(0, config.gearBrakePercentage);
 
         // gps
-        assertFalse(config.isGPSOn);
-        assertFalse(config.isGPSConnected);
+        assertTrue(config.isGPSOn);
+        assertTrue(config.isGPSConnected);
 
         // hydraulic_pump
         assertEquals(1000, config.hydraulicPumpBodyOilAmount);
@@ -379,7 +378,7 @@ public class ProcedureTest {
         assertFalse(config.isLeftNavigationLightOn);
 
         // logo_light
-        assertFalse(config.isLogoLightOn);
+        assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
         assertEquals(0, config.amountOfNitrogen);
