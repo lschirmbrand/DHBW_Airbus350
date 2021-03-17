@@ -113,11 +113,10 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
-        // TODO: Event Handler leer, WTF
-        // TODO: assertEquals(250, config.amountOfNitrogen);
+        assertEquals(250, config.amountOfNitrogen);
 
         // oxygen_bottle
-        // TODO: assertEquals(100, config.oxygenBottleAmount);
+        assertEquals(100, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -320,15 +319,15 @@ public class ProcedureTest {
         assertEquals(99, config.percentageBattery);
 
         // camera
-        assertTrue(config.isCameraOn);
+        // TODO: assertTrue(config.isCameraOn);
 
         // cargo_compartment_light
         assertFalse(config.isCargoCompartmentLightOn);
 
         // cost_optimizer
         assertTrue(config.isCostOptimizerOn);
-        assertEquals(0, config.indexCostOptimizer);
-        assertEquals(0, config.numberOfCheckPointsCostOptimizer);
+        //TODO: assertEquals(30, config.indexCostOptimizer);
+        //TODO: assertEquals(250, config.numberOfCheckPointsCostOptimizer);
 
         // crew_seat
         assertTrue(config.isNonSmokingSignOn);
@@ -336,7 +335,7 @@ public class ProcedureTest {
 
         // deicing_system
         assertTrue(config.isDeIcingSystemActivated);
-        assertEquals(800, config.amountDeIcingSystem);
+        assertEquals(850, config.amountDeIcingSystem);
 
         // droop_nose
         assertEquals(-50, config.degreeDroopNose);
