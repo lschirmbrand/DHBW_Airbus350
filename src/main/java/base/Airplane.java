@@ -2,10 +2,7 @@ package base;
 
 import com.google.common.eventbus.EventBus;
 import event.Subscriber;
-import event.air_conditioning.AirConditioningClean;
-import event.air_conditioning.AirConditioningHeat;
-import event.air_conditioning.AirConditioningOff;
-import event.air_conditioning.AirConditioningOn;
+import event.air_conditioning.*;
 import event.airflow_sensor.AirFlowSensorBodyMeasure;
 import event.airflow_sensor.AirFlowSensorWingMeasure;
 import event.anti_collision_light.AntiCollisionLightOff;
@@ -30,6 +27,8 @@ import event.crew_seat.SeatBeltSignOff;
 import event.crew_seat.SeatBeltSignOn;
 import event.deicing_system.DeIcingSystemActivate;
 import event.deicing_system.DeIcingSystemDeIce;
+import event.deicing_system.DeIcingSystemDeactivate;
+import event.deicing_system.DeIcingSystemRefill;
 import event.droop_nose.DroopNoseDown;
 import event.droop_nose.DroopNoseFullDown;
 import event.droop_nose.DroopNoseNeutral;
@@ -51,7 +50,9 @@ import event.landing_light.LandingLightWingOn;
 import event.left_aileron.LeftAileronFullDown;
 import event.left_aileron.LeftAileronNeutral;
 import event.left_aileron.LeftAileronUp;
+import event.left_navigation_light.LeftNavigationLightOff;
 import event.left_navigation_light.LeftNavigationLightOn;
+import event.logo_light.LogoLightOff;
 import event.logo_light.LogoLightOn;
 import event.nitrogen_bottle.NitrogenBottleRefill;
 import event.nitrogen_bottle.NitrogenBottleTakeOut;
@@ -636,10 +637,11 @@ public class Airplane implements IAirplane {
     public void descent() {
         // apu
         eventBus.post(new APUDecreaseRPM(5000));
+        eventBus.post(new APUIncreaseRPM(1000));
 
         //gear
         eventBus.post(new GearUp());
-        eventBus.post(new GearSetBrakePercentage(50));
+        eventBus.post(new GearSetBrakePercentage(0));
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
@@ -647,15 +649,13 @@ public class Airplane implements IAirplane {
         // air_conditioning
         eventBus.post(new AirConditioningHeat("wusch", 25));
 
-
         // elevator
         eventBus.post(new ElevatorDown(-10));
 
         // engine
-        eventBus.post(new EngineDecreaseRPM(-500));
+        eventBus.post(new EngineDecreaseRPM(100));
 
         //Droop Nose
-        eventBus.post(new DroopNoseUp(20));
 
         //GPS
         eventBus.post(new GPSSend("descent"));
@@ -709,15 +709,19 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerUp(15));
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // left_navigation_light
+        eventBus.post(new LeftNavigationLightOff());
     }
 
     public void landing() {
         // apu
         eventBus.post(new APUDecreaseRPM(5000));
+        eventBus.post(new APUIncreaseRPM(250));
 
         //gear
         eventBus.post(new GearDown());
-        eventBus.post(new GearReleaseBrake());
+        eventBus.post(new GearSetBrake());
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
@@ -811,8 +815,8 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOff());
 
         // air_conditioning
+        eventBus.post(new AirConditioningCool("", 0));
         eventBus.post(new AirConditioningOff());
-
 
         //Engine
         eventBus.post(new EngineShutdown());
@@ -823,7 +827,6 @@ public class Airplane implements IAirplane {
         eventBus.post(new HydraulicPumpWingRefillOil(0));
 
         //Elevator
-
         eventBus.post(new ElevatorNeutral());
 
         //Droop Nose
@@ -895,5 +898,12 @@ public class Airplane implements IAirplane {
 
         //RouteManagement
         eventBus.post(new RouteManagementOff());
+
+        // deicing_system
+        eventBus.post(new DeIcingSystemDeactivate());
+        eventBus.post(new DeIcingSystemRefill());
+
+        // logo_light
+        eventBus.post(new LogoLightOff());
     }
 }

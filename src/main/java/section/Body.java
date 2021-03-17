@@ -2260,7 +2260,7 @@ public class Body extends Subscriber {
                 boolean isOn = (boolean) offMethod.invoke(logoLightPortList.get(i));
                 LogEngine.instance.write("isOn = " + isOn);
 
-                PrimaryFlightDisplay.instance.isCargoCompartmentLightOn = isOn;
+                PrimaryFlightDisplay.instance.isLogoLightOn = isOn;
                 FlightRecorder.instance.insert("Body", "LogoLight (isOn): " + isOn);
 
                 LogEngine.instance.write("+");
