@@ -58,6 +58,7 @@ import recorder.FlightRecorder;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection", "DuplicatedCode"})
 public class Body extends Subscriber {
@@ -1011,6 +1012,7 @@ public class Body extends Subscriber {
                 FlightRecorder.instance.insert("Body", "TemperatureSensor (temperature): " + temperature);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.temperatureBody = temperature;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -2091,7 +2093,7 @@ public class Body extends Subscriber {
                 int numberOfCheckPoints = (int) addMethod.invoke(costOptimizerPortList.get(i));
                 LogEngine.instance.write("numberOfCheckPoints = " + numberOfCheckPoints);
 
-                PrimaryFlightDisplay.instance.indexCostOptimizer = numberOfCheckPoints;
+                PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer = numberOfCheckPoints;
                 FlightRecorder.instance.insert("Body", "CostOptimizerAddCheckPoint (numberOfCheckPoints): " + numberOfCheckPoints);
 
                 LogEngine.instance.write("+");
@@ -2111,7 +2113,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfCostOptimizer; i++) {
-                Method removeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("remove", Integer.class);
+                Method removeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("remove", int.class);
                 LogEngine.instance.write("removeMethod = " + removeMethod);
 
                 int numberOfCheckPoints = (int) removeMethod.invoke(costOptimizerPortList.get(i), 1);
@@ -2142,10 +2144,15 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfCostOptimizer; i++) {
-                Method optimizeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("optimize");
+                Method optimizeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("optimize", ArrayList.class);
                 LogEngine.instance.write("optimizeMethod" + optimizeMethod);
 
-                int costIndex = (int) optimizeMethod.invoke(costOptimizerPortList.get(i));
+                ArrayList<Object> checkPoints = new ArrayList<>();
+                for (int j = 0; j < 30; j++) {
+                    checkPoints.add(new Object());
+                }
+
+                int costIndex = (int) optimizeMethod.invoke(costOptimizerPortList.get(i), checkPoints);
                 LogEngine.instance.write("costIndex" + costIndex);
 
                 PrimaryFlightDisplay.instance.indexCostOptimizer = costIndex;
@@ -2388,10 +2395,10 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfRouteManagement; i++) {
-                Method setCostIndexMethod = routeManagementPortList.get(i).getClass().getDeclaredMethod("setCostIndex", Integer.class);
+                Method setCostIndexMethod = routeManagementPortList.get(i).getClass().getDeclaredMethod("setCostIndex", int.class);
                 LogEngine.instance.write("setCostIndexMethod" + setCostIndexMethod);
 
-                double costIndex = (double) setCostIndexMethod.invoke(routeManagementPortList.get(i));
+                double costIndex = (double) setCostIndexMethod.invoke(routeManagementPortList.get(i), routeManagementSetCostIndex.getValue());
                 LogEngine.instance.write("costIndex" + costIndex);
 
                 PrimaryFlightDisplay.instance.indexRouteManagement = (int) costIndex;

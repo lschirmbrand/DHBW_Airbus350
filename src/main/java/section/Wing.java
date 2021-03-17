@@ -400,6 +400,7 @@ public class Wing extends Subscriber {
                 FlightRecorder.instance.insert("Body", "TemperatureSensor (temperature): " + temperature);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.temperatureWing = temperature;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
