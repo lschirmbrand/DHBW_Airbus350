@@ -247,10 +247,10 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
-        assertEquals(0, config.amountOfNitrogen);
+        assertEquals(250, config.amountOfNitrogen);
 
         // oxygen_bottle
-        assertEquals(0, config.oxygenBottleAmount);
+        assertEquals(100, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -469,7 +469,7 @@ public class ProcedureTest {
 
         // deicing_system
         assertTrue(config.isDeIcingSystemActivated);
-        assertEquals(800, config.amountDeIcingSystem);
+        assertEquals(850, config.amountDeIcingSystem);
 
         // droop_nose
         assertEquals(0, config.degreeDroopNose);
@@ -603,7 +603,7 @@ public class ProcedureTest {
 
         // deicing_system
         assertTrue(config.isDeIcingSystemActivated);
-        assertEquals(800, config.amountDeIcingSystem);
+        assertEquals(850, config.amountDeIcingSystem);
 
         // droop_nose
         assertEquals(0, config.degreeDroopNose);
@@ -737,7 +737,7 @@ public class ProcedureTest {
 
         // deicing_system
         assertTrue(config.isDeIcingSystemActivated);
-        assertEquals(800, config.amountDeIcingSystem);
+        assertEquals(850, config.amountDeIcingSystem);
 
         // droop_nose
         assertEquals(0, config.degreeDroopNose);
