@@ -58,6 +58,7 @@ import recorder.FlightRecorder;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings({"UnstableApiUsage", "unused", "MismatchedQueryAndUpdateOfCollection", "DuplicatedCode"})
 public class Body extends Subscriber {
@@ -88,6 +89,8 @@ public class Body extends Subscriber {
     private final ArrayList<Object> landingLightBodyPortList;
     private final ArrayList<Object> logoLightPortList;
     private final ArrayList<Object> routeManagementPortList;
+    private final ArrayList<Object> nitrogenBottlePortList;
+    private final ArrayList<Object> oxygenBottlePortList;
 
     public Body() {
         airConditioningPortList = new ArrayList<>();
@@ -117,6 +120,8 @@ public class Body extends Subscriber {
         landingLightBodyPortList = new ArrayList<>();
         logoLightPortList = new ArrayList<>();
         routeManagementPortList = new ArrayList<>();
+        nitrogenBottlePortList = new ArrayList<>();
+        oxygenBottlePortList = new ArrayList<>();
 
         build();
     }
@@ -225,6 +230,12 @@ public class Body extends Subscriber {
         }
         for (int i = 0; i < Configuration.instance.numberOfRouteManagement; i++) {
             routeManagementPortList.add(RouteManagementFactory.build());
+        }
+        for(int i =  0; i < Configuration.instance.numberOfNitrogenBottle; i++) {
+            nitrogenBottlePortList.add(NitrogenBottleFactory.build());
+        }
+        for(int i =  0; i < Configuration.instance.numberOfOxygenBottle; i++) {
+            oxygenBottlePortList.add(OxygenBottleFactory.build());
         }
     }
 
@@ -369,12 +380,13 @@ public class Body extends Subscriber {
                 Method measureMethod = airFlowSensorBodyPortList.get(i).getClass().getDeclaredMethod("measure", String.class);
                 LogEngine.instance.write("measureMethod = " + measureMethod);
 
-                int airPressure = (int) measureMethod.invoke(airFlowSensorBodyPortList.get(i), "FLOWFLOWFLOW");
+                int airPressure = (int) measureMethod.invoke(airFlowSensorBodyPortList.get(i), "a".repeat(1013));
                 LogEngine.instance.write("airFlow = " + airPressure);
 
                 FlightRecorder.instance.insert("Body", "AirFlowSensor (airPressure): " + airPressure);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.airPressure = airPressure;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -514,6 +526,7 @@ public class Body extends Subscriber {
                 FlightRecorder.instance.insert("Body", "Battery (charge): " + stateOfCharge);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.percentageBattery = stateOfCharge;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -540,6 +553,7 @@ public class Body extends Subscriber {
                 FlightRecorder.instance.insert("Body", "Battery (discharge): " + stateOfCharge);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.percentageBattery = stateOfCharge;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -998,6 +1012,7 @@ public class Body extends Subscriber {
                 FlightRecorder.instance.insert("Body", "TemperatureSensor (temperature): " + temperature);
 
                 LogEngine.instance.write("+");
+                PrimaryFlightDisplay.instance.temperatureBody = temperature;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -1089,11 +1104,53 @@ public class Body extends Subscriber {
     @Subscribe
     public void receive(NitrogenBottleRefill nitrogenBottleRefill) {
         System.out.println(nitrogenBottleRefill);
+        LogEngine.instance.write("+ Body.receive(" + nitrogenBottleRefill.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + nitrogenBottleRefill.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfNitrogenBottle; i++) {
+                Method onMethod = nitrogenBottlePortList.get(i).getClass().getDeclaredMethod("refill");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                int refill = (int) onMethod.invoke(nitrogenBottlePortList.get(i));
+                LogEngine.instance.write("refill = " + refill);
+
+                PrimaryFlightDisplay.instance.amountOfNitrogen = refill;
+                FlightRecorder.instance.insert("Body", "nitrogenBottle (refill): " + refill);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (amountOfNitrogen): " + PrimaryFlightDisplay.instance.amountOfNitrogen);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "amountOfNitrogen: " + PrimaryFlightDisplay.instance.amountOfNitrogen);
     }
 
     @Subscribe
     public void receive(NitrogenBottleTakeOut nitrogenBottleTakeOut) {
         System.out.println(nitrogenBottleTakeOut);
+        LogEngine.instance.write("+ Body.receive(" + nitrogenBottleTakeOut.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + nitrogenBottleTakeOut.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfNitrogenBottle; i++) {
+                Method onMethod = nitrogenBottlePortList.get(i).getClass().getDeclaredMethod("takeOut", int.class);
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                int takeOut = (int) onMethod.invoke(nitrogenBottlePortList.get(i), nitrogenBottleTakeOut.amount);
+                LogEngine.instance.write("refill = " + takeOut);
+
+                PrimaryFlightDisplay.instance.amountOfNitrogen = takeOut;
+                FlightRecorder.instance.insert("Body", "nitrogenBottle (takeOut): " + takeOut);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (amountOfNitrogen): " + PrimaryFlightDisplay.instance.amountOfNitrogen);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "amountOfNitrogen: " + PrimaryFlightDisplay.instance.amountOfNitrogen);
     }
 
     //--------------------------------------------------------
@@ -1101,11 +1158,55 @@ public class Body extends Subscriber {
     @Subscribe
     public void receive(OxygenBottleRefill oxygenBottleRefill) {
         System.out.println(oxygenBottleRefill);
+        LogEngine.instance.write("+ Body.receive(" + oxygenBottleRefill.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + oxygenBottleRefill.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfOxygenBottle; i++) {
+                Method onMethod = oxygenBottlePortList.get(i).getClass().getDeclaredMethod("refill");
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                int refill = (int) onMethod.invoke(oxygenBottlePortList.get(i));
+                LogEngine.instance.write("refill = " + refill);
+
+                PrimaryFlightDisplay.instance.oxygenBottleAmount = refill;
+                FlightRecorder.instance.insert("Body", "oxygenBottle (refill): " + refill);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (amountOfOxygen): " + PrimaryFlightDisplay.instance.oxygenBottleAmount);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "amountOfOxygen: " + PrimaryFlightDisplay.instance.oxygenBottleAmount);
+
     }
 
     @Subscribe
     public void receive(OxygenBottleTakeOut oxygenBottleTakeOut) {
         System.out.println(oxygenBottleTakeOut);
+        LogEngine.instance.write("+ Body.receive(" + oxygenBottleTakeOut.toString() + ")");
+        FlightRecorder.instance.insert("Body", "receive(" + oxygenBottleTakeOut.toString() + ")");
+
+        try {
+            for (int i = 0; i < Configuration.instance.numberOfOxygenBottle; i++) {
+                Method onMethod = oxygenBottlePortList.get(i).getClass().getDeclaredMethod("takeOut", int.class);
+                LogEngine.instance.write("onMethod = " + onMethod);
+
+                int refill = (int) onMethod.invoke(oxygenBottlePortList.get(i), oxygenBottleTakeOut.amount);
+                LogEngine.instance.write("refill = " + refill);
+
+                PrimaryFlightDisplay.instance.oxygenBottleAmount = refill;
+                FlightRecorder.instance.insert("Body", "oxygenBottle (takeOut): " + refill);
+
+                LogEngine.instance.write("+");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        LogEngine.instance.write("PrimaryFlightDisplay (takeOut): " + PrimaryFlightDisplay.instance.oxygenBottleAmount);
+        FlightRecorder.instance.insert("PrimaryFlightDisplay", "amountOfOxygen: " + PrimaryFlightDisplay.instance.oxygenBottleAmount);
+
     }
 
     //GPS-------------------------------------------------------
@@ -1992,7 +2093,7 @@ public class Body extends Subscriber {
                 int numberOfCheckPoints = (int) addMethod.invoke(costOptimizerPortList.get(i));
                 LogEngine.instance.write("numberOfCheckPoints = " + numberOfCheckPoints);
 
-                PrimaryFlightDisplay.instance.indexCostOptimizer = numberOfCheckPoints;
+                PrimaryFlightDisplay.instance.numberOfCheckPointsCostOptimizer = numberOfCheckPoints;
                 FlightRecorder.instance.insert("Body", "CostOptimizerAddCheckPoint (numberOfCheckPoints): " + numberOfCheckPoints);
 
                 LogEngine.instance.write("+");
@@ -2012,7 +2113,7 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfCostOptimizer; i++) {
-                Method removeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("remove", Integer.class);
+                Method removeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("remove", int.class);
                 LogEngine.instance.write("removeMethod = " + removeMethod);
 
                 int numberOfCheckPoints = (int) removeMethod.invoke(costOptimizerPortList.get(i), 1);
@@ -2043,10 +2144,15 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfCostOptimizer; i++) {
-                Method optimizeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("optimize");
+                Method optimizeMethod = costOptimizerPortList.get(i).getClass().getDeclaredMethod("optimize", ArrayList.class);
                 LogEngine.instance.write("optimizeMethod" + optimizeMethod);
 
-                int costIndex = (int) optimizeMethod.invoke(costOptimizerPortList.get(i));
+                ArrayList<Object> checkPoints = new ArrayList<>();
+                for (int j = 0; j < 30; j++) {
+                    checkPoints.add(new Object());
+                }
+
+                int costIndex = (int) optimizeMethod.invoke(costOptimizerPortList.get(i), checkPoints);
                 LogEngine.instance.write("costIndex" + costIndex);
 
                 PrimaryFlightDisplay.instance.indexCostOptimizer = costIndex;
@@ -2161,7 +2267,7 @@ public class Body extends Subscriber {
                 boolean isOn = (boolean) offMethod.invoke(logoLightPortList.get(i));
                 LogEngine.instance.write("isOn = " + isOn);
 
-                PrimaryFlightDisplay.instance.isCargoCompartmentLightOn = isOn;
+                PrimaryFlightDisplay.instance.isLogoLightOn = isOn;
                 FlightRecorder.instance.insert("Body", "LogoLight (isOn): " + isOn);
 
                 LogEngine.instance.write("+");
@@ -2289,10 +2395,10 @@ public class Body extends Subscriber {
 
         try {
             for (int i = 0; i < Configuration.instance.numberOfRouteManagement; i++) {
-                Method setCostIndexMethod = routeManagementPortList.get(i).getClass().getDeclaredMethod("setCostIndex", Integer.class);
+                Method setCostIndexMethod = routeManagementPortList.get(i).getClass().getDeclaredMethod("setCostIndex", int.class);
                 LogEngine.instance.write("setCostIndexMethod" + setCostIndexMethod);
 
-                double costIndex = (double) setCostIndexMethod.invoke(routeManagementPortList.get(i));
+                double costIndex = (double) setCostIndexMethod.invoke(routeManagementPortList.get(i), routeManagementSetCostIndex.getValue());
                 LogEngine.instance.write("costIndex" + costIndex);
 
                 PrimaryFlightDisplay.instance.indexRouteManagement = (int) costIndex;

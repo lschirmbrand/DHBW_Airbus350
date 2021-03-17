@@ -1,7 +1,7 @@
 package event.oxygen_bottle;
 
 public class OxygenBottleTakeOut {
-    int amount;
+    public final int amount;
 
     public OxygenBottleTakeOut(int amount) {
         this.amount = amount;

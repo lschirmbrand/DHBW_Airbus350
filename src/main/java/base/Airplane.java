@@ -2,10 +2,7 @@ package base;
 
 import com.google.common.eventbus.EventBus;
 import event.Subscriber;
-import event.air_conditioning.AirConditioningClean;
-import event.air_conditioning.AirConditioningHeat;
-import event.air_conditioning.AirConditioningOff;
-import event.air_conditioning.AirConditioningOn;
+import event.air_conditioning.*;
 import event.airflow_sensor.AirFlowSensorBodyMeasure;
 import event.airflow_sensor.AirFlowSensorWingMeasure;
 import event.anti_collision_light.AntiCollisionLightOff;
@@ -21,14 +18,16 @@ import event.camera.CameraBodyOn;
 import event.camera.CameraWingOff;
 import event.camera.CameraWingOn;
 import event.cargo_compartment_light.CargoCompartmentLightOff;
-import event.cost_optimizer.CostOptimizerOff;
-import event.cost_optimizer.CostOptimizerOn;
+import event.cargo_compartment_light.CargoCompartmentLightOn;
+import event.cost_optimizer.*;
 import event.crew_seat.NonSmokingSignOff;
 import event.crew_seat.NonSmokingSignOn;
 import event.crew_seat.SeatBeltSignOff;
 import event.crew_seat.SeatBeltSignOn;
 import event.deicing_system.DeIcingSystemActivate;
 import event.deicing_system.DeIcingSystemDeIce;
+import event.deicing_system.DeIcingSystemDeactivate;
+import event.deicing_system.DeIcingSystemRefill;
 import event.droop_nose.DroopNoseDown;
 import event.droop_nose.DroopNoseFullDown;
 import event.droop_nose.DroopNoseNeutral;
@@ -50,7 +49,9 @@ import event.landing_light.LandingLightWingOn;
 import event.left_aileron.LeftAileronFullDown;
 import event.left_aileron.LeftAileronNeutral;
 import event.left_aileron.LeftAileronUp;
+import event.left_navigation_light.LeftNavigationLightOff;
 import event.left_navigation_light.LeftNavigationLightOn;
+import event.logo_light.LogoLightOff;
 import event.logo_light.LogoLightOn;
 import event.nitrogen_bottle.NitrogenBottleRefill;
 import event.nitrogen_bottle.NitrogenBottleTakeOut;
@@ -63,8 +64,10 @@ import event.radar.RadarScan;
 import event.right_aileron.RightAileronDown;
 import event.right_aileron.RightAileronFullUp;
 import event.right_aileron.RightAileronNeutral;
+import event.route_management.RouteManagementAdd;
 import event.route_management.RouteManagementOff;
 import event.route_management.RouteManagementOn;
+import event.route_management.RouteManagementSetCostIndex;
 import event.rudder.RudderFullLeft;
 import event.rudder.RudderNeutral;
 import event.rudder.RudderRight;
@@ -116,38 +119,66 @@ public class Airplane implements IAirplane {
         eventBus.post(new AirConditioningOn());
         eventBus.post(new AirConditioningClean("wusch"));
 
-        //Radar
-        eventBus.post(new RadarOn());
+        // airflow_sensor
+        eventBus.post(new AirFlowSensorBodyMeasure());
+
+        // anti_collision_light
+        eventBus.post(new AntiCollisionLightOn());
+
+        // apu
+        eventBus.post(new APUStart());
+        eventBus.post(new APUIncreaseRPM(5000));
+
+        // battery
+        eventBus.post(new BatteryCharge());
+
+        // camera
+        eventBus.post(new CameraBodyOn());
+        eventBus.post(new CameraWingOn());
+
+        // crew_seat
+        eventBus.post(new NonSmokingSignOff());
+        eventBus.post(new SeatBeltSignOff());
+
+        // deicing_system
+        eventBus.post(new DeIcingSystemActivate());
+        eventBus.post(new DeIcingSystemDeIce(200));
+
+        // droop_nose
+        eventBus.post(new DroopNoseNeutral());
+
+        // economy_class_seat
+        eventBus.post(new event.economy_class_seat.NonSmokingSignOff());
+        eventBus.post(new event.economy_class_seat.SeatBeltSignOff());
+
+        // elevator
+        eventBus.post(new ElevatorNeutral());
+
+        // engine
+        eventBus.post(new EngineStart());
+        eventBus.post(new EngineIncreaseRPM(0));
+
+        // fire_detector no action in startup
 
         // gear
         eventBus.post(new GearDown());
         eventBus.post(new GearSetBrake());
-        // weather_radar
-        eventBus.post(new WeatherRadarOn());
 
-        //Engine
-        eventBus.post(new EngineStart());
-        eventBus.post(new EngineIncreaseRPM(0));
+        // gps
+        eventBus.post(new GPSOn());
+        eventBus.post(new GPSConnect("Astra-8"));
 
-        // hydraulic pumps
+        // hydraulic_pump
         eventBus.post(new HydraulicPumpBodyCompress());
         eventBus.post(new HydraulicPumpWingCompress());
         eventBus.post(new HydraulicPumpBodyRefillOil(0));
         eventBus.post(new HydraulicPumpWingRefillOil(0));
 
-        //Droop Nose
-        eventBus.post(new DroopNoseNeutral());
+        //Radar
+        eventBus.post(new RadarOn());
 
-        // Elevator
-        eventBus.post(new ElevatorNeutral());
-
-        //Camera
-        eventBus.post(new CameraBodyOn());
-        eventBus.post(new CameraWingOn());
-
-        //GPS
-        eventBus.post(new GPSOn());
-        eventBus.post(new GPSConnect("Astra-8"));
+        // weather_radar
+        eventBus.post(new WeatherRadarOn());
 
         //Radar
         eventBus.post(new RadarScan("Erde"));
@@ -166,24 +197,7 @@ public class Airplane implements IAirplane {
         //NitrogenTank
         eventBus.post(new NitrogenBottleRefill());
 
-        // crew_seat
-        eventBus.post(new NonSmokingSignOff());
-        eventBus.post(new SeatBeltSignOff());
-
-        // economy_class_seat
-        eventBus.post(new event.economy_class_seat.NonSmokingSignOff());
-        eventBus.post(new event.economy_class_seat.SeatBeltSignOff());
-
-        // fireDetector no action in startup
-
         // oxygenSensor no action in startup
-
-        //Battery
-        eventBus.post(new BatteryDischarge());
-
-        //DeIcingSystem
-        eventBus.post(new DeIcingSystemActivate());
-        eventBus.post(new DeIcingSystemDeIce(200));
 
         //TemperatureSensor
         eventBus.post(new TemperatureSensorBodyMeasure());
@@ -199,8 +213,6 @@ public class Airplane implements IAirplane {
         eventBus.post(new RudderNeutral());
         //spoiler
         eventBus.post(new SpoilerNeutral());
-        // anti_collision_light
-        eventBus.post(new AntiCollisionLightOn());
 
         //CostOptimizer
         eventBus.post(new CostOptimizerOn());
@@ -208,27 +220,56 @@ public class Airplane implements IAirplane {
         //RouteManagement
         eventBus.post(new RouteManagementOn());
 
-        //LogoLight
+        // LogoLight
         eventBus.post(new LogoLightOn());
     }
 
     public void taxi() {
+        // Radar
+        eventBus.post(new RadarOn());
+        // LogoLight
+        eventBus.post(new LogoLightOn());
+        // hydraulic_pump
+        eventBus.post(new HydraulicPumpBodyCompress());
+        eventBus.post(new HydraulicPumpWingCompress());
+        eventBus.post(new HydraulicPumpBodyRefillOil(0));
+        eventBus.post(new HydraulicPumpWingRefillOil(0));
+        // gps
+        eventBus.post(new GPSOn());
+        eventBus.post(new GPSConnect("Astra-8"));
+        // engine
+        eventBus.post(new EngineStart());
+        eventBus.post(new EngineIncreaseRPM(0));
+        // camera
+        eventBus.post(new CameraBodyOn());
+        eventBus.post(new CameraWingOn());
+        // air_conditioning
+        eventBus.post(new AirConditioningOn());
+        eventBus.post(new AirConditioningHeat("wusch", 20));
+        // apu
+        eventBus.post(new APUStart());
+        eventBus.post(new APUIncreaseRPM(5000));
+        //CostOptimizer
+        eventBus.post(new CostOptimizerOn());
         //gear
         eventBus.post(new GearDown());
-        eventBus.post(new GearReleaseBrake());
+        eventBus.post(new GearSetBrake());
         // weather_radar
         eventBus.post(new WeatherRadarOn());
-        // air_conditioning
-        eventBus.post(new AirConditioningHeat("wusch", 25));
         //Droop Nose
         eventBus.post(new DroopNoseNeutral());
         //GPS
         eventBus.post(new GPSSend("Taxi"));
         eventBus.post(new GPSReceive());
+        // deicing_system
+        eventBus.post(new DeIcingSystemActivate());
+        eventBus.post(new DeIcingSystemDeIce(200));
         //Radar
         eventBus.post(new RadarScan("Erde"));
         //TCAS
         eventBus.post(new TCASScan("Erde"));
+        // elevator
+        eventBus.post(new ElevatorNeutral());
         //Turbulent Airflow Sensor
         eventBus.post(new TurbulentAirFlowSensorBodyMeasure());
         eventBus.post(new TurbulentAirFlowSensorWingMeasure());
@@ -267,6 +308,10 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerNeutral());
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // cargo_compartment_light
+        eventBus.post(new CargoCompartmentLightOn());
+
     }
 
     public void takeoff() {
@@ -278,8 +323,16 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOn());
 
         // air_conditioning
-        eventBus.post(new AirConditioningHeat("wusch", 25));
+        eventBus.post(new AirConditioningOn());
+        eventBus.post(new AirConditioningHeat("wusch", 24));
 
+        // cost_optimizer
+        eventBus.post(new CostOptimizerOn());
+        eventBus.post(new CostOptimizerOptimize());
+
+        // deicing_system
+        eventBus.post(new DeIcingSystemActivate());
+        eventBus.post(new DeIcingSystemDeIce(150));
 
         // engine
         eventBus.post(new EngineIncreaseRPM(15000));
@@ -297,6 +350,8 @@ public class Airplane implements IAirplane {
         eventBus.post(new ElevatorFullUp());
 
         //GPS
+        eventBus.post(new GPSOn());
+        eventBus.post(new GPSConnect("Astra-8"));
         eventBus.post(new GPSSend("TakeoOff"));
         eventBus.post(new GPSReceive());
 
@@ -348,6 +403,26 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerFullUp());
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // logo_light
+        eventBus.post(new LogoLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(25));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(10));
+
+        // cargo_compartment_light
+        eventBus.post(new CargoCompartmentLightOff());
+
+        // gear
+        eventBus.post(new GearReleaseBrake());
+
+        // route_management
+        eventBus.post(new RouteManagementSetCostIndex(30));
     }
 
     public void climbing() {
@@ -357,13 +432,13 @@ public class Airplane implements IAirplane {
 
         // gear
         eventBus.post(new GearUp());
-        eventBus.post(new GearSetBrakePercentage(50));
+        eventBus.post(new GearReleaseBrake());
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
 
         // air_conditioning
-        eventBus.post(new AirConditioningHeat("wusch", 25));
+        eventBus.post(new AirConditioningHeat("wusch", 24));
 
         //Droop Nose
         eventBus.post(new DroopNoseNeutral());
@@ -372,7 +447,7 @@ public class Airplane implements IAirplane {
         eventBus.post(new ElevatorUp(10));
 
         // engine
-        eventBus.post(new EngineIncreaseRPM(500));
+        eventBus.post(new EngineIncreaseRPM(4000));
 
         //GPS
         eventBus.post(new GPSSend("Climbing"));
@@ -403,6 +478,7 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+
         // battery
         eventBus.post(new BatteryDischarge());
 
@@ -426,6 +502,14 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerNeutral());
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(50));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(20));
     }
 
     public void rightTurn() {
@@ -435,7 +519,10 @@ public class Airplane implements IAirplane {
 
         // gear
         eventBus.post(new GearUp());
-        eventBus.post(new GearSetBrakePercentage(50));
+        eventBus.post(new GearReleaseBrake());
+
+        // engine
+        eventBus.post(new EngineIncreaseRPM(2500));
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
@@ -444,7 +531,7 @@ public class Airplane implements IAirplane {
         eventBus.post(new DroopNoseNeutral());
 
         // air_conditioning
-        eventBus.post(new AirConditioningHeat("wusch", 25));
+        eventBus.post(new AirConditioningHeat("wusch", 24));
 
         //GPS
         eventBus.post(new GPSSend("rightTurn"));
@@ -498,6 +585,14 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerNeutral());
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(75));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(30));
     }
 
     public void leftTurn() {
@@ -507,7 +602,7 @@ public class Airplane implements IAirplane {
 
         // gear
         eventBus.post(new GearUp());
-        eventBus.post(new GearSetBrakePercentage(50));
+        eventBus.post(new GearReleaseBrake());
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
@@ -516,7 +611,7 @@ public class Airplane implements IAirplane {
         eventBus.post(new DroopNoseNeutral());
 
         // air_conditioning
-        eventBus.post(new AirConditioningHeat("wusch", 25));
+        eventBus.post(new AirConditioningHeat("wusch", 24));
 
         //GPS
         eventBus.post(new GPSSend("leftTurn"));
@@ -573,31 +668,38 @@ public class Airplane implements IAirplane {
 
         //LeftNavigationLight
         eventBus.post(new LeftNavigationLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(100));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(40));
     }
 
     public void descent() {
         // apu
         eventBus.post(new APUDecreaseRPM(5000));
+        eventBus.post(new APUIncreaseRPM(1000));
 
         //gear
         eventBus.post(new GearUp());
-        eventBus.post(new GearSetBrakePercentage(50));
+        eventBus.post(new GearSetBrakePercentage(0));
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
 
         // air_conditioning
-        eventBus.post(new AirConditioningHeat("wusch", 25));
-
+        eventBus.post(new AirConditioningHeat("wusch", 24));
 
         // elevator
         eventBus.post(new ElevatorDown(-10));
 
         // engine
-        eventBus.post(new EngineDecreaseRPM(-500));
+        eventBus.post(new EngineDecreaseRPM(500));
 
         //Droop Nose
-        eventBus.post(new DroopNoseUp(20));
 
         //GPS
         eventBus.post(new GPSSend("descent"));
@@ -651,21 +753,33 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerUp(15));
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // left_navigation_light
+        eventBus.post(new LeftNavigationLightOff());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(125));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(50));
     }
 
     public void landing() {
         // apu
         eventBus.post(new APUDecreaseRPM(5000));
+        eventBus.post(new APUIncreaseRPM(250));
 
         //gear
         eventBus.post(new GearDown());
-        eventBus.post(new GearReleaseBrake());
+        eventBus.post(new GearSetBrake());
 
         // weather_radar
         eventBus.post(new WeatherRadarOn());
 
         // air_conditioning
-        eventBus.post(new AirConditioningHeat("wusch", 25));
+        eventBus.post(new AirConditioningHeat("wusch", 24));
 
 
         // engine
@@ -739,6 +853,14 @@ public class Airplane implements IAirplane {
         //LandingLight
         eventBus.post(new LandingLightBodyOn());
         eventBus.post(new LandingLightWingOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(150));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(60));
     }
 
     public void shutdown() {
@@ -753,8 +875,8 @@ public class Airplane implements IAirplane {
         eventBus.post(new WeatherRadarOff());
 
         // air_conditioning
+        eventBus.post(new AirConditioningCool("", 0));
         eventBus.post(new AirConditioningOff());
-
 
         //Engine
         eventBus.post(new EngineShutdown());
@@ -765,7 +887,6 @@ public class Airplane implements IAirplane {
         eventBus.post(new HydraulicPumpWingRefillOil(0));
 
         //Elevator
-
         eventBus.post(new ElevatorNeutral());
 
         //Droop Nose
@@ -837,5 +958,13 @@ public class Airplane implements IAirplane {
 
         //RouteManagement
         eventBus.post(new RouteManagementOff());
+        eventBus.post(new RouteManagementSetCostIndex(0));
+
+        // deicing_system
+        eventBus.post(new DeIcingSystemDeactivate());
+        eventBus.post(new DeIcingSystemRefill());
+
+        // logo_light
+        eventBus.post(new LogoLightOff());
     }
 }
