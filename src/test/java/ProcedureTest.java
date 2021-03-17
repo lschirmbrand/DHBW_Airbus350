@@ -396,12 +396,11 @@ public class ProcedureTest {
         // logo_light
         assertTrue(config.isLogoLightOn);
 
-        // TODO: check why value is always 0
         // nitrogen_bottle
-        //TODO: assertEquals(225, config.amountOfNitrogen);
+        assertEquals(225, config.amountOfNitrogen);
 
         // oxygen_bottle
-        //TODO: assertEquals(90, config.oxygenBottleAmount);
+        assertEquals(90, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -532,10 +531,10 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
-        // TODO: assertEquals(0, config.amountOfNitrogen);
+        assertEquals(200, config.amountOfNitrogen);
 
         // oxygen_bottle
-        // TODO: assertEquals(0, config.oxygenBottleAmount);
+        assertEquals(80, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -666,10 +665,10 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
-        // TODO: assertEquals(0, config.amountOfNitrogen);
+        assertEquals(175, config.amountOfNitrogen);
 
         // oxygen_bottle
-        // TODO: assertEquals(0, config.oxygenBottleAmount);
+        assertEquals(70, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -800,10 +799,10 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
-        // TODO: assertEquals(0, config.amountOfNitrogen);
+        assertEquals(150, config.amountOfNitrogen);
 
         // oxygen_bottle
-        // TODO: assertEquals(0, config.oxygenBottleAmount);
+        assertEquals(60, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -933,12 +932,11 @@ public class ProcedureTest {
         // logo_light
         assertTrue(config.isLogoLightOn);
 
-        // TODO: adjust values for bottles in all tests
         // nitrogen_bottle
-        //TODO: assertEquals(0, config.amountOfNitrogen);
+        assertEquals(125, config.amountOfNitrogen);
 
         // oxygen_bottle
-        // TODO: assertEquals(0, config.oxygenBottleAmount);
+        assertEquals(50, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);
@@ -1069,10 +1067,10 @@ public class ProcedureTest {
         assertTrue(config.isLogoLightOn);
 
         // nitrogen_bottle
-        // TODO: assertEquals(0, config.amountOfNitrogen);
+        assertEquals(100, config.amountOfNitrogen);
 
         // oxygen_bottle
-        // TODO: assertEquals(0, config.oxygenBottleAmount);
+        assertEquals(40, config.oxygenBottleAmount);
 
         // oxygen_sensor
         assertFalse(config.isOxygenSensorAlarm);

@@ -408,9 +408,11 @@ public class Airplane implements IAirplane {
         eventBus.post(new LogoLightOn());
 
         // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
         eventBus.post(new NitrogenBottleTakeOut(25));
 
         // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
         eventBus.post(new OxygenBottleTakeOut(10));
 
         // cargo_compartment_light
@@ -476,6 +478,7 @@ public class Airplane implements IAirplane {
 
         // oxygenSensor
         eventBus.post(new OxygenSensorMeasure());
+
         // battery
         eventBus.post(new BatteryDischarge());
 
@@ -499,6 +502,14 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerNeutral());
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(50));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(20));
     }
 
     public void rightTurn() {
@@ -574,6 +585,14 @@ public class Airplane implements IAirplane {
         eventBus.post(new SpoilerNeutral());
         //anti_collision_light
         eventBus.post(new AntiCollisionLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(75));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(30));
     }
 
     public void leftTurn() {
@@ -649,6 +668,14 @@ public class Airplane implements IAirplane {
 
         //LeftNavigationLight
         eventBus.post(new LeftNavigationLightOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(100));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(40));
     }
 
     public void descent() {
@@ -729,6 +756,14 @@ public class Airplane implements IAirplane {
 
         // left_navigation_light
         eventBus.post(new LeftNavigationLightOff());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(125));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(50));
     }
 
     public void landing() {
@@ -818,6 +853,14 @@ public class Airplane implements IAirplane {
         //LandingLight
         eventBus.post(new LandingLightBodyOn());
         eventBus.post(new LandingLightWingOn());
+
+        // nitrogen_bottle
+        eventBus.post(new NitrogenBottleRefill());
+        eventBus.post(new NitrogenBottleTakeOut(150));
+
+        // oxygen_bottle
+        eventBus.post(new OxygenBottleRefill());
+        eventBus.post(new OxygenBottleTakeOut(60));
     }
 
     public void shutdown() {
