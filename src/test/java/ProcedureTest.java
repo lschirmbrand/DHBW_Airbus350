@@ -18,7 +18,7 @@ public class ProcedureTest {
      *
      * Da die einzelnen Tests / Phasen die Werte im PrimaryFlightDisplay ändern, dieses aber nicht vor jedem Test von
      * Java zurückgesetzt wird, hängen die Tests vom jeweilig vorherigen ab.
-     * Also haben wir die Tests so konzipiert, dass die alle durchlaufen, wenn ALLE Tests gestartet werden.
+     * Also haben wir die Tests so konzipiert, dass sie alle durchlaufen, wenn ALLE Tests gestartet werden.
      *
      * Beispiel: Die Oxygen Bottle hat nur Events zum komplett neu auffüllen oder zur Entnahme einer gewissen Menge.
      * Beim startUp wird die Bottle gefüllt und in anderen Phasen dann ggf. eine kleine Menge verbraucht. Startet man
